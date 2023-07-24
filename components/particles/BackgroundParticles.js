@@ -21,6 +21,8 @@ export default function BackgroundParticles() {
       id="tsparticles"
       init={particlesInit}
       loaded={particlesLoaded}
+      width="100vw"
+      height="100vh"
       options={particlesConfig}
     />
   );
