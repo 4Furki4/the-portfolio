@@ -2,4 +2,80 @@
 @tailwind components;
 @tailwind utilities;
 
+.button {
+    cursor: pointer;
+    font-size: 1.5rem;
+    font-family: inherit;
+    font-weight: 700;
+    color: hsl(320, 40%, 40%);
+    background-color: hsl(349 100% 95%);
+    padding: 0.5rem 1rem;
+    border: 0;
+    border-radius: .5rem;
+    z-index: 1;
+}
 
+.glow-effect {
+    --container-offset: 100px;
+    --glow-line-color: #fff;
+    --glow-blur-color: #fff;
+    --glow-line-thickness: 3px;
+    --glow-line-size: 20px;
+    --animation-speed: 1200ms;
+    --glow-line-length: 20px;
+    position: relative;
+}
+
+.glow-container {
+    opacity: 0;
+    pointer-events: none;
+    position: absolute;
+    width: calc(100% + var(--container-offset));
+    height: calc(100% + var(--container-offset));
+    inset: calc(var(--container-offset) / -2);
+}
+
+.glow-blur,
+.glow-line {
+    x: calc(var(--container-offset) / 2);
+    y: calc(var(--container-offset) / 2);
+    width: calc(100% - var(--container-offset));
+    height: calc(100% - var(--container-offset));
+    fill: transparent;
+    stroke: black;
+    stroke-width: 5px;
+    stroke-dasharray: var(--glow-line-length) calc(50px - var(--glow-line-length));
+}
+
+.glow-effect:is(:hover, :focus) :is(.glow-blur, .glow-line) {
+    stroke-dashoffset: -65px;
+    transition: stroke-dashoffset var(--animation-speed);
+}
+
+.glow-line {
+    stroke: var(--glow-line-color);
+    stroke-width: var(--glow-line-thickness);
+}
+
+.glow-blur {
+    filter: blur(var(--glow-line-size));
+    stroke: var(--glow-blur-color);
+    stroke-width: var(--glow-line-size);
+}
+
+.glow-effect:is(:hover, :focus) .glow-container {
+    animation: glow-visibility var(--animation-speed) ease-in;
+}
+
+@keyframes glow-visibility {
+
+    0%,
+    100% {
+        opacity: 0;
+    }
+
+    25%,
+    75% {
+        opacity: 1;
+    }
+}
