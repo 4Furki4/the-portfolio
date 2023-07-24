@@ -25,7 +25,7 @@ export default function ThemeButton() {
         localStorage.setItem('theme', 'dark')
     }
     return (
-        <button className='bg-neutral-100 text-slate-900 dark:bg-neutral-800 dark:text-slate-100 p-2 rounded-xl transition-colors duration-300'
+        <button className='bg-neutral-100 text-slate-900 dark:bg-neutral-800 dark:text-slate-100 p-2 rounded-xl transition-colors duration-300 z-10'
             onClick={() => toggleDarkMode()}
         >
             <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32"

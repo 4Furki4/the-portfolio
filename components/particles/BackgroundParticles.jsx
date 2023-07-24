@@ -23,7 +23,7 @@ export default function BackgroundParticles() {
       loaded={particlesLoaded}
       width="100%"
       height="100%"
-      className="absolute top-0 left-0 z-0"
+      className="w-full h-screen"
       options={particlesConfig}
     />
   );
