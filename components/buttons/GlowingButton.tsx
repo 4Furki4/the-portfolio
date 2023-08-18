@@ -14,7 +14,7 @@ export default function GlowingButton({ props: { text, onClick, pathLength, stro
     return (
         <button
             ref={ref}
-            className="button glow-effect">
+            className={`button glow-effect ${theme} transition-colors duration-300`}>
             {text}
             <svg className="glow-container">
                 <rect pathLength="100"
