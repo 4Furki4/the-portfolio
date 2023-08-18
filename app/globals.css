@@ -32,9 +32,6 @@
     --ring: 222.2 84% 4.9%;
  
     --radius: 0.5rem;
-
-    --glowing-btn-bg: rgb(255, 255, 255);
-    --glowing-btn-text: rgb(24, 24, 27);
   }
  
   .dark {
@@ -72,16 +69,14 @@
     font-size: 1.5rem;
     font-family: inherit;
     font-weight: 700;
-    color: var(--glowing-btn-text);
-    background-color: var(--glowing-btn-bg);
+    color: var(--foreground);
+    background-color: var(--background);
     padding: 0.5rem 1rem;
     border: 0;
     border-radius: .5rem;
     z-index: 1;
 }
 .button.dark{
-  --glowing-btn-bg: rgb(24, 24, 27);
-  --glowing-btn-text: rgb(255, 255, 255);
   --glow-line-color: #fff;
   --glow-blur-color: #fff;
 }

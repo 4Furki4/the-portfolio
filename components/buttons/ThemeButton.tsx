@@ -32,10 +32,12 @@ export default function ThemeButton({ setTheme, theme }: {
         setTheme('dark')
     }
     return (
-        <button className='bg-neutral-100 text-slate-900 dark:bg-neutral-800 dark:text-slate-100 p-2 rounded-xl transition-colors duration-300 z-10'
+        <button className='bg-neutral-100 text-slate-900 dark:bg-neutral-800 dark:text-slate-100 p-2 rounded-xl transition-colors duration-300 z-50 cursor-pointer'
             onClick={() => toggleDarkMode()}
         >
-            <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32"
+            <svg
+                className='z-50'
+                xmlns="http://www.w3.org/2000/svg" width="24" height="24"
                 viewBox="0 0 24 24" version="1.1"
             >
                 <title>ic_fluent_dark_theme_24_regular</title>

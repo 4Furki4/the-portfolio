@@ -6,4 +6,5 @@ type GlowingButtonProps = {
     borderRadius?: number;
     bgColor?: string;
     theme: 'light' | 'dark';
+    className?: string;
 }

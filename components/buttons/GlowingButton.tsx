@@ -1,10 +1,10 @@
 "use client"
 import React, { useEffect, useRef } from 'react'
-export default function GlowingButton({ props: { text, onClick, pathLength, strokeWidth, theme } }: { props: GlowingButtonProps }) {
+import { motion } from "framer-motion"
+export default function GlowingButton({ props: { text, onClick, pathLength, strokeWidth, theme, className } }: { props: GlowingButtonProps }) {
     const ref = useRef<HTMLButtonElement>(null)
     useEffect(() => {
         const rects = ref.current?.querySelectorAll('rect')
-        console.log(ref.current);
         const rx = getComputedStyle(ref.current as Element).borderRadius
         rects?.forEach(rect => {
             rect.setAttribute('rx', rx)
@@ -12,9 +12,16 @@ export default function GlowingButton({ props: { text, onClick, pathLength, stro
     },)
 
     return (
-        <button
+        <motion.button
+            whileHover={{
+                backgroundColor: theme === 'light' ? 'rgba(255,215,255)' : 'rgba(0,0,10)',
+            }}
+            whileTap={{ scale: 0.9 }}
+            animate={{ scale: 1 }}
+            style={{ scale: 0 }}
+            transition={{ duration: .3 }}
             ref={ref}
-            className={`button glow-effect ${theme} transition-colors duration-300`}>
+            className={`button glow-effect ${theme} text-sm ${className} z-50`}>
             {text}
             <svg className="glow-container">
                 <rect pathLength="100"
@@ -24,6 +31,6 @@ export default function GlowingButton({ props: { text, onClick, pathLength, stro
                     x={50}
                     rx={16} pathLength="100" strokeLinecap="round" className="glow-blur"></rect>
             </svg>
-        </button>
+        </motion.button>
     )
 }
