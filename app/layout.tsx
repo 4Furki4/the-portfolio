@@ -15,7 +15,7 @@ export default function RootLayout({
   const [theme, setTheme] = React.useState<'light' | 'dark'>('light')
   return (
     <html lang="en" className=''>
-      <body className={`${inter.className} transition-colors duration-300 bg-slate-300 text-slate-900 dark:bg-slate-900 dark:text-slate-50 relative overflow-hidden`}>
+      <body className={`${inter.className} w-full min-h-screen transition-colors duration-300 bg-background text-slate-900 dark:bg-slate-900 dark:text-slate-50 relative overflow-hidden`}>
         <ThemeContext.Provider value={theme}>
           <Navbar setTheme={setTheme} theme={theme} />
           {children}
