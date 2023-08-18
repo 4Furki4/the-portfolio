@@ -14,11 +14,11 @@ export default function GlowingButton({ props: { text, onClick, pathLength, stro
     return (
         <motion.button
             whileHover={{
-                backgroundColor: theme === 'light' ? 'rgba(255,215,255)' : 'rgba(0,0,10)',
+                backgroundColor: theme === 'light' ? 'rgba(255,255,255)' : 'rgba(0,0,0)',
             }}
             whileTap={{ scale: 0.9 }}
-            animate={{ scale: 1 }}
-            style={{ scale: 0 }}
+            animate={{ x: 0, y: 0 }}
+            style={{ y: -100 }}
             transition={{ duration: .3 }}
             ref={ref}
             className={`button glow-effect ${theme} text-sm ${className} z-50`}>

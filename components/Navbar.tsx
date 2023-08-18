@@ -14,7 +14,8 @@ export default function Navbar({ setTheme, theme }: {
     return (
         <header className='shadow-lg'>
             <nav className='p-2 relative'>
-                <ul className='flex flex-col md:flex-row justify-center md:gap-12'>
+                <motion.ul
+                    className='flex flex-col md:flex-row justify-center md:gap-12'>
                     <li className='md:hidden ml-auto'>
                         <MenuButton setIsOpen={setIsOpen} isOpen={isOpen} />
                     </li>
@@ -59,7 +60,7 @@ export default function Navbar({ setTheme, theme }: {
                     <li className='inline-block max-w-max absolute max-md:top-2 left-2 md:right-2 z-50'>
                         <ThemeButton setTheme={setTheme} theme={theme} />
                     </li>
-                </ul>
+                </motion.ul>
             </nav>
         </header>
     )

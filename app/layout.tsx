@@ -20,7 +20,7 @@ export default function RootLayout({
           <Navbar setTheme={setTheme} theme={theme} />
           {children}
           <div className='w-full h-screen absolute top-0 left-0'>
-            {/* <BackgroundParticles /> */}
+            <BackgroundParticles />
           </div>
         </ThemeContext.Provider>
       </body>
