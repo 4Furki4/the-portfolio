@@ -1,15 +1,20 @@
 "use client"
 import React, { useEffect } from 'react'
 
-export default function ThemeButton() {
+export default function ThemeButton({ setTheme, theme }: {
+    setTheme: React.Dispatch<React.SetStateAction<'light' | 'dark'>>,
+    theme: 'light' | 'dark'
+}) {
     useEffect(() => {
         const html = document.documentElement
         const userPrefersDarkMode = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches
         if (userPrefersDarkMode && localStorage.getItem('theme') === 'dark') {
             html.classList.add('dark')
+            setTheme('dark')
         }
         else {
             html.classList.remove('dark')
+            setTheme('light')
         }
     }, [])
 
@@ -19,10 +24,12 @@ export default function ThemeButton() {
         if (isDarkMode) {
             html.classList.remove('dark')
             localStorage.setItem('theme', 'light')
+            setTheme('light')
             return
         }
         html.classList.add('dark')
         localStorage.setItem('theme', 'dark')
+        setTheme('dark')
     }
     return (
         <button className='bg-neutral-100 text-slate-900 dark:bg-neutral-800 dark:text-slate-100 p-2 rounded-xl transition-colors duration-300 z-10'
