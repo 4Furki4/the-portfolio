@@ -4,7 +4,7 @@ import { motion } from 'framer-motion'
 import TechIcons from '@/components/TechIcons'
 export default function Intro() {
     return (
-        <div className='h-screen w-3/4 max-sm:mx-auto sm:w-full flex flex-col items-center justify-center text-center'>
+        <div className='h-full w-3/4 max-sm:mx-auto sm:w-full flex flex-col items-center justify-center text-center'>
             <motion.h1
                 initial={{ x: -100, opacity: 0 }}
                 animate={{ x: 0, opacity: 1 }}
