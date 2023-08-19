@@ -19,7 +19,7 @@ export default function RootLayout({
         <ThemeContext.Provider value={theme}>
           <Navbar setTheme={setTheme} theme={theme} />
           {children}
-          <div className='w-full h-screen absolute top-0 left-0'>
+          <div className='w-full min-h-screen absolute top-0 left-0'>
             <BackgroundParticles />
           </div>
         </ThemeContext.Provider>
