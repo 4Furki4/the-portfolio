@@ -130,7 +130,17 @@
 .glow-effect:is(:hover) .glow-container {
     animation: glow-visibility var(--animation-speed) ease-in;
 }
-
+.glow-effect[data-glow-animation="true"]{
+  --glow-line-length:50px;
+  --glow-line-size: 5px;
+  --glow-line-thickness: 2px;
+}
+.glow-effect[data-selected="true"] .glow-container{
+  opacity: 1;
+}
+.glow-effect[data-selected="true"]:is(:hover) .glow-container{
+  animation: none;
+}
 @keyframes glow-visibility {
 
     0%,

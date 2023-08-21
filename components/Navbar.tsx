@@ -1,67 +1,141 @@
 "use client"
-import React, { useEffect } from 'react'
+import React from 'react'
 import GlowingButton from './buttons/GlowingButton'
 import { motion } from 'framer-motion'
 import Link from 'next/link'
 import MenuButton from './buttons/MenuButton'
 import ThemeButton from './buttons/ThemeButton'
-import { Button } from './ui/button'
-export default function Navbar({ setTheme, theme }: {
+export default function Navbar({ setTheme, theme, setParticles, particles, path }: {
     setTheme: React.Dispatch<React.SetStateAction<'light' | 'dark'>>,
-    theme: 'light' | 'dark'
+    theme: 'light' | 'dark',
+    setParticles: React.Dispatch<React.SetStateAction<boolean>>,
+    particles: boolean,
+    path: string
 }) {
     const [isOpen, setIsOpen] = React.useState(false)
+    const container = {
+        hide: {
+            y: -100,
+            opacity: 0,
+            transition: {
+                staggerChildren: 0.1,
+                staggerDirection: -1,
+            }
+        },
+        show: {
+            y: 0,
+            opacity: 1,
+            transition: {
+                staggerChildren: 0.1,
+                staggerDirection: 1,
+            }
+        }
+    }
+    const item = {
+        hide: {
+            y: -100,
+            opacity: 0,
+        },
+        show: {
+            y: 0,
+            opacity: 1,
+        }
+    }
     return (
-        <header className='shadow-lg'>
+        <motion.header
+            className='shadow-lg dark:shadow-slate-800'>
             <nav className='p-2 relative'>
                 <motion.ul
+                    variants={container}
+                    initial='hide'
+                    animate='show'
                     className='flex flex-col md:flex-row justify-center md:gap-12'>
-                    <li className='md:hidden ml-auto'>
+                    <motion.li
+                        variants={item}
+                        className='md:hidden ml-auto'>
                         <MenuButton setIsOpen={setIsOpen} isOpen={isOpen} />
-                    </li>
-                    <div className={`flex ${isOpen ? 'flex-col md:flex-row' : 'max-md:hidden'} justify-center`}>
-                        <li>
+                    </motion.li>
+                    <motion.div
+                        variants={container}
+                        initial='hide'
+                        animate='show'
+                        className={`flex ${isOpen ? 'flex-col md:flex-row' : 'max-md:hidden'} justify-center gap-2`}>
+                        <motion.li
+                            variants={item}
+                        >
                             <Link href='/'>
                                 <GlowingButton props={{
                                     text: 'Home',
-                                    theme
+                                    theme,
+                                    selectedPath: path === '/'
                                 }}
                                 />
                             </Link>
-                        </li>
-                        <li>
+                        </motion.li>
+                        <motion.li
+                            variants={item}
+                        >
                             <Link href='/about'>
                                 <GlowingButton props={{
                                     text: 'About',
-                                    theme
+                                    theme,
+                                    selectedPath: path === '/about'
                                 }}
                                 />
                             </Link>
-                        </li>
-                        <li>
+                        </motion.li>
+                        <motion.li
+                            variants={item}
+                        >
                             <Link href='/projects'>
                                 <GlowingButton props={{
                                     text: 'Projects',
-                                    theme
+                                    theme,
+                                    selectedPath: path === '/projects'
                                 }}
                                 />
                             </Link>
-                        </li>
-                        <li>
+                        </motion.li>
+                        <motion.li
+                            variants={item}
+                        >
                             <Link href='/contact'>
                                 <GlowingButton props={{
                                     text: 'Contact',
-                                    theme
+                                    theme,
+                                    selectedPath: path === '/contact'
                                 }}
                                 />
                             </Link>
-                        </li>
-                    </div>
-                    <li className='inline-block max-w-max absolute max-md:top-2 left-2 md:right-2 z-50'>
+                        </motion.li>
+                        <motion.li
+                            className='md:ml-auto'
+                            variants={item}>
+                            <GlowingButton
+                                props={{
+                                    text: particles ? 'Disable Particles' : 'Enable Particles',
+                                    onClick: () => setParticles(!particles),
+                                    theme
+                                }} />
+                        </motion.li>
+                    </motion.div>
+                    <motion.li
+                        variants={{
+                            hide: {
+                                y: -100,
+                                opacity: 0,
+                            },
+                            show: {
+                                y: 0,
+                                left: "0.5rem",
+                                opacity: 1,
+                            }
+                        }}
+                        className='inline-block max-w-max absolute max-md:top-2 -left-52 z-50'>
                         <ThemeButton setTheme={setTheme} theme={theme} />
-                    </li>
+                    </motion.li>
                 </motion.ul>
             </nav>
-        </header>
+        </motion.header>
     )
 }
