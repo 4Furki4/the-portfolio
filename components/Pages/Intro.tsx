@@ -22,7 +22,7 @@ export default function Intro() {
             initial="hidden"
             animate="show"
             variants={container}
-            className='h-full w-3/4 max-sm:mx-auto sm:w-full flex flex-col items-center justify-center text-center max-md:pt-[20%] mb-auto md:my-auto'>
+            className='h-full w-11/12 max-sm:mx-auto sm:w-full flex flex-col items-center justify-center text-center max-md:pt-[20%] mb-auto md:my-auto'>
             <motion.h1
                 variants={item}
                 className='text-4xl md:text-6xl xl:text-8xl font-extrabold bg-clip-text text-transparent bg-gradient-to-r from-red-700 to-purple-900 bg-300% animate-flow-gradient'>
@@ -30,7 +30,7 @@ export default function Intro() {
             </motion.h1>
             <motion.h2
                 variants={item}
-                className='text-2xl md:text-3xl xl:text-4xl font-extrabold bg-clip-text text-transparent bg-gradient-to-r from-red-700 to-purple-900 bg-300% animate-flow-gradient mb-20'>
+                className='text-xl md:text-3xl xl:text-4xl font-extrabold bg-clip-text text-transparent bg-gradient-to-r from-red-700 to-purple-900 bg-300% animate-flow-gradient my-6'>
                 {"I'm a fullstack web developer."}
             </motion.h2>
             <motion.div
