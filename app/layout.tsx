@@ -4,7 +4,7 @@ import { Inter } from 'next/font/google'
 import BackgroundParticles from '@/components/particles/BackgroundParticles'
 import Navbar from '@/components/Navbar'
 import { ThemeContext } from '@/context/ThemeContext'
-import React from 'react'
+import React, { useEffect } from 'react'
 import { usePathname } from 'next/navigation'
 const inter = Inter({ subsets: ['latin'] })
 
@@ -13,13 +13,14 @@ export default function RootLayout({
 }: {
   children: React.ReactNode
 }) {
-  const [theme, setTheme] = React.useState<'light' | 'dark'>('light')
-  const [particles, setParticles] = React.useState<boolean>(() => {
+  useEffect(() => {
     const particles = localStorage.getItem('particles')
-    if (particles === null) return true
-    if (particles === 'true') return true
-    return false
-  })
+    if (particles === null) setParticles(true)
+    if (particles === 'true') setParticles(true)
+    setParticles(false)
+  }, [])
+  const [theme, setTheme] = React.useState<'light' | 'dark'>('light')
+  const [particles, setParticles] = React.useState<boolean>(true)
   function handleParticles() {
     localStorage.setItem('particles', particles ? 'false' : 'true')
     setParticles(!particles)
