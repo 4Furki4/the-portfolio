@@ -14,9 +14,16 @@ export default function RootLayout({
   children: React.ReactNode
 }) {
   useEffect(() => {
+    console.log(localStorage)
     const particles = localStorage.getItem('particles')
-    if (particles === null) setParticles(true)
-    if (particles === 'true') setParticles(true)
+    if (particles === null) {
+      setParticles(true)
+      return
+    }
+    if (particles === 'true') {
+      setParticles(true)
+      return
+    }
     setParticles(false)
   }, [])
   const [theme, setTheme] = React.useState<'light' | 'dark'>('light')
