@@ -10,8 +10,8 @@ export const metadata: Metadata = {
 
 export default function ContentLayout({ children }: { children: React.ReactNode }) {
     return (
-        <>
+        <div className='mb-auto'>
             {children}
-        </>
+        </div>
     )
 }

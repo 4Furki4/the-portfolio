@@ -639,7 +639,7 @@ const particlesConfig = {
   retinaDetect: true,
   fpsLimit: 90,
   fullScreen: {
-    enable: false,
+    enable: true,
   },
   particles: {
     number: {

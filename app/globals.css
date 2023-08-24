@@ -32,13 +32,10 @@
     --ring: 222.2 84% 4.9%;
  
     --radius: 0.5rem;
-
-    --glowing-btn-bg: rgb(255, 255, 255);
-    --glowing-btn-text: rgb(24, 24, 27);
   }
  
   .dark {
-    --background: 222.2 84% 4.9%;
+    --background: 222.2 84% 10%;
     --foreground: 210 40% 98%;
  
     --card: 222.2 84% 4.9%;
@@ -72,16 +69,12 @@
     font-size: 1.5rem;
     font-family: inherit;
     font-weight: 700;
-    color: var(--glowing-btn-text);
-    background-color: var(--glowing-btn-bg);
     padding: 0.5rem 1rem;
     border: 0;
     border-radius: .5rem;
     z-index: 1;
 }
 .button.dark{
-  --glowing-btn-bg: rgb(24, 24, 27);
-  --glowing-btn-text: rgb(255, 255, 255);
   --glow-line-color: #fff;
   --glow-blur-color: #fff;
 }
@@ -137,7 +130,18 @@
 .glow-effect:is(:hover) .glow-container {
     animation: glow-visibility var(--animation-speed) ease-in;
 }
-
+.glow-effect[data-glow-animation="true"]{
+  --glow-line-length:50px;
+  --glow-line-size: 5px;
+  --glow-line-thickness: 2px;
+}
+.glow-effect[data-selected="true"] .glow-container{
+  opacity: 1;
+  animation: selected .3s ease-in-out;
+}
+.glow-effect[data-selected="true"]:is(:hover) .glow-container{
+  animation: selected .3s ease-in-out;
+}
 @keyframes glow-visibility {
 
     0%,
@@ -150,7 +154,15 @@
         opacity: 1;
     }
   }
- 
+
+@keyframes selected {
+  from{
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
 @layer base {
   * {
     @apply border-border;
