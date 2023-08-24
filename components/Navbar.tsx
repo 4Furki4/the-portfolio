@@ -43,7 +43,7 @@ export default function Navbar({ setTheme, theme, setParticles, particles, path 
     }
     return (
         <motion.header
-            className='shadow-lg dark:shadow-slate-800'>
+            className='md:shadow-sm dark:shadow-muted'>
             <nav className='p-2 relative'>
                 <motion.ul
                     variants={container}
@@ -59,23 +59,25 @@ export default function Navbar({ setTheme, theme, setParticles, particles, path 
                         variants={container}
                         initial='hide'
                         animate='show'
-                        className={`flex ${isOpen ? 'flex-col md:flex-row' : 'max-md:hidden'} justify-center gap-2`}>
+                        className={`flex md:items-center ${isOpen ? 'max-md:mt-4 flex-col md:flex-row max-md:text-center' : 'max-md:hidden'} justify-center gap-2 z-50`}>
                         <motion.li
                             variants={item}
+                            className='max-md:backdrop-blur-md max-md:shadow-lg dark:max-md:bg-white/10 py-1 rounded-lg'
                         >
-                            <Link href='/'>
+                            <Link className='block w-full' href='/'>
                                 <GlowingButton props={{
                                     text: 'Home',
                                     theme,
-                                    selectedPath: path === '/'
+                                    selectedPath: path === '/',
                                 }}
                                 />
                             </Link>
                         </motion.li>
                         <motion.li
                             variants={item}
+                            className='max-md:backdrop-blur-md max-md:shadow-lg  dark:max-md:bg-white/10 py-1 rounded-lg'
                         >
-                            <Link href='/about'>
+                            <Link className='block w-full' href='/about'>
                                 <GlowingButton props={{
                                     text: 'About',
                                     theme,
@@ -86,8 +88,9 @@ export default function Navbar({ setTheme, theme, setParticles, particles, path 
                         </motion.li>
                         <motion.li
                             variants={item}
+                            className='max-md:backdrop-blur-md max-md:shadow-lg dark:max-md:bg-white/10 py-1 rounded-lg'
                         >
-                            <Link href='/projects'>
+                            <Link className='block w-full' href='/projects'>
                                 <GlowingButton props={{
                                     text: 'Projects',
                                     theme,
@@ -98,8 +101,9 @@ export default function Navbar({ setTheme, theme, setParticles, particles, path 
                         </motion.li>
                         <motion.li
                             variants={item}
+                            className='max-md:backdrop-blur-md max-md:shadow-lg dark:max-md:bg-white/10 py-1 rounded-lg'
                         >
-                            <Link href='/contact'>
+                            <Link className='block w-full' href='/contact'>
                                 <GlowingButton props={{
                                     text: 'Contact',
                                     theme,
@@ -109,8 +113,8 @@ export default function Navbar({ setTheme, theme, setParticles, particles, path 
                             </Link>
                         </motion.li>
                         <motion.li
-                            className='md:ml-auto'
-                            variants={item}>
+                            variants={item}
+                            className='md:ml-auto max-md:backdrop-blur-md max-md:shadow-lg dark:max-md:bg-white/10 py-1 rounded-lg'>
                             <GlowingButton
                                 props={{
                                     text: particles ? 'Disable Particles' : 'Enable Particles',
