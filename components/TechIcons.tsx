@@ -9,6 +9,9 @@ import netIcon from '@/public/net.svg'
 import reactIcon from '@/public/react.svg'
 import mysqlLightIcon from '@/public/mysql-light.svg'
 import mysqlDarkIcon from '@/public/mysql-dark.svg'
+import nodejsIcon from '@/public/nodejs.svg'
+import espressjsIcon from '@/public/expressjs.svg'
+import prismaIcon from '@/public/prisma.svg'
 import mongodb from '@/public/mongodb.svg'
 
 export default function TechIcons() {
@@ -24,6 +27,27 @@ export default function TechIcons() {
             <Image
                 alt='TS Icon'
                 src={tsIcon}
+                width={300}
+                height={100}
+                className='w-max-w w-full h-full'
+            />
+            <Image
+                alt='Node.js Icon'
+                src={nodejsIcon}
+                width={300}
+                height={100}
+                className='w-max-w w-full h-full'
+            />
+            <Image
+                alt='Express.js Icon'
+                src={espressjsIcon}
+                width={300}
+                height={100}
+                className='w-max-w w-full h-full'
+            />
+            <Image
+                alt='Prisma Icon'
+                src={prismaIcon}
                 width={300}
                 height={100}
                 className='w-max-w w-full h-full'
