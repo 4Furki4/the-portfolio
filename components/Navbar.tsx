@@ -55,13 +55,14 @@ export default function Navbar({ setTheme, theme, setParticles, particles, path 
                         className='md:hidden ml-auto'>
                         <MenuButton setIsOpen={setIsOpen} isOpen={isOpen} />
                     </motion.li>
-                    <motion.div
+                    {/* Mobile Links Start */}
+                    <motion.li
                         variants={container}
                         initial='hide'
                         animate={isOpen ? 'show' : 'hide'}
                         transition={{ duration: 0.3 }}
                         className={`flex md:hidden max-md:mt-4 flex-col ${isOpen ? 'md:flex-row text-center' : 'hidden'} justify-center gap-2 z-50`}>
-                        <motion.li
+                        <motion.div
                             variants={item}
                             className='max-md:backdrop-blur-md max-md:shadow-lg dark:max-md:bg-white/10 py-1 rounded-lg'
                         >
@@ -73,8 +74,8 @@ export default function Navbar({ setTheme, theme, setParticles, particles, path 
                                 }}
                                 />
                             </Link>
-                        </motion.li>
-                        <motion.li
+                        </motion.div>
+                        <motion.div
                             variants={item}
                             className='max-md:backdrop-blur-md max-md:shadow-lg  dark:max-md:bg-white/10 py-1 rounded-lg'
                         >
@@ -86,8 +87,8 @@ export default function Navbar({ setTheme, theme, setParticles, particles, path 
                                 }}
                                 />
                             </Link>
-                        </motion.li>
-                        <motion.li
+                        </motion.div>
+                        <motion.div
                             variants={item}
                             className='max-md:backdrop-blur-md max-md:shadow-lg dark:max-md:bg-white/10 py-1 rounded-lg'
                         >
@@ -99,8 +100,8 @@ export default function Navbar({ setTheme, theme, setParticles, particles, path 
                                 }}
                                 />
                             </Link>
-                        </motion.li>
-                        <motion.li
+                        </motion.div>
+                        <motion.div
                             variants={item}
                             className='max-md:backdrop-blur-md max-md:shadow-lg dark:max-md:bg-white/10 py-1 rounded-lg'
                         >
@@ -112,8 +113,8 @@ export default function Navbar({ setTheme, theme, setParticles, particles, path 
                                 }}
                                 />
                             </Link>
-                        </motion.li>
-                        <motion.li
+                        </motion.div>
+                        <motion.div
                             variants={item}
                             className='md:ml-auto max-md:backdrop-blur-md max-md:shadow-lg dark:max-md:bg-white/10 py-1 rounded-lg'>
                             <GlowingButton
@@ -122,14 +123,17 @@ export default function Navbar({ setTheme, theme, setParticles, particles, path 
                                     onClick: () => setParticles(!particles),
                                     theme
                                 }} />
-                        </motion.li>
-                    </motion.div>
-                    <motion.div
+                        </motion.div>
+                    </motion.li>
+                    {/* Mobile Links End */}
+
+                    {/* Desktop Links Start */}
+                    <motion.li
                         variants={container}
                         initial='hide'
                         animate='show'
                         className={`hidden md:flex md:items-center md:flex-row justify-center gap-2 z-50`}>
-                        <motion.li
+                        <motion.div
                             variants={item}
                             className='max-md:backdrop-blur-md max-md:shadow-lg dark:max-md:bg-white/10 py-1 rounded-lg'
                         >
@@ -141,8 +145,8 @@ export default function Navbar({ setTheme, theme, setParticles, particles, path 
                                 }}
                                 />
                             </Link>
-                        </motion.li>
-                        <motion.li
+                        </motion.div>
+                        <motion.div
                             variants={item}
                             className='max-md:backdrop-blur-md max-md:shadow-lg  dark:max-md:bg-white/10 py-1 rounded-lg'
                         >
@@ -154,8 +158,8 @@ export default function Navbar({ setTheme, theme, setParticles, particles, path 
                                 }}
                                 />
                             </Link>
-                        </motion.li>
-                        <motion.li
+                        </motion.div>
+                        <motion.div
                             variants={item}
                             className='max-md:backdrop-blur-md max-md:shadow-lg dark:max-md:bg-white/10 py-1 rounded-lg'
                         >
@@ -167,8 +171,8 @@ export default function Navbar({ setTheme, theme, setParticles, particles, path 
                                 }}
                                 />
                             </Link>
-                        </motion.li>
-                        <motion.li
+                        </motion.div>
+                        <motion.div
                             variants={item}
                             className='max-md:backdrop-blur-md max-md:shadow-lg dark:max-md:bg-white/10 py-1 rounded-lg'
                         >
@@ -180,8 +184,8 @@ export default function Navbar({ setTheme, theme, setParticles, particles, path 
                                 }}
                                 />
                             </Link>
-                        </motion.li>
-                        <motion.li
+                        </motion.div>
+                        <motion.div
                             variants={item}
                             className='md:ml-auto max-md:backdrop-blur-md max-md:shadow-lg dark:max-md:bg-white/10 py-1 rounded-lg'>
                             <GlowingButton
@@ -190,8 +194,9 @@ export default function Navbar({ setTheme, theme, setParticles, particles, path 
                                     onClick: () => setParticles(!particles),
                                     theme
                                 }} />
-                        </motion.li>
-                    </motion.div>
+                        </motion.div>
+                    </motion.li>
+                    {/* Desktop Links End */}
                     <motion.li
                         variants={{
                             hide: {
