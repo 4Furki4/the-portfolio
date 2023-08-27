@@ -36,7 +36,7 @@ export default function Carousel({ images }: { images: CardImageProps[] }) {
         <>
             <AnimatePresence initial={false}>
                 <motion.div
-                    className='absolute min-h-[150px] h-full top-0 left-0 w-full'
+                    className='absolute min-h-[200px] h-full top-0 left-0 w-full'
                     key={page}
                     custom={direction}
                     variants={variants}
@@ -61,11 +61,15 @@ export default function Carousel({ images }: { images: CardImageProps[] }) {
                     }}
                 >
                     <Image
-                        className='rounded-lg w-full min-h-[150px] h-full object-cover pointer-events-none absolute top-0 left-0'
+                        className='rounded-lg w-full min-h-[200px] h-full object-cover pointer-events-none absolute top-0 left-0'
                         src={images[imageIndex].src}
                         alt={images[imageIndex].alt}
                         width={1920}
                         height={1080}
+                        quality={100}
+                        priority
+                        loading="eager"
+                        sizes="(min-width: 768px) 50vw, 100vw"
                     />
                     <ArrowLeft
                         onClick={() => setPage([page - 1, -1])}

@@ -4,9 +4,9 @@ import CardDescription from './CardDescription'
 
 export default function CardBody({ images, description }: CardBodyProps) {
     return (
-        <div>
+        <div className=''>
             <div
-                className='rounded-lg z-50 relative min-h-[150px] sm:min-h-[300px] h-full w-full overflow-hidden'
+                className='rounded-lg z-50 relative min-h-[200px] sm:min-h-[350px] h-full w-full overflow-hidden'
             >
                 <CardImage images={images} />
             </div>

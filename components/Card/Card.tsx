@@ -4,16 +4,16 @@ import CardHeader from './CardHeader'
 import CardBody from './CardBody'
 import { motion } from 'framer-motion'
 import CardFooter from './CardFooter'
-export default function Card({ title, images, description }: CardProps) {
+export default function Card({ title, images, description, demoLink, repoLink }: CardProps) {
     return (
         <motion.div
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ duration: 0.3 }}
-            className='bg-card/90 backdrop-blur-xs rounded-lg transition-[background-color] duration-300 z-50 p-6'>
+            className='dark:bg-white/10 dark:shadow-none shadow-lg drop-shadow-lg bg-opacity-10 backdrop-blur-xs rounded-lg transition-[background-color] duration-300 z-50 p-6'>
             <CardHeader title={title} />
             <CardBody description={description} images={images} />
-            <CardFooter />
+            <CardFooter demoLink={demoLink} repoLink={repoLink} />
         </motion.div>
     )
 }

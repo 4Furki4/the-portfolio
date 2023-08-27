@@ -19,8 +19,13 @@ type CardDescriptionProps = {
     description: string
 }
 
+type CardFooterProps = {
+    repoLink: string,
+    demoLink: string
+}
+
 type CardBodyProps = CardDescriptionProps & {
     images: CardImageProps[]
 }
 
-type CardProps = CardHeaderProps & CardBodyProps
+type CardProps = CardHeaderProps & CardBodyProps & CardFooterProps
