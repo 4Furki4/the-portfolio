@@ -19,6 +19,8 @@ type CardDescriptionProps = {
     description: string
 }
 
-type CardBodyProps = CardImageProps & CardDescriptionProps
+type CardBodyProps = CardDescriptionProps & {
+    images: CardImageProps[]
+}
 
 type CardProps = CardHeaderProps & CardBodyProps
