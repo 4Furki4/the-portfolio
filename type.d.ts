@@ -21,7 +21,7 @@ type CardDescriptionProps = {
 
 type CardFooterProps = {
     repoLink: string,
-    demoLink: string
+    demoLink?: string
 }
 
 type CardBodyProps = CardDescriptionProps & {

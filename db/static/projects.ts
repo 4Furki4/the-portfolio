@@ -122,7 +122,6 @@ const projects: CardProps[] = [
         ],
         description: "Frontend Mentor is a platform that provides real-world challenges to help you improve your coding skills. I have completed 11 challenges so far.",
         repoLink: 'https://github.com/4Furki4/Frontend-Projects/',
-        demoLink: '#'
     }
 ]
 
