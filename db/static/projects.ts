@@ -44,7 +44,7 @@ const projects: CardProps[] = [
             },
 
         ],
-        description: 'Successfully collaborated with a team of four to develop a dynamic Learning App in the capstone project of the Recoded Bootcamp',
+        description: 'Successfully collaborated with a team of four to develop a dynamic Learning App in the capstone project of the Recoded Bootcamp utilizing Agile Methodology and GitHub Projects for Project Management.',
         repoLink: 'https://github.com/202303-PRM-TR-FEW/Learnification',
         demoLink: 'https://learn-u-team-7.vercel.app'
     },

@@ -3,7 +3,7 @@ import React from 'react'
 import projects from '@/db/static/projects'
 export default function Page() {
     return (
-        <div className='z-50 w-11/12 md:w-3/4 mx-auto grid xl:grid-cols-2 gap-4'>
+        <div className='z-50 p-2 pt-12 lg:w-10/12 mx-auto grid lg:grid-cols-2 gap-4'>
             {projects.map((project, index) => (
                 <Card key={index} {...project} />
             ))}
