@@ -36,7 +36,7 @@ export default function Carousel({ images }: { images: CardImageProps[] }) {
         <>
             <AnimatePresence initial={false}>
                 <motion.div
-                    className='absolute min-h-[200px] h-full top-0 left-0 w-full'
+                    className='absolute min-h-[200px] h-full top-0 left-0 w-full cursor-grab active:cursor-grabbing'
                     key={page}
                     custom={direction}
                     variants={variants}
