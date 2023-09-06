@@ -4,6 +4,7 @@ import React from 'react'
 export const metadata: Metadata = {
     title: 'Furkan Cengiz',
     description: 'Furkan Cengiz\'s personal website',
+    robots: 'all'
 }
 
 
