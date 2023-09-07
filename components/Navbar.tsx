@@ -144,19 +144,6 @@ export default function Navbar({ setTheme, theme, setParticles, particles, path 
                         </motion.li>
                         <motion.li
                             variants={item}
-                            className='max-md:backdrop-blur-md max-md:shadow-lg  dark:max-md:bg-white/10 py-1 rounded-lg'
-                        >
-                            <Link className='block w-full' href='/about'>
-                                <GlowingButton props={{
-                                    text: 'About',
-                                    theme,
-                                    selectedPath: path === '/about'
-                                }}
-                                />
-                            </Link>
-                        </motion.li>
-                        <motion.li
-                            variants={item}
                             className='max-md:backdrop-blur-md max-md:shadow-lg dark:max-md:bg-white/10 py-1 rounded-lg'
                         >
                             <Link className='block w-full' href='/projects'>
@@ -170,13 +157,13 @@ export default function Navbar({ setTheme, theme, setParticles, particles, path 
                         </motion.li>
                         <motion.li
                             variants={item}
-                            className='max-md:backdrop-blur-md max-md:shadow-lg dark:max-md:bg-white/10 py-1 rounded-lg'
+                            className='max-md:backdrop-blur-md max-md:shadow-lg  dark:max-md:bg-white/10 py-1 rounded-lg'
                         >
-                            <Link className='block w-full' href='/contact'>
+                            <Link className='block w-full' href='/about'>
                                 <GlowingButton props={{
-                                    text: 'Contact',
+                                    text: 'About',
                                     theme,
-                                    selectedPath: path === '/contact'
+                                    selectedPath: path === '/about'
                                 }}
                                 />
                             </Link>
