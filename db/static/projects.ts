@@ -74,6 +74,35 @@ const projects: CardProps[] = [
     demoLink: "https://turkish-dictionary-client.vercel.app/",
   },
   {
+    title: "Meme Generator",
+    images: [
+      {
+        src: "/pics/projects/meme-generator/preview.png",
+        alt: "Meme Generator Preview",
+      },
+      {
+        src: "/pics/projects/meme-generator/preview-meme-options.png",
+        alt: "Meme Generator Preview Meme Options",
+      },
+      {
+        src: "/pics/projects/meme-generator/preview-extended-settings.png",
+        alt: "Meme Generator Preview Extended Settings",
+      },
+      {
+        src: "/pics/projects/meme-generator/preview-fonts.png",
+        alt: "Meme Generator Preview Fonts",
+      },
+      {
+        src: "/pics/projects/meme-generator/preview-downloaded-meme.png",
+        alt: "Meme Generator Preview Downloaded Meme",
+      },
+    ],
+    description:
+      "A meme generator that fetches memes from an API and allows you to add text that you can drag on the meme image and configure many other options in the extended settings.",
+    repoLink: "https://github.com/4Furki4/Meme-Generator",
+    demoLink: "https://meme-generator-4furki4.vercel.app/",
+  },
+  {
     title: "Frontend Mentor Challenges",
     images: [
       {
@@ -124,35 +153,6 @@ const projects: CardProps[] = [
     description:
       "Frontend Mentor is a platform that provides real-world challenges to help you improve your coding skills. I have completed 11 challenges so far.",
     repoLink: "https://github.com/4Furki4/Frontend-Projects/",
-  },
-  {
-    title: "Meme Generator",
-    images: [
-      {
-        src: "/pics/projects/meme-generator/preview.png",
-        alt: "Meme Generator Preview",
-      },
-      {
-        src: "/pics/projects/meme-generator/preview-meme-options.png",
-        alt: "Meme Generator Preview Meme Options",
-      },
-      {
-        src: "/pics/projects/meme-generator/preview-extended-settings.png",
-        alt: "Meme Generator Preview Extended Settings",
-      },
-      {
-        src: "/pics/projects/meme-generator/preview-fonts.png",
-        alt: "Meme Generator Preview Fonts",
-      },
-      {
-        src: "/pics/projects/meme-generator/preview-downloaded-meme.png",
-        alt: "Meme Generator Preview Downloaded Meme",
-      },
-    ],
-    description:
-      "A meme generator that fetches memes from an API and allows you to add text that you can drag on the meme image and configure many other options in the extended settings.",
-    repoLink: "https://github.com/4Furki4/Meme-Generator",
-    demoLink: "https://meme-generator-4furki4.vercel.app/",
   },
 ];
 
