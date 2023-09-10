@@ -14,6 +14,9 @@ const container = {
     opacity: 1,
     y: 0,
     transition: {
+      type: "spring",
+      damping: 10,
+      stiffness: 100,
       staggerChildren: 0.15,
     },
   },
@@ -21,6 +24,9 @@ const container = {
     y: 20,
     opacity: 0,
     transition: {
+      type: "spring",
+      damping: 10,
+      stiffness: 100,
       staggerChildren: 0.15,
     },
   },
