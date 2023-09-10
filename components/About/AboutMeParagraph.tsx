@@ -1,7 +1,7 @@
 "use client";
 import React from "react";
 import { motion } from "framer-motion";
-const firstParagraph = `To give you a brief background, I initially pursued Industrial Engineering in AGU, but my passion for software development led me to build games instead. I then decided to focus on backend development first and later on, added frontend development to my skill set.`;
+const firstParagraph = `To give you a brief background, I initially pursued Industrial Engineering at AGU, but my passion for software development led me to build games instead. I then decided to focus on backend development first and later on, added frontend development to my skill set.`;
 
 const secondParahraph = `After gaining some experience with Unity to develop games, I decided to learn .NET. The reason I shifted to web development is to build an online modern Turkish dictionary from scratch. The official dictionary lacks many features and I'm a fan of Turkish words and their roots. Initially, I developed multi-page applications but found it unsatisfying. Then, I discovered .NET APIs and became enamored with the simplicity of sending required data and using them however we want. Later on, I delved into client-side learning and studied HTML, CSS, and JavaScript. Honestly, I struggled initially since I lacked proper resources. However, I was fortunate to be accepted into the Frontend Web Development BootCamp of Recoded. `;
 
