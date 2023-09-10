@@ -3,7 +3,7 @@ import Image from "next/image";
 import React from "react";
 import { AboutMeParagraph } from "../About/AboutMeParagraph";
 import { motion } from "framer-motion";
-import Experience from "../About/Education";
+import Education from "../About/Education";
 export default function About() {
   return (
     <div className="grid gap-8">
@@ -23,7 +23,7 @@ export default function About() {
         />
       </motion.div>
       <AboutMeParagraph />
-      <Experience />
+      <Education />
     </div>
   );
 }

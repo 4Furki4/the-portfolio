@@ -55,7 +55,7 @@ const educations: Education[] = [
     yearEnd: new Date(2022, 6, 15),
   },
 ];
-export default function Experience() {
+export default function Education() {
   return (
     <div className="grid relative gap-4 after:w-1 after:h-full after:absolute dark:after:bg-white after:bg-black after:right-0 after:z-0">
       <h2 className="text-fs-600 font-bold">Education</h2>
