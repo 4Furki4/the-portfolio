@@ -8,7 +8,7 @@ export const metadata: Metadata = {
 
 export default function page() {
   return (
-    <div className="relative z-50 m-0 mx-auto w-11/12 max-w-6xl p-6 backdrop-blur-xs">
+    <div className="relative z-50 m-0 mx-auto max-w-6xl p-6 backdrop-blur-xs">
       <About />
     </div>
   );

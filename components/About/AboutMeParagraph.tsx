@@ -14,30 +14,61 @@ const container = {
     opacity: 1,
     y: 0,
     transition: {
-      staggerChildren: 0.1,
+      staggerChildren: 0.15,
     },
   },
   hidden: {
     y: 20,
     opacity: 0,
     transition: {
-      staggerChildren: 0.1,
+      staggerChildren: 0.15,
     },
   },
 };
 
 export const AboutMeParagraph = () => {
   return (
-    <motion.article variants={container} initial="hidden" whileInView="show">
+    <motion.article>
       <motion.h1
         variants={container}
+        initial="hidden"
+        whileInView="show"
+        viewport={{ once: true }}
         className="my-4 text-fs-700 font-bold"
-      >{`Here's My Adventure`}</motion.h1>
+      >{`My Adventure`}</motion.h1>
       <section className="flex flex-col gap-4 text-fs-300">
-        <motion.p variants={container}>{firstParagraph}</motion.p>
-        <motion.p variants={container}>{secondParahraph}</motion.p>
-        <motion.p variants={container}>{thirdParagraph}</motion.p>
-        <motion.p variants={container}>{forthParagraph}</motion.p>
+        <motion.p
+          variants={container}
+          initial="hidden"
+          whileInView="show"
+          viewport={{ once: true }}
+        >
+          {firstParagraph}
+        </motion.p>
+        <motion.p
+          variants={container}
+          initial="hidden"
+          whileInView="show"
+          viewport={{ once: true }}
+        >
+          {secondParahraph}
+        </motion.p>
+        <motion.p
+          variants={container}
+          initial="hidden"
+          whileInView="show"
+          viewport={{ once: true }}
+        >
+          {thirdParagraph}
+        </motion.p>
+        <motion.p
+          variants={container}
+          initial="hidden"
+          whileInView="show"
+          viewport={{ once: true }}
+        >
+          {forthParagraph}
+        </motion.p>
       </section>
     </motion.article>
   );
