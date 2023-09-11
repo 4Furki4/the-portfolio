@@ -47,8 +47,8 @@ export default function Navbar({
     },
   };
   return (
-    <motion.header className="md:shadow-sm dark:shadow-muted overflow-hidden">
-      <nav className="p-2 relative">
+    <motion.header className="md:shadow-sm dark:shadow-muted bg-background/60 backdrop-blur-xs overflow-hidden fixed top-0 w-full z-[99]">
+      <nav className="p-2">
         <motion.ul
           variants={container}
           initial="hide"
