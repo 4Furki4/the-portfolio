@@ -191,11 +191,10 @@ export default function Navbar({
               },
               show: {
                 y: 0,
-                left: "0.5rem",
                 opacity: 1,
               },
             }}
-            className="inline-block max-w-max absolute max-md:top-2 -left-52 z-50"
+            className="inline-block max-w-max absolute max-md:top-2 md:left-2 z-50"
           >
             <ThemeButton setTheme={setTheme} theme={theme} />
           </motion.li>
