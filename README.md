@@ -1,3 +1,22 @@
+# Portfolio
+
+- In this web application, you can find my [tech stack](https://furki.vercel.app/), [projects](https://furki.vercel.app/projects), [story, and education information](https://furki.vercel.app/about).
+- Although I like my first portfolio site, I want to improve it further. It has browser compatibility problems that I'm planning to solve soon.
+
+## Tech and Libraries
+
+- Utilized Next.js 13 app router with React.js
+- Implemented [framer-motion](https://www.framer.com/motion/) library for the animations.
+- Used [Tailwind](https://tailwindcss.com/) for styling
+- Implemented [ts-particles](https://github.com/tsparticles/tsparticles) for generating amazing and interactional background
+- Used somewhat [shadcn/ui](https://ui.shadcn.com/) for the education cards
+
+
+ ## Planned Features to be Added.
+
+ - Internationalization using next-intl for the Turkish translation.
+
+-------------------------------------------
 This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
 
 ## Getting Started
