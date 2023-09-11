@@ -83,20 +83,6 @@ export default function Navbar({
             </motion.li>
             <motion.li
               variants={item}
-              className="max-md:backdrop-blur-md max-md:shadow-lg  dark:max-md:bg-white/10 py-1 rounded-lg"
-            >
-              <Link className="block w-full" href="/about">
-                <GlowingButton
-                  props={{
-                    text: "About",
-                    theme,
-                    selectedPath: path === "/about",
-                  }}
-                />
-              </Link>
-            </motion.li>
-            <motion.li
-              variants={item}
               className="max-md:backdrop-blur-md max-md:shadow-lg dark:max-md:bg-white/10 py-1 rounded-lg"
             >
               <Link className="block w-full" href="/projects">
@@ -105,6 +91,20 @@ export default function Navbar({
                     text: "Projects",
                     theme,
                     selectedPath: path === "/projects",
+                  }}
+                />
+              </Link>
+            </motion.li>
+            <motion.li
+              variants={item}
+              className="max-md:backdrop-blur-md max-md:shadow-lg  dark:max-md:bg-white/10 py-1 rounded-lg"
+            >
+              <Link className="block w-full" href="/about">
+                <GlowingButton
+                  props={{
+                    text: "About",
+                    theme,
+                    selectedPath: path === "/about",
                   }}
                 />
               </Link>
