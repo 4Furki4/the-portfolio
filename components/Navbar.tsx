@@ -71,7 +71,11 @@ export default function Navbar({
               variants={item}
               className="max-md:backdrop-blur-md max-md:shadow-lg dark:max-md:bg-white/10 py-1 rounded-lg"
             >
-              <Link className="block w-full" href="/">
+              <Link
+                onClick={(prev) => setIsOpen(!prev)}
+                className="block w-full"
+                href="/"
+              >
                 <GlowingButton
                   props={{
                     text: "Home",
@@ -85,7 +89,11 @@ export default function Navbar({
               variants={item}
               className="max-md:backdrop-blur-md max-md:shadow-lg dark:max-md:bg-white/10 py-1 rounded-lg"
             >
-              <Link className="block w-full" href="/projects">
+              <Link
+                onClick={(prev) => setIsOpen(!prev)}
+                className="block w-full"
+                href="/projects"
+              >
                 <GlowingButton
                   props={{
                     text: "Projects",
@@ -99,7 +107,11 @@ export default function Navbar({
               variants={item}
               className="max-md:backdrop-blur-md max-md:shadow-lg  dark:max-md:bg-white/10 py-1 rounded-lg"
             >
-              <Link className="block w-full" href="/about">
+              <Link
+                onClick={(prev) => setIsOpen(!prev)}
+                className="block w-full"
+                href="/about"
+              >
                 <GlowingButton
                   props={{
                     text: "About",
