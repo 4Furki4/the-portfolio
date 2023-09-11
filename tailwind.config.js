@@ -35,6 +35,8 @@ module.exports = {
         'fs-600': "var(--fs-600)",
         'fs-700': "var(--fs-700)",
         'fs-800': "var(--fs-800)",
+        'fs-900': "var(--fs-900)",
+        'fs-1000': "var(--fs-1000)",
       },
       colors: {
         border: "hsl(var(--border))",
