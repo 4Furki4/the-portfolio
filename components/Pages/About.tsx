@@ -13,12 +13,12 @@ export default function About() {
         transition={{ duration: 0.3 }}
       >
         <Image
-          src={"/pics/furkan.jpg"}
+          src={"/pics/furkan.png"}
           width={3066}
-          height={1725}
+          height={1720}
           alt={"Furkan Cengiz"}
-          sizes="(min-width: 768px) 50vw, 100vw"
-          quality={90}
+          sizes="(min-width: 768px) 90vw, 75vw"
+          quality={100}
           className="rounded-lg"
         />
       </motion.div>
