@@ -23,12 +23,12 @@ const variants = {
     opacity: 1,
     x: 0,
     transition: {
-      delay: i * 0.15,
+      delay: i * 0.25,
     },
   }),
   hidden: (i: number) => ({
     opacity: 0,
-    x: i % 2 === 0 ? -100 : 100,
+    x: -10,
     transition: {
       type: "spring",
       damping: 10,
