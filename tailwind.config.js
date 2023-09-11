@@ -22,6 +22,9 @@ module.exports = {
       },
     },
     extend: {
+      transitionProperty:{
+        "shadow-bg": "box-shadow, background-color",
+      },
       backdropBlur: {
         'xs': '2px',
       },
