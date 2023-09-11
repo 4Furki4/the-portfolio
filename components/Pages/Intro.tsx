@@ -21,11 +21,11 @@ export default function Intro() {
       initial="hidden"
       animate="show"
       variants={container}
-      className="h-full w-11/12 max-sm:mx-auto sm:w-full flex flex-col items-center justify-center text-center max-md:pt-[20%] mb-auto md:my-auto z-50 pointer-events-none"
+      className="h-full w-11/12 max-sm:mx-auto sm:w-full flex flex-col items-center justify-center text-center max-md:pt-[40%] mb-auto md:my-auto z-50 pointer-events-none"
     >
       <motion.h1
         variants={item}
-        className="text-fs-1000 font-extrabold bg-clip-text text-transparent bg-gradient-to-r from-red-700 to-purple-900 bg-300% animate-flow-gradient"
+        className="text-fs-900 font-extrabold bg-clip-text text-transparent bg-gradient-to-r from-red-700 to-purple-900 bg-300% animate-flow-gradient"
       >
         {"Hello World, It's Furkan!"}
       </motion.h1>
