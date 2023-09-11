@@ -23,7 +23,7 @@ export default function Footer() {
       <Link
         className="hover:bg-gray-100 dark:hover:bg-black rounded-full p-4"
         target="_blank"
-        href={"https://github/4furki4"}
+        href={"https://github.com/4furki4"}
       >
         <Github />
       </Link>
