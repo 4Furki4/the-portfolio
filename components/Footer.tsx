@@ -13,7 +13,7 @@ export default function Footer() {
       </Link>
       <Link
         target="_blank"
-        href={"/Furkan Cengiz Resume.pdf"}
+        href={"/CV.pdf"}
         className="hover:bg-gray-100 dark:hover:bg-black rounded-full p-4"
       >
         <span className="text-fs-300 flex items-center gap-1">
