@@ -1,31 +1,30 @@
 type GlowingButtonProps = {
-    text: string;
-    onClick?: () => void;
-    bgColor?: string;
-    theme: 'light' | 'dark';
-    className?: string;
-    selectedPath?: boolean;
-}
+  text: string;
+  onClick?: () => void;
+  bgColor?: string;
+  className?: string;
+  selectedPath?: boolean;
+};
 
 type CardHeaderProps = {
-    title: string
-}
+  title: string;
+};
 
 type CardImageProps = {
-    src: string,
-    alt: string,
-}
+  src: string;
+  alt: string;
+};
 type CardDescriptionProps = {
-    description: string
-}
+  description: string;
+};
 
 type CardFooterProps = {
-    repoLink: string,
-    demoLink?: string
-}
+  repoLink: string;
+  demoLink?: string;
+};
 
 type CardBodyProps = CardDescriptionProps & {
-    images: CardImageProps[]
-}
+  images: CardImageProps[];
+};
 
-type CardProps = CardHeaderProps & CardBodyProps & CardFooterProps
+type CardProps = CardHeaderProps & CardBodyProps & CardFooterProps;

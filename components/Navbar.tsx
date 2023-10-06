@@ -1,24 +1,29 @@
-"use client";
-import React from "react";
-import GlowingButton from "./buttons/GlowingButton";
+import {
+  Navbar,
+  NavbarBrand,
+  NavbarContent,
+  NavbarMenu,
+  NavbarItem,
+  Button,
+  NavbarMenuItem,
+  NavbarMenuToggle,
+} from "@nextui-org/react";
 import { motion } from "framer-motion";
 import Link from "next/link";
-import MenuButton from "./buttons/MenuButton";
+
+import React, { useEffect, useState } from "react";
+import GlowingButton from "./buttons/GlowingButton";
 import ThemeButton from "./buttons/ThemeButton";
-export default function Navbar({
-  setTheme,
-  theme,
-  setParticles,
-  particles,
+
+export default function Navbar2({
   path,
+  particles,
+  setParticles,
 }: {
-  setTheme: React.Dispatch<React.SetStateAction<"light" | "dark">>;
-  theme: "light" | "dark";
-  setParticles: React.Dispatch<React.SetStateAction<boolean>>;
-  particles: boolean;
   path: string;
+  particles: boolean;
+  setParticles: () => void;
 }) {
-  const [isOpen, setIsOpen] = React.useState(false);
   const container = {
     hide: {
       y: -100,
@@ -46,172 +51,127 @@ export default function Navbar({
       opacity: 1,
     },
   };
+  const [isMenuOpen, setIsMenuOpen] = React.useState(false);
   return (
-    <motion.header className="bg-background md:bg-background/60 backdrop-blur-xs shadow-accent shadow-sm overflow-hidden fixed top-0 w-full z-[99] transition-shadow-bg duration-300">
-      <nav className="p-2">
-        <motion.ul
-          variants={container}
-          initial="hide"
-          animate="show"
-          className="flex flex-col md:flex-row justify-center md:gap-12"
-        >
-          <motion.li variants={item} className="md:hidden ml-auto">
-            <MenuButton setIsOpen={setIsOpen} isOpen={isOpen} />
-          </motion.li>
-          <motion.div
-            variants={container}
-            initial="hide"
-            animate={isOpen ? "show" : "hide"}
-            transition={{ duration: 0.3 }}
-            className={`flex md:hidden max-md:mt-4 flex-col ${
-              isOpen ? "md:flex-row text-center" : "hidden"
-            } justify-center gap-2 z-50`}
-          >
-            <motion.li
-              variants={item}
-              className="max-md:backdrop-blur-md max-md:shadow-lg dark:max-md:bg-white/10 py-1 rounded-lg"
-            >
-              <Link
-                onClick={(prev) => setIsOpen(!prev)}
-                className="block w-full"
-                href="/"
-              >
-                <GlowingButton
-                  props={{
-                    text: "Home",
-                    theme,
-                    selectedPath: path === "/",
-                  }}
-                />
-              </Link>
-            </motion.li>
-            <motion.li
-              variants={item}
-              className="max-md:backdrop-blur-md max-md:shadow-lg dark:max-md:bg-white/10 py-1 rounded-lg"
-            >
-              <Link
-                onClick={(prev) => setIsOpen(!prev)}
-                className="block w-full"
-                href="/projects"
-              >
-                <GlowingButton
-                  props={{
-                    text: "Projects",
-                    theme,
-                    selectedPath: path === "/projects",
-                  }}
-                />
-              </Link>
-            </motion.li>
-            <motion.li
-              variants={item}
-              className="max-md:backdrop-blur-md max-md:shadow-lg  dark:max-md:bg-white/10 py-1 rounded-lg"
-            >
-              <Link
-                onClick={(prev) => setIsOpen(!prev)}
-                className="block w-full"
-                href="/about"
-              >
-                <GlowingButton
-                  props={{
-                    text: "About",
-                    theme,
-                    selectedPath: path === "/about",
-                  }}
-                />
-              </Link>
-            </motion.li>
-            <motion.li
-              variants={item}
-              className="md:ml-auto max-md:backdrop-blur-md max-md:shadow-lg dark:max-md:bg-white/10 py-1 rounded-lg"
-            >
-              <GlowingButton
-                props={{
-                  text: particles ? "Disable Particles" : "Enable Particles",
-                  onClick: () => setParticles(!particles),
-                  theme,
-                }}
-              />
-            </motion.li>
-          </motion.div>
-          <motion.div
-            variants={container}
-            initial="hide"
-            animate="show"
-            className={`hidden md:flex md:items-center md:flex-row justify-center gap-2 z-50`}
-          >
-            <motion.li
-              variants={item}
-              className="max-md:backdrop-blur-md max-md:shadow-lg dark:max-md:bg-white/10 py-1 rounded-lg"
-            >
+    <Navbar
+      isMenuOpen={isMenuOpen}
+      onMenuOpenChange={setIsMenuOpen}
+      shouldHideOnScroll
+      className="bg-background md:bg-background/60 shadow-accent z-[99] transition-shadow-bg duration-300"
+      isBlurred
+    >
+      <motion.div
+        variants={container}
+        initial="hide"
+        animate="show"
+        className="w-full h-full"
+      >
+        <NavbarMenuToggle
+          aria-label={isMenuOpen ? "Close menu" : "Open menu"}
+          className="md:hidden"
+        />
+        <NavbarContent className="w-full hidden md:flex" justify="center">
+          <motion.span variants={item}>
+            <NavbarItem>
               <Link className="block w-full" href="/">
                 <GlowingButton
                   props={{
                     text: "Home",
-                    theme,
+
                     selectedPath: path === "/",
                   }}
                 />
               </Link>
-            </motion.li>
-            <motion.li
-              variants={item}
-              className="max-md:backdrop-blur-md max-md:shadow-lg dark:max-md:bg-white/10 py-1 rounded-lg"
-            >
+            </NavbarItem>
+          </motion.span>
+          <motion.span variants={item}>
+            <NavbarItem>
               <Link className="block w-full" href="/projects">
                 <GlowingButton
                   props={{
                     text: "Projects",
-                    theme,
                     selectedPath: path === "/projects",
                   }}
                 />
               </Link>
-            </motion.li>
-            <motion.li
-              variants={item}
-              className="max-md:backdrop-blur-md max-md:shadow-lg  dark:max-md:bg-white/10 py-1 rounded-lg"
-            >
+            </NavbarItem>
+          </motion.span>
+          <motion.span variants={item}>
+            <NavbarItem>
               <Link className="block w-full" href="/about">
                 <GlowingButton
                   props={{
                     text: "About",
-                    theme,
+
                     selectedPath: path === "/about",
                   }}
                 />
               </Link>
-            </motion.li>
-            <motion.li
-              variants={item}
-              className="md:ml-auto max-md:backdrop-blur-md max-md:shadow-lg dark:max-md:bg-white/10 py-1 rounded-lg"
-            >
+            </NavbarItem>
+          </motion.span>
+          <motion.span variants={item}>
+            <NavbarItem>
               <GlowingButton
                 props={{
                   text: particles ? "Disable Particles" : "Enable Particles",
-                  onClick: () => setParticles(!particles),
-                  theme,
+                  onClick: () => setParticles(),
                 }}
               />
-            </motion.li>
-          </motion.div>
-          <motion.li
-            variants={{
-              hide: {
-                y: -100,
-                opacity: 0,
-              },
-              show: {
-                y: 0,
-                opacity: 1,
+            </NavbarItem>
+          </motion.span>
+          <motion.span variants={item}>
+            <NavbarItem className="cursor-pointer">
+              <ThemeButton />
+            </NavbarItem>
+          </motion.span>
+        </NavbarContent>
+      </motion.div>
+      <NavbarMenu style={{ zIndex: "100" }}>
+        <NavbarMenuItem>
+          <Link className="block w-full" href="/">
+            <GlowingButton
+              props={{
+                text: "Home",
+
+                selectedPath: path === "/",
+              }}
+            />
+          </Link>
+        </NavbarMenuItem>
+        <NavbarMenuItem>
+          <Link className="block w-full" href="/projects">
+            <GlowingButton
+              props={{
+                text: "Projects",
+
+                selectedPath: path === "/projects",
+              }}
+            />
+          </Link>
+        </NavbarMenuItem>
+        <NavbarMenuItem>
+          <Link className="block w-full" href="/about">
+            <GlowingButton
+              props={{
+                text: "About",
+
+                selectedPath: path === "/about",
+              }}
+            />
+          </Link>
+        </NavbarMenuItem>
+        <NavbarMenuItem>
+          <GlowingButton
+            props={{
+              text: particles ? "Disable Particles" : "Enable Particles",
+              onClick: () => {
+                setIsMenuOpen(false);
+                setParticles();
               },
             }}
-            className="inline-block max-w-max absolute max-md:top-2 md:left-2 z-50"
-          >
-            <ThemeButton setTheme={setTheme} theme={theme} />
-          </motion.li>
-        </motion.ul>
-      </nav>
-    </motion.header>
+          />
+        </NavbarMenuItem>
+      </NavbarMenu>
+    </Navbar>
   );
 }

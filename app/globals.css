@@ -107,6 +107,9 @@
     height: calc(100% + var(--container-offset));
     inset: calc(var(--container-offset) / -2);
 }
+.glow-container:is(:focus, :focus-visible){
+  outline: none;
+}
 
 .glow-blur,
 .glow-line {
