@@ -126,6 +126,9 @@ export default function Navbar2({
           </motion.span>
         </NavbarContent>
       </motion.div>
+      <div className="md:hidden">
+        <ThemeButton />
+      </div>
       <NavbarMenu style={{ zIndex: "100" }}>
         <NavbarMenuItem>
           <Link className="block w-full" href="/">
