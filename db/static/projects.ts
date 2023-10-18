@@ -1,6 +1,7 @@
-const projects: CardProps[] = [
+const projects: Project[] = [
   {
     title: "Learnification",
+    endpoint: "Learnification",
     images: [
       {
         src: "/pics/projects/learnification/learnification-getting-started.png",
@@ -50,6 +51,7 @@ const projects: CardProps[] = [
   },
   {
     title: "Turkish Dictionary",
+    endpoint: "Turkish-Dictionary",
     images: [
       {
         src: "/pics/projects/turkish-dictionary/turkish-dic-home.png",
@@ -75,6 +77,7 @@ const projects: CardProps[] = [
   },
   {
     title: "Meme Generator",
+    endpoint: "Meme-Generator",
     images: [
       {
         src: "/pics/projects/meme-generator/preview.png",
@@ -104,6 +107,7 @@ const projects: CardProps[] = [
   },
   {
     title: "Frontend Mentor Challenges",
+    endpoint: "Frontend-Mentor-Challenges",
     images: [
       {
         src: "/pics/projects/frontend-mentor-challenges/testimonial-grid.png",

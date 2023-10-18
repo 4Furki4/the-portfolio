@@ -28,3 +28,12 @@ type CardBodyProps = CardDescriptionProps & {
 };
 
 type CardProps = CardHeaderProps & CardBodyProps & CardFooterProps;
+
+type Project = {
+  title: string;
+  endpoint: string;
+  images: CardImageProps[];
+  description: string;
+  repoLink: string;
+  demoLink?: string;
+};
