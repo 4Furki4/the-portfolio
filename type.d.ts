@@ -36,4 +36,6 @@ type Project = {
   description: string;
   repoLink: string;
   demoLink?: string;
+  techStack: string[];
+  status: "completed" | "in-progress" | "planned";
 };
