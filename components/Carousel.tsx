@@ -45,7 +45,7 @@ export default function Carousel({
         <motion.div
           className={twMerge(
             clsx(
-              "absolute min-h-[200px] h-full top-0 left-0 w-full cursor-grab active:cursor-grabbing",
+              "min-h-[200px] absolute top-0 left-0 h-full w-full cursor-grab active:cursor-grabbing",
               className
             )
           )}

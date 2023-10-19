@@ -11,6 +11,7 @@ import {
   Button,
   useDisclosure,
 } from "@nextui-org/react";
+import { X } from "lucide-react";
 import Carousel from "../Carousel";
 import Image from "next/image";
 export default function ProjectCard({ params }: { params: { title: string } }) {
@@ -20,7 +21,7 @@ export default function ProjectCard({ params }: { params: { title: string } }) {
   )[0];
   const { isOpen, onOpen, onOpenChange } = useDisclosure();
   return (
-    <Card>
+    <Card classNames={{ body: "z-[99]" }}>
       <CardHeader className="text-fs-500 justify-center">
         {params.title}
       </CardHeader>
@@ -31,24 +32,31 @@ export default function ProjectCard({ params }: { params: { title: string } }) {
           alt={project.images[0].src}
           width={1920}
           height={1080}
-          className="rounded-lg"
+          quality={100}
+          priority
+          loading="eager"
+          sizes="100vw"
+          className="rounded-lg cursor-pointer"
         />
         <Modal
+          hideCloseButton
           size="full"
           isOpen={isOpen}
-          hideCloseButton
           onOpenChange={onOpenChange}
         >
           <ModalContent className="overflow-hidden">
             {(onClose) => (
               <>
                 <ModalBody>
-                  <Carousel className="p-4" images={project.images} />
+                  <Carousel images={project.images} />
                 </ModalBody>
                 <ModalFooter className="z-[99]">
-                  <Button color="danger" variant="light" onPress={onClose}>
-                    Close
-                  </Button>
+                  <button
+                    onClick={onClose}
+                    className="absolute top-5 right-5 p-2 text-danger hover:bg-danger/20 rounded-full"
+                  >
+                    <X size={24} />
+                  </button>
                 </ModalFooter>
               </>
             )}
