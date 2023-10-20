@@ -21,9 +21,9 @@ export default function ProjectCard({ params }: { params: { title: string } }) {
   )[0];
   const { isOpen, onOpen, onOpenChange } = useDisclosure();
   return (
-    <Card classNames={{ body: "z-[99]" }}>
+    <Card className="bg-background" classNames={{ body: "z-[99]" }}>
       <CardHeader className="text-fs-500 justify-center">
-        {params.title}
+        {project.title}
       </CardHeader>
       <CardBody className="rounded-lg relative min-h-[200px] sm:min-h-[350px] md:min-h-[500px] overflow-hidden z-50">
         <Image

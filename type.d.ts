@@ -38,4 +38,8 @@ type Project = {
   demoLink?: string;
   techStack: string[];
   status: "completed" | "in-progress" | "planned";
+  contributors?: {
+    name: string;
+    github: string;
+  }[];
 };

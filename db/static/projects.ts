@@ -48,25 +48,50 @@ const projects: Project[] = [
       "Successfully collaborated with a team of four to develop a dynamic Learning App in the capstone project of the Recoded Bootcamp utilizing Agile Methodology and GitHub Projects for Project Management.",
     repoLink: "https://github.com/202303-PRM-TR-FEW/Learnification",
     demoLink: "https://learn-u-team-7.vercel.app",
+    contributors: [
+      {
+        name: "Amdjed Belgacem",
+        github: "",
+      },
+      {
+        name: "Tugba Esat Sahin",
+        github: "",
+      },
+      {
+        name: "Ebla Ekerdiker",
+        github: "",
+      },
+    ],
+    status: "completed",
+    techStack: [
+      "React",
+      "Next.js",
+      "JavaScript",
+      "Tailwind CSS",
+      "MongoDB",
+      "AWS S3",
+      "Next Auth",
+      "Next-Intl",
+    ],
   },
   {
-    title: "Turkish Dictionary",
-    endpoint: "Turkish-Dictionary",
+    title: "Turkish Dictionary (using TDK API)",
+    endpoint: "Turkish-Dictionary-using-TDK-API",
     images: [
       {
-        src: "/pics/projects/turkish-dictionary/turkish-dic-home.png",
+        src: "/pics/projects/turkish-dictionary-angular/turkish-dic-home.png",
         alt: "Turkish Dictionary Home Page Preview",
       },
       {
-        src: "/pics/projects/turkish-dictionary/turkish-dic-word-dark.png",
+        src: "/pics/projects/turkish-dictionary-angular/turkish-dic-word-dark.png",
         alt: "Turkish Dictionary Word Page Dark Preview",
       },
       {
-        src: "/pics/projects/turkish-dictionary/turkish-dic-word-light.png",
+        src: "/pics/projects/turkish-dictionary-angular/turkish-dic-word-light.png",
         alt: "Turkish Dictionary Word Page Light Preview",
       },
       {
-        src: "/pics/projects/turkish-dictionary/turkish-dic-font.png",
+        src: "/pics/projects/turkish-dictionary-angular/turkish-dic-font.png",
         alt: "Turkish Dictionary Font Option Preview",
       },
     ],
@@ -74,6 +99,8 @@ const projects: Project[] = [
       "The goal of this project is to improve upon TDK Dictionary (Official Online Turkish Dictionary) by adding new features such as client-side routing and enhancing the user interface.",
     repoLink: "https://github.com/4Furki4/Turkish-Dictionary-Client",
     demoLink: "https://turkish-dictionary-client.vercel.app/",
+    status: "completed",
+    techStack: ["Angular", "TypeScript", "SCSS"],
   },
   {
     title: "Meme Generator",
@@ -104,6 +131,8 @@ const projects: Project[] = [
       "A meme generator that fetches memes from an API and allows you to add text that you can drag on the meme image and configure many other options in the extended settings.",
     repoLink: "https://github.com/4Furki4/Meme-Generator",
     demoLink: "https://meme-generator-4furki4.vercel.app/",
+    status: "completed",
+    techStack: ["React", "TypeScript", "Tailwind CSS", "Framer Motion"],
   },
   {
     title: "Frontend Mentor Challenges",
@@ -157,6 +186,34 @@ const projects: Project[] = [
     description:
       "Frontend Mentor is a platform that provides real-world challenges to help you improve your coding skills. I have completed 11 challenges so far.",
     repoLink: "https://github.com/4Furki4/Frontend-Projects/",
+    status: "in-progress",
+    techStack: ["HTML", "CSS", "JavaScript", "TypeScript", "Angular"],
+  },
+  {
+    title: "Turkish Dictionary",
+    endpoint: "Turkish-Dictionary",
+    description:
+      "Turkish Dictionary is an open-source website where people can search and save words, and contribute to Turkish!",
+    images: [
+      {
+        alt: "Turkish Dictionary Preview",
+        src: "/pics/projects/turkish-dictionary/preview-search.png",
+      },
+    ],
+    repoLink: "",
+    demoLink: "https://turkish-dictionary-chi.vercel.app",
+    status: "in-progress",
+    techStack: [
+      "Next.js",
+      "TypeScript",
+      "Tailwind CSS",
+      "MongoDB",
+      "tRPC",
+      "React-Query",
+      "Next-Auth",
+      "Next-Intl",
+      "NextUI",
+    ],
   },
 ];
 
