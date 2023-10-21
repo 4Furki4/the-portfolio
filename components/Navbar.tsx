@@ -57,7 +57,7 @@ export default function Navbar2({
       isMenuOpen={isMenuOpen}
       onMenuOpenChange={setIsMenuOpen}
       shouldHideOnScroll
-      className="bg-background md:bg-background/60 shadow-accent z-[99] transition-shadow-bg duration-300"
+      className="bg-background md:bg-background/60 shadow-accent z-50 transition-shadow-bg duration-300"
       isBlurred
     >
       <motion.div
