@@ -51,27 +51,45 @@ const projects: Project[] = [
     contributors: [
       {
         name: "Amdjed Belgacem",
-        github: "",
+        github: "https://github.com/AmdjedBelgacem",
       },
       {
         name: "Tugba Esat Sahin",
-        github: "",
+        github: "https://github.com/tugbaesat",
       },
       {
         name: "Ebla Ekerdiker",
-        github: "",
+        github: "https://github.com/eblaekerdiker",
       },
     ],
     status: "completed",
     techStack: [
-      "React",
-      "Next.js",
-      "JavaScript",
-      "Tailwind CSS",
-      "MongoDB",
-      "AWS S3",
-      "Next Auth",
-      "Next-Intl",
+      { name: "React", url: "https://github.com/facebook/react" },
+      { name: "Next.js", url: "https://nextjs.org/" },
+      {
+        name: "JavaScript",
+        url: "https://developer.mozilla.org/en-US/docs/Web/JavaScript",
+      },
+      {
+        name: "Tailwind CSS",
+        url: "https://tailwindcss.com/",
+      },
+      {
+        name: "MongoDB",
+        url: "https://www.mongodb.com/",
+      },
+      {
+        name: "AWS S3",
+        url: "https://aws.amazon.com/s3/",
+      },
+      {
+        name: "Next Auth",
+        url: "https://next-auth.js.org/",
+      },
+      {
+        name: "Next-Intl",
+        url: "https://next-intl-docs.vercel.app/",
+      },
     ],
   },
   {
@@ -100,7 +118,20 @@ const projects: Project[] = [
     repoLink: "https://github.com/4Furki4/Turkish-Dictionary-Client",
     demoLink: "https://turkish-dictionary-client.vercel.app/",
     status: "completed",
-    techStack: ["Angular", "TypeScript", "SCSS"],
+    techStack: [
+      {
+        name: "Angular",
+        url: "https://angular.io/",
+      },
+      {
+        name: "TypeScript",
+        url: "https://www.typescriptlang.org/",
+      },
+      {
+        name: "SCSS",
+        url: "https://sass-lang.com/",
+      },
+    ],
   },
   {
     title: "Meme Generator",
@@ -132,7 +163,21 @@ const projects: Project[] = [
     repoLink: "https://github.com/4Furki4/Meme-Generator",
     demoLink: "https://meme-generator-4furki4.vercel.app/",
     status: "completed",
-    techStack: ["React", "TypeScript", "Tailwind CSS", "Framer Motion"],
+    techStack: [
+      { name: "React", url: "https://github.com/facebook/react" },
+      {
+        name: "TypeScript",
+        url: "https://www.typescriptlang.org/",
+      },
+      {
+        name: "Tailwind CSS",
+        url: "https://tailwindcss.com/",
+      },
+      {
+        name: "Framer Motion",
+        url: "https://www.framer.com/motion/",
+      },
+    ],
   },
   {
     title: "Frontend Mentor Challenges",
@@ -187,7 +232,28 @@ const projects: Project[] = [
       "Frontend Mentor is a platform that provides real-world challenges to help you improve your coding skills. I have completed 11 challenges so far.",
     repoLink: "https://github.com/4Furki4/Frontend-Projects/",
     status: "in-progress",
-    techStack: ["HTML", "CSS", "JavaScript", "TypeScript", "Angular"],
+    techStack: [
+      {
+        name: "HTML",
+        url: "https://developer.mozilla.org/en-US/docs/Web/HTML",
+      },
+      {
+        name: "CSS",
+        url: "https://developer.mozilla.org/en-US/docs/Web/CSS",
+      },
+      {
+        name: "JavaScript",
+        url: "https://developer.mozilla.org/en-US/docs/Web/JavaScript",
+      },
+      {
+        name: "TypeScript",
+        url: "https://www.typescriptlang.org/",
+      },
+      {
+        name: "Angular",
+        url: "https://angular.io/",
+      },
+    ],
   },
   {
     title: "Turkish Dictionary",
@@ -204,15 +270,36 @@ const projects: Project[] = [
     demoLink: "https://turkish-dictionary-chi.vercel.app",
     status: "in-progress",
     techStack: [
-      "Next.js",
-      "TypeScript",
-      "Tailwind CSS",
-      "MongoDB",
-      "tRPC",
-      "React-Query",
-      "Next-Auth",
-      "Next-Intl",
-      "NextUI",
+      { name: "Next.js", url: "https://nextjs.org/" },
+      {
+        name: "TypeScript",
+        url: "https://www.typescriptlang.org/",
+      },
+      {
+        name: "Tailwind CSS",
+        url: "https://tailwindcss.com/",
+      },
+      {
+        name: "MongoDB",
+        url: "https://www.mongodb.com/",
+      },
+      { name: "tRPC", url: "https://trpc.io/" },
+      {
+        name: "React-Query",
+        url: "https://react-query.tanstack.com/",
+      },
+      {
+        name: "Next Auth",
+        url: "https://next-auth.js.org/",
+      },
+      {
+        name: "Next-Intl",
+        url: "https://next-intl-docs.vercel.app/",
+      },
+      {
+        name: "NextUI",
+        url: "https://nextui.org/",
+      },
     ],
   },
 ];

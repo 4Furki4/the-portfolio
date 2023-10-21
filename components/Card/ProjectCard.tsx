@@ -11,10 +11,15 @@ import {
   Button,
   useDisclosure,
 } from "@nextui-org/react";
-import { X } from "lucide-react";
+import { CheckCircle, HardHat, X } from "lucide-react";
 import Carousel from "../Carousel";
 import Image from "next/image";
+import { Accordion, AccordionItem } from "@nextui-org/react";
+import Link from "next/link";
+import { motion } from "framer-motion";
+
 export default function ProjectCard({ params }: { params: { title: string } }) {
+  const AnimatedImageComponent = motion(Image);
   const parsedTitle = decodeURIComponent(params.title);
   const project = projectsData.filter(
     (project) => project.endpoint === parsedTitle
@@ -22,11 +27,38 @@ export default function ProjectCard({ params }: { params: { title: string } }) {
   const { isOpen, onOpen, onOpenChange } = useDisclosure();
   return (
     <Card className="bg-background" classNames={{ body: "z-[99]" }}>
-      <CardHeader className="text-fs-500 justify-center">
-        {project.title}
+      <CardHeader className="relative">
+        <motion.h1
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          className="text-fs-500"
+        >
+          {project.title}
+        </motion.h1>
+        <motion.div
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          className="ml-auto mr-4"
+        >
+          {project.status === "completed" ? (
+            <p className="text-success flex gap-2">
+              <span>Completed</span>
+              <CheckCircle />
+            </p>
+          ) : project.status === "in-progress" ? (
+            <p className="text-warning flex gap-2">
+              <span>In Progress</span>
+              <HardHat />
+            </p>
+          ) : project.status === "planned" ? (
+            <span className="text-danger">Planned</span>
+          ) : null}
+        </motion.div>
       </CardHeader>
-      <CardBody className="rounded-lg relative min-h-[200px] sm:min-h-[350px] md:min-h-[500px] overflow-hidden z-50">
-        <Image
+      <CardBody className="rounded-lg relative min-h-[200px] sm:min-h-[350px] md:min-h-[500px] overflow-hidden z-50 gap-4">
+        <AnimatedImageComponent
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
           onClick={onOpen}
           src={project.images[0].src}
           alt={project.images[0].src}
@@ -48,12 +80,12 @@ export default function ProjectCard({ params }: { params: { title: string } }) {
             {(onClose) => (
               <>
                 <ModalBody>
-                  <Carousel images={project.images} />
+                  <Carousel className="z-[99]" images={project.images} />
                 </ModalBody>
                 <ModalFooter className="z-[99]">
                   <button
                     onClick={onClose}
-                    className="absolute top-5 right-5 p-2 text-danger hover:bg-danger/20 rounded-full"
+                    className="absolute top-0 right-10 p-2 text-danger bg-danger/10 hover:bg-danger/30 rounded-full"
                   >
                     <X size={24} />
                   </button>
@@ -62,6 +94,47 @@ export default function ProjectCard({ params }: { params: { title: string } }) {
             )}
           </ModalContent>
         </Modal>
+        <motion.p
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          className="text-fs-300"
+        >
+          {project.description}
+        </motion.p>
+        {/* @ts-ignore which causes nonsense error in Accordion component when I render an AccordionItem conditionally */}
+        <Accordion variant="bordered" selectionMode="multiple">
+          <AccordionItem title={"Tech Stack"}>
+            <div className="w-full flex flex-wrap gap-4 items-center">
+              {project.techStack.map((tech, index) => (
+                <Link
+                  target="_blank"
+                  href={tech.url ?? "#"}
+                  key={index}
+                  className="text-fs-300 bg-accent/40 rounded-full px-4 py-2"
+                >
+                  {tech.name}
+                </Link>
+              ))}
+            </div>
+          </AccordionItem>
+          {project.contributors ? (
+            <AccordionItem title={"Contributors"}>
+              <div className="w-full flex flex-wrap gap-4 items-center">
+                {project.contributors?.map((contributor, index) => (
+                  <Link
+                    key={index}
+                    href={contributor.github}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="text-fs-300 bg-accent/40 rounded-full px-4 py-2"
+                  >
+                    {contributor.name}
+                  </Link>
+                ))}
+              </div>
+            </AccordionItem>
+          ) : null}
+        </Accordion>
       </CardBody>
     </Card>
   );

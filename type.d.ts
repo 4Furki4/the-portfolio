@@ -29,6 +29,11 @@ type CardBodyProps = CardDescriptionProps & {
 
 type CardProps = CardHeaderProps & CardBodyProps & CardFooterProps;
 
+type TechStack = {
+  name: string;
+  url?: string;
+};
+
 type Project = {
   title: string;
   endpoint: string;
@@ -36,7 +41,7 @@ type Project = {
   description: string;
   repoLink: string;
   demoLink?: string;
-  techStack: string[];
+  techStack: TechStack[];
   status: "completed" | "in-progress" | "planned";
   contributors?: {
     name: string;
