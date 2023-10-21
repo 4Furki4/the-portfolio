@@ -27,7 +27,7 @@ export default function ProjectCard({ params }: { params: { title: string } }) {
   const { isOpen, onOpen, onOpenChange } = useDisclosure();
   return (
     <Card className="bg-background" classNames={{ body: "z-[99]" }}>
-      <CardHeader className="relative">
+      <CardHeader className="relative flex-col sm:flex-row items-start sm:items-center">
         <motion.h1
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
@@ -38,7 +38,7 @@ export default function ProjectCard({ params }: { params: { title: string } }) {
         <motion.div
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
-          className="ml-auto mr-4"
+          className="sm:ml-auto sm:mr-4 pl-1 sm:pl-0"
         >
           {project.status === "completed" ? (
             <p className="text-success flex gap-2">
@@ -85,7 +85,7 @@ export default function ProjectCard({ params }: { params: { title: string } }) {
                 <ModalFooter className="z-[99]">
                   <button
                     onClick={onClose}
-                    className="absolute top-0 right-10 p-2 text-danger bg-danger/10 hover:bg-danger/30 rounded-full"
+                    className="absolute top-0 right-0 sm:right-10 p-2 text-danger bg-danger/10 hover:bg-danger/30 rounded-full"
                   >
                     <X size={24} />
                   </button>
