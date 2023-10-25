@@ -6,8 +6,8 @@ import { motion } from "framer-motion";
 import Education from "../About/Education";
 export default function About() {
   return (
-    <div className="grid gap-8">
-      <motion.div
+    <section className="grid gap-8">
+      <motion.figure
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ duration: 0.3 }}
@@ -21,9 +21,9 @@ export default function About() {
           quality={100}
           className="rounded-lg"
         />
-      </motion.div>
+      </motion.figure>
       <AboutMeParagraph />
       <Education />
-    </div>
+    </section>
   );
 }
