@@ -57,11 +57,11 @@ const educations: Education[] = [
 ];
 export default function Education() {
   return (
-    <article className="grid relative gap-4 after:w-1 after:h-full after:absolute dark:after:bg-white after:bg-black after:right-0 after:z-0">
+    <section className="grid relative gap-4 after:w-1 after:h-full after:absolute dark:after:bg-white after:bg-black after:right-0 after:z-0">
       <h2 className="text-fs-600 font-bold">Education</h2>
       <div className="grid gap-4 relative">
         {educations.map((education, i) => (
-          <motion.div
+          <motion.article
             aria-description="styling element"
             custom={i}
             variants={variants}
@@ -91,9 +91,9 @@ export default function Education() {
             <figure className="absolute -right-14 top-0 z-50 bg-gray-200 dark:bg-gray-600 rounded-full p-2">
               <SchoolIcon className="w-8 h-8" />
             </figure>
-          </motion.div>
+          </motion.article>
         ))}
       </div>
-    </article>
+    </section>
   );
 }
