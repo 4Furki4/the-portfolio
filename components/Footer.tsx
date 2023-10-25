@@ -9,7 +9,7 @@ export default function Footer() {
         href={"https://www.linkedin.com/in/4furkancengiz4/"}
         className="hover:bg-gray-100 dark:hover:bg-black rounded-full p-4"
       >
-        <Linkedin />
+        <Linkedin aria-label="LinkedIn Icon" />
       </Link>
       <Link
         target="_blank"
@@ -17,7 +17,7 @@ export default function Footer() {
         className="hover:bg-gray-100 dark:hover:bg-black rounded-full p-4"
       >
         <span className="text-fs-300 flex items-center gap-1">
-          CV <Download size={18} />
+          CV <Download aria-label="Download CV Icon" size={18} />
         </span>
       </Link>
       <Link
@@ -25,13 +25,13 @@ export default function Footer() {
         target="_blank"
         href={"https://github.com/4furki4"}
       >
-        <Github />
+        <Github aria-label="GitHub Icon" />
       </Link>
       <Link
         href="mailto:muhammedcengiz1@gmail.com"
         className="hover:bg-gray-100 dark:hover:bg-black rounded-full p-4"
       >
-        <Mail />
+        <Mail aria-label="Mail Icon" />
       </Link>
     </div>
   );
