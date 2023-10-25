@@ -1,5 +1,11 @@
 "use client";
-import { Card, CardHeader, CardBody } from "@nextui-org/react";
+import {
+  Card,
+  CardHeader,
+  CardBody,
+  CardFooter,
+  Divider,
+} from "@nextui-org/react";
 import React from "react";
 import projectsData from "@/db/static/projects";
 import {
@@ -11,20 +17,21 @@ import {
   Button,
   useDisclosure,
 } from "@nextui-org/react";
-import { CheckCircle, HardHat, X } from "lucide-react";
+import { CheckCircle, ExternalLink, HardHat, X } from "lucide-react";
 import Carousel from "../Carousel";
 import Image from "next/image";
 import { Accordion, AccordionItem } from "@nextui-org/react";
 import Link from "next/link";
 import { motion } from "framer-motion";
+import { notFound } from "next/navigation";
 
-export default function ProjectCard({ params }: { params: { title: string } }) {
+export default function ProjectCard({ endpoint }: { endpoint: string }) {
   const AnimatedImageComponent = motion(Image);
-  const parsedTitle = decodeURIComponent(params.title);
   const project = projectsData.filter(
-    (project) => project.endpoint === parsedTitle
+    (project) => project.endpoint === endpoint
   )[0];
   const { isOpen, onOpen, onOpenChange } = useDisclosure();
+  if (!project) notFound();
   return (
     <Card className="bg-background" classNames={{ body: "z-[99]" }}>
       <CardHeader className="relative flex-col sm:flex-row items-start sm:items-center">
@@ -136,6 +143,29 @@ export default function ProjectCard({ params }: { params: { title: string } }) {
           ) : null}
         </Accordion>
       </CardBody>
+      <Divider />
+      <CardFooter className="flex-col">
+        {project.repoLink ? (
+          <Link
+            href={project.repoLink}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="text-fs-300 z-50 flex items-center gap-1"
+          >
+            Visit Source Code on GitHub <ExternalLink size={16} />
+          </Link>
+        ) : null}
+        {project.demoLink ? (
+          <Link
+            href={project.demoLink}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="text-fs-300 z-50 flex items-center gap-1"
+          >
+            Live Demo <ExternalLink size={16} />
+          </Link>
+        ) : null}
+      </CardFooter>
     </Card>
   );
 }
