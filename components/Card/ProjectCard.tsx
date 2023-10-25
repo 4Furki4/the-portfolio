@@ -18,11 +18,10 @@ import { Accordion, AccordionItem } from "@nextui-org/react";
 import Link from "next/link";
 import { motion } from "framer-motion";
 
-export default function ProjectCard({ params }: { params: { title: string } }) {
+export default function ProjectCard({ endpoint }: { endpoint: string }) {
   const AnimatedImageComponent = motion(Image);
-  const parsedTitle = decodeURIComponent(params.title);
   const project = projectsData.filter(
-    (project) => project.endpoint === parsedTitle
+    (project) => project.endpoint === endpoint
   )[0];
   const { isOpen, onOpen, onOpenChange } = useDisclosure();
   return (
