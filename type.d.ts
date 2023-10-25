@@ -4,7 +4,7 @@ type GlowingButtonProps = {
   bgColor?: string;
   className?: string;
   selectedPath?: boolean;
-};
+} & React.ButtonHTMLAttributes<HTMLButtonElement>;
 
 type CardHeaderProps = {
   title: string;

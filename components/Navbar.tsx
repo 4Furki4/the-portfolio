@@ -1,5 +1,5 @@
 import {
-  Navbar,
+  Navbar as NextUINavbar,
   NavbarContent,
   NavbarMenu,
   NavbarItem,
@@ -12,7 +12,7 @@ import React from "react";
 import GlowingButton from "./buttons/GlowingButton";
 import ThemeButton from "./buttons/ThemeButton";
 
-export default function Navbar2({
+export default function Navbar({
   path,
   particles,
   setParticles,
@@ -49,9 +49,8 @@ export default function Navbar2({
     },
   };
   const [isMenuOpen, setIsMenuOpen] = React.useState(false);
-  const NavbarItemWrapped = motion(NavbarItem);
   return (
-    <Navbar
+    <NextUINavbar
       isMenuOpen={isMenuOpen}
       onMenuOpenChange={setIsMenuOpen}
       shouldHideOnScroll
@@ -69,49 +68,34 @@ export default function Navbar2({
           className="md:hidden"
         />
         <NavbarContent className="w-full hidden md:flex" justify="center">
-          <NavbarItemWrapped variants={item}>
-            <Link className="block w-full" href="/">
-              <GlowingButton
-                props={{
-                  text: "Home",
+          <motion.li variants={item}>
+            <Link tabIndex={-1} className="block w-full" href="/">
+              <GlowingButton text="Home" selectedPath={path === "/"} />
+            </Link>
+          </motion.li>
 
-                  selectedPath: path === "/",
-                }}
-              />
-            </Link>
-          </NavbarItemWrapped>
-          <NavbarItemWrapped variants={item}>
-            <Link className="block w-full" href="/projects">
+          <motion.li variants={item}>
+            <Link tabIndex={-1} className="block w-full" href="/projects">
               <GlowingButton
-                props={{
-                  text: "Projects",
-                  selectedPath: path === "/projects",
-                }}
+                text="Projects"
+                selectedPath={path === "/projects"}
               />
             </Link>
-          </NavbarItemWrapped>
-          <NavbarItemWrapped variants={item}>
-            <Link className="block w-full" href="/about">
-              <GlowingButton
-                props={{
-                  text: "About",
-
-                  selectedPath: path === "/about",
-                }}
-              />
+          </motion.li>
+          <motion.li variants={item}>
+            <Link tabIndex={-1} className="block w-full" href="/about">
+              <GlowingButton text="About" selectedPath={path === "/about"} />
             </Link>
-          </NavbarItemWrapped>
-          <NavbarItemWrapped variants={item}>
+          </motion.li>
+          <motion.li variants={item}>
             <GlowingButton
-              props={{
-                text: particles ? "Disable Particles" : "Enable Particles",
-                onClick: () => setParticles(),
-              }}
+              text={particles ? "Disable Particles" : "Enable Particles"}
+              onClick={() => setParticles()}
             />
-          </NavbarItemWrapped>
-          <NavbarItemWrapped className="cursor-pointer" variants={item}>
+          </motion.li>
+          <motion.li variants={item}>
             <ThemeButton />
-          </NavbarItemWrapped>
+          </motion.li>
         </NavbarContent>
       </motion.div>
       <div className="md:hidden">
@@ -120,49 +104,32 @@ export default function Navbar2({
       <NavbarMenu style={{ zIndex: "100" }}>
         <NavbarMenuItem>
           <Link className="block w-full" href="/">
-            <GlowingButton
-              props={{
-                text: "Home",
-
-                selectedPath: path === "/",
-              }}
-            />
+            <GlowingButton text="Home" selectedPath={path === "/"} />
           </Link>
         </NavbarMenuItem>
         <NavbarMenuItem>
           <Link className="block w-full" href="/projects">
             <GlowingButton
-              props={{
-                text: "Projects",
-
-                selectedPath: path === "/projects",
-              }}
+              text="Projects"
+              selectedPath={path === "/projects"}
             />
           </Link>
         </NavbarMenuItem>
         <NavbarMenuItem>
           <Link className="block w-full" href="/about">
-            <GlowingButton
-              props={{
-                text: "About",
-
-                selectedPath: path === "/about",
-              }}
-            />
+            <GlowingButton text="About" selectedPath={path === "/about"} />
           </Link>
         </NavbarMenuItem>
         <NavbarMenuItem>
           <GlowingButton
-            props={{
-              text: particles ? "Disable Particles" : "Enable Particles",
-              onClick: () => {
-                setIsMenuOpen(false);
-                setParticles();
-              },
+            text={particles ? "Disable Particles" : "Enable Particles"}
+            onClick={() => {
+              setIsMenuOpen(false);
+              setParticles();
             }}
           />
         </NavbarMenuItem>
       </NavbarMenu>
-    </Navbar>
+    </NextUINavbar>
   );
 }
