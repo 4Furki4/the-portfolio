@@ -6,8 +6,8 @@ export function generateMetadata({ params }: { params: { endpoint: string } }) {
     (project) => project.endpoint === params.endpoint
   )[0];
   return {
-    title: `${project.title} | Furkan Cengiz`,
-    description: project.description,
+    title: `${project?.title} | Furkan Cengiz`,
+    description: project?.description,
   };
 }
 

@@ -23,6 +23,7 @@ import Image from "next/image";
 import { Accordion, AccordionItem } from "@nextui-org/react";
 import Link from "next/link";
 import { motion } from "framer-motion";
+import { notFound } from "next/navigation";
 
 export default function ProjectCard({ endpoint }: { endpoint: string }) {
   const AnimatedImageComponent = motion(Image);
@@ -30,6 +31,7 @@ export default function ProjectCard({ endpoint }: { endpoint: string }) {
     (project) => project.endpoint === endpoint
   )[0];
   const { isOpen, onOpen, onOpenChange } = useDisclosure();
+  if (!project) notFound();
   return (
     <Card className="bg-background" classNames={{ body: "z-[99]" }}>
       <CardHeader className="relative flex-col sm:flex-row items-start sm:items-center">
