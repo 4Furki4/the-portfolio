@@ -6,7 +6,7 @@ import { motion } from "framer-motion";
 import Education from "../About/Education";
 export default function About() {
   return (
-    <section className="grid gap-8">
+    <section className="relative z-40 my-4 sm:my-16 mx-auto max-w-6xl p-6 backdrop-blur-xs grid gap-8">
       <motion.figure
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
