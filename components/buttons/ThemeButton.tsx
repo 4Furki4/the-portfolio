@@ -10,19 +10,30 @@ export default function ThemeButton() {
     <>
       <div className="hidden md:block">
         <Button
+          type="button"
           className="bg-transparent"
           variant="flat"
           onPress={() => setTheme(theme === "dark" ? "light" : "dark")}
         >
-          {theme === "dark" ? <Sun size={32} /> : <Moon size={32} />}
+          {theme === "dark" ? (
+            <Sun aria-label="Sun Icon" size={32} />
+          ) : (
+            <Moon aria-label="Moon Icon" size={32} />
+          )}
         </Button>
       </div>
-      <div
+      <button
+        aria-label="Theme Button"
+        type="button"
         className="md:hidden"
         onClick={() => setTheme(theme === "dark" ? "light" : "dark")}
       >
-        {theme === "dark" ? <Sun size={26} /> : <Moon size={26} />}
-      </div>
+        {theme === "dark" ? (
+          <Sun aria-label="Sun Icon" size={26} />
+        ) : (
+          <Moon aria-label="Moon Icon" size={26} />
+        )}
+      </button>
     </>
   );
 }

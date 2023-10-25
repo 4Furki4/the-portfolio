@@ -10,9 +10,6 @@ export const metadata: Metadata = {
 export default function Projects() {
   return (
     <div className="z-50 p-2 my-16 lg:w-10/12 mx-auto grid lg:grid-cols-2 gap-4">
-      {/* {projects.map((project, index) => (
-        <Card key={index} {...project} />
-      ))} */}
       <ProjectCards projectsData={projectsData} />
     </div>
   );
