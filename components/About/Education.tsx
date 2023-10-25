@@ -57,18 +57,19 @@ const educations: Education[] = [
 ];
 export default function Education() {
   return (
-    <div className="grid relative gap-4 after:w-1 after:h-full after:absolute dark:after:bg-white after:bg-black after:right-0 after:z-0">
+    <section className="grid relative gap-4 after:w-1 after:h-full after:absolute dark:after:bg-white after:bg-black after:right-0 after:z-0">
       <h2 className="text-fs-600 font-bold">Education</h2>
       <div className="grid gap-4 relative">
         {educations.map((education, i) => (
-          <motion.span
+          <motion.article
+            aria-description="styling element"
             custom={i}
             variants={variants}
             initial="hidden"
             whileInView={"visible"}
             viewport={{ once: true, amount: 0.25 }}
             key={i}
-            className="relative mr-8"
+            className="relative mr-8 inline"
           >
             <Card className="backdrop-blur-xs bg-opacity-60 dark:bg-opacity-60 flex flex-col">
               <CardHeader>
@@ -79,20 +80,20 @@ export default function Education() {
                 <p className="fs-300">{education.description}</p>
               </CardContent>
               <CardFooter className="mt-auto">
-                <p className="fs-300">
+                <time className="fs-300">
                   {format(education.yearStart, "dd.MM.yyyy")} -{" "}
                   {education.yearEnd
                     ? format(education?.yearEnd, "dd.MM.yyyy")
                     : "Present"}
-                </p>
+                </time>
               </CardFooter>
             </Card>
-            <div className="absolute -right-14 top-0 z-50 bg-gray-200 dark:bg-gray-600 rounded-full p-2">
+            <figure className="absolute -right-14 top-0 z-50 bg-gray-200 dark:bg-gray-600 rounded-full p-2">
               <SchoolIcon className="w-8 h-8" />
-            </div>
-          </motion.span>
+            </figure>
+          </motion.article>
         ))}
       </div>
-    </div>
+    </section>
   );
 }

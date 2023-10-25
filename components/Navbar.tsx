@@ -54,7 +54,7 @@ export default function Navbar({
       isMenuOpen={isMenuOpen}
       onMenuOpenChange={setIsMenuOpen}
       shouldHideOnScroll
-      className="bg-background md:bg-background/60 shadow-accent z-50 transition-shadow-bg duration-300"
+      className="backdrop-saturate-150 bg-background/70 z-[100] border-0"
       isBlurred
     >
       <motion.div
@@ -101,14 +101,26 @@ export default function Navbar({
       <div className="md:hidden">
         <ThemeButton />
       </div>
-      <NavbarMenu style={{ zIndex: "100" }}>
+      <NavbarMenu className="z-[100]">
         <NavbarMenuItem>
-          <Link className="block w-full" href="/">
+          <Link
+            className="block w-full"
+            href="/"
+            onClick={() => {
+              setIsMenuOpen(false);
+            }}
+          >
             <GlowingButton text="Home" selectedPath={path === "/"} />
           </Link>
         </NavbarMenuItem>
         <NavbarMenuItem>
-          <Link className="block w-full" href="/projects">
+          <Link
+            className="block w-full"
+            href="/projects"
+            onClick={() => {
+              setIsMenuOpen(false);
+            }}
+          >
             <GlowingButton
               text="Projects"
               selectedPath={path === "/projects"}
@@ -116,7 +128,13 @@ export default function Navbar({
           </Link>
         </NavbarMenuItem>
         <NavbarMenuItem>
-          <Link className="block w-full" href="/about">
+          <Link
+            className="block w-full"
+            href="/about"
+            onClick={() => {
+              setIsMenuOpen(false);
+            }}
+          >
             <GlowingButton text="About" selectedPath={path === "/about"} />
           </Link>
         </NavbarMenuItem>

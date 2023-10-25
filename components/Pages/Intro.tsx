@@ -17,7 +17,7 @@ export default function Intro() {
     show: { opacity: 1, y: 0 },
   };
   return (
-    <motion.div
+    <motion.main
       initial="hidden"
       animate="show"
       variants={container}
@@ -35,12 +35,12 @@ export default function Intro() {
       >
         {"I'm a fullstack web developer."}
       </motion.h2>
-      <motion.div
+      <motion.figure
         variants={item}
         className="h-[50px] grid grid-cols-4 sm:flex gap-2"
       >
         <TechIcons />
-      </motion.div>
-    </motion.div>
+      </motion.figure>
+    </motion.main>
   );
 }

@@ -3,7 +3,7 @@ import { Download, Github, Linkedin, Mail } from "lucide-react";
 import Link from "next/link";
 export default function Footer() {
   return (
-    <div className="w-full h-20 p-2 z-50 flex gap-4 md:gap-8 justify-center items-center bg-background/60 backdrop-blur-xs shadow-foreground shadow-sm transition-shadow-bg duration-300">
+    <footer className="w-full h-20 p-2 z-50 flex gap-4 md:gap-8 justify-center items-center bg-background/60 backdrop-blur-xs shadow-foreground shadow-sm transition-shadow-bg duration-300">
       <Link
         target="_blank"
         href={"https://www.linkedin.com/in/4furkancengiz4/"}
@@ -33,6 +33,6 @@ export default function Footer() {
       >
         <Mail aria-label="Mail Icon" />
       </Link>
-    </div>
+    </footer>
   );
 }

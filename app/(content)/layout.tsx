@@ -12,5 +12,5 @@ export default function ContentLayout({
 }: {
   children: React.ReactNode;
 }) {
-  return <div className="mb-auto max-md:z-50">{children}</div>;
+  return <main className="mb-auto max-md:z-50">{children}</main>;
 }

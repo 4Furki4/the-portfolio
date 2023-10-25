@@ -42,7 +42,10 @@ export default function RootLayout({
       >
         <NextUIProvider>
           <NextThemesProvider attribute="class" defaultTheme="dark">
-            <div className="min-h-screen flex flex-col justify-center">
+            <div
+              aria-description="styling element"
+              className="min-h-screen flex flex-col justify-center"
+            >
               <Navbar
                 path={path}
                 particles={particles}
@@ -50,7 +53,10 @@ export default function RootLayout({
               />
               {children}
               {particles && (
-                <div className="w-full min-h-screen absolute top-0 left-0">
+                <div
+                  aria-description="particle background"
+                  className="w-full min-h-screen absolute top-0 left-0"
+                >
                   <BackgroundParticles />
                 </div>
               )}

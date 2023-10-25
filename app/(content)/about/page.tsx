@@ -7,9 +7,5 @@ export const metadata: Metadata = {
 };
 
 export default function page() {
-  return (
-    <div className="relative z-40 my-16 mx-auto max-w-6xl p-6 backdrop-blur-xs">
-      <About />
-    </div>
-  );
+  return <About />;
 }

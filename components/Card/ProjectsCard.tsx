@@ -35,7 +35,7 @@ export default function ProjectCards({
   return (
     <>
       {projectsData.map((project, index) => (
-        <motion.div
+        <motion.section
           variants={container}
           initial="hide"
           animate="show"
@@ -49,18 +49,20 @@ export default function ProjectCards({
             isPressable
             className="shadow-lg drop backdrop-blur-xs transition-[background-color] duration-300 relative z-40"
           >
-            <Image
-              src={project.images[0].src}
-              alt={project.images[0].alt}
-              width={800}
-              height={600}
-              className="w-full object-contain"
-            />
+            <figure>
+              <Image
+                src={project.images[0].src}
+                alt={project.images[0].alt}
+                width={800}
+                height={600}
+                className="w-full object-contain"
+              />
+            </figure>
             <CardFooter className="justify-center before:bg-background/5 overflow-hidden absolute bottom-0 shadow-small z-10">
               <h2 className="text-fs-400">{project.title}</h2>
             </CardFooter>
           </Card>
-        </motion.div>
+        </motion.section>
       ))}
     </>
   );
