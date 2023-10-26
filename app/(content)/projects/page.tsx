@@ -5,6 +5,13 @@ import { Metadata } from "next";
 export const metadata: Metadata = {
   title: "Projects",
   description: "Furkan Cengiz's projects with source code and live demos",
+  openGraph: {
+    type: "website",
+    locale: "en_US",
+    url: "https://furki.vercel.app/projects",
+    title: "Projects",
+    description: "Furkan Cengiz's projects with source code and live demos",
+  },
 };
 
 export default function Projects() {

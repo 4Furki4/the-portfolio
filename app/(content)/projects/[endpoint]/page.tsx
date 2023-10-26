@@ -1,13 +1,25 @@
 import React from "react";
 import projectsData from "@/db/static/projects";
 import ProjectCard from "@/components/Card/ProjectCard";
-export function generateMetadata({ params }: { params: { endpoint: string } }) {
+import { Metadata } from "next";
+export function generateMetadata({
+  params,
+}: {
+  params: { endpoint: string };
+}): Metadata {
   const project = projectsData.filter(
     (project) => project.endpoint === params.endpoint
   )[0];
   return {
     title: `${project?.title} | Furkan Cengiz`,
     description: project?.description,
+    openGraph: {
+      type: "website",
+      locale: "en_US",
+      url: `https://furki.vercel.app/projects/${project?.endpoint}`,
+      title: `${project?.title} | Furkan Cengiz`,
+      description: project?.description,
+    },
   };
 }
 

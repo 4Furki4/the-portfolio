@@ -5,6 +5,13 @@ export const metadata: Metadata = {
   title: "Furkan Cengiz",
   description: "Furkan Cengiz's personal website",
   robots: "all",
+  openGraph: {
+    type: "website",
+    locale: "en_US",
+    url: "https://furki.vercel.app",
+    title: "Furkan Cengiz",
+    description: "Furkan Cengiz's personal website",
+  },
 };
 
 export default function ContentLayout({
