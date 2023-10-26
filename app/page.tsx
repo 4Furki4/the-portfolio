@@ -16,6 +16,9 @@ export const metadata: Metadata = {
   },
   keywords: [
     "Furkan Cengiz",
+    "Furkan Cengiz Portfolio",
+    "Furkan Cengiz Website",
+    "Portfolio",
     "Furki",
     "Furki4_4",
     "Developer",
