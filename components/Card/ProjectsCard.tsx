@@ -41,13 +41,14 @@ export default function ProjectCards({
           animate="show"
           custom={index}
           key={index}
+          className="h-full mx-auto"
         >
           <Card
             onPress={() => router.push(`/projects/${project.endpoint}`)}
             isBlurred
             isFooterBlurred
             isPressable
-            className="shadow-lg drop backdrop-blur-xs transition-[background-color] duration-300 relative z-20"
+            className="shadow-lg drop backdrop-blur-xs transition-[background-color] duration-300 relative z-20 h-full"
           >
             <figure>
               <Image
@@ -58,7 +59,7 @@ export default function ProjectCards({
                 className="w-full object-contain"
               />
             </figure>
-            <CardFooter className="justify-center before:bg-background/5 overflow-hidden absolute bottom-0 shadow-small">
+            <CardFooter className="justify-center before:bg-background/5 shadow-small h-full">
               <h2 className="text-fs-400">{project.title}</h2>
             </CardFooter>
           </Card>
