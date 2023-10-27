@@ -54,7 +54,7 @@ export default function Navbar({
       isMenuOpen={isMenuOpen}
       onMenuOpenChange={setIsMenuOpen}
       shouldHideOnScroll
-      className="backdrop-saturate-150 bg-background/70 z-[50] border-0"
+      className="backdrop-saturate-150 bg-background/70 border-0"
       isBlurred
     >
       <motion.div
@@ -101,7 +101,7 @@ export default function Navbar({
       <div className="md:hidden">
         <ThemeButton />
       </div>
-      <NavbarMenu className="z-[100]">
+      <NavbarMenu>
         <NavbarMenuItem>
           <Link
             className="block w-full"

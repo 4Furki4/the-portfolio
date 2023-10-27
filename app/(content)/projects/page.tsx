@@ -18,7 +18,7 @@ export default function Projects() {
   return (
     <div
       aria-description="styling element"
-      className="z-50 p-2 my-4 sm:my-16 lg:w-10/12 mx-auto grid lg:grid-cols-2 gap-4"
+      className="z-10 p-2 my-4 sm:my-16 lg:w-10/12 mx-auto grid lg:grid-cols-2 gap-4"
     >
       <ProjectCards projectsData={projectsData} />
     </div>

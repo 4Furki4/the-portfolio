@@ -45,5 +45,5 @@ export default function ContentLayout({
 }: {
   children: React.ReactNode;
 }) {
-  return <main className="mb-auto max-md:z-50">{children}</main>;
+  return <main className="mb-auto z-20">{children}</main>;
 }

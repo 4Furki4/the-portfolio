@@ -33,7 +33,7 @@ export default function ProjectCard({ endpoint }: { endpoint: string }) {
   const { isOpen, onOpen, onOpenChange } = useDisclosure();
   if (!project) notFound();
   return (
-    <Card className="bg-background" classNames={{ body: "z-[99]" }}>
+    <Card className="bg-background">
       <CardHeader className="relative flex-col sm:flex-row items-start sm:items-center">
         <motion.h1
           initial={{ opacity: 0 }}

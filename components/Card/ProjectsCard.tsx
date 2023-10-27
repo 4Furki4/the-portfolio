@@ -47,7 +47,7 @@ export default function ProjectCards({
             isBlurred
             isFooterBlurred
             isPressable
-            className="shadow-lg drop backdrop-blur-xs transition-[background-color] duration-300 relative z-40"
+            className="shadow-lg drop backdrop-blur-xs transition-[background-color] duration-300 relative z-20"
           >
             <figure>
               <Image
@@ -58,7 +58,7 @@ export default function ProjectCards({
                 className="w-full object-contain"
               />
             </figure>
-            <CardFooter className="justify-center before:bg-background/5 overflow-hidden absolute bottom-0 shadow-small z-10">
+            <CardFooter className="justify-center before:bg-background/5 overflow-hidden absolute bottom-0 shadow-small">
               <h2 className="text-fs-400">{project.title}</h2>
             </CardFooter>
           </Card>
