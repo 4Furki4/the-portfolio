@@ -77,6 +77,9 @@ export default function ProjectCard({ endpoint }: { endpoint: string }) {
           sizes="100vw"
           className="rounded-lg cursor-pointer"
         />
+        <Button color="primary" variant="light" onPress={onOpen}>
+          View Gallery
+        </Button>
         <Modal
           hideCloseButton
           size="full"

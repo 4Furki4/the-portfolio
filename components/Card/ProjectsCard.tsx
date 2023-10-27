@@ -10,6 +10,7 @@ import React from "react";
 import Image from "next/image";
 import { useRouter } from "next/navigation";
 import { motion } from "framer-motion";
+import { MousePointerClick } from "lucide-react";
 
 const container = {
   hide: {
@@ -56,10 +57,10 @@ export default function ProjectCards({
                 alt={project.images[0].alt}
                 width={800}
                 height={600}
-                className="w-full object-contain"
+                className="w-full object-contain relative"
               />
             </figure>
-            <CardFooter className="justify-center before:bg-background/5 shadow-small h-full">
+            <CardFooter className="justify-center shadow-small h-full">
               <h2 className="text-fs-400">{project.title}</h2>
             </CardFooter>
           </Card>
