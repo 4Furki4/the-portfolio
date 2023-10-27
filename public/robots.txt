@@ -3,7 +3,7 @@ User-agent: *
 Allow: /
 
 # Host
-Host: https://furki.vercel.app
+Host: https://www.furkancengiz.software
 
 # Sitemaps
-Sitemap: https://furki.vercel.app/sitemap.xml
+Sitemap: https://www.furkancengiz.software/sitemap.xml

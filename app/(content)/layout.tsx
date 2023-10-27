@@ -5,7 +5,7 @@ export const metadata: Metadata = {
   title: "Furkan Cengiz",
   description: "Furkan Cengiz's personal website",
   verification: {
-    google: "UpopIbvkgl0RnymsLDx4DCa1TcEIIqQkOBnkvAm_xz0",
+    google: "6MHP_v7v_6AanMTrqnMHnFGPcHO-IcUl2l3tphvqFnM",
   },
   robots: {
     index: true,
