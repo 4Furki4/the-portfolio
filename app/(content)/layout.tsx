@@ -4,6 +4,9 @@ import React from "react";
 export const metadata: Metadata = {
   title: "Furkan Cengiz",
   description: "Furkan Cengiz's personal website",
+  verification: {
+    google: "UpopIbvkgl0RnymsLDx4DCa1TcEIIqQkOBnkvAm_xz0",
+  },
   robots: {
     index: true,
     follow: true,
