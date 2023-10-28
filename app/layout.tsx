@@ -2,7 +2,6 @@
 import "./globals.css";
 import { Inter } from "next/font/google";
 import BackgroundParticles from "@/components/particles/BackgroundParticles";
-// import Navbar from "@/components/Navbar";
 import { NextUIProvider } from "@nextui-org/react";
 import React, { useEffect } from "react";
 import { usePathname } from "next/navigation";

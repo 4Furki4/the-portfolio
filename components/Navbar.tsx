@@ -2,7 +2,6 @@ import {
   Navbar as NextUINavbar,
   NavbarContent,
   NavbarMenu,
-  NavbarItem,
   NavbarMenuItem,
   NavbarMenuToggle,
 } from "@nextui-org/react";

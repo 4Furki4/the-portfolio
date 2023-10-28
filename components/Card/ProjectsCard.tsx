@@ -1,16 +1,9 @@
 "use client";
-import {
-  Button,
-  Card,
-  CardBody,
-  CardFooter,
-  CardHeader,
-} from "@nextui-org/react";
+import { Card, CardFooter } from "@nextui-org/react";
 import React from "react";
-import Image from "next/image";
+import Image, { ImageLoaderProps } from "next/image";
 import { useRouter } from "next/navigation";
 import { motion } from "framer-motion";
-import { MousePointerClick } from "lucide-react";
 
 const container = {
   hide: {
@@ -28,14 +21,16 @@ const container = {
 };
 
 export default function ProjectCards({
-  projectsData,
+  project,
+  index,
 }: {
-  projectsData: Project[];
+  project: Project;
+  index: number;
 }) {
   const router = useRouter();
   return (
     <>
-      {projectsData.map((project, index) => (
+      {
         <motion.section
           variants={container}
           initial="hide"
@@ -58,6 +53,8 @@ export default function ProjectCards({
                 width={800}
                 height={600}
                 className="w-full object-contain relative"
+                sizes="(min-width: 768px) 50vw), 100vw"
+                loading="eager"
               />
             </figure>
             <CardFooter className="justify-center shadow-small h-full">
@@ -65,7 +62,7 @@ export default function ProjectCards({
             </CardFooter>
           </Card>
         </motion.section>
-      ))}
+      }
     </>
   );
 }
