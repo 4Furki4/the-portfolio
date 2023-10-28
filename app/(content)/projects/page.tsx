@@ -14,7 +14,7 @@ export const metadata: Metadata = {
   },
 };
 
-export default function Projects() {
+export default async function Projects() {
   return (
     <>
       <section>
@@ -26,7 +26,9 @@ export default function Projects() {
         aria-hidden
         className="z-10 p-2 my-4 sm:my-16 lg:w-10/12 mx-auto grid md:grid-cols-1 lg:grid-cols-2 lg:auto-rows-[1fr] gap-8 justify-center"
       >
-        <ProjectCards projectsData={projectsData} />
+        {projectsData.map((project, index) => (
+          <ProjectCards project={project} index={index} key={index} />
+        ))}
       </div>
     </>
   );

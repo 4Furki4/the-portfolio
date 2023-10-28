@@ -3,7 +3,7 @@ import { getPlaiceholder } from "plaiceholder";
 
 export const getBase64 = async (imgPath: string) => {
   try {
-    const file = await fs.readFile(`public/pics/${imgPath}`);
+    const file = await fs.readFile(`public/${imgPath}`);
     const { base64 } = await getPlaiceholder(file);
     return base64;
   } catch (error: unknown) {

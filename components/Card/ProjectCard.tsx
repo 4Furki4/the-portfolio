@@ -7,11 +7,9 @@ import {
   Divider,
 } from "@nextui-org/react";
 import React from "react";
-import projectsData from "@/db/static/projects";
 import {
   Modal,
   ModalContent,
-  ModalHeader,
   ModalBody,
   ModalFooter,
   Button,
@@ -25,11 +23,13 @@ import Link from "next/link";
 import { motion } from "framer-motion";
 import { notFound } from "next/navigation";
 
-export default function ProjectCard({ endpoint }: { endpoint: string }) {
-  const AnimatedImageComponent = motion(Image);
-  const project = projectsData.filter(
-    (project) => project.endpoint === endpoint
-  )[0];
+export default function ProjectCard({
+  project,
+  blurredImage,
+}: {
+  project: Project;
+  blurredImage: string;
+}) {
   const { isOpen, onOpen, onOpenChange } = useDisclosure();
   if (!project) notFound();
   return (
@@ -63,9 +63,7 @@ export default function ProjectCard({ endpoint }: { endpoint: string }) {
         </motion.div>
       </CardHeader>
       <CardBody className="rounded-lg relative min-h-[200px] sm:min-h-[350px] md:min-h-[500px] overflow-hidden z-50 gap-4">
-        <AnimatedImageComponent
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
+        <Image
           onClick={onOpen}
           src={project.images[0].src}
           alt={project.images[0].src}
@@ -76,6 +74,8 @@ export default function ProjectCard({ endpoint }: { endpoint: string }) {
           loading="eager"
           sizes="100vw"
           className="rounded-lg cursor-pointer"
+          placeholder="blur"
+          blurDataURL={blurredImage}
         />
         <Button color="primary" variant="light" onPress={onOpen}>
           View Gallery
