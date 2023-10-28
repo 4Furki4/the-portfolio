@@ -35,7 +35,7 @@ export const metadata: Metadata = {
   openGraph: {
     type: "website",
     locale: "en_US",
-    url: "https://furki.vercel.app",
+    url: "https://furkancengiz.software",
     title: "Furkan Cengiz",
     description: "Furkan Cengiz's personal website",
   },

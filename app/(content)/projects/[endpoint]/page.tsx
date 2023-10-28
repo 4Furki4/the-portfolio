@@ -16,7 +16,10 @@ export function generateMetadata({
     openGraph: {
       type: "website",
       locale: "en_US",
-      url: `https://furki.vercel.app/projects/${project?.endpoint}`,
+      url:
+        process.env.NODE_ENV === "development"
+          ? `http://localhost:3000/projects/${project?.endpoint}`
+          : `https://furkancengiz.software/projects/${project?.endpoint}`,
       title: `${project?.title} | Furkan Cengiz`,
       description: project?.description,
     },
