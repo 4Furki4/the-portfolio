@@ -4,7 +4,40 @@ import React from "react";
 export const metadata: Metadata = {
   title: "Furkan Cengiz",
   description: "Furkan Cengiz's personal website",
-  robots: "all",
+  verification: {
+    google: "6MHP_v7v_6AanMTrqnMHnFGPcHO-IcUl2l3tphvqFnM",
+  },
+  robots: {
+    index: true,
+    follow: true,
+    nocache: true,
+    googleBot: {
+      follow: true,
+      index: true,
+    },
+  },
+  keywords: [
+    "Furkan Cengiz",
+    "Furkan Cengiz Portfolio",
+    "Furkan Cengiz Website",
+    "Portfolio",
+    "Furki",
+    "Furki4_4",
+    "Developer",
+    "Software Engineer",
+    "Software Developer",
+    "Web Developer",
+    "Full Stack Developer",
+    "Frontend Developer",
+    "Backend Developer",
+  ],
+  openGraph: {
+    type: "website",
+    locale: "en_US",
+    url: "https://furki.vercel.app",
+    title: "Furkan Cengiz",
+    description: "Furkan Cengiz's personal website",
+  },
 };
 
 export default function ContentLayout({
@@ -12,5 +45,5 @@ export default function ContentLayout({
 }: {
   children: React.ReactNode;
 }) {
-  return <main className="mb-auto max-md:z-50">{children}</main>;
+  return <main className="mb-auto z-20">{children}</main>;
 }

@@ -1,6 +1,5 @@
 "use client";
 import React, { useEffect, useRef } from "react";
-import { motion } from "framer-motion";
 import { useTheme } from "next-themes";
 import { cn } from "@/lib/utils";
 export default function GlowingButton({
@@ -26,7 +25,10 @@ export default function GlowingButton({
       ref={ref}
       data-glow-animation={selectedPath}
       data-selected={selectedPath}
-      className={cn(`button glow-effect ${theme} text-sm z-50`, className)}
+      className={cn(
+        `button glow-effect ${theme ?? "dark"} text-sm z-50`,
+        className
+      )}
     >
       {text}
       <svg tabIndex={-1} className="glow-container">

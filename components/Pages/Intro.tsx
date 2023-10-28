@@ -21,7 +21,7 @@ export default function Intro() {
       initial="hidden"
       animate="show"
       variants={container}
-      className="h-full w-11/12 max-sm:mx-auto sm:w-full flex flex-col items-center justify-center text-center mb-auto p-10 md:my-auto z-50 pointer-events-none"
+      className="h-full w-11/12 max-sm:mx-auto sm:w-full flex flex-col items-center justify-center text-center mb-auto p-10 md:my-auto z-10 pointer-events-none"
     >
       <motion.h1
         variants={item}

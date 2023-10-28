@@ -1,3 +1,9 @@
-# Allow all crawlers
+# *
 User-agent: *
 Allow: /
+
+# Host
+Host: https://www.furkancengiz.software
+
+# Sitemaps
+Sitemap: https://www.furkancengiz.software/sitemap.xml

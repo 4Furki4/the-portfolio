@@ -183,3 +183,6 @@
     @apply bg-background text-foreground;
   }
 }
+nav{
+  z-index: 100;
+}
