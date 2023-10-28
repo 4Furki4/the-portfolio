@@ -2,16 +2,11 @@
 import Image from "next/image";
 import React from "react";
 import { AboutMeParagraph } from "../About/AboutMeParagraph";
-import { motion } from "framer-motion";
 import Education from "../About/Education";
-export default function About() {
+export default function About({ blurredImage }: { blurredImage: string }) {
   return (
     <section className="relative z-40 my-4 sm:my-16 mx-auto max-w-6xl p-6 backdrop-blur-xs grid gap-8">
-      <motion.figure
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        transition={{ duration: 0.3 }}
-      >
+      <figure>
         <Image
           src={"/pics/furkan.png"}
           width={3066}
@@ -20,8 +15,10 @@ export default function About() {
           sizes="(min-width: 768px) 90vw, 75vw"
           quality={100}
           className="rounded-lg"
+          placeholder="blur"
+          blurDataURL={blurredImage}
         />
-      </motion.figure>
+      </figure>
       <AboutMeParagraph />
       <Education />
     </section>

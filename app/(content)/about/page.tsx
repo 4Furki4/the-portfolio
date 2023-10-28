@@ -1,4 +1,5 @@
 import About from "@/components/Pages/About";
+import { getBase64 } from "@/lib/getBase64ImageUrl";
 import { Metadata } from "next";
 import React from "react";
 export const metadata: Metadata = {
@@ -13,6 +14,7 @@ export const metadata: Metadata = {
   },
 };
 
-export default function page() {
-  return <About />;
+export default async function page() {
+  const blurredImage = await getBase64("furkan.png");
+  return <About blurredImage={blurredImage} />;
 }
