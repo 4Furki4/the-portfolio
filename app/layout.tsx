@@ -9,7 +9,7 @@ import Footer from "@/components/Footer";
 import { ThemeProvider as NextThemesProvider } from "next-themes";
 import Navbar from "@/components/Navbar";
 const inter = Inter({ subsets: ["latin"] });
-
+import { Analytics } from "@vercel/analytics/react";
 export default function RootLayout({
   children,
 }: {
@@ -51,6 +51,7 @@ export default function RootLayout({
                 setParticles={handleParticles}
               />
               {children}
+              <Analytics />
               {particles && (
                 <div
                   aria-description="particle background"
