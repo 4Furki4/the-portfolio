@@ -53,8 +53,7 @@ export default function ProjectCards({
                 width={800}
                 height={600}
                 className="w-full object-contain relative"
-                sizes="(min-width: 768px) 50vw), 100vw"
-                loading="eager"
+                sizes="(min-width: 768px) 40vw), 100vw"
               />
             </figure>
             <CardFooter className="justify-center shadow-small h-full">
