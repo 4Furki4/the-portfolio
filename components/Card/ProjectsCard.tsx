@@ -58,7 +58,7 @@ export default function ProjectCards({
               />
             </figure>
             <CardFooter className="justify-center shadow-small h-full">
-              <h2 className="text-fs-400">{project.title}</h2>
+              <h2 className="text-fs-400 font-bold">{project.title}</h2>
             </CardFooter>
           </Card>
         </motion.section>
