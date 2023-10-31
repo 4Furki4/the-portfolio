@@ -1,6 +1,6 @@
 import { Metadata } from "next";
 import React from "react";
-
+import { GeistMono, GeistSans } from "geist/font";
 export const metadata: Metadata = {
   title: "Furkan Cengiz",
   description: "Furkan Cengiz's personal website",
@@ -45,5 +45,7 @@ export default function ContentLayout({
 }: {
   children: React.ReactNode;
 }) {
-  return <main className="mb-auto z-20">{children}</main>;
+  return (
+    <main className={`${GeistSans.className} mb-auto z-20`}>{children}</main>
+  );
 }

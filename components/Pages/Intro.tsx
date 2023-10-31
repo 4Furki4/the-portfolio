@@ -2,7 +2,8 @@
 import React from "react";
 import { motion } from "framer-motion";
 import TechIcons from "../TechIcons";
-export default function Intro() {
+import { cn } from "@/lib/utils";
+export default function Intro({ className }: { className?: string }) {
   const container = {
     hidden: { opacity: 0 },
     show: {
@@ -21,7 +22,10 @@ export default function Intro() {
       initial="hidden"
       animate="show"
       variants={container}
-      className="h-full w-11/12 max-sm:mx-auto sm:w-full flex flex-col items-center justify-center text-center mb-auto p-10 md:my-auto z-10 pointer-events-none"
+      className={cn(
+        "h-full w-11/12 max-sm:mx-auto sm:w-full flex flex-col items-center justify-center text-center mb-auto p-10 md:my-auto z-10 pointer-events-none",
+        className
+      )}
     >
       <motion.h1
         variants={item}
