@@ -3,6 +3,7 @@ import { Button } from "@nextui-org/react";
 import { useTheme } from "next-themes";
 import React, { useEffect } from "react";
 import { Moon, Sun } from "lucide-react";
+import GlowingButton from "./GlowingButton";
 
 export default function ThemeButton() {
   const { theme, setTheme } = useTheme();
@@ -12,20 +13,17 @@ export default function ThemeButton() {
     mounted && (
       <>
         <div suppressHydrationWarning className="hidden md:block">
-          <Button
-            type="button"
-            className="bg-transparent"
-            variant="flat"
-            onPress={() => setTheme(theme === "dark" ? "light" : "dark")}
+          <GlowingButton
+            onClick={() => setTheme(theme === "dark" ? "light" : "dark")}
           >
             {theme === "dark" ? (
               <Sun aria-label="Sun Icon" size={32} />
             ) : (
               <Moon aria-label="Moon Icon" size={32} />
             )}
-          </Button>
+          </GlowingButton>
         </div>
-        <button
+        <GlowingButton
           aria-label="Theme Button"
           type="button"
           className="md:hidden"
@@ -36,7 +34,7 @@ export default function ThemeButton() {
           ) : (
             <Moon aria-label="Moon Icon" size={26} />
           )}
-        </button>
+        </GlowingButton>
       </>
     )
   );

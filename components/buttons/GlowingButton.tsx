@@ -3,21 +3,27 @@ import React, { useEffect, useRef } from "react";
 import { useTheme } from "next-themes";
 import { cn } from "@/lib/utils";
 export default function GlowingButton({
-  text,
-  bgColor,
   className,
   onClick,
   selectedPath,
+  children,
 }: GlowingButtonProps) {
   const ref = useRef<HTMLButtonElement>(null);
   const { theme } = useTheme();
   useEffect(() => {
     const rects = ref.current?.querySelectorAll("rect");
     const rx = getComputedStyle(ref.current as Element).borderRadius;
+    const containerOffset = parseInt(
+      getComputedStyle(ref.current as Element).getPropertyValue(
+        "--container-offset"
+      )
+    );
     rects?.forEach((rect) => {
       rect.setAttribute("rx", rx);
+      rect.setAttribute("x", `${containerOffset / 2}`);
+      rect.setAttribute("y", `${containerOffset / 2}`);
     });
-  });
+  }, [ref]);
 
   return (
     <button
@@ -30,7 +36,7 @@ export default function GlowingButton({
         className
       )}
     >
-      {text}
+      {children}
       <svg tabIndex={-1} className="glow-container">
         <rect
           tabIndex={-1}

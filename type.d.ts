@@ -1,7 +1,5 @@
 type GlowingButtonProps = {
-  text: string;
   onClick?: () => void;
-  bgColor?: string;
   className?: string;
   selectedPath?: boolean;
 } & React.ButtonHTMLAttributes<HTMLButtonElement>;

@@ -69,28 +69,28 @@ export default function Navbar({
         <NavbarContent className="w-full hidden md:flex" justify="center">
           <motion.li variants={item}>
             <Link tabIndex={-1} className="block w-full" href="/">
-              <GlowingButton text="Home" selectedPath={path === "/"} />
+              <GlowingButton selectedPath={path === "/"}>Home</GlowingButton>
             </Link>
           </motion.li>
 
           <motion.li variants={item}>
             <Link tabIndex={-1} className="block w-full" href="/projects">
-              <GlowingButton
-                text="Projects"
-                selectedPath={path === "/projects"}
-              />
+              <GlowingButton selectedPath={path === "/projects"}>
+                Projects
+              </GlowingButton>
             </Link>
           </motion.li>
           <motion.li variants={item}>
             <Link tabIndex={-1} className="block w-full" href="/about">
-              <GlowingButton text="About" selectedPath={path === "/about"} />
+              <GlowingButton selectedPath={path === "/about"}>
+                About
+              </GlowingButton>
             </Link>
           </motion.li>
           <motion.li variants={item}>
-            <GlowingButton
-              text={particles ? "Disable Particles" : "Enable Particles"}
-              onClick={() => setParticles()}
-            />
+            <GlowingButton onClick={() => setParticles()}>
+              {particles ? "Disable Particles" : "Enable Particles"}
+            </GlowingButton>
           </motion.li>
           <motion.li variants={item}>
             <ThemeButton />
@@ -109,7 +109,7 @@ export default function Navbar({
               setIsMenuOpen(false);
             }}
           >
-            <GlowingButton text="Home" selectedPath={path === "/"} />
+            <GlowingButton selectedPath={path === "/"}>Home</GlowingButton>
           </Link>
         </NavbarMenuItem>
         <NavbarMenuItem>
@@ -120,10 +120,9 @@ export default function Navbar({
               setIsMenuOpen(false);
             }}
           >
-            <GlowingButton
-              text="Projects"
-              selectedPath={path === "/projects"}
-            />
+            <GlowingButton selectedPath={path === "/projects"}>
+              Projects
+            </GlowingButton>
           </Link>
         </NavbarMenuItem>
         <NavbarMenuItem>
@@ -134,17 +133,20 @@ export default function Navbar({
               setIsMenuOpen(false);
             }}
           >
-            <GlowingButton text="About" selectedPath={path === "/about"} />
+            <GlowingButton selectedPath={path === "/about"}>
+              About
+            </GlowingButton>
           </Link>
         </NavbarMenuItem>
         <NavbarMenuItem>
           <GlowingButton
-            text={particles ? "Disable Particles" : "Enable Particles"}
             onClick={() => {
               setIsMenuOpen(false);
               setParticles();
             }}
-          />
+          >
+            {particles ? "Disable Particles" : "Enable Particles"}
+          </GlowingButton>
         </NavbarMenuItem>
       </NavbarMenu>
     </NextUINavbar>
