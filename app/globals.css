@@ -113,8 +113,6 @@
 
 .glow-blur,
 .glow-line {
-    x: calc(var(--container-offset) / 2);
-    y: calc(var(--container-offset) / 2);
     width: calc(100% - var(--container-offset));
     height: calc(100% - var(--container-offset));
     fill: transparent;
@@ -151,8 +149,18 @@
   opacity: 1;
   animation: selected .3s ease-in-out;
 }
-.glow-effect[data-selected="true"]:is(:hover) .glow-container{
+.glow-effect[data-selected="true"]:is(:hover ) .glow-container{
   animation: selected .3s ease-in-out;
+}
+.glow-effect:is(:focus-visible){
+  outline:none;
+  --glow-line-length:50px;
+  --glow-line-size: 5px;
+  --glow-line-thickness: 2px;
+}
+.glow-effect:is(:focus-visible) .glow-container {
+    opacity: 1;
+    animation: selected .3s ease-in-out;
 }
 @keyframes glow-visibility {
 
@@ -183,6 +191,16 @@
     @apply bg-background text-foreground;
   }
 }
-nav{
-  z-index: 100;
+
+@media screen and (max-width: 768px) {
+  .glow-effect{
+    --glow-line-length:50px;
+    --glow-line-size: 5px;
+    --glow-line-thickness: 2px;
+  }
+  .glow-effect:is(:focus, :active) .glow-container {
+    opacity: 1;
+    animation: selected .3s ease-in-out;
+  }
 }
+
