@@ -20,7 +20,7 @@ export function generateMetadata({
       url:
         process.env.NODE_ENV === "development"
           ? `http://localhost:3000/projects/${project?.endpoint}`
-          : `https://furkancengiz.software/projects/${project?.endpoint}`,
+          : `https://www.furkancengiz.software/projects/${project?.endpoint}`,
       title: `${project?.title} | Furkan Cengiz`,
       description: project?.description,
     },
