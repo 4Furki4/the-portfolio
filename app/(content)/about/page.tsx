@@ -19,5 +19,19 @@ export const metadata: Metadata = {
 
 export default async function page() {
   const blurredImage = await getBase64("pics/furkan.png");
-  return <About blurredImage={blurredImage} />;
+  const githubTableDataResponse = await fetch(
+    "https://github-contributions.vercel.app/api/v1/4furki4",
+    {
+      next: {
+        revalidate: 60 * 60, // 1 hour
+        tags: ["github-contributions"],
+      },
+    }
+  );
+  const githubTableData: GithubContributionResponse =
+    await githubTableDataResponse.json();
+  console.log(githubTableData);
+  return (
+    <About blurredImage={blurredImage} githubTableData={githubTableData} />
+  );
 }
