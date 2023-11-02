@@ -12,6 +12,9 @@ export const metadata: Metadata = {
     title: "Projects",
     description: "Furkan Cengiz's projects with source code and live demos",
   },
+  alternates: {
+    canonical: "/",
+  },
 };
 
 export default async function Projects() {

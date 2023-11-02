@@ -8,9 +8,12 @@ export const metadata: Metadata = {
   openGraph: {
     type: "website",
     locale: "en_US",
-    url: "https://furki.vercel.app/about",
+    url: "https://furkancengiz.software/about",
     title: "About",
     description: "About page containing contact information and a short bio.",
+  },
+  alternates: {
+    canonical: "/",
   },
 };
 
