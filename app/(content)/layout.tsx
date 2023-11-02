@@ -3,7 +3,7 @@ import React from "react";
 import { GeistMono, GeistSans } from "geist/font";
 export const metadata: Metadata = {
   title: "Furkan Cengiz",
-  description: "Furkan Cengiz's personal website",
+  description: "Furkan Cengiz's personal website and portfolio",
   verification: {
     google: "6MHP_v7v_6AanMTrqnMHnFGPcHO-IcUl2l3tphvqFnM",
   },
@@ -15,6 +15,10 @@ export const metadata: Metadata = {
       follow: true,
       index: true,
     },
+  },
+  metadataBase: new URL("https://furkancengiz.software"),
+  alternates: {
+    canonical: "/",
   },
   keywords: [
     "Furkan Cengiz",
@@ -34,7 +38,7 @@ export const metadata: Metadata = {
   openGraph: {
     type: "website",
     locale: "en_US",
-    url: "https://furki.vercel.app",
+    url: "/",
     title: "Furkan Cengiz",
     description: "Furkan Cengiz's personal website",
   },

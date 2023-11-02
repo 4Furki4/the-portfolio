@@ -17,6 +17,10 @@ export const metadata: Metadata = {
       index: true,
     },
   },
+  metadataBase: new URL("https://furkancengiz.software"),
+  alternates: {
+    canonical: "/",
+  },
   keywords: [
     "Furkan Cengiz",
     "Furkan Cengiz Portfolio",
@@ -35,7 +39,7 @@ export const metadata: Metadata = {
   openGraph: {
     type: "website",
     locale: "en_US",
-    url: "https://furkancengiz.software",
+    url: "/",
     title: "Furkan Cengiz",
     description: "Furkan Cengiz's personal website",
   },
