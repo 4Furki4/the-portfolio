@@ -23,9 +23,8 @@ export default function ThemeButton() {
             )}
           </GlowingButton>
         </div>
-        <GlowingButton
+        <button
           aria-label="Theme Button"
-          type="button"
           className="md:hidden"
           onClick={() => setTheme(theme === "dark" ? "light" : "dark")}
         >
@@ -34,7 +33,7 @@ export default function ThemeButton() {
           ) : (
             <Moon aria-label="Moon Icon" size={26} />
           )}
-        </GlowingButton>
+        </button>
       </>
     )
   );
