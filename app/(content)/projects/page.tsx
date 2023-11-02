@@ -8,7 +8,7 @@ export const metadata: Metadata = {
   openGraph: {
     type: "website",
     locale: "en_US",
-    url: "https://furkancengiz.software/projects",
+    url: "https://www.furkancengiz.software/projects",
     title: "Projects",
     description: "Furkan Cengiz's projects with source code and live demos",
   },
