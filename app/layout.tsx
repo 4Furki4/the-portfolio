@@ -55,7 +55,7 @@ export default function RootLayout({
               <Analytics />
               {particles && (
                 <div
-                  aria-description="particle background"
+                  aria-hidden
                   className="w-full min-h-screen absolute top-0 left-0"
                 >
                   <BackgroundParticles />

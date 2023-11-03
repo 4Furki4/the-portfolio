@@ -22,91 +22,91 @@ export default function TechIcons() {
         src={jsIcon}
         width={300}
         height={100}
-        className="max-w-max w-full h-full"
+        className="max-w-max w-full h-[50px] mx-auto"
       />
       <Image
         alt="TS Icon"
         src={tsIcon}
         width={300}
         height={100}
-        className="w-max-w w-full h-full"
+        className="w-max-w w-full h-[50px]"
       />
       <Image
         alt="Node.js Icon"
         src={nodejsIcon}
         width={300}
         height={100}
-        className="w-max-w w-full h-full"
+        className="w-max-w w-full h-[50px]"
       />
       <Image
         alt="Express.js Icon"
         src={espressjsIcon}
         width={300}
         height={100}
-        className="w-max-w w-full h-full"
+        className="w-max-w w-full h-[50px]"
       />
       <Image
         alt="Prisma Icon"
         src={prismaIcon}
         width={300}
         height={100}
-        className="w-max-w w-full h-full"
+        className="w-max-w w-full h-[50px]"
       />
       <Image
         alt="React Icon"
         src={reactIcon}
         width={300}
         height={100}
-        className="w-max-w w-full h-full"
+        className="w-max-w w-full h-[50px]"
       />
       <Image
         alt="Next Icon"
         src={nextIcon}
         width={300}
         height={100}
-        className="w-max-w w-full h-full"
+        className="w-max-w w-full h-[50px]"
       />
       <Image
         alt="Angular Icon"
         src={angularIcon}
         width={300}
         height={100}
-        className="w-max-w w-full h-full"
+        className="w-max-w w-full h-[50px]"
       />
       <Image
         alt="Net Icon"
         src={netIcon}
         width={300}
         height={100}
-        className="w-max-w w-full h-full"
+        className="w-max-w w-full h-[50px]"
       />
       <Image
         alt="CS Icon"
         src={csIcon}
         width={300}
         height={100}
-        className="w-max-w w-full h-full"
+        className="w-max-w w-full h-[50px]"
       />
       <Image
         alt="MySQL Icon"
         src={mysqlLightIcon}
         width={300}
         height={100}
-        className="w-max-w w-full h-full dark:hidden"
+        className="w-max-w w-full h-[50px] dark:hidden"
       />
       <Image
         alt="MySQL Icon"
         src={mysqlDarkIcon}
         width={300}
         height={100}
-        className="w-max-w w-full h-full hidden dark:block"
+        className="w-max-w w-full h-[50px] hidden dark:block"
       />
       <Image
         alt="MongoDB Icon"
         src={mongodb}
         width={300}
         height={100}
-        className="w-max-w w-full h-full"
+        className="w-max-w w-full h-[50px]"
       />
     </>
   );

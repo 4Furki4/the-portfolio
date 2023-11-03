@@ -23,7 +23,7 @@ export default function Intro({ className }: { className?: string }) {
       animate="show"
       variants={container}
       className={cn(
-        "h-full w-11/12 max-sm:mx-auto sm:w-full flex flex-col items-center justify-center text-center mb-auto p-10 md:my-auto z-10 pointer-events-none",
+        "h-full w-11/12 max-sm:mx-auto sm:w-full grid items-center justify-center text-center my-auto md:my-auto p-10 z-10 pointer-events-none",
         className
       )}
     >
@@ -41,7 +41,7 @@ export default function Intro({ className }: { className?: string }) {
       </motion.h2>
       <motion.figure
         variants={item}
-        className="h-[50px] grid grid-cols-4 sm:flex gap-2"
+        className="grid grid-cols-4 items-center justify-center sm:flex gap-2"
       >
         <TechIcons />
       </motion.figure>
