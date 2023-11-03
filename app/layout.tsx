@@ -44,7 +44,7 @@ export default function RootLayout({
           <NextThemesProvider attribute="class" defaultTheme="dark">
             <div
               aria-description="styling element"
-              className="min-h-screen flex flex-col justify-center"
+              className="min-h-screen flex flex-col"
             >
               <Navbar
                 path={path}

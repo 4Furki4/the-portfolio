@@ -23,7 +23,7 @@ export default function Intro({ className }: { className?: string }) {
       animate="show"
       variants={container}
       className={cn(
-        "h-full w-11/12 max-sm:mx-auto sm:w-full grid items-center justify-center text-center my-auto md:my-auto p-10 z-10 pointer-events-none",
+        "h-full w-11/12 max-sm:mx-auto sm:w-full text-center my-auto p-10 z-10 pointer-events-none flex flex-col gap-6",
         className
       )}
     >
@@ -35,7 +35,7 @@ export default function Intro({ className }: { className?: string }) {
       </motion.h1>
       <motion.h2
         variants={item}
-        className="text-fs-500 font-extrabold bg-clip-text text-transparent bg-gradient-to-r from-red-700 to-purple-900 bg-300% animate-flow-gradient my-6"
+        className="text-fs-500 font-extrabold bg-clip-text text-transparent bg-gradient-to-r from-red-700 to-purple-900 bg-300% animate-flow-gradient"
       >
         {"I'm a fullstack web developer."}
       </motion.h2>
