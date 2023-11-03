@@ -16,7 +16,7 @@ export const metadata: Metadata = {
       index: true,
     },
   },
-  metadataBase: new URL("www.https://furkancengiz.software"),
+  metadataBase: new URL("https://www.furkancengiz.software"),
   alternates: {
     canonical: "/",
   },
