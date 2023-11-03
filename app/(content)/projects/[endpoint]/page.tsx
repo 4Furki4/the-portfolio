@@ -12,7 +12,7 @@ export function generateMetadata({
     (project) => project.endpoint === params.endpoint
   )[0];
   return {
-    title: `${project?.title} | Furkan Cengiz`,
+    title: project.title,
     description: project?.description,
     openGraph: {
       type: "website",
