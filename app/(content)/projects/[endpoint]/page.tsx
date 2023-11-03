@@ -17,12 +17,18 @@ export function generateMetadata({
     openGraph: {
       type: "website",
       locale: "en_US",
-      url:
-        process.env.NODE_ENV === "development"
-          ? `http://localhost:3000/projects/${project?.endpoint}`
-          : `https://www.furkancengiz.software/projects/${project?.endpoint}`,
+      url: `/projects/${project?.endpoint}`,
       title: `${project?.title} | Furkan Cengiz`,
       description: project?.description,
+      images: [
+        {
+          url: project?.images[0].src,
+          alt: project?.images[0].alt,
+        },
+      ],
+    },
+    alternates: {
+      canonical: `/projects/${project?.endpoint}`,
     },
   };
 }
