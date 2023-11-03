@@ -41,7 +41,7 @@ export const metadata: Metadata = {
     locale: "en_US",
     url: "/",
     title: "Furkan Cengiz",
-    description: "Furkan Cengiz's personal website",
+    description: "Furkan Cengiz's personal website and portfolio",
   },
 };
 

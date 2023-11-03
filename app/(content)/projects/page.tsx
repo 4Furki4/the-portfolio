@@ -9,7 +9,7 @@ export const metadata: Metadata = {
     type: "website",
     locale: "en_US",
     url: "/projects",
-    title: "Projects",
+    title: "Projects | Furkan Cengiz",
     description: "Furkan Cengiz's projects with source code and live demos",
   },
   alternates: {
