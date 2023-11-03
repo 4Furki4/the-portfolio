@@ -23,7 +23,7 @@ export default function Intro({ className }: { className?: string }) {
       animate="show"
       variants={container}
       className={cn(
-        "h-full w-11/12 max-sm:mx-auto sm:w-full text-center my-auto p-10 z-10 pointer-events-none flex flex-col gap-6",
+        "h-full w-11/12 max-sm:mx-auto sm:w-full text-center my-auto p-10 z-10 pointer-events-none flex flex-col gap-6 sm:flex-col items-center justify-center",
         className
       )}
     >
