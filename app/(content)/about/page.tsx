@@ -30,7 +30,6 @@ export default async function page() {
   );
   const githubTableData: GithubContributionResponse =
     await githubTableDataResponse.json();
-  console.log(githubTableData);
   return (
     <About blurredImage={blurredImage} githubTableData={githubTableData} />
   );
