@@ -46,3 +46,24 @@ type Project = {
     github: string;
   }[];
 };
+
+type Year = {
+  year?: string;
+  total?: number;
+  range?: {
+    start?: string;
+    end?: string;
+  };
+};
+
+type contribution = {
+  date: string;
+  count: number;
+  color: string;
+  intensity: string;
+};
+
+type GithubContributionResponse = {
+  years: Year[];
+  contributions: contribution[];
+};
