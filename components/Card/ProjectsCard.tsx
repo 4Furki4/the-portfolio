@@ -15,7 +15,10 @@ const container = {
   show: (i: number) => ({
     opacity: 1,
     transition: {
-      delay: i * 0.2,
+      delay: i * 0.15 + 0.25,
+      spring: {
+        damping: 100,
+      },
     },
   }),
 };
