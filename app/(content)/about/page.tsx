@@ -8,12 +8,12 @@ export const metadata: Metadata = {
   openGraph: {
     type: "website",
     locale: "en_US",
-    url: "https://www.furkancengiz.software/about",
-    title: "About",
+    url: "/about",
+    title: "About | Furkan Cengiz",
     description: "About page containing contact information and a short bio.",
   },
   alternates: {
-    canonical: "/",
+    canonical: "/about",
   },
 };
 

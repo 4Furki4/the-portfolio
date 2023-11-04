@@ -44,7 +44,7 @@ export default function RootLayout({
           <NextThemesProvider attribute="class" defaultTheme="dark">
             <div
               aria-description="styling element"
-              className="min-h-screen flex flex-col justify-center"
+              className="min-h-screen flex flex-col"
             >
               <Navbar
                 path={path}
@@ -55,7 +55,7 @@ export default function RootLayout({
               <Analytics />
               {particles && (
                 <div
-                  aria-description="particle background"
+                  aria-hidden
                   className="w-full min-h-screen absolute top-0 left-0"
                 >
                   <BackgroundParticles />

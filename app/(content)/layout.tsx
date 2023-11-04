@@ -2,7 +2,10 @@ import { Metadata } from "next";
 import React from "react";
 import { GeistMono, GeistSans } from "geist/font";
 export const metadata: Metadata = {
-  title: "Furkan Cengiz",
+  title: {
+    template: "%s | Furkan Cengiz",
+    default: "Furkan Cengiz",
+  },
   description: "Furkan Cengiz's personal website and portfolio",
   verification: {
     google: "6MHP_v7v_6AanMTrqnMHnFGPcHO-IcUl2l3tphvqFnM",
@@ -16,7 +19,7 @@ export const metadata: Metadata = {
       index: true,
     },
   },
-  metadataBase: new URL("www.https://furkancengiz.software"),
+  metadataBase: new URL("https://www.furkancengiz.software"),
   alternates: {
     canonical: "/",
   },
@@ -40,7 +43,7 @@ export const metadata: Metadata = {
     locale: "en_US",
     url: "/",
     title: "Furkan Cengiz",
-    description: "Furkan Cengiz's personal website",
+    description: "Furkan Cengiz's personal website and portfolio",
   },
 };
 

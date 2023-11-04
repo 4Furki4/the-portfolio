@@ -23,7 +23,7 @@ export default function Intro({ className }: { className?: string }) {
       animate="show"
       variants={container}
       className={cn(
-        "h-full w-11/12 max-sm:mx-auto sm:w-full flex flex-col items-center justify-center text-center mb-auto p-10 md:my-auto z-10 pointer-events-none",
+        "h-full w-11/12 max-sm:mx-auto sm:w-full text-center my-auto p-10 z-10 pointer-events-none flex flex-col gap-6 sm:flex-col items-center justify-center",
         className
       )}
     >
@@ -35,13 +35,13 @@ export default function Intro({ className }: { className?: string }) {
       </motion.h1>
       <motion.h2
         variants={item}
-        className="text-fs-500 font-extrabold bg-clip-text text-transparent bg-gradient-to-r from-red-700 to-purple-900 bg-300% animate-flow-gradient my-6"
+        className="text-fs-500 font-extrabold bg-clip-text text-transparent bg-gradient-to-r from-red-700 to-purple-900 bg-300% animate-flow-gradient"
       >
         {"I'm a fullstack web developer."}
       </motion.h2>
       <motion.figure
         variants={item}
-        className="h-[50px] grid grid-cols-4 sm:flex gap-2"
+        className="grid grid-cols-4 items-center justify-center sm:flex gap-2"
       >
         <TechIcons />
       </motion.figure>
