@@ -75,6 +75,9 @@
     --ring: 212.7 26.8% 83.9%;
   }
 }
+html{
+  scroll-behavior: smooth;
+}
 .button {
     cursor: pointer;
     font-size: 1.5rem;
@@ -215,4 +218,5 @@
   text-align: left;
   fill: var(--color-fg-default);
 }
+
 
