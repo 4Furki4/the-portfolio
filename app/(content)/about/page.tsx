@@ -19,6 +19,5 @@ export const metadata: Metadata = {
 
 export default async function page() {
   const blurredImage = await getBase64("pics/furkan.png");
-  console.log("about");
   return <About blurredImage={blurredImage} />;
 }

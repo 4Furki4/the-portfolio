@@ -12,9 +12,5 @@ export default async function GithubContributionTable() {
   );
   const githubTableData: GithubContributionResponse =
     await githubTableDataResponse.json();
-
-  const wait = (ms: number) => new Promise((res) => setTimeout(res, ms));
-  await wait(3000);
-  console.log("githubTableData");
   return <GitHubTable githubTableData={githubTableData} />;
 }
