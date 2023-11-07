@@ -45,8 +45,8 @@ async function GuestBookEntries({ session }: { session: Session | null }) {
         ) : (
           <ul className="grid gap-2">
             {messages.map((message) => (
-              <li key={message.id} className="flex  items-center">
-                <p className={cn(messageStyle(message), "break-words")}>
+              <li key={message.id} className="flex items-center">
+                <p className={cn(messageStyle(message))}>
                   <span className="opacity-80">
                     {formatRelative(message.createdAt, new Date())} -
                   </span>{" "}
