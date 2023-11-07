@@ -2,7 +2,6 @@ import { getServerAuthSession } from "@/lib/auth";
 import React, { Suspense } from "react";
 import SigninForm from "./GuestBook/SigninForm";
 import GuestBookForm from "./GuestBook/GuestBookForm";
-import prisma from "@/db/db";
 import { Card, CardContent, CardHeader } from "../ui/card";
 import { formatRelative } from "date-fns";
 import { Session } from "next-auth";
@@ -10,6 +9,8 @@ import { Message } from "@prisma/client";
 import { cn } from "@/lib/utils";
 import { DeleteButton } from "./GuestBook/Buttons/DeleteButton";
 import { getMessages } from "@/db/actions/getMessages";
+import Image from "next/image";
+import waitingSpongebob from "@/public/gifs/waiting-spongebob.gif";
 
 export default async function GuestBook() {
   const session = await getServerAuthSession();
@@ -39,9 +40,18 @@ async function GuestBookEntries({ session }: { session: Session | null }) {
       <CardHeader className="text-fs-500 text-center">Guest Book</CardHeader>
       <CardContent>
         {messages.length === 0 ? (
-          <p className="text-center text-fs-300 italic">
-            There are no messages yet.
-          </p>
+          <>
+            <p className="text-center text-fs-300 italic">
+              There are no messages yet.
+            </p>
+            <Image
+              className="w-full h-auto object-cover rounded-sm"
+              src={waitingSpongebob}
+              alt="waiting spongebob"
+              sizes="(min-width: 768px) 90vw, 75vw"
+              quality={100}
+            />
+          </>
         ) : (
           <ul className="grid gap-2">
             {messages.map((message) => (
