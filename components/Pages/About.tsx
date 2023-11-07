@@ -3,7 +3,7 @@ import React, { Suspense } from "react";
 import { AboutMeParagraph } from "../About/AboutMeParagraph";
 import Education from "../About/Education";
 import GithubContributionTable from "../About/GithubContributionTable";
-import GuestBook from "../About/GuestBook";
+import GuestBook from "../About/GuestBook/GuestBook";
 export default function About({ blurredImage }: { blurredImage: string }) {
   return (
     <section

@@ -4,7 +4,7 @@ import { Button, Input } from "@nextui-org/react";
 import { signOut } from "next-auth/react";
 import React from "react";
 //@ts-ignore Warning: useFormStatus is now in canary. Remove the experimental_ prefix. The prefixed alias will be removed in an upcoming release.
-import { FormStatus, useFormStatus } from "react-dom";
+import { SubmitButton } from "./Buttons/SubmitButton";
 export default function GuestBookForm() {
   const formRef = React.useRef<HTMLFormElement>(null);
   return (
@@ -40,14 +40,5 @@ export default function GuestBookForm() {
         Log out
       </Button>
     </div>
-  );
-}
-
-function SubmitButton() {
-  const { pending }: FormStatus = useFormStatus();
-  return (
-    <Button isLoading={pending} type="submit">
-      {pending ? "Signing..." : "Sign"}
-    </Button>
   );
 }

@@ -1,30 +1,17 @@
-import { getServerAuthSession } from "@/lib/auth";
-import React, { Suspense } from "react";
-import SigninForm from "./GuestBook/SigninForm";
-import GuestBookForm from "./GuestBook/GuestBookForm";
-import { Card, CardContent, CardHeader } from "../ui/card";
+import { Card, CardContent, CardHeader } from "../../ui/card";
 import { formatRelative } from "date-fns";
 import { Session } from "next-auth";
 import { Message } from "@prisma/client";
 import { cn } from "@/lib/utils";
-import { DeleteButton } from "./GuestBook/Buttons/DeleteButton";
+import { DeleteButton } from "./Buttons/DeleteButton";
 import { getMessages } from "@/db/actions/getMessages";
 import Image from "next/image";
 import waitingSpongebob from "@/public/gifs/waiting-spongebob.gif";
-
-export default async function GuestBook() {
-  const session = await getServerAuthSession();
-  return (
-    <section className="flex flex-col gap-4">
-      {session ? <GuestBookForm /> : <SigninForm />}
-      <Suspense>
-        <GuestBookEntries session={session} />
-      </Suspense>
-    </section>
-  );
-}
-
-async function GuestBookEntries({ session }: { session: Session | null }) {
+export async function GuestBookEntries({
+  session,
+}: {
+  session: Session | null;
+}) {
   const messages = await getMessages();
   const messageStyle = (message: Message) => {
     if (session?.user?.email === message.email) {
