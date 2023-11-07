@@ -1,20 +1,20 @@
-const { nextui } = require('@nextui-org/react');
+const { nextui } = require("@nextui-org/react");
 
 /** @type {import('tailwindcss').Config} */
 module.exports = {
   darkMode: ["class"],
   content: [
-    './pages/**/*.{ts,tsx}',
-    './components/**/*.{ts,tsx}',
-    './app/**/*.{ts,tsx}',
-    './src/**/*.{ts,tsx}',
-    "./node_modules/@nextui-org/theme/dist/**/*.{js,ts,jsx,tsx}"
+    "./pages/**/*.{ts,tsx}",
+    "./components/**/*.{ts,tsx}",
+    "./app/**/*.{ts,tsx}",
+    "./src/**/*.{ts,tsx}",
+    "./node_modules/@nextui-org/theme/dist/**/*.{js,ts,jsx,tsx}",
   ],
   theme: {
-    "backgroundSize": {
-      "auto": "auto",
-      "cover": "cover",
-      "contain": "contain",
+    backgroundSize: {
+      auto: "auto",
+      cover: "cover",
+      contain: "contain",
       "300%": "300%",
     },
     container: {
@@ -25,21 +25,24 @@ module.exports = {
       },
     },
     extend: {
-      transitionProperty:{
+      transitionProperty: {
         "shadow-bg": "box-shadow, background-color",
       },
       backdropBlur: {
-        'xs': '2px',
+        xs: "2px",
       },
-      fontSize:{
-        'fs-300': "var(--fs-300)",
-        'fs-400': "var(--fs-400)",
-        'fs-500': "var(--fs-500)",
-        'fs-600': "var(--fs-600)",
-        'fs-700': "var(--fs-700)",
-        'fs-800': "var(--fs-800)",
-        'fs-900': "var(--fs-900)",
-        'fs-1000': "var(--fs-1000)",
+      fontSize: {
+        "fs--100": "var(--fs--100)",
+        "fs-100": "var(--fs-100)",
+        "fs-200": "var(--fs-200)",
+        "fs-300": "var(--fs-300)",
+        "fs-400": "var(--fs-400)",
+        "fs-500": "var(--fs-500)",
+        "fs-600": "var(--fs-600)",
+        "fs-700": "var(--fs-700)",
+        "fs-800": "var(--fs-800)",
+        "fs-900": "var(--fs-900)",
+        "fs-1000": "var(--fs-1000)",
       },
       colors: {
         border: "hsl(var(--border))",
@@ -94,7 +97,7 @@ module.exports = {
           "0%": { backgroundPosition: "0% 50%" },
           "50%": { backgroundPosition: "100% 50%" },
           "100%": { backgroundPosition: "0% 50%" },
-        }
+        },
       },
       animation: {
         "accordion-down": "accordion-down 0.2s ease-out",
@@ -104,4 +107,4 @@ module.exports = {
     },
   },
   plugins: [require("tailwindcss-animate"), nextui()],
-}
+};
