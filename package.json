@@ -7,7 +7,7 @@
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
-    "postbuild": "next-sitemap"
+    "postbuild": "next-sitemap && prisma generate"
   },
   "dependencies": {
     "@nextui-org/react": "^2.1.13",
