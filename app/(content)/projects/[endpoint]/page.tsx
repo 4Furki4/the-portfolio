@@ -1,6 +1,6 @@
 import React from "react";
 import projectsData from "@/db/static/projects";
-import ProjectCard from "@/components/Card/ProjectCard";
+import ProjectCard from "@/Pages/Projects/Cards/ProjectCard";
 import { Metadata } from "next";
 import { getBase64 } from "@/lib/getBase64ImageUrl";
 export function generateMetadata({

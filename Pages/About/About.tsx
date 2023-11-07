@@ -1,9 +1,9 @@
 import Image from "next/image";
 import React, { Suspense } from "react";
-import { AboutMeParagraph } from "../About/AboutMeParagraph";
-import Education from "../About/Education";
-import GithubContributionTable from "../About/GithubContributionTable";
-import GuestBook from "../About/GuestBook/GuestBook";
+import { AboutMeParagraph } from "./AboutMeParagraph";
+import Education from "./Education";
+import GithubContributionTable from "./GithubContributionTable";
+import GuestBook from "./GuestBook/GuestBook";
 export default function About({ blurredImage }: { blurredImage: string }) {
   return (
     <section

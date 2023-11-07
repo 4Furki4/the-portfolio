@@ -1,7 +1,7 @@
 import React from "react";
-import Intro from "@/components/Pages/Intro";
 import { Metadata } from "next";
 import { GeistSans } from "geist/font";
+import Home from "@/Pages/Home/Home";
 export const metadata: Metadata = {
   title: "Furkan Cengiz",
   description: "Furkan Cengiz's personal website and portfolio",
@@ -46,5 +46,5 @@ export const metadata: Metadata = {
 };
 
 export default function Page() {
-  return <Intro className={`${GeistSans.className}`} />;
+  return <Home className={`${GeistSans.className}`} />;
 }

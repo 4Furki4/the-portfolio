@@ -1,7 +1,7 @@
 import React from "react";
 import projectsData from "@/db/static/projects";
-import ProjectCards from "@/components/Card/ProjectsCard";
 import { Metadata } from "next";
+import ProjectCards from "@/Pages/Projects/Cards/ProjectsCard";
 export const metadata: Metadata = {
   title: "Projects",
   description: "Furkan Cengiz's projects with source code and live demos",

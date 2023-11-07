@@ -1,5 +1,5 @@
-import About from "@/components/Pages/About";
 import { getBase64 } from "@/lib/getBase64ImageUrl";
+import About from "@/Pages/About/About";
 import { Metadata } from "next";
 import React from "react";
 export const metadata: Metadata = {

@@ -2,7 +2,7 @@
 import { motion } from "framer-motion";
 import { useTheme } from "next-themes";
 import { MutableRefObject, useEffect, useMemo, useRef } from "react";
-import { Card, CardContent, CardHeader, CardTitle } from "../ui/card";
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { drawContributions } from "github-contributions-canvas";
 
 const hidden = {

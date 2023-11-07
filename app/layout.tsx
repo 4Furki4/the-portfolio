@@ -17,7 +17,6 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   useEffect(() => {
-    console.log(localStorage);
     const particles = localStorage.getItem("particles");
     if (particles === null) {
       setParticles(true);

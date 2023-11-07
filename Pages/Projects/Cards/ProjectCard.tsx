@@ -16,7 +16,7 @@ import {
   useDisclosure,
 } from "@nextui-org/react";
 import { CheckCircle, ExternalLink, HardHat, X } from "lucide-react";
-import Carousel from "../Carousel";
+import Carousel from "@/components/Carousel";
 import Image from "next/image";
 import { Accordion, AccordionItem } from "@nextui-org/react";
 import Link from "next/link";

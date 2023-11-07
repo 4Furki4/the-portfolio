@@ -6,7 +6,7 @@ import {
   CardFooter,
   CardHeader,
   CardTitle,
-} from "../ui/card";
+} from "@/components/ui/card";
 
 import { format } from "date-fns";
 import { motion } from "framer-motion";
