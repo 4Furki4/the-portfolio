@@ -1,7 +1,9 @@
+"use client"
 import React, { useCallback } from "react";
 import Particles from "react-particles";
 import particlesConfig from "./config";
 import { loadSlim } from "tsparticles-slim";
+import { useParticleContext } from "@/context/ParticleContext";
 export default function BackgroundParticles() {
   const particlesInit = useCallback(async (engine) => {
     console.log(engine);
@@ -15,14 +17,17 @@ export default function BackgroundParticles() {
   const particlesLoaded = useCallback(async (container) => {
     await console.log(container);
   }, []);
+  const {particles, handleParticles} = useParticleContext()
 
   return (
-    <Particles
+    particles && (
+      <Particles
       id="tsparticles"
       init={particlesInit}
       loaded={particlesLoaded}
       style={{ "minHeight": "100dvh", "width": "100%" }}
       options={particlesConfig}
     />
+    )
   );
 }

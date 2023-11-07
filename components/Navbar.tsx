@@ -1,3 +1,4 @@
+"use client";
 import {
   Navbar as NextUINavbar,
   NavbarContent,
@@ -10,16 +11,10 @@ import Link from "next/link";
 import React from "react";
 import GlowingButton from "./buttons/GlowingButton";
 import ThemeButton from "./buttons/ThemeButton";
+import { useParticleContext } from "@/context/ParticleContext";
+import { usePathname } from "next/navigation";
 
-export default function Navbar({
-  path,
-  particles,
-  setParticles,
-}: {
-  path: string;
-  particles: boolean;
-  setParticles: () => void;
-}) {
+export default function Navbar() {
   const container = {
     hide: {
       y: -100,
@@ -48,6 +43,8 @@ export default function Navbar({
     },
   };
   const [isMenuOpen, setIsMenuOpen] = React.useState(false);
+  const path = usePathname();
+  const { particles, handleParticles } = useParticleContext();
   return (
     <NextUINavbar
       isMenuOpen={isMenuOpen}
@@ -88,7 +85,7 @@ export default function Navbar({
             </Link>
           </motion.li>
           <motion.li variants={item}>
-            <GlowingButton onClick={() => setParticles()}>
+            <GlowingButton onClick={() => handleParticles(!particles)}>
               {particles ? "Disable Particles" : "Enable Particles"}
             </GlowingButton>
           </motion.li>
@@ -142,7 +139,7 @@ export default function Navbar({
           <GlowingButton
             onClick={() => {
               setIsMenuOpen(false);
-              setParticles();
+              handleParticles(!particles);
             }}
           >
             {particles ? "Disable Particles" : "Enable Particles"}

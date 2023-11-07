@@ -49,7 +49,7 @@ export default async function Project({
 
   const blurredImage = await getBase64(project.images[0].src);
   return (
-    <section className="max-w-5xl mx-auto p-4">
+    <section className="max-w-5xl mx-auto p-4 z-20">
       <ProjectCard project={project} blurredImage={blurredImage} />
     </section>
   );

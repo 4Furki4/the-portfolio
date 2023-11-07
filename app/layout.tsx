@@ -1,69 +1,82 @@
-"use client";
 import "./globals.css";
 import msClarity from "../lib/mClarity";
 import BackgroundParticles from "@/components/particles/BackgroundParticles";
-import { NextUIProvider } from "@nextui-org/react";
-import React, { useEffect } from "react";
-import { usePathname } from "next/navigation";
+import React from "react";
 import Footer from "@/components/Footer";
-import { ThemeProvider as NextThemesProvider } from "next-themes";
 import Navbar from "@/components/Navbar";
 import { Analytics } from "@vercel/analytics/react";
 import Script from "next/script";
-
+import Providers from "@/context/Providers";
+import { Metadata } from "next";
+export const metadata: Metadata = {
+  title: {
+    template: "%s | Furkan Cengiz",
+    default: "Furkan Cengiz",
+  },
+  description: "Furkan Cengiz's personal website and portfolio",
+  verification: {
+    google: "6MHP_v7v_6AanMTrqnMHnFGPcHO-IcUl2l3tphvqFnM",
+  },
+  robots: {
+    index: true,
+    follow: true,
+    nocache: true,
+    googleBot: {
+      follow: true,
+      index: true,
+    },
+  },
+  metadataBase: new URL("https://www.furkancengiz.software"),
+  alternates: {
+    canonical: "/",
+  },
+  keywords: [
+    "Furkan Cengiz",
+    "Furkan Cengiz Portfolio",
+    "Furkan Cengiz Website",
+    "Portfolio",
+    "Furki",
+    "Furki4_4",
+    "Developer",
+    "Software Engineer",
+    "Software Developer",
+    "Web Developer",
+    "Full Stack Developer",
+    "Frontend Developer",
+    "Backend Developer",
+  ],
+  openGraph: {
+    type: "website",
+    locale: "en_US",
+    url: "/",
+    title: "Furkan Cengiz",
+    description: "Furkan Cengiz's personal website and portfolio",
+  },
+};
 export default function RootLayout({
   children,
 }: {
   children: React.ReactNode;
 }) {
-  useEffect(() => {
-    const particles = localStorage.getItem("particles");
-    if (particles === null) {
-      setParticles(true);
-      return;
-    }
-    if (particles === "true") {
-      setParticles(true);
-      return;
-    }
-    setParticles(false);
-  }, []);
-  const [particles, setParticles] = React.useState<boolean>(true);
-  function handleParticles() {
-    localStorage.setItem("particles", particles ? "false" : "true");
-    setParticles((prev) => !prev);
-  }
-  const path = usePathname();
   return (
     <html lang="en" className="dark">
       <body
-        className={`w-full min-h-screen transition-colors duration-300 text-foreground bg-background relative`}
+        className={`w-full transition-colors duration-300 text-foreground bg-background relative min-h-screen flex flex-col`}
       >
-        <NextUIProvider>
-          <NextThemesProvider attribute="class" defaultTheme="dark">
+        <Providers>
+          <Navbar />
+          {children}
+          <Analytics />
+          {
             <div
-              aria-description="styling element"
-              className="min-h-screen flex flex-col"
+              aria-hidden
+              className="w-full min-h-screen absolute top-0 left-0"
             >
-              <Navbar
-                path={path}
-                particles={particles}
-                setParticles={handleParticles}
-              />
-              {children}
-              <Analytics />
-              {particles && (
-                <div
-                  aria-hidden
-                  className="w-full min-h-screen absolute top-0 left-0"
-                >
-                  <BackgroundParticles />
-                </div>
-              )}
-              <Footer />
+              <BackgroundParticles />
             </div>
-          </NextThemesProvider>
-        </NextUIProvider>
+          }
+          <Footer />
+        </Providers>
       </body>
       <Script id="microsoft-clarity">{msClarity}</Script>
     </html>

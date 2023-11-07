@@ -7,7 +7,7 @@ import GuestBook from "./GuestBook/GuestBook";
 export default function About({ blurredImage }: { blurredImage: string }) {
   return (
     <section
-      className="relative z-40 my-4 sm:my-16 mx-auto max-w-6xl p-6 backdrop-blur-xs grid gap-8 break-words hyphens-auto"
+      className="relative z-20 my-4 sm:my-16 mx-auto max-w-6xl p-6 backdrop-blur-xs grid gap-8 break-words hyphens-auto"
       style={{ wordBreak: "break-word" }}
     >
       <figure>
