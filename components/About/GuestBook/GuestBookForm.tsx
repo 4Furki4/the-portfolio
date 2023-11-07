@@ -7,8 +7,6 @@ import React from "react";
 import { FormStatus, useFormStatus } from "react-dom";
 export default function GuestBookForm() {
   const formRef = React.useRef<HTMLFormElement>(null);
-  const inputRef = React.useRef<HTMLInputElement>(null);
-  const { pending }: FormStatus = useFormStatus();
   return (
     <div className="flex flex-col gap-4">
       <form
@@ -20,19 +18,15 @@ export default function GuestBookForm() {
         }}
       >
         <Input
-          ref={inputRef}
           name="entry"
           variant="underlined"
           type="text"
           isRequired
-          isDisabled={pending}
           className="w-full"
           aria-label="Leave your message..."
-          placeholder="Leave your message.."
+          placeholder="Leave your message..."
         />
-        <Button isLoading={pending} type="submit">
-          Submit
-        </Button>
+        <SubmitButton />
       </form>
       <Button
         className="hover:bg-background"
@@ -43,8 +37,17 @@ export default function GuestBookForm() {
           })
         }
       >
-        Sign out
+        Log out
       </Button>
     </div>
+  );
+}
+
+function SubmitButton() {
+  const { pending }: FormStatus = useFormStatus();
+  return (
+    <Button isLoading={pending} type="submit">
+      {pending ? "Signing..." : "Sign"}
+    </Button>
   );
 }
