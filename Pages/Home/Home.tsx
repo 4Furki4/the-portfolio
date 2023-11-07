@@ -1,9 +1,8 @@
 "use client";
 import React from "react";
 import { motion } from "framer-motion";
-import TechIcons from "../TechIcons";
-import { cn } from "@/lib/utils";
-export default function Intro({ className }: { className?: string }) {
+import TechIcons from "@/Pages/Home/TechIcons";
+export default function Home({ className }: { className?: string }) {
   const container = {
     hidden: { opacity: 0 },
     show: {
@@ -22,10 +21,7 @@ export default function Intro({ className }: { className?: string }) {
       initial="hidden"
       animate="show"
       variants={container}
-      className={cn(
-        "h-full w-11/12 max-sm:mx-auto sm:w-full text-center my-auto p-10 z-10 pointer-events-none flex flex-col gap-6 sm:flex-col items-center justify-center",
-        className
-      )}
+      className={`flex flex-col my-auto h-full w-11/12 max-sm:mx-auto sm:w-full text-center p-10 z-10 pointer-events-none gap-6 items-center justify-center ${className}`}
     >
       <motion.h1
         variants={item}

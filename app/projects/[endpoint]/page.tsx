@@ -1,6 +1,6 @@
 import React from "react";
 import projectsData from "@/db/static/projects";
-import ProjectCard from "@/components/Card/ProjectCard";
+import ProjectCard from "@/Pages/Projects/Cards/ProjectCard";
 import { Metadata } from "next";
 import { getBase64 } from "@/lib/getBase64ImageUrl";
 export function generateMetadata({
@@ -49,7 +49,7 @@ export default async function Project({
 
   const blurredImage = await getBase64(project.images[0].src);
   return (
-    <section className="max-w-5xl mx-auto p-4">
+    <section className="max-w-5xl mx-auto p-4 z-20">
       <ProjectCard project={project} blurredImage={blurredImage} />
     </section>
   );

@@ -1,11 +1,15 @@
 "use client";
 import addGuestEntry from "@/db/actions/addGuestEntry";
-import { Button, Input } from "@nextui-org/react";
-import { signOut } from "next-auth/react";
+import { Input } from "@nextui-org/react";
 import React from "react";
 //@ts-ignore Warning: useFormStatus is now in canary. Remove the experimental_ prefix. The prefixed alias will be removed in an upcoming release.
 import { SubmitButton } from "./Buttons/SubmitButton";
-export default function GuestBookForm() {
+import { Session } from "next-auth";
+export default function GuestBookForm({
+  session,
+}: {
+  session: Session | null;
+}) {
   const formRef = React.useRef<HTMLFormElement>(null);
   return (
     <div className="flex flex-col gap-4">
@@ -22,23 +26,13 @@ export default function GuestBookForm() {
           variant="underlined"
           type="text"
           isRequired
+          disabled={!session?.user}
           className="w-full"
           aria-label="Leave your message..."
           placeholder="Leave your message..."
         />
-        <SubmitButton />
+        <SubmitButton session={session} />
       </form>
-      <Button
-        className="hover:bg-background"
-        variant="ghost"
-        onPress={() =>
-          signOut({
-            callbackUrl: "/about#guestbook",
-          })
-        }
-      >
-        Log out
-      </Button>
     </div>
   );
 }
