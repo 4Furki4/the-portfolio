@@ -10,6 +10,7 @@
 - Used [Tailwind](https://tailwindcss.com/) for styling
 - Implemented [ts-particles](https://github.com/tsparticles/tsparticles) for generating amazing and interactional background
 - Used somewhat [shadcn/ui](https://ui.shadcn.com/) for the education cards and [NextUI](https://nextui.org/docs/components/navbar#controlled-menu) library for the navbar.
+- Tried new Next.js and React features like useFormStatus and form actions.
 
 
  ## Planned Features to be Added.
