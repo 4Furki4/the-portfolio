@@ -26,6 +26,9 @@ module.exports = {
       },
     },
     extend: {
+      minHeight: {
+        dscreen: "100dvh",
+      },
       transitionProperty: {
         "shadow-bg": "box-shadow, background-color",
       },
