@@ -86,13 +86,13 @@ export default function Carousel({
             className="rounded-full p-2 bg-gray-100 dark:bg-gray-800 hover:scale-110 transition-transform duration-300 absolute top-1/2 left-2 transform -translate-y-1/2 cursor-pointer"
             onClick={() => setPage([page - 1, -1])}
           >
-            <ArrowLeft size={18} />
+            <ArrowLeft aria-label="left arrow icon" size={18} />
           </button>
           <button
             className="rounded-full p-2 bg-gray-100 dark:bg-gray-800 hover:scale-110 transition-transform duration-300 absolute top-1/2 right-2 transform -translate-y-1/2 cursor-pointer"
             onClick={() => setPage([page + 1, 1])}
           >
-            <ArrowRight size={18} />
+            <ArrowRight aria-label="right arrow icon" size={18} />
           </button>
         </motion.div>
       </AnimatePresence>
