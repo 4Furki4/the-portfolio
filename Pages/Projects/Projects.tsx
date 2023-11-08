@@ -1,28 +1,14 @@
 import React from "react";
+import ProjectCards from "./Cards/ProjectsCard";
 import projectsData from "@/db/static/projects";
-import { Metadata } from "next";
-import ProjectCards from "@/Pages/Projects/Cards/ProjectsCard";
-export const metadata: Metadata = {
-  title: "Projects",
-  description: "Furkan Cengiz's projects with source code and live demos",
-  openGraph: {
-    type: "website",
-    locale: "en_US",
-    url: "/projects",
-    title: "Projects | Furkan Cengiz",
-    description: "Furkan Cengiz's projects with source code and live demos",
-  },
-  alternates: {
-    canonical: "/projects",
-  },
-};
-
-export default async function Projects() {
+import { useTranslations } from "next-intl";
+export default function Projects() {
+  const t = useTranslations("Projects");
   return (
     <>
       <section>
         <h1 className="text-fs-700 text-center font-extrabold bg-clip-text text-transparent bg-gradient-to-r from-red-700 to-purple-900 bg-300% animate-flow-gradient my-4">
-          {"Projects Previews"}
+          {t("title")}
         </h1>
       </section>
       <div

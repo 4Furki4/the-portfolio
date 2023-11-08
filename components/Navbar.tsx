@@ -12,7 +12,10 @@ import React from "react";
 import GlowingButton from "./buttons/GlowingButton";
 import ThemeButton from "./buttons/ThemeButton";
 import { useParticleContext } from "@/context/ParticleContext";
-import { usePathname } from "next/navigation";
+import { useLocale } from "next-intl";
+import { usePathname, Link as NextIntlLink, useRouter } from "@/navigation";
+import projects from "@/db/static/projects";
+import { useParams } from "next/navigation";
 
 export default function Navbar() {
   const container = {
@@ -43,8 +46,10 @@ export default function Navbar() {
     },
   };
   const [isMenuOpen, setIsMenuOpen] = React.useState(false);
-  const path = usePathname();
+  const pathname = usePathname();
+  const router = useRouter();
   const { particles, handleParticles } = useParticleContext();
+  const locale = useLocale();
   return (
     <NextUINavbar
       isMenuOpen={isMenuOpen}
@@ -66,20 +71,22 @@ export default function Navbar() {
         <NavbarContent className="w-full hidden md:flex" justify="center">
           <motion.li variants={item}>
             <Link tabIndex={-1} className="block w-full" href="/">
-              <GlowingButton selectedPath={path === "/"}>Home</GlowingButton>
+              <GlowingButton selectedPath={pathname === "/"}>
+                Home
+              </GlowingButton>
             </Link>
           </motion.li>
 
           <motion.li variants={item}>
             <Link tabIndex={-1} className="block w-full" href="/projects">
-              <GlowingButton selectedPath={path === "/projects"}>
+              <GlowingButton selectedPath={pathname === "/projects"}>
                 Projects
               </GlowingButton>
             </Link>
           </motion.li>
           <motion.li variants={item}>
             <Link tabIndex={-1} className="block w-full" href="/about">
-              <GlowingButton selectedPath={path === "/about"}>
+              <GlowingButton selectedPath={pathname === "/about"}>
                 About
               </GlowingButton>
             </Link>
@@ -91,6 +98,26 @@ export default function Navbar() {
           </motion.li>
           <motion.li variants={item}>
             <ThemeButton />
+          </motion.li>
+          <motion.li variants={item}>
+            <GlowingButton
+              onClick={() => {
+                router.replace(
+                  {
+                    pathname,
+                    // TypeScript will validate that only known `params` are used in combination
+                    // with a given `pathname`. Since the two will always match for the current
+                    // route, we can skip runtime checks.
+                    params: {
+                      endpoint: projects.map((project) => project.endpoint),
+                    },
+                  },
+                  { locale: locale === "en" ? "tr" : "en" }
+                );
+              }}
+            >
+              {locale}
+            </GlowingButton>
           </motion.li>
         </NavbarContent>
       </motion.div>
@@ -106,7 +133,7 @@ export default function Navbar() {
               setIsMenuOpen(false);
             }}
           >
-            <GlowingButton selectedPath={path === "/"}>Home</GlowingButton>
+            <GlowingButton selectedPath={pathname === "/"}>Home</GlowingButton>
           </Link>
         </NavbarMenuItem>
         <NavbarMenuItem>
@@ -117,7 +144,7 @@ export default function Navbar() {
               setIsMenuOpen(false);
             }}
           >
-            <GlowingButton selectedPath={path === "/projects"}>
+            <GlowingButton selectedPath={pathname === "/projects"}>
               Projects
             </GlowingButton>
           </Link>
@@ -130,7 +157,7 @@ export default function Navbar() {
               setIsMenuOpen(false);
             }}
           >
-            <GlowingButton selectedPath={path === "/about"}>
+            <GlowingButton selectedPath={pathname === "/about"}>
               About
             </GlowingButton>
           </Link>

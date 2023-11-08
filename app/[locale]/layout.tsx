@@ -1,5 +1,5 @@
-import "./globals.css";
-import msClarity from "../lib/mClarity";
+import "../globals.css";
+import msClarity from "@/lib/mClarity";
 import BackgroundParticles from "@/components/particles/BackgroundParticles";
 import React from "react";
 import Footer from "@/components/Footer";
@@ -8,6 +8,8 @@ import { Analytics } from "@vercel/analytics/react";
 import Script from "next/script";
 import Providers from "@/context/Providers";
 import { Metadata } from "next";
+import { notFound } from "next/navigation";
+import { unstable_setRequestLocale } from "next-intl/server";
 export const metadata: Metadata = {
   title: {
     template: "%s | Furkan Cengiz",
@@ -53,11 +55,23 @@ export const metadata: Metadata = {
     description: "Furkan Cengiz's personal website and portfolio",
   },
 };
-export default function RootLayout({
+const locales = ["en", "tr"];
+
+export function generateStaticParams() {
+  return locales.map((locale) => ({ locale }));
+}
+
+export default async function RootLayout({
   children,
+  params: { locale },
 }: {
   children: React.ReactNode;
+  params: { locale: string };
 }) {
+  const isValidLocale = locales.some((cur) => cur === locale);
+  if (!isValidLocale) notFound();
+
+  unstable_setRequestLocale(locale);
   return (
     <html lang="en" className="dark">
       <body
