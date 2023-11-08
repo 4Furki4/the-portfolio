@@ -27,7 +27,7 @@
     "eslint": "8.45.0",
     "eslint-config-next": "13.4.12",
     "framer-motion": "^10.16.4",
-    "geist": "^1.0.0",
+    "geist": "latest",
     "github-contributions-canvas": "^0.7.0",
     "lucide-react": "^0.268.0",
     "next": "^14.0.1",
