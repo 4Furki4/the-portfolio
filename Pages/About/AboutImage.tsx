@@ -1,13 +1,12 @@
-import { getBase64 } from "@/lib/getBase64ImageUrl";
+import furkanpicture from "@/public/pics/furkan.png";
 import Image from "next/image";
 import React from "react";
 
-export default async function AboutImage() {
-  const blurredImage = await getBase64("pics/furkan.png");
+export default function AboutImage() {
   return (
     <figure>
       <Image
-        src={"/pics/furkan.png"}
+        src={furkanpicture}
         width={3066}
         height={1720}
         alt={"Furkan Cengiz"}
@@ -15,7 +14,6 @@ export default async function AboutImage() {
         quality={100}
         className="rounded-lg"
         placeholder="blur"
-        blurDataURL={blurredImage}
       />
     </figure>
   );
