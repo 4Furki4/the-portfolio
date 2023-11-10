@@ -8,6 +8,7 @@ import { Analytics } from "@vercel/analytics/react";
 import Script from "next/script";
 import Providers from "@/context/Providers";
 import { Metadata } from "next";
+import { GeistSans } from "geist/font/sans";
 export const metadata: Metadata = {
   title: {
     template: "%s | Furkan Cengiz",
@@ -59,9 +60,9 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en" className="dark">
+    <html lang="en" className={`${GeistSans.className} dark`}>
       <body
-        className={`w-full transition-colors duration-300 text-foreground bg-background relative min-h-screen flex flex-col`}
+        className={`w-full transition-colors duration-300 text-foreground bg-background relative min-h-dscreen flex flex-col`}
       >
         <Providers>
           <Navbar />
@@ -70,7 +71,7 @@ export default function RootLayout({
           {
             <div
               aria-hidden
-              className="w-full min-h-screen absolute top-0 left-0"
+              className="w-full min-h-dscreen absolute top-0 left-0"
             >
               <BackgroundParticles />
             </div>
