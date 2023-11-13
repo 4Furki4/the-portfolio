@@ -6,7 +6,6 @@ const particlesConfig: ISourceOptions = {
   fullScreen: {
     enable: true,
   },
-  smooth: true,
   particles: {
     number: {
       value: 40,
