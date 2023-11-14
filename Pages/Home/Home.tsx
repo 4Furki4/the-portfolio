@@ -2,6 +2,7 @@
 import React from "react";
 import { motion } from "framer-motion";
 import TechIcons from "@/Pages/Home/TechIcons";
+import Link from "next/link";
 export default function Home({ className }: { className?: string }) {
   const container = {
     hidden: { opacity: 0 },
@@ -16,6 +17,7 @@ export default function Home({ className }: { className?: string }) {
     hidden: { opacity: 0, y: 50 },
     show: { opacity: 1, y: 0 },
   };
+  const MotionedLink = motion(Link);
   return (
     <motion.main
       initial="hidden"
@@ -41,6 +43,13 @@ export default function Home({ className }: { className?: string }) {
       >
         <TechIcons />
       </motion.figure>
+      <MotionedLink
+        className="sm:hidden text-fs-400 font-extrabold bg-clip-text text-transparent bg-gradient-to-r from-red-700 to-purple-900 bg-300% animate-flow-gradient pointer-events-auto"
+        variants={item}
+        href={"/projects"}
+      >
+        See my projects
+      </MotionedLink>
     </motion.main>
   );
 }
