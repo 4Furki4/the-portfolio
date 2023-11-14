@@ -7,21 +7,12 @@ import {
   Divider,
 } from "@nextui-org/react";
 import React from "react";
-import {
-  Modal,
-  ModalContent,
-  ModalBody,
-  ModalFooter,
-  Button,
-  useDisclosure,
-} from "@nextui-org/react";
 import { CheckCircle, ExternalLink, HardHat, X } from "lucide-react";
-import Carousel from "@/components/Carousel";
 import Image from "next/image";
 import { Accordion, AccordionItem } from "@nextui-org/react";
 import Link from "next/link";
-import { motion } from "framer-motion";
 import { notFound } from "next/navigation";
+import Fancybox from "@/components/FancyBox";
 
 export default function ProjectCard({
   project,
@@ -30,23 +21,12 @@ export default function ProjectCard({
   project: Project;
   blurredImage: string;
 }) {
-  const { isOpen, onOpen, onOpenChange } = useDisclosure();
   if (!project) notFound();
   return (
     <Card className="bg-background">
       <CardHeader className="relative flex-col sm:flex-row items-start sm:items-center">
-        <motion.h1
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          className="text-fs-500 font-bold"
-        >
-          {project.title}
-        </motion.h1>
-        <motion.div
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          className="sm:ml-auto sm:mr-4 pl-1 sm:pl-0"
-        >
+        <h1 className="text-fs-500 font-bold">{project.title}</h1>
+        <div className="sm:ml-auto sm:mr-4 pl-1 sm:pl-0">
           {project.status === "completed" ? (
             <p className="text-success flex gap-2">
               <span>Completed</span>
@@ -60,57 +40,47 @@ export default function ProjectCard({
           ) : project.status === "planned" ? (
             <span className="text-danger">Planned</span>
           ) : null}
-        </motion.div>
+        </div>
       </CardHeader>
-      <CardBody className="rounded-lg relative min-h-[200px] sm:min-h-[350px] md:min-h-[500px] overflow-hidden z-50 gap-4">
-        <Image
-          onClick={onOpen}
-          src={project.images[0].src}
-          alt={project.images[0].src}
-          width={1920}
-          height={1080}
-          quality={100}
-          priority
-          loading="eager"
-          sizes="100vw"
-          className="rounded-lg cursor-pointer"
-          placeholder="blur"
-          blurDataURL={blurredImage}
-        />
-        <Button color="primary" variant="light" onPress={onOpen}>
-          View Gallery
-        </Button>
-        <Modal
-          hideCloseButton
-          size="full"
-          isOpen={isOpen}
-          onOpenChange={onOpenChange}
+      <CardBody>
+        <Fancybox
+          options={{
+            Carousel: {
+              infinite: true,
+            },
+          }}
         >
-          <ModalContent className="overflow-hidden">
-            {(onClose) => (
-              <>
-                <ModalBody>
-                  <Carousel className="z-[99]" images={project.images} />
-                </ModalBody>
-                <ModalFooter className="z-[99]">
-                  <button
-                    onClick={onClose}
-                    className="absolute top-0 right-0 sm:right-10 p-2 text-danger bg-danger/10 hover:bg-danger/30 rounded-full"
-                  >
-                    <X size={24} />
-                  </button>
-                </ModalFooter>
-              </>
-            )}
-          </ModalContent>
-        </Modal>
-        <motion.p
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          className="text-fs-300"
-        >
-          {project.description}
-        </motion.p>
+          <>
+            <Image
+              data-fancybox-trigger="gallery"
+              className="cursor-pointer mb-4"
+              src={project.images[0].src}
+              alt={project.images[0].alt}
+              width={1920}
+              height={1080}
+              placeholder="blur"
+              blurDataURL={blurredImage}
+            />
+            <div
+              style={{
+                display: project.images.length > 1 ? "flex" : "none",
+              }}
+              className="gap-4 items-center grid grid-cols-2 sm-flex sm:flex-nowrap"
+            >
+              {project.images.map((image, index) => (
+                <a key={index} data-fancybox="gallery" href={image.src}>
+                  <Image
+                    src={image.src}
+                    alt={image.alt}
+                    width={1920}
+                    height={1080}
+                  />
+                </a>
+              ))}
+            </div>
+          </>
+        </Fancybox>
+        <p className="text-fs-300 my-4">{project.description}</p>
         {/* @ts-ignore which causes nonsense error in Accordion component when I render an AccordionItem conditionally */}
         <Accordion variant="bordered" selectionMode="multiple">
           <AccordionItem title={"Tech Stack"}>
@@ -155,7 +125,12 @@ export default function ProjectCard({
             rel="noopener noreferrer"
             className="text-fs-300 z-50 flex items-center gap-1"
           >
-            Visit Source Code on GitHub <ExternalLink size={16} />
+            {project.endpoint === "Turkish-Dictionary" ? (
+              "Contribute to the Project"
+            ) : (
+              <>{"Visit Source Code on GitHub "}</>
+            )}
+            <ExternalLink size={16} />
           </Link>
         ) : null}
         {project.demoLink ? (
