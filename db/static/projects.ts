@@ -266,7 +266,7 @@ const projects: Project[] = [
         src: "/pics/projects/turkish-dictionary/preview-search.png",
       },
     ],
-    repoLink: "",
+    repoLink: "https://github.com/4Furki4/Turkish-Dictionary",
     demoLink: "https://turkish-dictionary-chi.vercel.app",
     status: "in-progress",
     techStack: [
