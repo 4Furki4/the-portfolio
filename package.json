@@ -10,6 +10,7 @@
     "postbuild": "next-sitemap"
   },
   "dependencies": {
+    "@fancyapps/ui": "^5.0.27",
     "@nextui-org/react": "^2.1.13",
     "@plaiceholder/next": "^3.0.0",
     "@prisma/client": "^5.5.2",
