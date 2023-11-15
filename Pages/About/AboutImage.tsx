@@ -7,8 +7,6 @@ export default function AboutImage() {
     <figure>
       <Image
         src={furkanpicture}
-        width={3066}
-        height={1720}
         alt={"Furkan Cengiz"}
         sizes="(min-width: 768px) 90vw, 75vw"
         quality={100}
