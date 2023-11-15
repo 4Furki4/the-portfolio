@@ -15,7 +15,7 @@
 - Blurred Loading Image data URLs generated using [plaiceholder]([url](https://plaiceholder.co/))
 - Carousels built with [fancybox](https://fancyapps.com/)
 - Capturing user experience using [Clarity](https://clarity.microsoft.com/)
-
+- Sitemap is generated with [next-sitemap](https://www.npmjs.com/package/next-sitemap)
  ## Planned Features to be Added.
 
  - Internationalization using next-intl for the Turkish translation. (I'm able to implement it using next-intl in client-side components but I'm waiting for the stable release for server-side components)
