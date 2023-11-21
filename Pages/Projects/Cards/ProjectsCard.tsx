@@ -2,7 +2,7 @@ import { Card, CardBody, CardFooter } from "@nextui-org/react";
 import React from "react";
 import Image from "next/image";
 import Link from "next/link";
-export default async function ProjectCards({
+export default function ProjectCards({
   project,
   blurredImage,
 }: {
@@ -29,6 +29,7 @@ export default async function ProjectCards({
                   className="w-full object-cover"
                   sizes="(min-width: 768px) 40vw), 100vw"
                   placeholder="blur"
+                  quality={90}
                   blurDataURL={blurredImage}
                   fill={true}
                 />
