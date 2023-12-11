@@ -5,6 +5,11 @@ import {
   NavbarMenu,
   NavbarMenuItem,
   NavbarMenuToggle,
+  Dropdown,
+  DropdownTrigger,
+  DropdownMenu,
+  DropdownItem,
+  Button,
 } from "@nextui-org/react";
 import { motion } from "framer-motion";
 import Link from "next/link";
@@ -13,6 +18,7 @@ import GlowingButton from "./buttons/GlowingButton";
 import ThemeButton from "./buttons/ThemeButton";
 import { useParticleContext } from "@/context/ParticleContext";
 import { usePathname } from "next/navigation";
+import { Settings } from "lucide-react";
 
 export default function Navbar() {
   const container = {
@@ -84,13 +90,25 @@ export default function Navbar() {
               </GlowingButton>
             </Link>
           </motion.li>
-          <motion.li variants={item}>
-            <GlowingButton onClick={() => handleParticles(!particles)}>
-              {particles ? "Disable Particles" : "Enable Particles"}
-            </GlowingButton>
+          <motion.li>
+            <ThemeButton />
           </motion.li>
           <motion.li variants={item}>
-            <ThemeButton />
+            <Dropdown>
+              <DropdownTrigger>
+                <Button className="py-2 px-4 " variant="light">
+                  <Settings size={26} />
+                </Button>
+              </DropdownTrigger>
+              <DropdownMenu aria-label="site settings">
+                <DropdownItem
+                  key="particles"
+                  onPress={() => handleParticles(!particles)}
+                >
+                  {particles ? "Disable Particles" : "Enable Particles"}
+                </DropdownItem>
+              </DropdownMenu>
+            </Dropdown>
           </motion.li>
         </NavbarContent>
       </motion.div>
