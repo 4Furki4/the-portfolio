@@ -63,19 +63,20 @@ export default function Navbar() {
         variants={container}
         initial="hide"
         animate="show"
-        className="w-full h-full"
+        className="w-full h-full flex justify-between items-center"
       >
         <NavbarMenuToggle
           aria-label={isMenuOpen ? "Close menu" : "Open menu"}
           className="md:hidden"
         />
-        <NavbarContent className="w-full hidden md:flex" justify="center">
+        <NavbarContent justify="start" className="hidden md:flex">
           <motion.li variants={item}>
             <Link tabIndex={-1} className="block w-full" href="/">
               <GlowingButton selectedPath={path === "/"}>Home</GlowingButton>
             </Link>
           </motion.li>
-
+        </NavbarContent>
+        <NavbarContent className="hidden md:flex" justify="center">
           <motion.li variants={item}>
             <Link tabIndex={-1} className="block w-full" href="/projects">
               <GlowingButton selectedPath={path === "/projects"}>
@@ -90,13 +91,12 @@ export default function Navbar() {
               </GlowingButton>
             </Link>
           </motion.li>
-          <motion.li>
-            <ThemeButton />
-          </motion.li>
-          <motion.li variants={item}>
+        </NavbarContent>
+        <NavbarContent className="gap-2">
+          <motion.li variants={item} className="ml-auto">
             <Dropdown>
               <DropdownTrigger>
-                <Button className="py-2 px-4 " variant="light">
+                <Button className="min-w-max max-w-max p-4" variant="light">
                   <Settings size={26} />
                 </Button>
               </DropdownTrigger>
@@ -110,11 +110,11 @@ export default function Navbar() {
               </DropdownMenu>
             </Dropdown>
           </motion.li>
+          <motion.li variants={item}>
+            <ThemeButton />
+          </motion.li>
         </NavbarContent>
       </motion.div>
-      <div className="md:hidden">
-        <ThemeButton />
-      </div>
       <NavbarMenu>
         <NavbarMenuItem>
           <Link
@@ -152,16 +152,6 @@ export default function Navbar() {
               About
             </GlowingButton>
           </Link>
-        </NavbarMenuItem>
-        <NavbarMenuItem>
-          <GlowingButton
-            onClick={() => {
-              setIsMenuOpen(false);
-              handleParticles(!particles);
-            }}
-          >
-            {particles ? "Disable Particles" : "Enable Particles"}
-          </GlowingButton>
         </NavbarMenuItem>
       </NavbarMenu>
     </NextUINavbar>

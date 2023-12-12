@@ -11,30 +11,15 @@ export default function ThemeButton() {
   useEffect(() => setMounted(true), []);
   return (
     mounted && (
-      <>
-        <div suppressHydrationWarning className="hidden md:block">
-          <GlowingButton
-            onClick={() => setTheme(theme === "dark" ? "light" : "dark")}
-          >
-            {theme === "dark" ? (
-              <Sun aria-label="Sun Icon" size={32} />
-            ) : (
-              <Moon aria-label="Moon Icon" size={32} />
-            )}
-          </GlowingButton>
-        </div>
-        <button
-          aria-label="Theme Button"
-          className="md:hidden"
-          onClick={() => setTheme(theme === "dark" ? "light" : "dark")}
-        >
-          {theme === "dark" ? (
-            <Sun aria-label="Sun Icon" size={26} />
-          ) : (
-            <Moon aria-label="Moon Icon" size={26} />
-          )}
-        </button>
-      </>
+      <GlowingButton
+        onClick={() => setTheme(theme === "dark" ? "light" : "dark")}
+      >
+        {theme === "dark" ? (
+          <Sun aria-label="Sun Icon" size={26} />
+        ) : (
+          <Moon aria-label="Moon Icon" size={26} />
+        )}
+      </GlowingButton>
     )
   );
 }
