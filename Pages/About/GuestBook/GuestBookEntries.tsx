@@ -11,7 +11,9 @@ export async function GuestBookEntries({
   const messages = await getMessages();
   return (
     <Card className="backdrop-blur-xs bg-opacity-60 dark:bg-opacity-60">
-      <CardHeader className="text-fs-500 text-center">Guest Book</CardHeader>
+      <CardHeader className="text-fs-500 text-center">
+        <h2>Guest Book</h2>
+      </CardHeader>
       <CardContent>
         {messages.length === 0 ? (
           <EntryNotFound />
