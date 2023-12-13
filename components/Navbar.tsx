@@ -91,6 +91,17 @@ export default function Navbar() {
               </GlowingButton>
             </Link>
           </motion.li>
+          <motion.li variants={item}>
+            <Link
+              tabIndex={-1}
+              className="block w-full"
+              href="/about#guestbook"
+            >
+              <GlowingButton selectedPath={path === "/about#guestbook"}>
+                Guestbook
+              </GlowingButton>
+            </Link>
+          </motion.li>
         </NavbarContent>
         <NavbarContent className="gap-2">
           <motion.li variants={item} className="ml-auto">
@@ -150,6 +161,19 @@ export default function Navbar() {
           >
             <GlowingButton selectedPath={path === "/about"}>
               About
+            </GlowingButton>
+          </Link>
+        </NavbarMenuItem>
+        <NavbarMenuItem>
+          <Link
+            className="block w-full"
+            href="/about#guestbook"
+            onClick={() => {
+              setIsMenuOpen(false);
+            }}
+          >
+            <GlowingButton selectedPath={path === "/about#guestbook"}>
+              Guestbook
             </GlowingButton>
           </Link>
         </NavbarMenuItem>
