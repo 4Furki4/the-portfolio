@@ -39,12 +39,12 @@ export default function Home({ className }: { className?: string }) {
       </motion.h2>
       <motion.figure
         variants={item}
-        className="grid grid-cols-4 items-center justify-center sm:flex gap-2"
+        className="grid grid-cols-5 items-center justify-center sm:flex gap-2"
       >
         <TechIcons />
       </motion.figure>
       <MotionedLink
-        className="sm:hidden text-fs-400 font-extrabold bg-clip-text text-transparent bg-gradient-to-r from-red-700 to-purple-900 bg-300% animate-flow-gradient pointer-events-auto"
+        className="md:hidden text-fs-400 font-extrabold bg-clip-text text-transparent bg-gradient-to-r from-red-700 to-purple-900 bg-300% animate-flow-gradient pointer-events-auto"
         variants={item}
         href={"/projects"}
       >
