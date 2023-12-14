@@ -14,7 +14,7 @@ export default function ThemeButton() {
       <>
         <GlowingButton
           onClick={() => setTheme(theme === "dark" ? "light" : "dark")}
-          className="hidden md:block"
+          className="hidden lg:block"
         >
           {theme === "dark" ? (
             <Sun aria-label="Sun Icon" size={26} />
@@ -24,7 +24,7 @@ export default function ThemeButton() {
         </GlowingButton>
         <Button
           onClick={() => setTheme(theme === "dark" ? "light" : "dark")}
-          className="md:hidden min-w-max"
+          className="lg:hidden min-w-max"
           variant="light"
         >
           {theme === "dark" ? (
