@@ -10,6 +10,7 @@ import Providers from "@/context/Providers";
 import { Metadata } from "next";
 import { notFound } from "next/navigation";
 import { unstable_setRequestLocale } from "next-intl/server";
+import { GeistSans } from "geist/font/sans";
 export const metadata: Metadata = {
   title: {
     template: "%s | Furkan Cengiz",
@@ -73,7 +74,7 @@ export default async function RootLayout({
 
   unstable_setRequestLocale(locale);
   return (
-    <html lang="en" className="dark">
+    <html lang="en" className={`${GeistSans.className} dark`}>
       <body
         className={`w-full transition-colors duration-300 text-foreground bg-background relative min-h-dscreen flex flex-col`}
       >

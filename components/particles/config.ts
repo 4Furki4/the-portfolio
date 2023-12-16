@@ -1,4 +1,6 @@
-const particlesConfig = {
+import { ISourceOptions } from "tsparticles-engine";
+
+const particlesConfig: ISourceOptions = {
   detectRetina: true,
   fpsLimit: 144,
   fullScreen: {
@@ -80,7 +82,8 @@ const particlesConfig = {
     },
   },
   interactivity: {
-    detectsOn: "canvas",
+    detectsOn: "window",
+
     events: {
       onhover: {
         enable: true,

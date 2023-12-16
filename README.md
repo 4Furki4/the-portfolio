@@ -1,7 +1,8 @@
 # Portfolio
 
-- In this web application, you can find my [tech stack](https://furki.vercel.app/), [projects](https://furki.vercel.app/projects), [story, and education information](https://furki.vercel.app/about).
-- Although I like my first portfolio site, I want to improve it further. It has browser compatibility problems that I'm planning to solve soon.
+- You can find my [tech stack](https://furki.vercel.app/), [projects](https://furki.vercel.app/projects), [story, and education information](https://furki.vercel.app/about)!
+- [Live Link](https://www.furkancengiz.software)
+![image](https://github.com/4Furki4/the-portfolio/assets/84590614/230b3a38-4e5c-4d49-9049-80d9b07b3c5a)
 
 ## Tech and Libraries
 
@@ -11,12 +12,27 @@
 - Implemented [ts-particles](https://github.com/tsparticles/tsparticles) for generating amazing and interactional background
 - Used somewhat [shadcn/ui](https://ui.shadcn.com/) for the education cards and [NextUI](https://nextui.org/docs/components/navbar#controlled-menu) library for the navbar.
 - Tried new Next.js and React features like useFormStatus and form actions.
-
-
+- Blurred Loading Image data URLs generated using [plaiceholder]([url](https://plaiceholder.co/))
+- Carousels built with [fancybox](https://fancyapps.com/)
+- Capturing user experience using [Clarity](https://clarity.microsoft.com/)
+- Sitemap is generated with [next-sitemap](https://www.npmjs.com/package/next-sitemap)
  ## Planned Features to be Added.
 
- - Internationalization using next-intl for the Turkish translation.
- - Separate project pages for each project.
+ - Internationalization using next-intl for the Turkish translation. (I'm able to implement it using next-intl in client-side components but I'm waiting for the stable release for server-side components)
+ ## Contribution
+
+ - You can report problems you stumble upon by opening issues! 
+ - If you want to run this project locally, there are a few env variables you need to include
+   - GOOGLE_CLIENT_SECRET
+   - GOOGLE_CLIENT_ID
+   - GITHUB_CLIENT_ID=
+   - GITHUB_CLIENT_SECRET=
+   - DATABASE_URL=
+   - NEXTAUTH_SECRET=
+   - NEXTAUTH_URL=http://localhost:3000
+   - NEXTAUTH_URL_INTERNAL=http://localhost:3000
+ - Basically, follow the guides on Google and Github docs to create your own oAuth applications and paste your secrets and IDs.
+ - You can create a MongoDB database using [MongoDB Atlas](https://www.mongodb.com/atlas) or local MongoDB and paste your database URL.
 
 -------------------------------------------
 This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).

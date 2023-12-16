@@ -12,28 +12,27 @@ export default function ThemeButton() {
   return (
     mounted && (
       <>
-        <div suppressHydrationWarning className="hidden md:block">
-          <GlowingButton
-            onClick={() => setTheme(theme === "dark" ? "light" : "dark")}
-          >
-            {theme === "dark" ? (
-              <Sun aria-label="Sun Icon" size={32} />
-            ) : (
-              <Moon aria-label="Moon Icon" size={32} />
-            )}
-          </GlowingButton>
-        </div>
-        <button
-          aria-label="Theme Button"
-          className="md:hidden"
+        <GlowingButton
           onClick={() => setTheme(theme === "dark" ? "light" : "dark")}
+          className="hidden lg:block"
         >
           {theme === "dark" ? (
             <Sun aria-label="Sun Icon" size={26} />
           ) : (
             <Moon aria-label="Moon Icon" size={26} />
           )}
-        </button>
+        </GlowingButton>
+        <Button
+          onClick={() => setTheme(theme === "dark" ? "light" : "dark")}
+          className="lg:hidden min-w-max"
+          variant="light"
+        >
+          {theme === "dark" ? (
+            <Sun aria-label="Sun Icon" size={26} />
+          ) : (
+            <Moon aria-label="Moon Icon" size={26} />
+          )}
+        </Button>
       </>
     )
   );

@@ -1,69 +1,45 @@
-"use client";
-import { Card, CardFooter } from "@nextui-org/react";
+import { Card, CardBody, CardFooter } from "@nextui-org/react";
 import React from "react";
 import Image from "next/image";
-import { useRouter } from "next/navigation";
-import { motion } from "framer-motion";
-
-const container = {
-  hide: {
-    opacity: 0,
-    transition: {
-      staggerDirection: -1,
-    },
-  },
-  show: (i: number) => ({
-    opacity: 1,
-    transition: {
-      delay: i * 0.15 + 0.25,
-      spring: {
-        damping: 100,
-      },
-    },
-  }),
-};
-
+import Link from "next/link";
 export default function ProjectCards({
   project,
-  index,
+  blurredImage,
 }: {
   project: Project;
-  index: number;
+  blurredImage: string;
 }) {
-  const router = useRouter();
   return (
     <>
       {
-        <motion.section
-          variants={container}
-          initial="hide"
-          animate="show"
-          custom={index}
-          key={index}
-          className="h-full mx-auto"
-        >
+        <section className="h-full w-full">
           <Card
-            onPress={() => router.push(`/projects/${project.endpoint}`)}
             isBlurred
             isFooterBlurred
             isPressable
-            className="shadow-lg drop backdrop-blur-xs transition-[background-color] duration-300 relative z-20 h-full"
+            as={Link}
+            href={`/projects/${project.endpoint}`}
+            className="shadow-lg drop backdrop-blur-xs transition-[background-color] duration-300 relative z-20 h-full w-full"
           >
-            <figure>
-              <Image
-                src={project.images[0].src}
-                alt={project.images[0].alt}
-                width={800}
-                height={600}
-                className="w-full object-contain relative"
-                sizes="(min-width: 768px) 40vw), 100vw"
-              />
-            </figure>
+            <CardBody className="w-full overflow-visible relative p-0 min-h-[200px] sm:min-h-[300px] 2xl:min-h-[350px]">
+              <figure>
+                <Image
+                  src={project.images[0].src}
+                  alt={project.images[0].alt}
+                  className="w-full object-cover"
+                  sizes="(min-width: 768px) 40vw), 100vw"
+                  placeholder="blur"
+                  quality={90}
+                  blurDataURL={blurredImage}
+                  fill={true}
+                />
+              </figure>
+            </CardBody>
             <CardFooter className="justify-center shadow-small h-full">
               <h2 className="text-fs-400 font-bold">{project.title}</h2>
             </CardFooter>
           </Card>
-        </motion.section>
+        </section>
       }
     </>
   );

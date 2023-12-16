@@ -5,6 +5,11 @@ import {
   NavbarMenu,
   NavbarMenuItem,
   NavbarMenuToggle,
+  Dropdown,
+  DropdownTrigger,
+  DropdownMenu,
+  DropdownItem,
+  Button,
 } from "@nextui-org/react";
 import { motion } from "framer-motion";
 import Link from "next/link";
@@ -16,6 +21,7 @@ import { useLocale } from "next-intl";
 import { usePathname, Link as NextIntlLink, useRouter } from "@/navigation";
 import projects from "@/db/static/projects";
 import { useParams } from "next/navigation";
+import { Settings } from "lucide-react";
 
 export default function Navbar() {
   const container = {
@@ -62,13 +68,13 @@ export default function Navbar() {
         variants={container}
         initial="hide"
         animate="show"
-        className="w-full h-full"
+        className="w-full h-full flex justify-between items-center"
       >
         <NavbarMenuToggle
           aria-label={isMenuOpen ? "Close menu" : "Open menu"}
           className="md:hidden"
         />
-        <NavbarContent className="w-full hidden md:flex" justify="center">
+        <NavbarContent justify="start" className="hidden md:flex">
           <motion.li variants={item}>
             <Link tabIndex={-1} className="block w-full" href="/">
               <GlowingButton selectedPath={pathname === "/"}>
@@ -76,7 +82,8 @@ export default function Navbar() {
               </GlowingButton>
             </Link>
           </motion.li>
-
+        </NavbarContent>
+        <NavbarContent className="hidden md:flex" justify="center">
           <motion.li variants={item}>
             <Link tabIndex={-1} className="block w-full" href="/projects">
               <GlowingButton selectedPath={pathname === "/projects"}>
@@ -92,9 +99,34 @@ export default function Navbar() {
             </Link>
           </motion.li>
           <motion.li variants={item}>
-            <GlowingButton onClick={() => handleParticles(!particles)}>
-              {particles ? "Disable Particles" : "Enable Particles"}
-            </GlowingButton>
+            <Link
+              tabIndex={-1}
+              className="block w-full"
+              href="/about#guestbook"
+            >
+              <GlowingButton selectedPath={pathname === "/about#guestbook"}>
+                Guestbook
+              </GlowingButton>
+            </Link>
+          </motion.li>
+        </NavbarContent>
+        <NavbarContent className="gap-2">
+          <motion.li variants={item} className="ml-auto">
+            <Dropdown>
+              <DropdownTrigger>
+                <Button className="min-w-max max-w-max p-4" variant="light">
+                  <Settings size={26} />
+                </Button>
+              </DropdownTrigger>
+              <DropdownMenu aria-label="site settings">
+                <DropdownItem
+                  key="particles"
+                  onPress={() => handleParticles(!particles)}
+                >
+                  {particles ? "Disable Particles" : "Enable Particles"}
+                </DropdownItem>
+              </DropdownMenu>
+            </Dropdown>
           </motion.li>
           <motion.li variants={item}>
             <ThemeButton />
@@ -121,9 +153,6 @@ export default function Navbar() {
           </motion.li>
         </NavbarContent>
       </motion.div>
-      <div className="md:hidden">
-        <ThemeButton />
-      </div>
       <NavbarMenu>
         <NavbarMenuItem>
           <Link
@@ -163,14 +192,17 @@ export default function Navbar() {
           </Link>
         </NavbarMenuItem>
         <NavbarMenuItem>
-          <GlowingButton
+          <Link
+            className="block w-full"
+            href="/about#guestbook"
             onClick={() => {
               setIsMenuOpen(false);
-              handleParticles(!particles);
             }}
           >
-            {particles ? "Disable Particles" : "Enable Particles"}
-          </GlowingButton>
+            <GlowingButton selectedPath={pathname === "/about#guestbook"}>
+              Guestbook
+            </GlowingButton>
+          </Link>
         </NavbarMenuItem>
       </NavbarMenu>
     </NextUINavbar>
