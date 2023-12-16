@@ -3,6 +3,7 @@ import projectsData from "@/db/static/projects";
 import { Metadata } from "next";
 import ProjectCards from "@/Pages/Projects/Cards/ProjectsCard";
 import { getBase64 } from "@/lib/getBase64ImageUrl";
+import { unstable_setRequestLocale } from "next-intl/server";
 export const metadata: Metadata = {
   title: "Projects",
   description: "Furkan Cengiz's projects with source code and live demos",
@@ -18,7 +19,12 @@ export const metadata: Metadata = {
   },
 };
 
-export default async function Projects() {
+export default async function Projects({
+  params: { locale },
+}: {
+  params: { locale: string };
+}) {
+  unstable_setRequestLocale(locale);
   const images = projectsData.map((project) => project.images[0].src);
   const blurredImage = await Promise.all(
     images.map((image) => getBase64(image))

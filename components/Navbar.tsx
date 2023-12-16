@@ -56,6 +56,7 @@ export default function Navbar() {
   const router = useRouter();
   const { particles, handleParticles } = useParticleContext();
   const locale = useLocale();
+  const params = useParams();
   return (
     <NextUINavbar
       isMenuOpen={isMenuOpen}
@@ -125,31 +126,28 @@ export default function Navbar() {
                 >
                   {particles ? "Disable Particles" : "Enable Particles"}
                 </DropdownItem>
+                <DropdownItem
+                  key="particles"
+                  onPress={() => {
+                    router.replace(
+                      {
+                        pathname,
+                        // TypeScript will validate that only known `params` are used in combination
+                        // with a given `pathname`. Since the two will always match for the current
+                        // route, we can skip runtime checks.
+                        params: { ...(params as any) },
+                      },
+                      { locale: locale === "en" ? "tr" : "en" }
+                    );
+                  }}
+                >
+                  {locale === "en" ? "Türkçe" : "English"}
+                </DropdownItem>
               </DropdownMenu>
             </Dropdown>
           </motion.li>
           <motion.li variants={item}>
             <ThemeButton />
-          </motion.li>
-          <motion.li variants={item}>
-            <GlowingButton
-              onClick={() => {
-                router.replace(
-                  {
-                    pathname,
-                    // TypeScript will validate that only known `params` are used in combination
-                    // with a given `pathname`. Since the two will always match for the current
-                    // route, we can skip runtime checks.
-                    params: {
-                      endpoint: projects.map((project) => project.endpoint),
-                    },
-                  },
-                  { locale: locale === "en" ? "tr" : "en" }
-                );
-              }}
-            >
-              {locale}
-            </GlowingButton>
           </motion.li>
         </NavbarContent>
       </motion.div>

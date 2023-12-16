@@ -69,8 +69,7 @@ export default async function RootLayout({
   children: React.ReactNode;
   params: { locale: string };
 }) {
-  const isValidLocale = locales.some((cur) => cur === locale);
-  if (!isValidLocale) notFound();
+  if (!locales.includes(locale as any)) notFound();
 
   unstable_setRequestLocale(locale);
   return (

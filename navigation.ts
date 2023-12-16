@@ -27,9 +27,9 @@ export const pathnames = {
     tr: "/projeler",
   },
   // Dynamic params are supported via square brackets
-  "/projects/[...endpoint]": {
-    en: "/projects/[...endpoint]",
-    tr: "/projeler/[...endpoint]",
+  "/projects/[endpoint]": {
+    en: "/projects/[endpoint]",
+    tr: "/projeler/[endpoint]",
   },
 } satisfies Pathnames<typeof locales>;
 

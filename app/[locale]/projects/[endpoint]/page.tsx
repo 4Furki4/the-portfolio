@@ -3,11 +3,13 @@ import projectsData from "@/db/static/projects";
 import ProjectCard from "@/Pages/Projects/Cards/ProjectCard";
 import { Metadata } from "next";
 import { getBase64 } from "@/lib/getBase64ImageUrl";
+import { unstable_setRequestLocale } from "next-intl/server";
 export function generateMetadata({
   params,
 }: {
-  params: { endpoint: string };
+  params: { endpoint: string; locale: string };
 }): Metadata {
+  unstable_setRequestLocale(params.locale);
   const project = projectsData.filter(
     (project) => project.endpoint === params.endpoint
   )[0];
