@@ -16,6 +16,10 @@ export const metadata: Metadata = {
   },
   alternates: {
     canonical: "/projects",
+    languages: {
+      en: "/projects",
+      tr: "/tr/projeler",
+    },
   },
 };
 

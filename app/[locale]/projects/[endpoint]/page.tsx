@@ -31,6 +31,10 @@ export function generateMetadata({
     },
     alternates: {
       canonical: `/projects/${project?.endpoint}`,
+      languages: {
+        en: `/projects/${project?.endpoint}`,
+        tr: `/tr/projeler/${project?.endpoint}`,
+      },
     },
   };
 }

@@ -14,6 +14,10 @@ export const metadata: Metadata = {
   },
   alternates: {
     canonical: "/about",
+    languages: {
+      en: "/about",
+      tr: "/tr/hakkinda",
+    },
   },
 };
 

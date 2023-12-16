@@ -32,6 +32,17 @@ export const metadata: Metadata = {
   metadataBase: new URL("https://www.furkancengiz.software"),
   alternates: {
     canonical: "/",
+    languages: {
+      en: [
+        {
+          url: "/",
+        },
+        {
+          url: "/en",
+        },
+      ],
+      tr: "/tr",
+    },
   },
   keywords: [
     "Furkan Cengiz",
