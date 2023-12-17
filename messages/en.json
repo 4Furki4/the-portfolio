@@ -5,5 +5,13 @@
   },
   "Projects": {
     "title": "Proje Previews"
+  },
+  "NotFoundPage": {
+    "title": "Page Not Found",
+    "link": "Go to Home Page"
+  },
+  "ProjectNotFoundPage": {
+    "title": "Project Not Found",
+    "link": "Go to Projects Page"
   }
 }

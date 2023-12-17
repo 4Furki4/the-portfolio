@@ -4,17 +4,17 @@ import ProjectCard from "@/Pages/Projects/Cards/ProjectCard";
 import { Metadata } from "next";
 import { getBase64 } from "@/lib/getBase64ImageUrl";
 import { unstable_setRequestLocale } from "next-intl/server";
+import { notFound } from "next/navigation";
 export function generateMetadata({
   params,
 }: {
   params: { endpoint: string; locale: string };
 }): Metadata {
-  unstable_setRequestLocale(params.locale);
   const project = projectsData.filter(
     (project) => project.endpoint === params.endpoint
   )[0];
   return {
-    title: project.title,
+    title: project?.title,
     description: project?.description,
     openGraph: {
       type: "website",
@@ -46,12 +46,15 @@ export function generateStaticParams() {
 export default async function Project({
   params,
 }: {
-  params: { endpoint: string };
+  params: { endpoint: string; locale: string };
 }) {
+  unstable_setRequestLocale(params.locale);
   const endpoint = params.endpoint;
   const project = projectsData.filter(
     (project) => project.endpoint === endpoint
   )[0];
+
+  if (!project) notFound();
 
   const blurredImage = await getBase64(project.images[0].src);
   return (

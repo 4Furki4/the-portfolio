@@ -19,9 +19,8 @@ import ThemeButton from "./buttons/ThemeButton";
 import { useParticleContext } from "@/context/ParticleContext";
 import { useLocale } from "next-intl";
 import { usePathname, Link as NextIntlLink, useRouter } from "@/navigation";
-import projects from "@/db/static/projects";
-import { useParams } from "next/navigation";
 import { Settings } from "lucide-react";
+import { useParams } from "next/navigation";
 
 export default function Navbar() {
   const container = {
@@ -135,7 +134,7 @@ export default function Navbar() {
                         // TypeScript will validate that only known `params` are used in combination
                         // with a given `pathname`. Since the two will always match for the current
                         // route, we can skip runtime checks.
-                        params: { ...(params as any) },
+                        params: params as any,
                       },
                       { locale: locale === "en" ? "tr" : "en" }
                     );

@@ -5,5 +5,13 @@
   },
   "Projects": {
     "title": "Proje Ön İzlemeleri"
+  },
+  "NotFoundPage": {
+    "title": "Aradığınız Sayfa Bulunamadı!",
+    "link": "Anasayfaya dön"
+  },
+  "ProjectNotFoundPage": {
+    "title": "Aradığınız Proje Bulunamadı!",
+    "link": "Projeler sayfasına dön"
   }
 }
