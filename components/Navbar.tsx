@@ -76,30 +76,34 @@ export default function Navbar() {
         />
         <NavbarContent justify="start" className="hidden md:flex">
           <motion.li variants={item}>
-            <Link tabIndex={-1} className="block w-full" href="/">
+            <NextIntlLink tabIndex={-1} className="block w-full" href="/">
               <GlowingButton selectedPath={pathname === "/"}>
                 Home
               </GlowingButton>
-            </Link>
+            </NextIntlLink>
           </motion.li>
         </NavbarContent>
         <NavbarContent className="hidden md:flex" justify="center">
           <motion.li variants={item}>
-            <Link tabIndex={-1} className="block w-full" href="/projects">
+            <NextIntlLink
+              tabIndex={-1}
+              className="block w-full"
+              href="/projects"
+            >
               <GlowingButton selectedPath={pathname === "/projects"}>
                 Projects
               </GlowingButton>
-            </Link>
+            </NextIntlLink>
           </motion.li>
           <motion.li variants={item}>
-            <Link tabIndex={-1} className="block w-full" href="/about">
+            <NextIntlLink tabIndex={-1} className="block w-full" href="/about">
               <GlowingButton selectedPath={pathname === "/about"}>
                 About
               </GlowingButton>
-            </Link>
+            </NextIntlLink>
           </motion.li>
           <motion.li variants={item}>
-            <Link
+            <NextIntlLink
               tabIndex={-1}
               className="block w-full"
               href="/about#guestbook"
@@ -107,7 +111,7 @@ export default function Navbar() {
               <GlowingButton selectedPath={pathname === "/about#guestbook"}>
                 Guestbook
               </GlowingButton>
-            </Link>
+            </NextIntlLink>
           </motion.li>
         </NavbarContent>
         <NavbarContent className="gap-2">
@@ -152,7 +156,7 @@ export default function Navbar() {
       </motion.div>
       <NavbarMenu>
         <NavbarMenuItem>
-          <Link
+          <NextIntlLink
             className="block w-full"
             href="/"
             onClick={() => {
@@ -160,10 +164,10 @@ export default function Navbar() {
             }}
           >
             <GlowingButton selectedPath={pathname === "/"}>Home</GlowingButton>
-          </Link>
+          </NextIntlLink>
         </NavbarMenuItem>
         <NavbarMenuItem>
-          <Link
+          <NextIntlLink
             className="block w-full"
             href="/projects"
             onClick={() => {
@@ -173,10 +177,10 @@ export default function Navbar() {
             <GlowingButton selectedPath={pathname === "/projects"}>
               Projects
             </GlowingButton>
-          </Link>
+          </NextIntlLink>
         </NavbarMenuItem>
         <NavbarMenuItem>
-          <Link
+          <NextIntlLink
             className="block w-full"
             href="/about"
             onClick={() => {
@@ -186,10 +190,10 @@ export default function Navbar() {
             <GlowingButton selectedPath={pathname === "/about"}>
               About
             </GlowingButton>
-          </Link>
+          </NextIntlLink>
         </NavbarMenuItem>
         <NavbarMenuItem>
-          <Link
+          <NextIntlLink
             className="block w-full"
             href="/about#guestbook"
             onClick={() => {
@@ -199,7 +203,7 @@ export default function Navbar() {
             <GlowingButton selectedPath={pathname === "/about#guestbook"}>
               Guestbook
             </GlowingButton>
-          </Link>
+          </NextIntlLink>
         </NavbarMenuItem>
       </NavbarMenu>
     </NextUINavbar>
