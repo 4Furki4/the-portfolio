@@ -1,4 +1,12 @@
 {
+  "Navbar": {
+    "home": "Home",
+    "projects": "Projects",
+    "about": "About",
+    "guestbook": "Guestbook",
+    "particles-disabled": "Particles Disabled",
+    "particles-enabled": "Particles Enabled"
+  },
   "Home": {
     "title": "Hello World, It's Furkan!",
     "subtitle": "I'm a Full Stack Web Developer"
@@ -13,5 +21,8 @@
   "ProjectNotFoundPage": {
     "title": "Project Not Found",
     "link": "Go to Projects Page"
+  },
+  "GuestBook": {
+    "id": "guestbook"
   }
 }

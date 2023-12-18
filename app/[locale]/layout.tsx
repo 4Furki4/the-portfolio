@@ -9,7 +9,7 @@ import Script from "next/script";
 import Providers from "@/context/Providers";
 import { Metadata } from "next";
 import { notFound } from "next/navigation";
-import { unstable_setRequestLocale } from "next-intl/server";
+import { getTranslations, unstable_setRequestLocale } from "next-intl/server";
 import { GeistSans } from "geist/font/sans";
 export const metadata: Metadata = {
   title: {
@@ -81,15 +81,22 @@ export default async function RootLayout({
   params: { locale: string };
 }) {
   if (!locales.includes(locale as any)) notFound();
-
   unstable_setRequestLocale(locale);
+  const t = await getTranslations("Navbar");
   return (
     <html lang="en" className={`${GeistSans.className} dark`}>
       <body
         className={`w-full transition-colors duration-300 text-foreground bg-background relative min-h-dscreen flex flex-col`}
       >
         <Providers>
-          <Navbar />
+          <Navbar
+            about={t("about")}
+            guestbook={t("guestbook")}
+            home={t("home")}
+            particlesEnabled={t("particles-enabled")}
+            partcilesDisabled={t("particles-disabled")}
+            projects={t("projects")}
+          />
           {children}
           <Analytics />
           {

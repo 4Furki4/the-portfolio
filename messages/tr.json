@@ -1,4 +1,12 @@
 {
+  "Navbar": {
+    "home": "Anasayfa",
+    "projects": "Projeler",
+    "about": "Hakkımda",
+    "guestbook": "Ziyaretçi Defteri",
+    "particles-disabled": "Parçacıkları kapat",
+    "particles-enabled": "Parçacıkları aç"
+  },
   "Home": {
     "title": "Merhaba Dünya, Ben Furkan!",
     "subtitle": "Ben bi' web geliştiricisiyim."
@@ -13,5 +21,8 @@
   "ProjectNotFoundPage": {
     "title": "Aradığınız Proje Bulunamadı!",
     "link": "Projeler sayfasına dön"
+  },
+  "GuestBook": {
+    "id": "ziyaretcidefteri"
   }
 }
