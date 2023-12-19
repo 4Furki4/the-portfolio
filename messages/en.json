@@ -40,7 +40,17 @@
     "title": "Project Not Found",
     "link": "Go to Projects Page"
   },
-  "GuestBook": {
-    "id": "guestbook"
+  "About": {
+    "GuestBook": {
+      "id": "guestbook",
+      "title": "Guest Book",
+      "email": "Don't worry, I won't share your email with anyone.",
+      "signout": "Sign Out",
+      "googleSignin": "Signin with Google",
+      "githubSignin": "Signin with GitHub",
+      "signing": "Signing...",
+      "sign": "Sign",
+      "placeholder": "Leave a message..."
+    }
   }
 }

@@ -40,7 +40,17 @@
     "title": "Aradığınız Proje Bulunamadı!",
     "link": "Projeler sayfasına dön"
   },
-  "GuestBook": {
-    "id": "ziyaretcidefteri"
+  "About": {
+    "GuestBook": {
+      "id": "ziyaretcidefteri",
+      "title": "Ziyaretçi Defteri",
+      "signout": "Çıkış Yap",
+      "googleSignin": "Google ile Giriş Yap",
+      "githubSignin": "GitHub ile Giriş Yap",
+      "email": "Merak etme, e-posta adresini kimseyle paylaşmayacağım.",
+      "signing": "İletiliyor...",
+      "sign": "İlet",
+      "placeholder": "Bir mesaj bırak..."
+    }
   }
 }

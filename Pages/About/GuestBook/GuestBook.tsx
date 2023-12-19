@@ -9,11 +9,24 @@ import { getTranslations } from "next-intl/server";
 
 export default async function GuestBook() {
   const session = await getServerAuthSession();
-  const t = await getTranslations("GuestBook");
+  const t = await getTranslations("About.GuestBook");
   return (
     <section id={t("id")} className="flex flex-col gap-4">
-      <GuestBookForm session={session} />
-      {session ? <SignoutButton /> : <SigninForm />}
+      <GuestBookForm
+        signing={t("signing")}
+        sign={t("sign")}
+        placeholder={t("placeholder")}
+        session={session}
+      />
+      {session ? (
+        <SignoutButton text={t("signout")} />
+      ) : (
+        <SigninForm
+          emailDisclaimer={t("email")}
+          githubSigninText={t("githubSignin")}
+          googleSigninText={t("googleSignin")}
+        />
+      )}
       <Suspense fallback={<Loading />}>
         <GuestBookEntries session={session} />
       </Suspense>

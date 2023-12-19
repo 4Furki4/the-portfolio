@@ -3,7 +3,7 @@ import { Button } from "@nextui-org/react";
 import { signOut } from "next-auth/react";
 import React from "react";
 
-export default function SignoutButton() {
+export default function SignoutButton({ text }: { text: string }) {
   return (
     <Button
       className="hover:bg-background"
@@ -14,7 +14,7 @@ export default function SignoutButton() {
         })
       }
     >
-      Log out
+      {text}
     </Button>
   );
 }
