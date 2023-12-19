@@ -33,10 +33,16 @@ type TechStack = {
 };
 
 type Project = {
-  title: string;
+  title: {
+    en: string;
+    tr: string;
+  };
   endpoint: string;
   images: CardImageProps[];
-  description: string;
+  description: {
+    en: string;
+    tr: string;
+  };
   repoLink: string;
   demoLink?: string;
   techStack: TechStack[];
@@ -45,6 +51,13 @@ type Project = {
     name: string;
     github: string;
   }[];
+};
+
+type ProjectPreview = {
+  title: string;
+  src: string;
+  alt: string;
+  endpoint: string;
 };
 
 type Year = {

@@ -12,7 +12,25 @@
     "subtitle": "I'm a Full Stack Web Developer"
   },
   "Projects": {
-    "title": "Proje Previews"
+    "title": "Project Previews",
+    "metadata": {
+      "title": "Project Previews",
+      "description": "Furkan Cengiz's project previews"
+    }
+  },
+  "Project": {
+    "repo-link": {
+      "visit": "Visit source code on GitHub",
+      "contribute": "Contribute to this project"
+    },
+    "live-link": "Live Demo",
+    "tech-stack": "Tech Stack",
+    "contributors": "Contributors",
+    "status": {
+      "completed": "Completed",
+      "in-progress": "In Progress",
+      "planned": "Planned"
+    }
   },
   "NotFoundPage": {
     "title": "Page Not Found",

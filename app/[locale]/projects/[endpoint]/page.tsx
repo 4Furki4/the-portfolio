@@ -3,25 +3,25 @@ import projectsData from "@/db/static/projects";
 import ProjectCard from "@/Pages/Projects/Cards/ProjectCard";
 import { Metadata } from "next";
 import { getBase64 } from "@/lib/getBase64ImageUrl";
-import { unstable_setRequestLocale } from "next-intl/server";
+import { getTranslations, unstable_setRequestLocale } from "next-intl/server";
 import { notFound } from "next/navigation";
 export function generateMetadata({
-  params,
+  params: { locale, endpoint },
 }: {
   params: { endpoint: string; locale: string };
 }): Metadata {
   const project = projectsData.filter(
-    (project) => project.endpoint === params.endpoint
+    (project) => project.endpoint === endpoint
   )[0];
   return {
-    title: project?.title,
-    description: project?.description,
+    title: project?.title[locale as "en" | "tr"],
+    description: project?.description[locale as "en" | "tr"],
     openGraph: {
       type: "website",
-      locale: "en_US",
+      locale: locale,
       url: `/projects/${project?.endpoint}`,
-      title: `${project?.title} | Furkan Cengiz`,
-      description: project?.description,
+      title: `${project?.title[locale as "en" | "tr"]} | Furkan Cengiz`,
+      description: project?.description[locale as "en" | "tr"],
       images: [
         {
           url: project?.images[0].src,
@@ -55,11 +55,24 @@ export default async function Project({
   )[0];
 
   if (!project) notFound();
-
+  const t = await getTranslations("Project");
   const blurredImage = await getBase64(project.images[0].src);
   return (
     <section className="max-w-5xl mx-auto p-4 z-20 mb-auto">
-      <ProjectCard project={project} blurredImage={blurredImage} />
+      <ProjectCard
+        project={project}
+        blurredImage={blurredImage}
+        repoLinkText={
+          endpoint === "Turkish-Dictionary"
+            ? t("repo-link.contribute")
+            : t("repo-link.visit")
+        }
+        liveLinkText={t("live-link")}
+        contributors={t("contributors")}
+        techStack={t("tech-stack")}
+        status={t(`status.${project.status}`)}
+        locale={params.locale}
+      />
     </section>
   );
 }

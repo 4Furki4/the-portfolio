@@ -1,6 +1,9 @@
 const projects: Project[] = [
   {
-    title: "Learnification",
+    title: {
+      en: "Learnification",
+      tr: "Learnification",
+    },
     endpoint: "Learnification",
     images: [
       {
@@ -44,8 +47,10 @@ const projects: Project[] = [
         alt: "Learnification Profile Page Preview",
       },
     ],
-    description:
-      "Successfully collaborated with a team of four to develop a dynamic Learning App in the capstone project of the Recoded Bootcamp utilizing Agile Methodology and GitHub Projects for Project Management.",
+    description: {
+      en: "Successfully collaborated with a team of four to develop a dynamic Learning App in the capstone project of the Recoded Bootcamp utilizing Agile Methodology and GitHub Projects for Project Management.",
+      tr: "Recoded Bootcamp'in bitirme projesi olan bu projede dört kişilik bir ekip ile başarılı bir şekilde çalışarak, Agile Methodology ve GitHub Projects kullanarak Proje Yönetimi gerçekleştirilmiştir.",
+    },
     repoLink: "https://github.com/202303-PRM-TR-FEW/Learnification",
     demoLink: "https://learn-u-team-7.vercel.app",
     contributors: [
@@ -93,7 +98,10 @@ const projects: Project[] = [
     ],
   },
   {
-    title: "Turkish Dictionary (using TDK API)",
+    title: {
+      en: "Turkish Dictionary (using TDK API)",
+      tr: "TDK Sözlük (TDK API kullanarak)",
+    },
     endpoint: "Turkish-Dictionary-using-TDK-API",
     images: [
       {
@@ -113,8 +121,10 @@ const projects: Project[] = [
         alt: "Turkish Dictionary Font Option Preview",
       },
     ],
-    description:
-      "The goal of this project is to improve upon TDK Dictionary (Official Online Turkish Dictionary) by adding new features such as client-side routing and enhancing the user interface.",
+    description: {
+      en: "The goal of this project is to improve upon TDK Dictionary (Official Online Turkish Dictionary) by adding new features such as client-side routing and enhancing the user interface.",
+      tr: "Bu projenin amacı, TDK Sözlük'ü (Resmi Online Türkçe Sözlük) geliştirerek, istemci tarafı yönlendirmesi gibi yeni özellikler eklemek ve kullanıcı arayüzünü geliştirmektir.",
+    },
     repoLink: "https://github.com/4Furki4/Turkish-Dictionary-Client",
     demoLink: "https://turkish-dictionary-client.vercel.app/",
     status: "completed",
@@ -134,7 +144,10 @@ const projects: Project[] = [
     ],
   },
   {
-    title: "Meme Generator",
+    title: {
+      en: "Meme Generator",
+      tr: "Meme Oluşturucu",
+    },
     endpoint: "Meme-Generator",
     images: [
       {
@@ -158,8 +171,10 @@ const projects: Project[] = [
         alt: "Meme Generator Preview Downloaded Meme",
       },
     ],
-    description:
-      "A meme generator that fetches memes from an API and allows you to add text that you can drag on the meme image and configure many other options in the extended settings.",
+    description: {
+      en: "A meme generator that fetches memes from an API and allows you to add text that you can drag on the meme image and configure many other options in the extended settings.",
+      tr: "Bir API'den meme çeken ve metin eklemenize izin veren bir meme oluşturucu. Metni meme resminin üzerinde sürükleyebilir ve genişletilmiş ayarlarda birçok başka seçeneği yapılandırabilirsiniz.",
+    },
     repoLink: "https://github.com/4Furki4/Meme-Generator",
     demoLink: "https://meme-generator-4furki4.vercel.app/",
     status: "completed",
@@ -180,7 +195,10 @@ const projects: Project[] = [
     ],
   },
   {
-    title: "Frontend Mentor Challenges",
+    title: {
+      en: "Frontend Mentor Challenges",
+      tr: "Frontend Mentor Görevleri",
+    },
     endpoint: "Frontend-Mentor-Challenges",
     images: [
       {
@@ -228,8 +246,10 @@ const projects: Project[] = [
         alt: "Dictionary Web App Preview",
       },
     ],
-    description:
-      "Frontend Mentor is a platform that provides real-world challenges to help you improve your coding skills. I have completed 11 challenges so far.",
+    description: {
+      en: "Frontend Mentor is a platform that provides real-world challenges to help you improve your coding skills. I have completed 11 challenges so far.",
+      tr: "Frontend Mentor, kodlama becerilerinizi geliştirmenize yardımcı olmak için gerçek dünya zorlukları sunan bir platformdur. Şu ana kadar 11 zorluğu tamamladım.",
+    },
     repoLink: "https://github.com/4Furki4/Frontend-Projects/",
     status: "in-progress",
     techStack: [
@@ -256,10 +276,15 @@ const projects: Project[] = [
     ],
   },
   {
-    title: "Turkish Dictionary",
+    title: {
+      en: "Turkish Dictionary",
+      tr: "Türkçe Sözlük",
+    },
     endpoint: "Turkish-Dictionary",
-    description:
-      "Turkish Dictionary is an open-source website where people can search and save words, and contribute to Turkish!",
+    description: {
+      en: "Turkish Dictionary is an open-source website where people can search and save words, and contribute to Turkish!",
+      tr: "Turkish Dictionary, insanların Türkçe kelimeleri arayıp kaydedebildiği ve Türkçe'ye katkıda bulunabildiği açık kaynaklı bir web sitesidir!",
+    },
     images: [
       {
         alt: "Turkish Dictionary Preview",

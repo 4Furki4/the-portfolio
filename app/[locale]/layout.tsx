@@ -9,71 +9,77 @@ import Script from "next/script";
 import Providers from "@/context/Providers";
 import { Metadata } from "next";
 import { notFound } from "next/navigation";
-import { getTranslations, unstable_setRequestLocale } from "next-intl/server";
+import { unstable_setRequestLocale } from "next-intl/server";
 import { GeistSans } from "geist/font/sans";
-export const metadata: Metadata = {
-  title: {
-    template: "%s | Furkan Cengiz",
-    default: "Furkan Cengiz",
-  },
-  description: "Furkan Cengiz's personal website and portfolio",
-  verification: {
-    google: "6MHP_v7v_6AanMTrqnMHnFGPcHO-IcUl2l3tphvqFnM",
-  },
-  robots: {
-    index: true,
-    follow: true,
-    nocache: true,
-    googleBot: {
-      follow: true,
-      index: true,
+import { useTranslations } from "next-intl";
+export async function generateMetadata({
+  params: { locale },
+}: {
+  params: { locale: String };
+}): Promise<Metadata> {
+  return {
+    title: {
+      template: "%s | Furkan Cengiz",
+      default: "Furkan Cengiz",
     },
-  },
-  metadataBase: new URL("https://www.furkancengiz.software"),
-  alternates: {
-    canonical: "/",
-    languages: {
-      en: [
-        {
-          url: "/",
-        },
-        {
-          url: "/en",
-        },
-      ],
-      tr: "/tr",
-    },
-  },
-  keywords: [
-    "Furkan Cengiz",
-    "Furkan Cengiz Portfolio",
-    "Furkan Cengiz Website",
-    "Portfolio",
-    "Furki",
-    "Furki4_4",
-    "Developer",
-    "Software Engineer",
-    "Software Developer",
-    "Web Developer",
-    "Full Stack Developer",
-    "Frontend Developer",
-    "Backend Developer",
-  ],
-  openGraph: {
-    type: "website",
-    locale: "en_US",
-    url: "/",
-    title: "Furkan Cengiz",
     description: "Furkan Cengiz's personal website and portfolio",
-  },
-};
+    verification: {
+      google: "6MHP_v7v_6AanMTrqnMHnFGPcHO-IcUl2l3tphvqFnM",
+    },
+    robots: {
+      index: true,
+      follow: true,
+      nocache: true,
+      googleBot: {
+        follow: true,
+        index: true,
+      },
+    },
+    metadataBase: new URL("https://www.furkancengiz.software"),
+    alternates: {
+      canonical: "/",
+      languages: {
+        en: [
+          {
+            url: "/",
+          },
+          {
+            url: "/en",
+          },
+        ],
+        tr: "/tr",
+      },
+    },
+    keywords: [
+      "Furkan Cengiz",
+      "Furkan Cengiz Portfolio",
+      "Furkan Cengiz Website",
+      "Portfolio",
+      "Furki",
+      "Furki4_4",
+      "Developer",
+      "Software Engineer",
+      "Software Developer",
+      "Web Developer",
+      "Full Stack Developer",
+      "Frontend Developer",
+      "Backend Developer",
+    ],
+    openGraph: {
+      type: "website",
+      url: "/",
+      title: "Furkan Cengiz",
+      description: "Furkan Cengiz's personal website and portfolio",
+    },
+  };
+}
 const locales = ["en", "tr"];
 
 export function generateStaticParams() {
   return locales.map((locale) => ({ locale }));
 }
 
-export default async function RootLayout({
+export default function RootLayout({
   children,
   params: { locale },
 }: {
@@ -82,9 +88,9 @@ export default async function RootLayout({
 }) {
   if (!locales.includes(locale as any)) notFound();
   unstable_setRequestLocale(locale);
-  const t = await getTranslations("Navbar");
+  const t = useTranslations("Navbar");
   return (
-    <html lang="en" className={`${GeistSans.className} dark`}>
+    <html lang={locale} className={`${GeistSans.className} dark`}>
       <body
         className={`w-full transition-colors duration-300 text-foreground bg-background relative min-h-dscreen flex flex-col`}
       >

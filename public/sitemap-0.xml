@@ -1,18 +1,18 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:news="http://www.google.com/schemas/sitemap-news/0.9" xmlns:xhtml="http://www.w3.org/1999/xhtml" xmlns:mobile="http://www.google.com/schemas/sitemap-mobile/1.0" xmlns:image="http://www.google.com/schemas/sitemap-image/1.1" xmlns:video="http://www.google.com/schemas/sitemap-video/1.1">
-<url><loc>https://www.furkancengiz.software/icon.svg</loc><lastmod>2023-12-18T06:09:47.422Z</lastmod><changefreq>daily</changefreq><priority>0.7</priority></url>
-<url><loc>https://www.furkancengiz.software/en</loc><lastmod>2023-12-18T06:09:47.423Z</lastmod><changefreq>daily</changefreq><priority>0.7</priority></url>
-<url><loc>https://www.furkancengiz.software/tr</loc><lastmod>2023-12-18T06:09:47.423Z</lastmod><changefreq>daily</changefreq><priority>0.7</priority></url>
-<url><loc>https://www.furkancengiz.software/en/projects/Learnification</loc><lastmod>2023-12-18T06:09:47.423Z</lastmod><changefreq>daily</changefreq><priority>0.7</priority></url>
-<url><loc>https://www.furkancengiz.software/en/projects/Turkish-Dictionary-using-TDK-API</loc><lastmod>2023-12-18T06:09:47.423Z</lastmod><changefreq>daily</changefreq><priority>0.7</priority></url>
-<url><loc>https://www.furkancengiz.software/en/projects/Meme-Generator</loc><lastmod>2023-12-18T06:09:47.423Z</lastmod><changefreq>daily</changefreq><priority>0.7</priority></url>
-<url><loc>https://www.furkancengiz.software/en/projects/Frontend-Mentor-Challenges</loc><lastmod>2023-12-18T06:09:47.423Z</lastmod><changefreq>daily</changefreq><priority>0.7</priority></url>
-<url><loc>https://www.furkancengiz.software/en/projects/Turkish-Dictionary</loc><lastmod>2023-12-18T06:09:47.423Z</lastmod><changefreq>daily</changefreq><priority>0.7</priority></url>
-<url><loc>https://www.furkancengiz.software/tr/projects/Learnification</loc><lastmod>2023-12-18T06:09:47.423Z</lastmod><changefreq>daily</changefreq><priority>0.7</priority></url>
-<url><loc>https://www.furkancengiz.software/tr/projects/Turkish-Dictionary-using-TDK-API</loc><lastmod>2023-12-18T06:09:47.423Z</lastmod><changefreq>daily</changefreq><priority>0.7</priority></url>
-<url><loc>https://www.furkancengiz.software/tr/projects/Meme-Generator</loc><lastmod>2023-12-18T06:09:47.423Z</lastmod><changefreq>daily</changefreq><priority>0.7</priority></url>
-<url><loc>https://www.furkancengiz.software/tr/projects/Frontend-Mentor-Challenges</loc><lastmod>2023-12-18T06:09:47.423Z</lastmod><changefreq>daily</changefreq><priority>0.7</priority></url>
-<url><loc>https://www.furkancengiz.software/tr/projects/Turkish-Dictionary</loc><lastmod>2023-12-18T06:09:47.423Z</lastmod><changefreq>daily</changefreq><priority>0.7</priority></url>
-<url><loc>https://www.furkancengiz.software/en/projects</loc><lastmod>2023-12-18T06:09:47.423Z</lastmod><changefreq>daily</changefreq><priority>0.7</priority></url>
-<url><loc>https://www.furkancengiz.software/tr/projects</loc><lastmod>2023-12-18T06:09:47.423Z</lastmod><changefreq>daily</changefreq><priority>0.7</priority></url>
+<url><loc>https://www.furkancengiz.software/icon.svg</loc><lastmod>2023-12-19T16:44:51.399Z</lastmod><changefreq>daily</changefreq><priority>0.7</priority></url>
+<url><loc>https://www.furkancengiz.software/en</loc><lastmod>2023-12-19T16:44:51.399Z</lastmod><changefreq>daily</changefreq><priority>0.7</priority></url>
+<url><loc>https://www.furkancengiz.software/tr</loc><lastmod>2023-12-19T16:44:51.399Z</lastmod><changefreq>daily</changefreq><priority>0.7</priority></url>
+<url><loc>https://www.furkancengiz.software/en/projects</loc><lastmod>2023-12-19T16:44:51.399Z</lastmod><changefreq>daily</changefreq><priority>0.7</priority></url>
+<url><loc>https://www.furkancengiz.software/tr/projects</loc><lastmod>2023-12-19T16:44:51.399Z</lastmod><changefreq>daily</changefreq><priority>0.7</priority></url>
+<url><loc>https://www.furkancengiz.software/en/projects/Learnification</loc><lastmod>2023-12-19T16:44:51.399Z</lastmod><changefreq>daily</changefreq><priority>0.7</priority></url>
+<url><loc>https://www.furkancengiz.software/en/projects/Turkish-Dictionary-using-TDK-API</loc><lastmod>2023-12-19T16:44:51.399Z</lastmod><changefreq>daily</changefreq><priority>0.7</priority></url>
+<url><loc>https://www.furkancengiz.software/en/projects/Meme-Generator</loc><lastmod>2023-12-19T16:44:51.399Z</lastmod><changefreq>daily</changefreq><priority>0.7</priority></url>
+<url><loc>https://www.furkancengiz.software/en/projects/Frontend-Mentor-Challenges</loc><lastmod>2023-12-19T16:44:51.399Z</lastmod><changefreq>daily</changefreq><priority>0.7</priority></url>
+<url><loc>https://www.furkancengiz.software/en/projects/Turkish-Dictionary</loc><lastmod>2023-12-19T16:44:51.399Z</lastmod><changefreq>daily</changefreq><priority>0.7</priority></url>
+<url><loc>https://www.furkancengiz.software/tr/projects/Learnification</loc><lastmod>2023-12-19T16:44:51.399Z</lastmod><changefreq>daily</changefreq><priority>0.7</priority></url>
+<url><loc>https://www.furkancengiz.software/tr/projects/Turkish-Dictionary-using-TDK-API</loc><lastmod>2023-12-19T16:44:51.399Z</lastmod><changefreq>daily</changefreq><priority>0.7</priority></url>
+<url><loc>https://www.furkancengiz.software/tr/projects/Meme-Generator</loc><lastmod>2023-12-19T16:44:51.399Z</lastmod><changefreq>daily</changefreq><priority>0.7</priority></url>
+<url><loc>https://www.furkancengiz.software/tr/projects/Frontend-Mentor-Challenges</loc><lastmod>2023-12-19T16:44:51.399Z</lastmod><changefreq>daily</changefreq><priority>0.7</priority></url>
+<url><loc>https://www.furkancengiz.software/tr/projects/Turkish-Dictionary</loc><lastmod>2023-12-19T16:44:51.399Z</lastmod><changefreq>daily</changefreq><priority>0.7</priority></url>
 </urlset>

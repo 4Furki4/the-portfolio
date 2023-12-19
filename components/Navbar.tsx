@@ -69,7 +69,6 @@ export default function Navbar({
   const { particles, handleParticles } = useParticleContext();
   const locale = useLocale();
   const params = useParams();
-  console.log(pathname);
   return (
     <NextUINavbar
       classNames={{

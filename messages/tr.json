@@ -12,7 +12,25 @@
     "subtitle": "Ben bi' web geliştiricisiyim."
   },
   "Projects": {
-    "title": "Proje Ön İzlemeleri"
+    "title": "Proje Ön İzlemeleri",
+    "metadata": {
+      "title": "Proje Ön İzlemeleri",
+      "description": "Furkan Cengiz'in proje ön izlemeleri"
+    }
+  },
+  "Project": {
+    "repo-link": {
+      "visit": "Projenin GitHub Sayfasına Git",
+      "contribute": "Projeye Katkıda Bulun"
+    },
+    "live-link": "Projenin Canlı Ön İzlemesine Git",
+    "tech-stack": "Kullanılan Teknolojiler",
+    "contributors": "Katkıda Bulunanlar",
+    "status": {
+      "completed": "Tamamlandı",
+      "in-progress": "Devam Ediyor",
+      "planned": "Planlanıyor"
+    }
   },
   "NotFoundPage": {
     "title": "Aradığınız Sayfa Bulunamadı!",

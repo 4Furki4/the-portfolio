@@ -3,11 +3,13 @@ import React from "react";
 import Image from "next/image";
 import Link from "next/link";
 export default function ProjectCards({
-  project,
   blurredImage,
+  locale,
+  projectPreview: project,
 }: {
-  project: Project;
+  projectPreview: ProjectPreview;
   blurredImage: string;
+  locale: string;
 }) {
   return (
     <>
@@ -24,8 +26,8 @@ export default function ProjectCards({
             <CardBody className="w-full overflow-visible relative p-0 min-h-[200px] sm:min-h-[300px] 2xl:min-h-[350px]">
               <figure>
                 <Image
-                  src={project.images[0].src}
-                  alt={project.images[0].alt}
+                  src={project.src}
+                  alt={project.alt}
                   className="w-full object-cover"
                   sizes="(min-width: 768px) 40vw), 100vw"
                   placeholder="blur"
