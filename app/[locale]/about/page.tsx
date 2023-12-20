@@ -1,5 +1,6 @@
 import About from "@/Pages/About/About";
 import { Metadata } from "next";
+import { unstable_setRequestLocale } from "next-intl/server";
 import React from "react";
 export const metadata: Metadata = {
   title: "About",
@@ -25,5 +26,6 @@ export default function page({
 }: {
   params: { locale: string };
 }) {
+  unstable_setRequestLocale(locale);
   return <About locale={locale} />;
 }
