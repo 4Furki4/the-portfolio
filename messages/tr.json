@@ -1,0 +1,70 @@
+{
+  "Navbar": {
+    "home": "Ana Sayfa",
+    "projects": "Projeler",
+    "about": "Hakkımda",
+    "guestbook": "Ziyaretçi Defteri",
+    "particles-disabled": "Parçacıkları kapat",
+    "particles-enabled": "Parçacıkları aç"
+  },
+  "Home": {
+    "title": "Merhaba Dünya, Ben Furkan!",
+    "subtitle": "Ben bi' web geliştiricisiyim \\(o_o)/",
+    "projects": "Projelerimi görün"
+  },
+  "Projects": {
+    "title": "Proje Ön İzlemeleri",
+    "metadata": {
+      "title": "Proje Ön İzlemeleri",
+      "description": "Furkan Cengiz'in proje ön izlemeleri"
+    }
+  },
+  "Project": {
+    "repo-link": {
+      "visit": "Projenin GitHub Sayfasına Git",
+      "contribute": "Projeye Katkıda Bulun"
+    },
+    "live-link": "Projenin Canlı Ön İzlemesine Git",
+    "tech-stack": "Kullanılan Teknolojiler",
+    "contributors": "Katkıda Bulunanlar",
+    "status": {
+      "completed": "Tamamlandı",
+      "in-progress": "Devam Ediyor",
+      "planned": "Planlanıyor"
+    }
+  },
+  "NotFoundPage": {
+    "title": "Aradığınız Sayfa Bulunamadı!",
+    "link": "Anasayfaya dön"
+  },
+  "ProjectNotFoundPage": {
+    "title": "Aradığınız Proje Bulunamadı!",
+    "link": "Projeler sayfasına dön"
+  },
+  "About": {
+    "GuestBook": {
+      "id": "ziyaretcidefteri",
+      "title": "Ziyaretçi Defteri",
+      "signout": "Çıkış Yap",
+      "googleSignin": "Google ile Giriş Yap",
+      "githubSignin": "GitHub ile Giriş Yap",
+      "email": "Merak etme, e-posta adresini kimseyle paylaşmayacağım.",
+      "signing": "İletiliyor...",
+      "sign": "İlet",
+      "placeholder": "Bir mesaj bırak..."
+    },
+    "adventure": {
+      "title": "Maceram",
+      "p1": "Geçmişimi veciz şekilde özetlemem gerekirse, ilk başta Abdullah Gül Üniversitesinde Endüstri Mühendisliği okuyordum. Yazılım geliştirmeye olan tutkumla ilk önce oyun geliştirmeyi denedim. Ardından backend geliştirmeye odaklandım ve sonraysa frontend kısmını da yeteneklerim arasına ekledim.",
+      "p2": "Unity kullanarak biraz oyun geliştirdikten sonra, .NET öğrenmeye karar verdim. Müsebbibi ise yeni kelimeler öğrenmek için baktığım, birçok elzem özellikten aciz resmi TDK sözlüktü. .NET ile MPA uygulamaları yaptım lakin çok keyifsiz buldum. Daha sonra API'ın ne olduğunu ve bununla neler yapabileceğimi keşfettikten sonra, sadece sunucu tarafında kalmamam gerektiğini anlayıp HTML, CSS ve JS öğrenmeye başladım. İlk başta doğru kaynaklara ulaşamadığım için biraz zorlandım. Neyseki Re:Coded'ın Frontend Web Development Bootcamp'ine kabul edildikten sonra kendimi geliştirmeye başladım.",
+      "p3": "Bu bootcampte sadece frontend alanındaki becerilerimi geliştirmekle kalmadım, aynı zamanda takım çalışması, geri bildirim verme, zaman yönetimi ve daha birçok şeyi öğrendim. Daha da iyisi, kendi kendime öğrenme becerilerimi gayet güzel bir şekilde geliştirdim.",
+      "p4": "Bu maceram boyunca birçok hata yaptım, ve kuvvetle muhtemel yapacağım da. Fakat artık hata yapmaktan korkmuyorum çünkü en çok hatalarımdan bir şeyler öğrendim. Kuvvetle muhtemel hata yapmaktan korkutuğum gün, bu maceramın sonu olacak."
+    },
+    "education": {
+      "title": "Eğitimim"
+    },
+    "github-contributions": {
+      "title": "Github Katkılarım"
+    }
+  }
+}

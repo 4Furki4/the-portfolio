@@ -5,7 +5,15 @@ import { Button } from "@nextui-org/react";
 import GoogleSvg from "@/public/svgs/google.svg";
 import Image from "next/image";
 import { Github } from "lucide-react";
-export default function SigninForm() {
+export default function SigninForm({
+  googleSigninText,
+  githubSigninText,
+  emailDisclaimer,
+}: {
+  googleSigninText: string;
+  githubSigninText: string;
+  emailDisclaimer: string;
+}) {
   return (
     <div className="grid grid-cols-2 grid-row-3 md:grid-rows-2 gap-2 sm:flex-row w-full">
       <Button
@@ -13,7 +21,7 @@ export default function SigninForm() {
         variant="ghost"
         onClick={() => signIn("google", { callbackUrl: "/about#guestbook" })}
       >
-        Sign in with Google{" "}
+        {googleSigninText}{" "}
         <Image className="h-6" src={GoogleSvg} alt="Google" />
       </Button>
       <Button
@@ -21,10 +29,10 @@ export default function SigninForm() {
         variant="ghost"
         onClick={() => signIn("github", { callbackUrl: "/about#guestbook" })}
       >
-        Sign in with GitHub <Github className="h-6" />
+        {githubSigninText} <Github className="h-6" />
       </Button>
       <p className="text-fs-100 w-full col-span-2 row-span-3 md:row-span-2">
-        {"Don't worry, I won't share your email with anyone. "}
+        {emailDisclaimer}
       </p>
     </div>
   );

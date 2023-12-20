@@ -13,9 +13,15 @@ import { motion } from "framer-motion";
 import { SchoolIcon } from "lucide-react";
 
 type Education = {
-  title: string;
+  title: {
+    en: string;
+    tr: string;
+  };
   place: string;
-  description: string;
+  description: {
+    en: string;
+    tr: string;
+  };
   yearStart: Date;
   yearEnd?: Date;
 };
@@ -37,29 +43,41 @@ const variants = {
     },
   }),
 };
-
-const educations: Education[] = [
-  {
-    title: "Frontend Web Development BootCamp",
-    place: "Recoded",
-    description:
-      "I learned how to collaborate with teammates, provide feedback, manage time, and more. Furthermore, I honed my self-taught skills since our teachers encouraged us to self-teach.",
-    yearStart: new Date(2023, 2, 5),
-    yearEnd: new Date(2023, 8, 5),
-  },
-  {
-    title: "Industrial Engineering",
-    place: "Abdullah Gul University",
-    description:
-      "Completed the prep school and left the university at the end of the first year.",
-    yearStart: new Date(2021, 9, 5),
-    yearEnd: new Date(2022, 6, 15),
-  },
-];
-export default function Education() {
+export default function Education({
+  title,
+  locale,
+}: Record<"title" | "locale", string>) {
+  const educations: Education[] = [
+    {
+      title: {
+        en: "Frontend Web Development BootCamp",
+        tr: "Frontend Web Development BootCamp",
+      },
+      place: "Recoded",
+      description: {
+        en: "I learned how to collaborate with teammates, provide feedback, manage time, and more. Furthermore, I honed my self-taught skills since our teachers encouraged us to self-teach.",
+        tr: "Takım çalışmasını, geri bildirim sağlamayı, zaman yönetimini ve daha fazlasını öğrendim. Ayrıca, öğretmenlerimiz bizi kendi kendimize öğrenmeye teşvik ettikleri için kendi kendime öğrendiğim becerilerimi geliştirdim.",
+      },
+      yearStart: new Date(2023, 2, 5),
+      yearEnd: new Date(2023, 8, 5),
+    },
+    {
+      title: {
+        en: "Industrial Engineering",
+        tr: "Endüstri Mühendisliği",
+      },
+      place: "Abdullah Gul University",
+      description: {
+        en: "Completed the prep school and left the university at the end of the first year.",
+        tr: "Hazırlık okulunu tamamladım ve birinci sınıfın sonunda üniversiteden ayrıldım.",
+      },
+      yearStart: new Date(2021, 9, 5),
+      yearEnd: new Date(2022, 6, 15),
+    },
+  ];
   return (
     <section className="grid relative gap-4 after:w-1 after:h-full after:absolute dark:after:bg-white after:bg-black after:right-0 after:z-0">
-      <h2 className="text-fs-600 font-bold">Education</h2>
+      <h2 className="text-fs-600 font-bold">{title}</h2>
       <div className="grid gap-4 relative">
         {educations.map((education, i) => (
           <motion.article
@@ -74,11 +92,13 @@ export default function Education() {
           >
             <Card className="backdrop-blur-xs bg-opacity-60 dark:bg-opacity-60 flex flex-col">
               <CardHeader>
-                <CardTitle>{education.title}</CardTitle>
+                <CardTitle>{education.title[locale as "en" | "tr"]}</CardTitle>
               </CardHeader>
-              <CardContent className="">
+              <CardContent>
                 <p className="font-bold fs-300">{education.place}</p>
-                <p className="fs-300">{education.description}</p>
+                <p className="fs-300">
+                  {education.description[locale as "en" | "tr"]}
+                </p>
               </CardContent>
               <CardFooter className="mt-auto">
                 <time className="fs-300">

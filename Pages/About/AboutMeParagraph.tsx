@@ -1,12 +1,6 @@
 "use client";
 import React from "react";
 import { motion } from "framer-motion";
-import {
-  firstParagraph,
-  forthParagraph,
-  secondParahraph,
-  thirdParagraph,
-} from "@/db/static/aboutme";
 const container = {
   show: {
     opacity: 1,
@@ -30,7 +24,20 @@ const container = {
   },
 };
 
-export const AboutMeParagraph = () => {
+export const AboutMeParagraph = ({
+  firstParagraph,
+  secondParagraph,
+  thirdParagraph,
+  fourthParagraph,
+  title,
+}: Record<
+  | "firstParagraph"
+  | "secondParagraph"
+  | "thirdParagraph"
+  | "fourthParagraph"
+  | "title",
+  string
+>) => {
   return (
     <motion.article>
       <motion.h1
@@ -39,7 +46,9 @@ export const AboutMeParagraph = () => {
         whileInView="show"
         viewport={{ once: true }}
         className="my-4 text-fs-700 font-bold"
-      >{`My Adventure`}</motion.h1>
+      >
+        {title}
+      </motion.h1>
       <section className="flex flex-col gap-4 text-fs-300">
         <motion.p
           variants={container}
@@ -55,7 +64,7 @@ export const AboutMeParagraph = () => {
           whileInView="show"
           viewport={{ once: true }}
         >
-          {secondParahraph}
+          {secondParagraph}
         </motion.p>
         <motion.p
           variants={container}
@@ -71,7 +80,7 @@ export const AboutMeParagraph = () => {
           whileInView="show"
           viewport={{ once: true }}
         >
-          {forthParagraph}
+          {fourthParagraph}
         </motion.p>
       </section>
     </motion.article>

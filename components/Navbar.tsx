@@ -10,49 +10,73 @@ import {
   DropdownMenu,
   DropdownItem,
   Button,
+  Link,
 } from "@nextui-org/react";
 import { motion } from "framer-motion";
-import Link from "next/link";
 import React from "react";
 import GlowingButton from "./buttons/GlowingButton";
 import ThemeButton from "./buttons/ThemeButton";
 import { useParticleContext } from "@/context/ParticleContext";
-import { usePathname } from "next/navigation";
+import { useLocale } from "next-intl";
+import { usePathname, Link as NextIntlLink, useRouter } from "@/navigation";
 import { Settings } from "lucide-react";
-
-export default function Navbar() {
-  const container = {
-    hide: {
-      y: -100,
-      opacity: 0,
-      transition: {
-        staggerDirection: -1,
-      },
+import { useParams } from "next/navigation";
+const container = {
+  hide: {
+    y: -100,
+    opacity: 0,
+    transition: {
+      staggerDirection: -1,
     },
-    show: {
-      y: 0,
-      opacity: 1,
-      transition: {
-        staggerChildren: 0.15,
-        staggerDirection: 1,
-      },
+  },
+  show: {
+    y: 0,
+    opacity: 1,
+    transition: {
+      staggerChildren: 0.15,
+      staggerDirection: 1,
     },
-  };
-  const item = {
-    hide: {
-      y: -100,
-      opacity: 0,
-    },
-    show: {
-      y: 0,
-      opacity: 1,
-    },
-  };
+  },
+};
+const item = {
+  hide: {
+    y: -100,
+    opacity: 0,
+  },
+  show: {
+    y: 0,
+    opacity: 1,
+  },
+};
+export default function Navbar({
+  about,
+  guestbook,
+  home,
+  particlesEnabled,
+  partcilesDisabled,
+  projects,
+}: {
+  home: string;
+  projects: string;
+  about: string;
+  guestbook: string;
+  particlesEnabled: string;
+  partcilesDisabled: string;
+}) {
   const [isMenuOpen, setIsMenuOpen] = React.useState(false);
-  const path = usePathname();
+  const pathname = usePathname();
+  const router = useRouter();
   const { particles, handleParticles } = useParticleContext();
+  const locale = useLocale();
+  const params = useParams();
   return (
     <NextUINavbar
+      classNames={{
+        menuItem: [
+          "data-[active=true]:underline",
+          "data-[active=true]:text-foreground/50",
+        ],
+      }}
       isMenuOpen={isMenuOpen}
       onMenuOpenChange={setIsMenuOpen}
       shouldHideOnScroll
@@ -71,36 +95,42 @@ export default function Navbar() {
         />
         <NavbarContent justify="start" className="hidden md:flex">
           <motion.li variants={item}>
-            <Link tabIndex={-1} className="block w-full" href="/">
-              <GlowingButton selectedPath={path === "/"}>Home</GlowingButton>
-            </Link>
+            <NextIntlLink tabIndex={-1} className="block w-full" href="/">
+              <GlowingButton selectedPath={pathname === "/"}>
+                {home}
+              </GlowingButton>
+            </NextIntlLink>
           </motion.li>
         </NavbarContent>
         <NavbarContent className="hidden md:flex" justify="center">
           <motion.li variants={item}>
-            <Link tabIndex={-1} className="block w-full" href="/projects">
-              <GlowingButton selectedPath={path === "/projects"}>
-                Projects
+            <NextIntlLink
+              tabIndex={-1}
+              className="block w-full"
+              href="/projects"
+            >
+              <GlowingButton selectedPath={pathname === "/projects"}>
+                {projects}
               </GlowingButton>
-            </Link>
+            </NextIntlLink>
           </motion.li>
           <motion.li variants={item}>
-            <Link tabIndex={-1} className="block w-full" href="/about">
-              <GlowingButton selectedPath={path === "/about"}>
-                About
+            <NextIntlLink tabIndex={-1} className="block w-full" href="/about">
+              <GlowingButton selectedPath={pathname === "/about"}>
+                {about}
               </GlowingButton>
-            </Link>
+            </NextIntlLink>
           </motion.li>
           <motion.li variants={item}>
-            <Link
+            <NextIntlLink
               tabIndex={-1}
               className="block w-full"
               href="/about#guestbook"
             >
-              <GlowingButton selectedPath={path === "/about#guestbook"}>
-                Guestbook
+              <GlowingButton selectedPath={pathname === "/about#guestbook"}>
+                {guestbook}
               </GlowingButton>
-            </Link>
+            </NextIntlLink>
           </motion.li>
         </NavbarContent>
         <NavbarContent className="gap-2">
@@ -116,7 +146,24 @@ export default function Navbar() {
                   key="particles"
                   onPress={() => handleParticles(!particles)}
                 >
-                  {particles ? "Disable Particles" : "Enable Particles"}
+                  {particles ? partcilesDisabled : particlesEnabled}
+                </DropdownItem>
+                <DropdownItem
+                  key="particles"
+                  onPress={() => {
+                    router.replace(
+                      {
+                        pathname,
+                        // TypeScript will validate that only known `params` are used in combination
+                        // with a given `pathname`. Since the two will always match for the current
+                        // route, we can skip runtime checks.
+                        params: params as any,
+                      },
+                      { locale: locale === "en" ? "tr" : "en" }
+                    );
+                  }}
+                >
+                  {locale === "en" ? "Türkçe" : "English"}
                 </DropdownItem>
               </DropdownMenu>
             </Dropdown>
@@ -127,54 +174,56 @@ export default function Navbar() {
         </NavbarContent>
       </motion.div>
       <NavbarMenu>
-        <NavbarMenuItem>
+        <NavbarMenuItem data-active={pathname === "/"}>
           <Link
+            size="lg"
+            as={NextIntlLink}
+            onPress={() => {
+              setIsMenuOpen(false);
+            }}
             className="block w-full"
             href="/"
-            onClick={() => {
-              setIsMenuOpen(false);
-            }}
           >
-            <GlowingButton selectedPath={path === "/"}>Home</GlowingButton>
+            {home}
           </Link>
         </NavbarMenuItem>
-        <NavbarMenuItem>
+        <NavbarMenuItem data-active={pathname === "/projects"}>
           <Link
+            size="lg"
+            as={NextIntlLink}
+            onPress={() => {
+              setIsMenuOpen(false);
+            }}
             className="block w-full"
             href="/projects"
-            onClick={() => {
-              setIsMenuOpen(false);
-            }}
           >
-            <GlowingButton selectedPath={path === "/projects"}>
-              Projects
-            </GlowingButton>
+            {projects}
           </Link>
         </NavbarMenuItem>
-        <NavbarMenuItem>
+        <NavbarMenuItem data-active={pathname === "/about"}>
           <Link
+            size="lg"
+            as={NextIntlLink}
+            onPress={() => {
+              setIsMenuOpen(false);
+            }}
             className="block w-full"
             href="/about"
-            onClick={() => {
-              setIsMenuOpen(false);
-            }}
           >
-            <GlowingButton selectedPath={path === "/about"}>
-              About
-            </GlowingButton>
+            {about}
           </Link>
         </NavbarMenuItem>
         <NavbarMenuItem>
           <Link
-            className="block w-full"
-            href="/about#guestbook"
-            onClick={() => {
+            size="lg"
+            as={NextIntlLink}
+            onPress={() => {
               setIsMenuOpen(false);
             }}
+            className="block w-full"
+            href="/about#guestbook"
           >
-            <GlowingButton selectedPath={path === "/about#guestbook"}>
-              Guestbook
-            </GlowingButton>
+            {guestbook}
           </Link>
         </NavbarMenuItem>
       </NavbarMenu>
