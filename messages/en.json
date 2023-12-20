@@ -1,4 +1,7 @@
 {
+  "metadata": {
+    "description": "Furkan Cengiz's personal website and portfolio"
+  },
   "Navbar": {
     "home": "Home",
     "projects": "Projects",
