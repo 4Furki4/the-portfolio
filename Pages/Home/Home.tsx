@@ -7,10 +7,9 @@ export default function Home({
   className,
   title,
   subtitle,
-}: {
+  projectsLinkText,
+}: Record<"title" | "subtitle" | "projectsLinkText", string> & {
   className?: string;
-  title: string;
-  subtitle: string;
 }) {
   const container = {
     hidden: { opacity: 0 },
@@ -56,7 +55,7 @@ export default function Home({
         variants={item}
         href={"/projects"}
       >
-        See my projects
+        {projectsLinkText}
       </MotionedLink>
     </motion.main>
   );

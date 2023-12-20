@@ -1,3 +1,4 @@
+import { getTranslations } from "next-intl/server";
 import GitHubTable from "./GitHubTable";
 
 export default async function GithubContributionTable() {
@@ -10,7 +11,8 @@ export default async function GithubContributionTable() {
       },
     }
   );
+  const t = await getTranslations("About.github-contributions");
   const githubTableData: GithubContributionResponse =
     await githubTableDataResponse.json();
-  return <GitHubTable githubTableData={githubTableData} />;
+  return <GitHubTable title={t("title")} githubTableData={githubTableData} />;
 }

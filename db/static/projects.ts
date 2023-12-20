@@ -197,7 +197,7 @@ const projects: Project[] = [
   {
     title: {
       en: "Frontend Mentor Challenges",
-      tr: "Frontend Mentor Görevleri",
+      tr: "Frontend Mentor Mücadeleleri",
     },
     endpoint: "Frontend-Mentor-Challenges",
     images: [

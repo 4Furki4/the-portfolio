@@ -1,4 +1,3 @@
-import { getBase64 } from "@/lib/getBase64ImageUrl";
 import About from "@/Pages/About/About";
 import { Metadata } from "next";
 import React from "react";
@@ -21,6 +20,10 @@ export const metadata: Metadata = {
   },
 };
 
-export default function page() {
-  return <About />;
+export default function page({
+  params: { locale },
+}: {
+  params: { locale: string };
+}) {
+  return <About locale={locale} />;
 }

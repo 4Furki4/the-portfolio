@@ -9,7 +9,8 @@
   },
   "Home": {
     "title": "Hello World, It's Furkan!",
-    "subtitle": "I'm a Full Stack Web Developer"
+    "subtitle": "I'm a Full Stack Web Developer",
+    "projects": "See my projects"
   },
   "Projects": {
     "title": "Project Previews",
@@ -51,6 +52,19 @@
       "signing": "Signing...",
       "sign": "Sign",
       "placeholder": "Leave a message..."
+    },
+    "adventure": {
+      "title": "My Adventure",
+      "p1": "To give you a brief background, I initially pursued Industrial Engineering at AGU, but my passion for software development led me to build games instead. I then decided to focus on backend development first and later on, added frontend development to my skill set.",
+      "p2": "After gaining some experience with Unity to develop games, I decided to learn .NET. The reason I shifted to web development is to build an online modern Turkish dictionary from scratch. The official dictionary lacks many features and I'm a fan of Turkish words and their roots. Initially, I developed multi-page applications but found it unsatisfying. Then, I discovered .NET APIs and became enamored with the simplicity of sending required data and using them however we want. Later on, I delved into client-side learning and studied HTML, CSS, and JavaScript. Honestly, I struggled initially since I lacked proper resources. However, I was fortunate to be accepted into the Frontend Web Development BootCamp of Recoded.",
+      "p3": "During the bootcamp, I not only improved my Frontend skills but also learned how to collaborate with teammates, provide feedback, manage time, and more. Furthermore, I honed my self-taught skills since our teachers encouraged us to self-teach.",
+      "p4": "In this adventure, I made mistakes, and I will. I learned making mistakes is not what I should be afraid of. What I should be afraid of is being afraid of making mistakes which just means that I might not like what I do."
+    },
+    "education": {
+      "title": "My Education"
+    },
+    "github-contributions": {
+      "title": "My GitHub Contributions"
     }
   }
 }

@@ -9,7 +9,11 @@ export default function Page({
 }) {
   unstable_setRequestLocale(locale);
   const t = useTranslations("Home");
-  const title = t("title");
-  const subtitle = t("subtitle");
-  return <Home title={title} subtitle={subtitle} />;
+  return (
+    <Home
+      title={t("title")}
+      subtitle={t("subtitle")}
+      projectsLinkText={t("projects")}
+    />
+  );
 }
