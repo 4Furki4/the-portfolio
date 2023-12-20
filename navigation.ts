@@ -16,11 +16,11 @@ export const pathnames = {
   // specify each external path per locale.
   "/about": {
     en: "/about",
-    tr: "/hakkinda",
+    tr: "/hakkimda",
   },
   "/about#guestbook": {
     en: "/about#guestbook",
-    tr: "/hakkinda#ziyaretcidefteri",
+    tr: "/hakkimda#ziyaretcidefteri",
   },
   "/projects": {
     en: "/projects",

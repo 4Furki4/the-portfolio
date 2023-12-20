@@ -1,25 +1,31 @@
 import About from "@/Pages/About/About";
-import { Metadata } from "next";
-import { unstable_setRequestLocale } from "next-intl/server";
+import { getTranslations, unstable_setRequestLocale } from "next-intl/server";
 import React from "react";
-export const metadata: Metadata = {
-  title: "About",
-  description: "About page containing contact information and a short bio.",
-  openGraph: {
-    type: "website",
-    locale: "en_US",
-    url: "/about",
-    title: "About | Furkan Cengiz",
-    description: "About page containing contact information and a short bio.",
-  },
-  alternates: {
-    canonical: "/about",
-    languages: {
-      en: "/about",
-      tr: "/tr/hakkinda",
+export async function generateMetadata({
+  params: { locale },
+}: {
+  params: { locale: string };
+}) {
+  const t = await getTranslations({ locale, namespace: ["About.metadata"] });
+  return {
+    title: t("title"),
+    description: t("description"),
+    openGraph: {
+      type: "website",
+      locale: locale,
+      url: locale === "en" ? "/about" : "/tr/hakkimda",
+      title: `${t("title")} | Furkan Cengiz`,
+      description: t("description"),
     },
-  },
-};
+    alternates: {
+      canonical: "/about",
+      languages: {
+        en: "/about",
+        tr: "/tr/hakkimda",
+      },
+    },
+  };
+}
 
 export default function page({
   params: { locale },

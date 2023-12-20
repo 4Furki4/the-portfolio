@@ -42,6 +42,10 @@
     "link": "Go to Projects Page"
   },
   "About": {
+    "metadata": {
+      "title": "About",
+      "description": "About page containing contact information and a short bio."
+    },
     "GuestBook": {
       "id": "guestbook",
       "title": "Guest Book",

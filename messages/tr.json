@@ -42,6 +42,10 @@
     "link": "Projeler sayfasına dön"
   },
   "About": {
+    "metadata": {
+      "title": "Hakkımda",
+      "description": "Kısa bir biyografi ve Furkan Cengiz'in yetenekleri."
+    },
     "GuestBook": {
       "id": "ziyaretcidefteri",
       "title": "Ziyaretçi Defteri",
