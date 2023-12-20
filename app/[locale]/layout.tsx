@@ -9,7 +9,7 @@ import Script from "next/script";
 import Providers from "@/context/Providers";
 import { Metadata } from "next";
 import { notFound } from "next/navigation";
-import { unstable_setRequestLocale } from "next-intl/server";
+import { getTranslations, unstable_setRequestLocale } from "next-intl/server";
 import { GeistSans } from "geist/font/sans";
 import { useTranslations } from "next-intl";
 export async function generateMetadata({
@@ -17,12 +17,16 @@ export async function generateMetadata({
 }: {
   params: { locale: String };
 }): Promise<Metadata> {
+  const t = await getTranslations({
+    locale: locale,
+    namespace: ["metadata"],
+  });
   return {
     title: {
       template: "%s | Furkan Cengiz",
       default: "Furkan Cengiz",
     },
-    description: "Furkan Cengiz's personal website and portfolio",
+    description: t("description"),
     verification: {
       google: "6MHP_v7v_6AanMTrqnMHnFGPcHO-IcUl2l3tphvqFnM",
     },
@@ -67,9 +71,9 @@ export async function generateMetadata({
     ],
     openGraph: {
       type: "website",
-      url: "/",
+      url: locale === "en" ? "/" : "/tr",
       title: "Furkan Cengiz",
-      description: "Furkan Cengiz's personal website and portfolio",
+      description: t("description"),
     },
   };
 }
