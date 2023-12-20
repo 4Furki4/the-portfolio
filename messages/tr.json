@@ -1,6 +1,6 @@
 {
   "Navbar": {
-    "home": "Anasayfa",
+    "home": "Ana Sayfa",
     "projects": "Projeler",
     "about": "Hakkımda",
     "guestbook": "Ziyaretçi Defteri",
@@ -9,7 +9,7 @@
   },
   "Home": {
     "title": "Merhaba Dünya, Ben Furkan!",
-    "subtitle": "Ben bi' web geliştiricisiyim.",
+    "subtitle": "Ben bi' web geliştiricisiyim \\(o_o)/",
     "projects": "Projelerimi görün"
   },
   "Projects": {
