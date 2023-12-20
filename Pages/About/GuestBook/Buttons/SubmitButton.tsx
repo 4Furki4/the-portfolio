@@ -3,11 +3,19 @@ import { Session } from "next-auth";
 //@ts-ignore Warning: useFormStatus is now in canary. Remove the experimental_ prefix. The prefixed alias will be removed in an upcoming release.
 import { FormStatus, useFormStatus } from "react-dom";
 
-export function SubmitButton({ session }: { session: Session | null }) {
+export function SubmitButton({
+  session,
+  loadingText,
+  text,
+}: {
+  session: Session | null;
+  loadingText: string;
+  text: string;
+}) {
   const { pending }: FormStatus = useFormStatus();
   return (
     <Button isDisabled={!session?.user} isLoading={pending} type="submit">
-      {pending ? "Signing..." : "Sign"}
+      {pending ? loadingText : text}
     </Button>
   );
 }

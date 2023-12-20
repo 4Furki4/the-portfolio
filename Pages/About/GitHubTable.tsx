@@ -27,8 +27,10 @@ const show = {
 };
 export default function GitHubTable({
   githubTableData,
+  title,
 }: {
   githubTableData: any;
+  title: string;
 }) {
   const { theme } = useTheme();
   const AnimatedCard = useMemo(() => motion(Card), []);
@@ -51,7 +53,7 @@ export default function GitHubTable({
     >
       <CardHeader>
         <CardTitle className="text-fs-600 font-bold text-center">
-          My Github Contributions
+          {title}
         </CardTitle>
       </CardHeader>
       <CardContent>

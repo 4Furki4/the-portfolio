@@ -1,6 +1,6 @@
-import { getBase64 } from "@/lib/getBase64ImageUrl";
 import About from "@/Pages/About/About";
 import { Metadata } from "next";
+import { unstable_setRequestLocale } from "next-intl/server";
 import React from "react";
 export const metadata: Metadata = {
   title: "About",
@@ -14,9 +14,18 @@ export const metadata: Metadata = {
   },
   alternates: {
     canonical: "/about",
+    languages: {
+      en: "/about",
+      tr: "/tr/hakkinda",
+    },
   },
 };
 
-export default function page() {
-  return <About />;
+export default function page({
+  params: { locale },
+}: {
+  params: { locale: string };
+}) {
+  unstable_setRequestLocale(locale);
+  return <About locale={locale} />;
 }

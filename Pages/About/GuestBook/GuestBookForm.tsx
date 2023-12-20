@@ -5,11 +5,15 @@ import React from "react";
 //@ts-ignore Warning: useFormStatus is now in canary. Remove the experimental_ prefix. The prefixed alias will be removed in an upcoming release.
 import { SubmitButton } from "./Buttons/SubmitButton";
 import { Session } from "next-auth";
+type IntlProps = Record<"placeholder" | "sign" | "signing", string>;
 export default function GuestBookForm({
   session,
+  placeholder,
+  sign,
+  signing,
 }: {
   session: Session | null;
-}) {
+} & IntlProps) {
   const formRef = React.useRef<HTMLFormElement>(null);
   return (
     <div className="flex flex-col gap-4">
@@ -28,10 +32,10 @@ export default function GuestBookForm({
           isRequired
           disabled={!session?.user}
           className="w-full"
-          aria-label="Leave your message..."
-          placeholder="Leave your message..."
+          aria-label={placeholder}
+          placeholder={placeholder}
         />
-        <SubmitButton session={session} />
+        <SubmitButton loadingText={signing} text={sign} session={session} />
       </form>
     </div>
   );
