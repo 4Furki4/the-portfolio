@@ -200,14 +200,14 @@ div[data-overlay-container="true"]{
     opacity: 1;
   }
 }
-@layer base {
+/* @layer base {
   * {
     @apply border-border;
   }
   body {
     @apply bg-background text-foreground;
   }
-}
+} */
 
 @media screen and (max-width: 768px) {
   .glow-effect{

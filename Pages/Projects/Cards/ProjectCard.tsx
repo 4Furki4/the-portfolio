@@ -110,7 +110,7 @@ export default function ProjectCard({
                   target="_blank"
                   href={tech.url ?? "#"}
                   key={index}
-                  className="text-fs-300 bg-accent/40 rounded-full px-4 py-2"
+                  className="text-fs-300 bg-foreground-foreground rounded-full px-4 py-2"
                 >
                   {tech.name}
                 </Link>
@@ -126,7 +126,7 @@ export default function ProjectCard({
                     href={contributor.github}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="text-fs-300 bg-accent/40 rounded-full px-4 py-2"
+                    className="text-fs-300 bg-foreground-foreground rounded-full px-4 py-2"
                   >
                     {contributor.name}
                   </Link>
