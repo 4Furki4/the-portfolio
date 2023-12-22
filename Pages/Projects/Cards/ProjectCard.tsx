@@ -102,8 +102,12 @@ export default function ProjectCard({
           {project.description[locale as "en" | "tr"]}
         </p>
         {/* @ts-ignore which causes nonsense error in Accordion component when I render an AccordionItem conditionally */}
-        <Accordion variant="bordered" selectionMode="multiple">
-          <AccordionItem title={techStack}>
+        <Accordion
+          defaultExpandedKeys={["1"]}
+          variant="bordered"
+          selectionMode="multiple"
+        >
+          <AccordionItem key="1" title={techStack}>
             <div className="w-full flex flex-wrap gap-4 items-center">
               {project.techStack.map((tech, index) => (
                 <Link
