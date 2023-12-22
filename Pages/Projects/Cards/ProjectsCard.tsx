@@ -2,6 +2,7 @@ import { Card, CardBody, CardFooter, CardHeader } from "@nextui-org/react";
 import React from "react";
 import Image from "next/image";
 import Link from "next/link";
+import { ArrowUpRight } from "lucide-react";
 export default function ProjectCards({
   blurredImage,
   locale,
@@ -41,7 +42,7 @@ export default function ProjectCards({
               </figure>
             </CardBody>
             <CardFooter className="shadow-small">
-              <p className="text-fs-100 max-w-[calc(100vw-50px)] md:max-w-[calc(100vw-75px)] overflow-hidden text-ellipsis whitespace-nowrap">
+              <p className="text-fs-200 max-w-[calc(100vw-50px)] md:max-w-[calc(100vw-75px)] overflow-hidden text-ellipsis whitespace-nowrap">
                 {project.description}
               </p>
             </CardFooter>
