@@ -24,10 +24,10 @@
   },
   "Project": {
     "repo-link": {
-      "visit": "Projenin GitHub Sayfasına Git",
-      "contribute": "Projeye Katkıda Bulun"
+      "visit": "GitHub'da Gör",
+      "contribute": "Katkıda Bulun"
     },
-    "live-link": "Projenin Canlı Ön İzlemesine Git",
+    "live-link": "Demoyu Aç",
     "tech-stack": "Kullanılan Teknolojiler",
     "contributors": "Katkıda Bulunanlar",
     "status": {

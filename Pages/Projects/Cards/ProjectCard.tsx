@@ -102,15 +102,19 @@ export default function ProjectCard({
           {project.description[locale as "en" | "tr"]}
         </p>
         {/* @ts-ignore which causes nonsense error in Accordion component when I render an AccordionItem conditionally */}
-        <Accordion variant="bordered" selectionMode="multiple">
-          <AccordionItem title={techStack}>
+        <Accordion
+          defaultExpandedKeys={["1"]}
+          variant="bordered"
+          selectionMode="multiple"
+        >
+          <AccordionItem key="1" title={techStack}>
             <div className="w-full flex flex-wrap gap-4 items-center">
               {project.techStack.map((tech, index) => (
                 <Link
                   target="_blank"
                   href={tech.url ?? "#"}
                   key={index}
-                  className="text-fs-300 bg-accent/40 rounded-full px-4 py-2"
+                  className="text-fs-300 bg-foreground-foreground rounded-full px-4 py-2"
                 >
                   {tech.name}
                 </Link>
@@ -126,7 +130,7 @@ export default function ProjectCard({
                     href={contributor.github}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="text-fs-300 bg-accent/40 rounded-full px-4 py-2"
+                    className="text-fs-300 bg-foreground-foreground rounded-full px-4 py-2"
                   >
                     {contributor.name}
                   </Link>

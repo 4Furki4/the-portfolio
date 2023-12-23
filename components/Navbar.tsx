@@ -72,9 +72,22 @@ export default function Navbar({
   return (
     <NextUINavbar
       classNames={{
+        toggle: ["data-[open=true]:text-danger"],
+        menu: ["items-start"],
         menuItem: [
-          "data-[active=true]:underline",
-          "data-[active=true]:text-foreground/50",
+          "relative",
+          "block",
+          "data-[active=true]:after:content-['']",
+          "data-[active=true]:after:w-full",
+          "data-[active=true]:after:h-[2px]",
+          "data-[active=true]:after:absolute",
+          "data-[active=true]:after:bottom-0",
+          "data-[active=true]:after:left-0",
+          "data-[active=true]:after:bg-gradient-to-r",
+          "data-[active=true]:after:from-danger",
+          "data-[active=true]:after:to-secondary",
+          "data-[active=true]:after:bg-300%",
+          "data-[active=true]:after:animate-flow-gradient",
         ],
       }}
       isMenuOpen={isMenuOpen}
@@ -181,7 +194,8 @@ export default function Navbar({
             onPress={() => {
               setIsMenuOpen(false);
             }}
-            className="block w-full"
+            color={pathname === "/" ? "secondary" : "foreground"}
+            className=""
             href="/"
           >
             {home}
@@ -194,7 +208,8 @@ export default function Navbar({
             onPress={() => {
               setIsMenuOpen(false);
             }}
-            className="block w-full"
+            color={pathname === "/projects" ? "secondary" : "foreground"}
+            className=""
             href="/projects"
           >
             {projects}
@@ -203,24 +218,26 @@ export default function Navbar({
         <NavbarMenuItem data-active={pathname === "/about"}>
           <Link
             size="lg"
+            color={pathname === "/about" ? "secondary" : "foreground"}
             as={NextIntlLink}
             onPress={() => {
               setIsMenuOpen(false);
             }}
-            className="block w-full"
+            className=""
             href="/about"
           >
             {about}
           </Link>
         </NavbarMenuItem>
-        <NavbarMenuItem>
+        <NavbarMenuItem data-active={pathname === "/about#guestbook"}>
           <Link
             size="lg"
             as={NextIntlLink}
+            color={pathname === "/about#guestbook" ? "secondary" : "foreground"}
             onPress={() => {
               setIsMenuOpen(false);
             }}
-            className="block w-full"
+            className=""
             href="/about#guestbook"
           >
             {guestbook}

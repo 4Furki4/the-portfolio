@@ -58,6 +58,7 @@ type ProjectPreview = {
   src: string;
   alt: string;
   endpoint: string;
+  description: string;
 };
 
 type Year = {

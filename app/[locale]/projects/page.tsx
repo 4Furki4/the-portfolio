@@ -47,6 +47,7 @@ export default async function Projects({
     src: project.images[0].src,
     alt: project.images[0].alt,
     endpoint: project.endpoint,
+    description: project.description[locale as "en" | "tr"],
   }));
 
   return (
