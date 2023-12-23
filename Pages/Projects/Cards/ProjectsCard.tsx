@@ -22,7 +22,7 @@ export default function ProjectCards({
             isPressable
             as={Link}
             href={`/projects/${project.endpoint}`}
-            className="shadow-lg drop backdrop-blur-xs transition-[background-color] duration-300 relative z-20 h-full w-full"
+            className="shadow-lg backdrop-blur-xs relative z-20 h-full w-full hover:scale-105"
           >
             <CardHeader className="justify-center shadow-small">
               <h2 className="text-fs-400 font-bold">{project.title}</h2>
