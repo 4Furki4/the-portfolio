@@ -2,7 +2,6 @@ import { Card, CardBody, CardFooter, CardHeader } from "@nextui-org/react";
 import React from "react";
 import Image from "next/image";
 import Link from "next/link";
-import { ArrowUpRight } from "lucide-react";
 export default function ProjectCards({
   blurredImage,
   locale,
