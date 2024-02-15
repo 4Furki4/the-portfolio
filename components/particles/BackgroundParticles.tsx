@@ -18,7 +18,7 @@ export default function BackgroundParticles() {
   const particlesLoaded = useCallback(async (container?: Container) => {
     await console.log(container);
   }, []);
-  const { particles, handleParticles } = useParticleContext();
+  const particles = useParticleContext();
 
   return (
     particles && (

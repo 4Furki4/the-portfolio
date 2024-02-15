@@ -1,6 +1,6 @@
 "use client";
 import React, { useEffect } from "react";
-import { ParticleContext } from "../ParticleContext";
+import { ParticleContext, ParticleContextHandler } from "../ParticleContext";
 
 export default function ParticleContextProvider({
   children,
@@ -11,6 +11,7 @@ export default function ParticleContextProvider({
   const handleParticles = () => {
     localStorage.setItem("particles", particles ? "false" : "true");
     setParticles((prev) => !prev);
+    return !particles
   };
   useEffect(() => {
     const particles = localStorage.getItem("particles");
@@ -19,8 +20,10 @@ export default function ParticleContextProvider({
     }
   }, []);
   return (
-    <ParticleContext.Provider value={{ particles, handleParticles }}>
-      {children}
+    <ParticleContext.Provider value={particles}>
+      <ParticleContextHandler.Provider value={handleParticles}>
+        {children}
+      </ParticleContextHandler.Provider>
     </ParticleContext.Provider>
   );
 }

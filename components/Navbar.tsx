@@ -16,7 +16,7 @@ import { motion } from "framer-motion";
 import React from "react";
 import GlowingButton from "./buttons/GlowingButton";
 import ThemeButton from "./buttons/ThemeButton";
-import { useParticleContext } from "@/context/ParticleContext";
+import { useParticleContext, useParticleContextHandler } from "@/context/ParticleContext";
 import { useLocale } from "next-intl";
 import { usePathname, Link as NextIntlLink, useRouter } from "@/navigation";
 import { Settings } from "lucide-react";
@@ -66,7 +66,8 @@ export default function Navbar({
   const [isMenuOpen, setIsMenuOpen] = React.useState(false);
   const pathname = usePathname();
   const router = useRouter();
-  const { particles, handleParticles } = useParticleContext();
+  const particles = useParticleContext();
+  const handleParticles = useParticleContextHandler();
   const locale = useLocale();
   const params = useParams();
   return (
@@ -157,7 +158,7 @@ export default function Navbar({
               <DropdownMenu aria-label="site settings">
                 <DropdownItem
                   key="particles"
-                  onPress={() => handleParticles(!particles)}
+                  onPress={handleParticles!}
                 >
                   {particles ? partcilesDisabled : particlesEnabled}
                 </DropdownItem>
