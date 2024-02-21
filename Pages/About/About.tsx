@@ -5,6 +5,7 @@ import GithubContributionTable from "./GithubContributionTable";
 import GuestBook from "./GuestBook/GuestBook";
 import AboutImage from "./AboutImage";
 import { useTranslations } from "next-intl";
+import TakenCourses from "./TakenCourses";
 export default function About({ locale }: { locale: string }) {
   const t = useTranslations("About");
   return (
@@ -21,6 +22,7 @@ export default function About({ locale }: { locale: string }) {
         fourthParagraph={t("adventure.p4")}
       />
       <Education locale={locale} title={t("education.title")} />
+      <TakenCourses />
       <Suspense>
         <GithubContributionTable />
         <GuestBook />
