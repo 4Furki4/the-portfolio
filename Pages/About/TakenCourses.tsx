@@ -10,17 +10,17 @@ export default function TakenCourses() {
             <CardHeader>
                 <h1 className='text-center text-fs-600 font-bold'>Taken Courses</h1>
             </CardHeader>
-            <CardContent className='grid place-content-center md:grid-cols-2 gap-4'>
+            <CardContent className='grid place-content-center md:grid-cols-2 gap-4 p-2 pt-0 sm:p-6'>
                 {takenCourses.map((takenCourse) => (
                     <Card key={takenCourse.courseTitle} className='flex flex-col'>
-                        <CardHeader className='text-center text-fs-400'>
+                        <CardHeader className='text-center text-fs-400 md:min-h-32'>
                             {takenCourse.courseTitle}
                         </CardHeader>
                         <CardContent className='space-y-4'>
                             <Image className='text-center' src={takenCourse.image} alt={takenCourse.courseTitle} width={450} height={400} sizes={
                                 '(max-width: 450px) 100vw, 450px'
                             } />
-                            <div>
+                            <div className='space-y-2'>
                                 <p>{takenCourse.summarize}</p>
                                 <Link target='_blank' href={takenCourse.courseLink}>Course Page</Link>
                             </div>
