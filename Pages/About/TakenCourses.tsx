@@ -3,6 +3,7 @@ import React from 'react'
 import { takenCourses } from '@/db/static/takenCourses'
 import Image from 'next/image'
 import { Link } from '@nextui-org/react'
+import Tag from '@/components/Tag'
 export default function TakenCourses() {
     return (
         <Card>
@@ -25,11 +26,10 @@ export default function TakenCourses() {
                             </div>
                         </CardContent>
                         <CardFooter className='flex flex-wrap gap-2 mt-auto'>
-                            {takenCourse.tags.map((tag, index) => (
-                                <p key={index} className='text-fs-200 bg-foreground-foreground rounded-full px-3 py-1'>
-                                    {tag}
-                                </p>
-                            ))
+                            {
+                                takenCourse.tags.map((tag, index) => (
+                                    <Tag key={index} tag={tag} />
+                                ))
                             }
                         </CardFooter>
                     </Card>
