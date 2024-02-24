@@ -30,7 +30,7 @@ export default function TakenCourses() {
         <AnimatedCard
             props={{
                 initial: hidden,
-                viewport: { once: true, amount: 0.25 },
+                viewport: { once: true, amount: 0.05 },
                 whileInView: show
             }}
         >
