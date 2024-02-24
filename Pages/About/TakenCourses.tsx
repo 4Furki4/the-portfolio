@@ -4,9 +4,36 @@ import { takenCourses } from '@/db/static/takenCourses'
 import Image from 'next/image'
 import { Link } from '@nextui-org/react'
 import Tag from '@/components/Tag'
+import AnimatedCard from '@/components/AnimatedCard'
+const hidden = {
+    opacity: 0,
+    x: -10,
+    transition: {
+        type: "spring",
+        damping: 10,
+        stiffness: 100,
+    },
+};
+
+const show = {
+    opacity: 1,
+    x: 0,
+    transition: {
+        delay: 0.25,
+        type: "spring",
+        damping: 10,
+        stiffness: 100,
+    },
+};
 export default function TakenCourses() {
     return (
-        <Card>
+        <AnimatedCard
+            props={{
+                initial: hidden,
+                viewport: { once: true, amount: 0.25 },
+                whileInView: show
+            }}
+        >
             <CardHeader>
                 <h1 className='text-center text-fs-600 font-bold'>Taken Courses</h1>
             </CardHeader>
@@ -25,7 +52,9 @@ export default function TakenCourses() {
                                 <Link target='_blank' href={takenCourse.courseLink}>Course Page</Link>
                             </div>
                         </CardContent>
+
                         <CardFooter className='flex flex-wrap gap-2 mt-auto'>
+
                             {
                                 takenCourse.tags.map((tag, index) => (
                                     <Tag key={index} tag={tag} />
@@ -35,6 +64,6 @@ export default function TakenCourses() {
                     </Card>
                 ))}
             </CardContent>
-        </Card>
+        </AnimatedCard>
     )
 }
