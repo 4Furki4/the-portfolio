@@ -46,5 +46,13 @@ export const takenCourses: TakenCourses[] = [
         image: "/pics/courses/api-design-in-nodejs-v4-thumbnail.webp",
         tags: ["Node", "API", "Express"],
         summarize: "This course is about how to design an API in Node.js. It covers the basics of Node.js, how to design an API, how to use Express, and how to use Postgres."
+    },
+    {
+        courseTitle: "CS50 2023",
+        tutor: "David J. Malan",
+        courseLink: "https://cs50.harvard.edu/",
+        image: "/pics/courses/cs50-thumbnail.jpg",
+        tags: ["Computer Science"],
+        summarize: "This course is about the basics of computer science which covers the basics of programming, algorithms, data structures, and computer science.",
     }
 ]
