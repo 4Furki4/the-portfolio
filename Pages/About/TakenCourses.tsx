@@ -35,25 +35,33 @@ export default function TakenCourses() {
             }}
         >
             <CardHeader>
-                <h1 className='text-center text-fs-600 font-bold'>Taken Courses</h1>
+                <h1 className='text-center  text-fs-600 font-bold'>Taken Courses</h1>
             </CardHeader>
-            <CardContent className='grid place-content-center md:grid-cols-2 gap-4 p-2 pt-0 sm:p-6'>
+            <CardContent className='grid place-content-center md:grid-cols-2 xl:grid-cols-3 gap-4 p-2 pt-0 sm:p-6'>
                 {takenCourses.map((takenCourse) => (
                     <Card key={takenCourse.courseTitle} className='flex flex-col'>
-                        <CardHeader className='text-center text-fs-400 md:min-h-32'>
-                            {takenCourse.courseTitle}
-                        </CardHeader>
-                        <CardContent className='space-y-4'>
-                            <Image className='text-center' src={takenCourse.image} alt={takenCourse.courseTitle} width={450} height={400} sizes={
-                                '(max-width: 450px) 100vw, 450px'
-                            } />
-                            <div className='space-y-2'>
+                        <CardContent className='space-y-4 p-0'>
+                            <div className="relative h-48 w-full">
+                                <Image
+                                    layout="fill"
+                                    objectFit="cover"
+                                    className="w-full h-full object-cover rounded-t-lg"
+                                    src={takenCourse.image}
+                                    alt={takenCourse.courseTitle}
+                                    sizes={
+                                        '(max-width: 450px) 100vw, 450px'
+                                    } />
+                            </div>
+                            <CardHeader className='text-fs-400 p-0 px-6'>
+                                {takenCourse.courseTitle}
+                            </CardHeader>
+                            <div className='px-6 pb-4'>
                                 <p>{takenCourse.summarize}</p>
                                 <Link target='_blank' href={takenCourse.courseLink}>Course Page</Link>
                             </div>
                         </CardContent>
 
-                        <CardFooter className='flex flex-wrap gap-2 mt-auto'>
+                        <CardFooter className='flex flex-wrap gap-2 mt-auto px-6'>
 
                             {
                                 takenCourse.tags.map((tag, index) => (

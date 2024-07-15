@@ -12,7 +12,7 @@ export const takenCourses: TakenCourses[] = [
         tutor: "Brian Holt",
         courseLink: "https://frontendmasters.com/courses/databases",
         image: "/pics/courses/complete-intro-to-databases-thumbnail.webp",
-        tags: ["SQL", "NoSQL", "Graph Databases", "Key-Value Stores", "Computer Science"],
+        tags: ["SQL", "Graph Databases", "NoSQL", "Key-Value Stores", "Computer Science"],
         summarize: "This course is about the basics of databases. It covers SQL, NoSQL, Graph Databases, and Key-Value Stores. It also covers how to use databases with JavaScript."
     },
     {
@@ -54,5 +54,21 @@ export const takenCourses: TakenCourses[] = [
         image: "/pics/courses/cs50-thumbnail.jpg",
         tags: ["Computer Science"],
         summarize: "This course is about the basics of computer science which covers the basics of programming, algorithms, data structures, and computer science.",
+    },
+    {
+        courseTitle: "Complete Intro to Containers (feat. Docker)",
+        tutor: "Brian Holt",
+        courseLink: "https://frontendmasters.com/courses/complete-intro-containers",
+        image: "/pics/courses/complete-intro-to-containers-feat-docker-thumbnail.webp",
+        tags: ["Docker", "Containers", "DevOps", "Full Stack"],
+        summarize: "This course is about how to use Docker and containers. It covers the basics of Docker, how to Dockerize an application, how to use Docker with Node.js, how to use Docker with databases, and docker-compose."
+    },
+    {
+        courseTitle: "Full Stack for Front-End Engineers, v3",
+        tutor: "Jem Young",
+        courseLink: "https://frontendmasters.com/courses/fullstack-v3",
+        image: "/pics/courses/full-stack-for-front-end-engineers-v3-thumbnail.webp",
+        tags: ["Full Stack", "Backend", "Nginx", "Server Infrastructure", "Linux", "Shell", "Security"],
+        summarize: "This course is about how to be a full stack developer. It covers the basics of backend, Nginx, server infrastructure, Linux, shell, and security."
     }
 ]
