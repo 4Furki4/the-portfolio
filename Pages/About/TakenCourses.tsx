@@ -1,6 +1,5 @@
 import { Card, CardContent, CardFooter, CardHeader } from '@/components/ui/card'
 import React from 'react'
-import { takenCourses } from '@/db/static/takenCourses'
 import Image from 'next/image'
 import { Link } from '@nextui-org/react'
 import Tag from '@/components/Tag'
@@ -25,7 +24,13 @@ const show = {
         stiffness: 100,
     },
 };
-export default function TakenCourses() {
+export default function TakenCourses({
+    takenCourses,
+    coursePage
+}: {
+    takenCourses: TakenCourses[],
+    coursePage: string
+}) {
     return (
         <AnimatedCard
             props={{
@@ -57,7 +62,9 @@ export default function TakenCourses() {
                             </CardHeader>
                             <div className='px-6 pb-4'>
                                 <p>{takenCourse.summarize}</p>
-                                <Link target='_blank' href={takenCourse.courseLink}>Course Page</Link>
+                                <Link target='_blank' href={takenCourse.courseLink}>
+                                    {coursePage}
+                                </Link>
                             </div>
                         </CardContent>
 

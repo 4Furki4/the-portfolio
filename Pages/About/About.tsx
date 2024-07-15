@@ -6,8 +6,10 @@ import GuestBook from "./GuestBook/GuestBook";
 import AboutImage from "./AboutImage";
 import { useTranslations } from "next-intl";
 import TakenCourses from "./TakenCourses";
+import { getTakenCourses } from "@/db/static/takenCourses";
 export default function About({ locale }: { locale: string }) {
   const t = useTranslations("About");
+  const takenCourses = getTakenCourses(locale);
   return (
     <section
       className="relative z-20 my-4 sm:my-16 mx-auto max-w-6xl p-6 backdrop-blur-xs grid gap-8 break-words hyphens-auto"
@@ -22,7 +24,7 @@ export default function About({ locale }: { locale: string }) {
         fourthParagraph={t("adventure.p4")}
       />
       <Education locale={locale} title={t("education.title")} />
-      <TakenCourses />
+      <TakenCourses takenCourses={takenCourses} coursePage={t('taken-courses.course-page')} />
       <Suspense>
         <GithubContributionTable />
         <GuestBook />

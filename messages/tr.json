@@ -72,6 +72,10 @@
     },
     "github-contributions": {
       "title": "Github Katkılarım"
+    },
+    "taken-courses": {
+      "title": "Bitirdiğim Kurslar",
+      "course-page": "Kurs Sayfası"
     }
   }
 }

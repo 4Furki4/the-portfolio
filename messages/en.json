@@ -72,6 +72,10 @@
     },
     "github-contributions": {
       "title": "My GitHub Contributions"
+    },
+    "taken-courses": {
+      "title": "Taken Courses",
+      "course-page": "Course Page"
     }
   }
 }
