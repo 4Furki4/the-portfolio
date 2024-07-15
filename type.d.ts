@@ -81,3 +81,5 @@ type GithubContributionResponse = {
   years: Year[];
   contributions: contribution[];
 };
+
+type TakenCourses = Record<"courseTitle" | "courseLink" | "summarize" | "image" | "tutor", string> & { tags: string[] }

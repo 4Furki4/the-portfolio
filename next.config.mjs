@@ -12,6 +12,9 @@ const nextConfig = {
       {
         hostname: "skillicons.dev",
       },
+      {
+        hostname: "static.frontendmasters.com"
+      }
     ],
   },
 };
