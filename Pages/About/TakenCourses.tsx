@@ -26,10 +26,12 @@ const show = {
 };
 export default function TakenCourses({
     takenCourses,
-    coursePage
+    coursePage,
+    title
 }: {
     takenCourses: TakenCourses[],
     coursePage: string
+    title: string
 }) {
     return (
         <AnimatedCard
@@ -40,7 +42,9 @@ export default function TakenCourses({
             }}
         >
             <CardHeader>
-                <h1 className='text-center  text-fs-600 font-bold'>Taken Courses</h1>
+                <h1 className='text-center  text-fs-600 font-bold'>
+                    {title}
+                </h1>
             </CardHeader>
             <CardContent className='grid place-content-center md:grid-cols-2 xl:grid-cols-3 gap-4 p-2 pt-0 sm:p-6'>
                 {takenCourses.map((takenCourse) => (

@@ -24,7 +24,9 @@ export default function About({ locale }: { locale: string }) {
         fourthParagraph={t("adventure.p4")}
       />
       <Education locale={locale} title={t("education.title")} />
-      <TakenCourses takenCourses={takenCourses} coursePage={t('taken-courses.course-page')} />
+      <TakenCourses takenCourses={takenCourses} coursePage={t('taken-courses.course-page')}
+        title={t('taken-courses.title')}
+      />
       <Suspense>
         <GithubContributionTable />
         <GuestBook />
