@@ -6,11 +6,11 @@
 
 ## Tech and Libraries
 
-- Utilized Next.js 13 app router with React.js
+- Utilized Next.js v14 app router with React.js v18
 - Implemented [framer-motion](https://www.framer.com/motion/) library for the animations.
 - Used [Tailwind](https://tailwindcss.com/) for styling
 - Implemented [ts-particles](https://github.com/tsparticles/tsparticles) for generating amazing and interactional background
-- Used somewhat [shadcn/ui](https://ui.shadcn.com/) for the education cards and [NextUI](https://nextui.org/docs/components/navbar#controlled-menu) library for the navbar.
+- Used combition of [shadcn/ui](https://ui.shadcn.com/) and [NextUI](https://nextui.org/docs/components/navbar#controlled-menu).
 - Tried new Next.js and React features like useFormStatus and form actions.
 - Blurred Loading Image data URLs generated using [plaiceholder]([url](https://plaiceholder.co/))
 - Carousels built with [fancybox](https://fancyapps.com/)
