@@ -27,9 +27,6 @@ export async function generateMetadata({
       default: "Furkan Cengiz",
     },
     description: t("description"),
-    verification: {
-      google: "6MHP_v7v_6AanMTrqnMHnFGPcHO-IcUl2l3tphvqFnM",
-    },
     robots: {
       index: true,
       follow: true,
@@ -39,7 +36,7 @@ export async function generateMetadata({
         index: true,
       },
     },
-    metadataBase: new URL("https://www.furkancengiz.software"),
+    metadataBase: new URL("https://furkan-cengiz.com"),
     alternates: {
       canonical: "/",
       languages: {
