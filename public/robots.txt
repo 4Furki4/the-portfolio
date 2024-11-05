@@ -3,7 +3,7 @@ User-agent: *
 Allow: /
 
 # Host
-Host: https://www.furkancengiz.software
+Host: https://furkan-cengiz.com
 
 # Sitemaps
-Sitemap: https://www.furkancengiz.software/sitemap.xml
+Sitemap: https://furkan-cengiz.com/sitemap.xml
