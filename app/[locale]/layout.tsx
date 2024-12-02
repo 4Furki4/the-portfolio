@@ -98,7 +98,6 @@ export default function RootLayout({
         <Providers>
           <Navbar
             about={t("about")}
-            guestbook={t("guestbook")}
             home={t("home")}
             particlesEnabled={t("particles-enabled")}
             partcilesDisabled={t("particles-disabled")}
