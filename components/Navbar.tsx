@@ -50,7 +50,6 @@ const item = {
 };
 export default function Navbar({
   about,
-  guestbook,
   home,
   particlesEnabled,
   partcilesDisabled,
@@ -59,7 +58,6 @@ export default function Navbar({
   home: string;
   projects: string;
   about: string;
-  guestbook: string;
   particlesEnabled: string;
   partcilesDisabled: string;
 }) {
@@ -132,17 +130,6 @@ export default function Navbar({
             <NextIntlLink tabIndex={-1} className="block w-full" href="/about">
               <GlowingButton selectedPath={pathname === "/about"}>
                 {about}
-              </GlowingButton>
-            </NextIntlLink>
-          </motion.li>
-          <motion.li variants={item}>
-            <NextIntlLink
-              tabIndex={-1}
-              className="block w-full"
-              href="/about#guestbook"
-            >
-              <GlowingButton selectedPath={pathname === "/about#guestbook"}>
-                {guestbook}
               </GlowingButton>
             </NextIntlLink>
           </motion.li>
@@ -228,20 +215,6 @@ export default function Navbar({
             href="/about"
           >
             {about}
-          </Link>
-        </NavbarMenuItem>
-        <NavbarMenuItem data-active={pathname === "/about#guestbook"}>
-          <Link
-            size="lg"
-            as={NextIntlLink}
-            color={pathname === "/about#guestbook" ? "secondary" : "foreground"}
-            onPress={() => {
-              setIsMenuOpen(false);
-            }}
-            className=""
-            href="/about#guestbook"
-          >
-            {guestbook}
           </Link>
         </NavbarMenuItem>
       </NavbarMenu>

@@ -2,7 +2,6 @@ import React, { Suspense } from "react";
 import { AboutMeParagraph } from "./AboutMeParagraph";
 import Education from "./Education";
 import GithubContributionTable from "./GithubContributionTable";
-import GuestBook from "./GuestBook/GuestBook";
 import AboutImage from "./AboutImage";
 import { useTranslations } from "next-intl";
 import TakenCourses from "./TakenCourses";
@@ -29,7 +28,6 @@ export default function About({ locale }: { locale: string }) {
       />
       <Suspense>
         <GithubContributionTable />
-        <GuestBook />
       </Suspense>
     </section>
   );
