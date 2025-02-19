@@ -33,7 +33,8 @@ export default function Home({
   title,
   subtitle,
   projectsLinkText,
-}: Record<"title" | "subtitle" | "projectsLinkText", string> & {
+  role,
+}: Record<"title" | "subtitle" | "projectsLinkText" | "role", string> & {
   className?: string;
 }) {
   const container = {
@@ -96,8 +97,8 @@ export default function Home({
 
   const socialLinks = [
     { icon: <Github className="w-6 h-6" />, href: "https://github.com/4Furki4" },
-    { icon: <Linkedin className="w-6 h-6" />, href: "#" },
-    { icon: <Mail className="w-6 h-6" />, href: "mailto:your.email@example.com" },
+    { icon: <Linkedin className="w-6 h-6" />, href: "https://www.linkedin.com/in/4furkancengiz4/" },
+    { icon: <Mail className="w-6 h-6" />, href: "mailto:muhammedcengiz1@gmail.com" },
   ];
 
   const MotionedLink = motion.create(Link);
@@ -119,7 +120,7 @@ export default function Home({
               className="inline-block"
             >
               <span className="text-xs sm:text-sm font-medium px-3 sm:px-4 py-1.5 sm:py-2 rounded-full border border-primary/20 bg-primary/5">
-                Full Stack Developer
+                {role}
               </span>
             </motion.div>
 
