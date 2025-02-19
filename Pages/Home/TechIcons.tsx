@@ -1,89 +1,51 @@
 import React from "react";
 import Image from "next/image";
 import tsIcon from "@/public/svgs/ts.svg";
-import csIcon from "@/public/svgs/cs.svg";
 import nextIcon from "@/public/svgs/next.svg";
-import angularIcon from "@/public/svgs/angular.svg";
-import netIcon from "@/public/svgs/net.svg";
 import reactIcon from "@/public/svgs/react.svg";
 import postgresIcon from "@/public/svgs/postgres.svg";
 import nodejsIcon from "@/public/svgs/nodejs.svg";
 import mongodb from "@/public/svgs/mongodb.svg";
 import tailwind from "@/public/svgs/tailwind.svg";
+import goIcon from "@/public/svgs/go.svg";
+
+interface TechItem {
+  name: string;
+  icon: any;
+  category: "frontend" | "backend" | "database" | "language";
+}
+
+const techStack: TechItem[] = [
+  { name: "TypeScript", icon: tsIcon, category: "language" },
+  { name: "Go", icon: goIcon, category: "language" },
+  { name: "React", icon: reactIcon, category: "frontend" },
+  { name: "Next.js", icon: nextIcon, category: "frontend" },
+  { name: "Node.js", icon: nodejsIcon, category: "backend" },
+  { name: "PostgreSQL", icon: postgresIcon, category: "database" },
+  { name: "MongoDB", icon: mongodb, category: "database" },
+  { name: "Tailwind CSS", icon: tailwind, category: "frontend" },
+];
 
 export default function TechIcons() {
   return (
     <>
-      <Image
-        alt="TS Icon"
-        src={tsIcon}
-        width={300}
-        height={100}
-        className="w-max-w w-full"
-      />
-      <Image
-        alt="Node.js Icon"
-        src={nodejsIcon}
-        width={300}
-        height={100}
-        className="w-max-w w-full"
-      />
-      <Image
-        alt="React Icon"
-        src={reactIcon}
-        width={300}
-        height={100}
-        className="w-max-w w-full"
-      />
-      <Image
-        alt="Next Icon"
-        src={nextIcon}
-        width={300}
-        height={100}
-        className="w-max-w w-full"
-      />
-      <Image
-        alt="Angular Icon"
-        src={angularIcon}
-        width={300}
-        height={100}
-        className="w-max-w w-full"
-      />
-      <Image
-        alt="Net Icon"
-        src={netIcon}
-        width={300}
-        height={100}
-        className="w-max-w w-full"
-      />
-      <Image
-        alt="CS Icon"
-        src={csIcon}
-        width={300}
-        height={100}
-        className="w-max-w w-full"
-      />
-      <Image
-        alt="PostgreSQL Icon"
-        src={postgresIcon}
-        width={300}
-        height={100}
-        className="w-max-w w-full"
-      />
-      <Image
-        alt="MongoDB Icon"
-        src={mongodb}
-        width={300}
-        height={100}
-        className="w-max-w w-full"
-      />
-      <Image
-        alt="TailwindCSS Icon"
-        src={tailwind}
-        width={300}
-        height={100}
-        className="w-max-w w-full"
-      />
+      {techStack.map((tech, index) => (
+        <div
+          key={tech.name}
+          className="group relative flex flex-col items-center gap-2 p-4 rounded-lg transition-all duration-300 hover:bg-primary/5"
+        >
+          <Image
+            alt={`${tech.name} Icon`}
+            src={tech.icon}
+            width={300}
+            height={100}
+            className="w-max-w w-full transition-transform duration-300 group-hover:scale-110"
+          />
+          <span className="absolute -bottom-2 opacity-0 group-hover:opacity-100 group-hover:bottom-0 text-sm font-medium transition-all duration-300">
+            {tech.name}
+          </span>
+        </div>
+      ))}
     </>
   );
 }

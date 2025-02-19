@@ -12,8 +12,9 @@
   },
   "Home": {
     "title": "Merhaba Dünya, Ben Furkan!",
-    "subtitle": "Ben bi' web geliştiricisiyim \\(o_o)/",
-    "projects": "Projelerimi görün"
+    "subtitle": "Modern web teknolojileri ile fikirleri zarif çözümlere dönüştürüyorum",
+    "projects": "Projelerimi gör",
+    "role": "Full Stack Geliştirici"
   },
   "Projects": {
     "title": "Proje Ön İzlemeleri",

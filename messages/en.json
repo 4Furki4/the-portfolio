@@ -12,8 +12,9 @@
   },
   "Home": {
     "title": "Hello World, It's Furkan!",
-    "subtitle": "I'm a Full Stack Web Developer \\(o_o)/",
-    "projects": "See my projects"
+    "subtitle": "Transforming ideas into elegant solutions with modern web technologies",
+    "projects": "See my projects",
+    "role": "Full Stack Developer"
   },
   "Projects": {
     "title": "Project Previews",

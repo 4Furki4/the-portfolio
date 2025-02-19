@@ -2,6 +2,7 @@ import React from "react";
 import Home from "@/Pages/Home/Home";
 import { useTranslations } from "next-intl";
 import { unstable_setRequestLocale } from "next-intl/server";
+
 export default function Page({
   params: { locale },
 }: {
@@ -14,6 +15,7 @@ export default function Page({
       title={t("title")}
       subtitle={t("subtitle")}
       projectsLinkText={t("projects")}
+      role={t("role")}
     />
   );
 }
