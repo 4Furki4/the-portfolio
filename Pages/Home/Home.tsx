@@ -12,6 +12,7 @@ import mongodbIcon from "@/public/svgs/mongodb.svg";
 import gitIcon from "@/public/svgs/git.svg";
 import trpc from "@/public/svgs/trpc.svg";
 import drizzle from "@/public/svgs/drizzle-orm.png";
+import postgresIcon from "@/public/svgs/postgres.svg"
 interface Skill {
   name: string;
   icon: any;
@@ -24,6 +25,7 @@ const skills: Skill[] = [
   { name: "tRPC", icon: trpc },
   { name: "Tailwind CSS", icon: tailwindIcon },
   { name: "Drizzle ORM", icon: drizzle },
+  { name: "PostgreSQL", icon: postgresIcon },
   { name: "MongoDB", icon: mongodbIcon },
   { name: "Git", icon: gitIcon },
 ];
