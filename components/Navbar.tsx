@@ -11,7 +11,7 @@ import {
   DropdownItem,
   Button,
   Link,
-} from "@nextui-org/react";
+} from "@heroui/react";
 import { motion } from "framer-motion";
 import React from "react";
 import GlowingButton from "./buttons/GlowingButton";

@@ -1,7 +1,7 @@
 "use client";
 import React from "react";
 import { signIn } from "next-auth/react";
-import { Button } from "@nextui-org/react";
+import { Button } from "@heroui/react";
 import GoogleSvg from "@/public/svgs/google.svg";
 import Image from "next/image";
 import { Github } from "lucide-react";

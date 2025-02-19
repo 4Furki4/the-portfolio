@@ -11,7 +11,7 @@
   },
   "dependencies": {
     "@fancyapps/ui": "^5.0.28",
-    "@nextui-org/react": "^2.1.13",
+    "@heroui/react": "2.7.2",
     "@plaiceholder/next": "^3.0.0",
     "@prisma/client": "^5.5.2",
     "@radix-ui/react-navigation-menu": "^1.1.4",
@@ -27,7 +27,7 @@
     "date-fns": "^2.30.0",
     "eslint": "8.45.0",
     "eslint-config-next": "13.4.12",
-    "framer-motion": "^10.16.4",
+    "framer-motion": "^12.4.5",
     "geist": "^1.1.0",
     "github-contributions-canvas": "^0.7.0",
     "lucide-react": "^0.268.0",
