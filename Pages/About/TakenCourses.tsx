@@ -1,7 +1,7 @@
 import { Card, CardContent, CardFooter, CardHeader } from '@/components/ui/card'
 import React from 'react'
 import Image from 'next/image'
-import { Link } from '@nextui-org/react'
+import { Link } from "@heroui/react"
 import Tag from '@/components/Tag'
 import AnimatedCard from '@/components/AnimatedCard'
 const hidden = {

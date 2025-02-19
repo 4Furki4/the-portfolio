@@ -1,6 +1,6 @@
 "use client";
 import addGuestEntry from "@/db/actions/addGuestEntry";
-import { Input } from "@nextui-org/react";
+import { Input } from "@heroui/react";
 import React from "react";
 //@ts-ignore Warning: useFormStatus is now in canary. Remove the experimental_ prefix. The prefixed alias will be removed in an upcoming release.
 import { SubmitButton } from "./Buttons/SubmitButton";

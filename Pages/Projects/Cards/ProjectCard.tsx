@@ -5,11 +5,11 @@ import {
   CardBody,
   CardFooter,
   Divider,
-} from "@nextui-org/react";
+} from "@heroui/react";
 import React from "react";
 import { CheckCircle, ExternalLink, HardHat, X } from "lucide-react";
 import Image from "next/image";
-import { Accordion, AccordionItem } from "@nextui-org/react";
+import { Accordion, AccordionItem } from "@heroui/react";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import Fancybox from "@/components/FancyBox";

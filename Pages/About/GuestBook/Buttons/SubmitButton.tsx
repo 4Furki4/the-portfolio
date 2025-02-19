@@ -1,4 +1,4 @@
-import { Button } from "@nextui-org/react";
+import { Button } from "@heroui/react";
 import { Session } from "next-auth";
 //@ts-ignore Warning: useFormStatus is now in canary. Remove the experimental_ prefix. The prefixed alias will be removed in an upcoming release.
 import { FormStatus, useFormStatus } from "react-dom";
