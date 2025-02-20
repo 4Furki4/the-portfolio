@@ -1,6 +1,71 @@
 const projects: Project[] = [
   {
     title: {
+      en: "Turkish Dictionary",
+      tr: "Türkçe Sözlük",
+    },
+    endpoint: "Turkish-Dictionary",
+    description: {
+      en: "Turkish Dictionary is an open-source website where people can search and save words, and contribute to Turkish!",
+      tr: "Turkish Dictionary, insanların Türkçe kelimeleri arayıp kaydedebildiği ve Türkçe'ye katkıda bulunabildiği açık kaynaklı bir web sitesidir!",
+    },
+    images: [
+      {
+        alt: "Turkish Dictionary Home Page Preview",
+        src: "/pics/projects/turkish-dictionary/home-preview.png",
+      },
+      {
+        alt: "Turkish Dictionary Word Searched Preview",
+        src: "/pics/projects/turkish-dictionary/word-searched-preview.png",
+      },
+      {
+        alt: "Turkish Dictionary Dashboard Add Word Page Preview",
+        src: "/pics/projects/turkish-dictionary/dashboard-word-create.png",
+      }
+    ],
+    repoLink: "https://github.com/4Furki4/Turkish-Dictionary",
+    demoLink: "https://turkce-sozluk.com",
+    status: "in-progress",
+    techStack: [
+      { name: "Next.js", url: "https://nextjs.org/" },
+      {
+        name: "TypeScript",
+        url: "https://www.typescriptlang.org/",
+      },
+      { name: "Create T3 App", url: "https://create.t3.gg/" },
+      { name: "tRPC", url: "https://trpc.io/" },
+      {
+        name: "React-Query",
+        url: "https://react-query.tanstack.com/",
+      },
+      {
+        name: "Next Auth",
+        url: "https://next-auth.js.org/",
+      },
+      {
+        name: "Next-Intl",
+        url: "https://next-intl-docs.vercel.app/",
+      },
+      {
+        name: "Tailwind CSS",
+        url: "https://tailwindcss.com/",
+      },
+      {
+        name: "HeroUI(formerly NextUI)",
+        url: "https://nextui.org/",
+      },
+      {
+        name: "ShadCN",
+        url: "https://ui.shadcn.com/"
+      },
+      {
+        name: "PostgreSQL",
+        url: "https://www.postgresql.org/",
+      }
+    ],
+  },
+  {
+    title: {
       en: "Learnification",
       tr: "Learnification",
     },
@@ -274,59 +339,7 @@ const projects: Project[] = [
         url: "https://angular.io/",
       },
     ],
-  },
-  {
-    title: {
-      en: "Turkish Dictionary",
-      tr: "Türkçe Sözlük",
-    },
-    endpoint: "Turkish-Dictionary",
-    description: {
-      en: "Turkish Dictionary is an open-source website where people can search and save words, and contribute to Turkish!",
-      tr: "Turkish Dictionary, insanların Türkçe kelimeleri arayıp kaydedebildiği ve Türkçe'ye katkıda bulunabildiği açık kaynaklı bir web sitesidir!",
-    },
-    images: [
-      {
-        alt: "Turkish Dictionary Preview",
-        src: "/pics/projects/turkish-dictionary/preview-search.png",
-      },
-    ],
-    repoLink: "https://github.com/4Furki4/Turkish-Dictionary",
-    demoLink: "https://turkish-dictionary-chi.vercel.app",
-    status: "in-progress",
-    techStack: [
-      { name: "Next.js", url: "https://nextjs.org/" },
-      {
-        name: "TypeScript",
-        url: "https://www.typescriptlang.org/",
-      },
-      {
-        name: "Tailwind CSS",
-        url: "https://tailwindcss.com/",
-      },
-      {
-        name: "MongoDB",
-        url: "https://www.mongodb.com/",
-      },
-      { name: "tRPC", url: "https://trpc.io/" },
-      {
-        name: "React-Query",
-        url: "https://react-query.tanstack.com/",
-      },
-      {
-        name: "Next Auth",
-        url: "https://next-auth.js.org/",
-      },
-      {
-        name: "Next-Intl",
-        url: "https://next-intl-docs.vercel.app/",
-      },
-      {
-        name: "NextUI",
-        url: "https://nextui.org/",
-      },
-    ],
-  },
+  }
 ];
 
 export default projects;
