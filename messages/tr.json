@@ -6,7 +6,6 @@
     "home": "Ana Sayfa",
     "projects": "Projeler",
     "about": "Hakkımda",
-    "guestbook": "Ziyaretçi Defteri",
     "particles-disabled": "Parçacıkları kapat",
     "particles-enabled": "Parçacıkları aç"
   },
@@ -49,17 +48,6 @@
     "metadata": {
       "title": "Hakkımda",
       "description": "Kısa bir biyografi ve Furkan Cengiz'in yetenekleri."
-    },
-    "GuestBook": {
-      "id": "ziyaretcidefteri",
-      "title": "Ziyaretçi Defteri",
-      "signout": "Çıkış Yap",
-      "googleSignin": "Google ile Giriş Yap",
-      "githubSignin": "GitHub ile Giriş Yap",
-      "email": "Merak etme, e-posta adresini kimseyle paylaşmayacağım.",
-      "signing": "İletiliyor...",
-      "sign": "İlet",
-      "placeholder": "Bir mesaj bırak..."
     },
     "adventure": {
       "title": "Maceram",

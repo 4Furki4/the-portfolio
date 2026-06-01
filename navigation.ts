@@ -16,10 +16,6 @@ export const pathnames = {
     en: "/about",
     tr: "/hakkimda",
   },
-  "/about#guestbook": {
-    en: "/about#guestbook",
-    tr: "/hakkimda#ziyaretcidefteri",
-  },
   "/projects": {
     en: "/projects",
     tr: "/projeler",

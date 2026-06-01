@@ -39,10 +39,6 @@ const projects: Project[] = [
         url: "https://react-query.tanstack.com/",
       },
       {
-        name: "Next Auth",
-        url: "https://next-auth.js.org/",
-      },
-      {
         name: "Next-Intl",
         url: "https://next-intl-docs.vercel.app/",
       },
@@ -151,10 +147,6 @@ const projects: Project[] = [
       {
         name: "AWS S3",
         url: "https://aws.amazon.com/s3/",
-      },
-      {
-        name: "Next Auth",
-        url: "https://next-auth.js.org/",
       },
       {
         name: "Next-Intl",
