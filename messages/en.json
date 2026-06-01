@@ -6,7 +6,6 @@
     "home": "Home",
     "projects": "Projects",
     "about": "About",
-    "guestbook": "Guestbook",
     "particles-disabled": "Particles Disabled",
     "particles-enabled": "Particles Enabled"
   },
@@ -49,17 +48,6 @@
     "metadata": {
       "title": "About",
       "description": "About page containing contact information and a short bio."
-    },
-    "GuestBook": {
-      "id": "guestbook",
-      "title": "Guest Book",
-      "email": "Don't worry, I won't share your email with anyone.",
-      "signout": "Sign Out",
-      "googleSignin": "Signin with Google",
-      "githubSignin": "Signin with GitHub",
-      "signing": "Signing...",
-      "sign": "Sign",
-      "placeholder": "Leave a message..."
     },
     "adventure": {
       "title": "My Adventure",
