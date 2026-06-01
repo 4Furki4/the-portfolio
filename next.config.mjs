@@ -7,7 +7,10 @@ import withNextIntl from "next-intl/plugin";
 // );
 /** @type {import('next').NextConfig} */
 const nextConfig = {
+  allowedDevOrigins: ["127.0.0.1"],
+  output: "standalone",
   images: {
+    qualities: [75, 90, 100],
     remotePatterns: [
       {
         hostname: "skillicons.dev",

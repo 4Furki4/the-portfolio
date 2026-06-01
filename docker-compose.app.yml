@@ -1,0 +1,47 @@
+services:
+  app:
+    image: ${APP_IMAGE:-portfolio:latest}
+    build:
+      context: .
+      args:
+        DATABASE_URL: ${DATABASE_URL:-mongodb://mongo:27017/portfolio?directConnection=true}
+    env_file:
+      - .env.pi
+    depends_on:
+      mongo:
+        condition: service_healthy
+    restart: unless-stopped
+    expose:
+      - "3000"
+
+  mongo:
+    image: mongo:8
+    restart: unless-stopped
+    command: ["mongod", "--bind_ip_all"]
+    volumes:
+      - mongo-data:/data/db
+    healthcheck:
+      test: ["CMD", "mongosh", "--quiet", "--eval", "db.adminCommand('ping').ok"]
+      interval: 10s
+      timeout: 5s
+      retries: 6
+
+  caddy:
+    image: caddy:2-alpine
+    restart: unless-stopped
+    depends_on:
+      - app
+    environment:
+      SITE_DOMAIN: ${SITE_DOMAIN:-localhost}
+    ports:
+      - "80:80"
+      - "443:443"
+    volumes:
+      - ./caddyfile:/etc/caddy/Caddyfile:ro
+      - caddy-data:/data
+      - caddy-config:/config
+
+volumes:
+  mongo-data:
+  caddy-data:
+  caddy-config:

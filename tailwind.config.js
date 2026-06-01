@@ -1,11 +1,9 @@
-const { heroui } = require("@heroui/react");
-
 /** @type {import('tailwindcss').Config} */
 module.exports = {
   darkMode: ["class"],
   content: [
     "./pages/**/*.{ts,tsx}",
-    "./Pages/**/*.{ts,tsx}",
+    "./features/**/*.{ts,tsx}",
     "./components/**/*.{ts,tsx}",
     "./app/**/*.{ts,tsx}",
     "./src/**/*.{ts,tsx}",
@@ -48,41 +46,50 @@ module.exports = {
         "fs-900": "var(--fs-900)",
         "fs-1000": "var(--fs-1000)",
       },
-      // colors: {
-      //   border: "hsl(var(--border))",
-      //   input: "hsl(var(--input))",
-      //   ring: "hsl(var(--ring))",
-      //   background: "hsl(var(--background))",
-      //   foreground: "hsl(var(--foreground))",
-      //   primary: {
-      //     DEFAULT: "hsl(var(--primary))",
-      //     foreground: "hsl(var(--primary-foreground))",
-      //   },
-      //   secondary: {
-      //     DEFAULT: "hsl(var(--secondary))",
-      //     foreground: "hsl(var(--secondary-foreground))",
-      //   },
-      //   destructive: {
-      //     DEFAULT: "hsl(var(--destructive))",
-      //     foreground: "hsl(var(--destructive-foreground))",
-      //   },
-      //   muted: {
-      //     DEFAULT: "hsl(var(--muted))",
-      //     foreground: "hsl(var(--muted-foreground))",
-      //   },
-      //   accent: {
-      //     DEFAULT: "hsl(var(--accent))",
-      //     foreground: "hsl(var(--accent-foreground))",
-      //   },
-      //   popover: {
-      //     DEFAULT: "hsl(var(--popover))",
-      //     foreground: "hsl(var(--popover-foreground))",
-      //   },
-      //   card: {
-      //     DEFAULT: "hsl(var(--card))",
-      //     foreground: "hsl(var(--card-foreground))",
-      //   },
-      // },
+      colors: {
+        border: "hsl(var(--border))",
+        input: "hsl(var(--input))",
+        ring: "hsl(var(--ring))",
+        background: "hsl(var(--background))",
+        foreground: {
+          DEFAULT: "hsl(var(--foreground))",
+          foreground: "#24294c",
+        },
+        primary: {
+          DEFAULT: "#57C6FF",
+          foreground: "hsl(var(--primary-foreground))",
+        },
+        secondary: {
+          DEFAULT: "#7D24FF",
+          foreground: "#0B1139",
+        },
+        destructive: {
+          DEFAULT: "hsl(var(--destructive))",
+          foreground: "hsl(var(--destructive-foreground))",
+        },
+        danger: {
+          DEFAULT: "hsl(var(--destructive))",
+          foreground: "hsl(var(--destructive-foreground))",
+        },
+        success: "#22c55e",
+        warning: "#f59e0b",
+        muted: {
+          DEFAULT: "hsl(var(--muted))",
+          foreground: "hsl(var(--muted-foreground))",
+        },
+        accent: {
+          DEFAULT: "hsl(var(--accent))",
+          foreground: "hsl(var(--accent-foreground))",
+        },
+        popover: {
+          DEFAULT: "hsl(var(--popover))",
+          foreground: "hsl(var(--popover-foreground))",
+        },
+        card: {
+          DEFAULT: "hsl(var(--card))",
+          foreground: "hsl(var(--card-foreground))",
+        },
+      },
       borderRadius: {
         lg: "var(--radius)",
         md: "calc(var(--radius) - 2px)",
@@ -110,29 +117,5 @@ module.exports = {
       },
     },
   },
-  plugins: [
-    require("tailwindcss-animate"),
-    heroui({
-      themes: {
-        dark: {
-          colors: {
-            primary: {
-              DEFAULT: "#57C6FF",
-            },
-            secondary: {
-              DEFAULT: "#7D24FF",
-              foreground: "#0B1139",
-            },
-
-            background: "#0B1139",
-            foreground: {
-              DEFAULT: "#FFFFFF",
-              foreground: "#24294c",
-            },
-          },
-        },
-      },
-      defaultExtendTheme: true,
-    }),
-  ],
+  plugins: [require("tailwindcss-animate")],
 };

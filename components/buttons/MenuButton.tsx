@@ -5,7 +5,7 @@ export default function MenuButton({ setIsOpen, isOpen, className }: { setIsOpen
     return (
         <motion.button
             onClick={() => setIsOpen(!isOpen)}
-            className='z-50 relative w-10 h-10 cursor-pointer'
+            className={`z-50 relative w-10 h-10 cursor-pointer ${className ?? ""}`}
         >
             <div className='w-[22px] h-[12px]'>
                 <motion.span

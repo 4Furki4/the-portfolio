@@ -1,5 +1,5 @@
 import React from "react";
-import { Download, Github, Linkedin, Mail } from "lucide-react";
+import { Download, GitPullRequest, Link2, Mail } from "lucide-react";
 import Link from "next/link";
 export default function Footer() {
   return (
@@ -9,7 +9,7 @@ export default function Footer() {
         href={"https://www.linkedin.com/in/4furkancengiz4/"}
         className="hover:bg-gray-100 dark:hover:bg-black rounded-full p-4"
       >
-        <Linkedin aria-label="LinkedIn Icon" />
+        <Link2 aria-label="LinkedIn Icon" />
       </Link>
       <Link
         target="_blank"
@@ -25,7 +25,7 @@ export default function Footer() {
         target="_blank"
         href={"https://github.com/4furki4"}
       >
-        <Github aria-label="GitHub Icon" />
+        <GitPullRequest aria-label="GitHub Icon" />
       </Link>
       <Link
         href="mailto:muhammedcengiz1@gmail.com"

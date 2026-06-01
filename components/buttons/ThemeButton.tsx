@@ -25,7 +25,7 @@ export default function ThemeButton() {
         <Button
           onClick={() => setTheme(theme === "dark" ? "light" : "dark")}
           className="lg:hidden min-w-max"
-          variant="light"
+          variant="ghost"
         >
           {theme === "dark" ? (
             <Sun aria-label="Sun Icon" size={26} />
