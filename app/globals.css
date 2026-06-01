@@ -1,6 +1,5 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+@import "tailwindcss" source("../");
+@config "../tailwind.config.js";
 
 @layer base {
   :root {
@@ -230,5 +229,3 @@ div[data-overlay-container="true"]{
   text-align: left;
   fill: var(--color-fg-default);
 }
-
-

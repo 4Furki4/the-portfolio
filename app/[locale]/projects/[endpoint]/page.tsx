@@ -1,15 +1,17 @@
 import React from "react";
 import projectsData from "@/db/static/projects";
-import ProjectCard from "@/Pages/Projects/Cards/ProjectCard";
+import ProjectCard from "@/features/Projects/Cards/ProjectCard";
 import { Metadata } from "next";
 import { getBase64 } from "@/lib/getBase64ImageUrl";
-import { getTranslations, unstable_setRequestLocale } from "next-intl/server";
+import { getTranslations, setRequestLocale } from "next-intl/server";
 import { notFound } from "next/navigation";
-export function generateMetadata({
-  params: { locale, endpoint },
+import { locales } from "@/navigation";
+export async function generateMetadata({
+  params,
 }: {
-  params: { endpoint: string; locale: string };
-}): Metadata {
+  params: Promise<{ endpoint: string; locale: string }>;
+}): Promise<Metadata> {
+  const { locale, endpoint } = await params;
   const project = projectsData.filter(
     (project) => project.endpoint === endpoint
   )[0];
@@ -40,16 +42,18 @@ export function generateMetadata({
 }
 
 export function generateStaticParams() {
-  return projectsData.map((project) => ({ endpoint: project.endpoint }));
+  return locales.flatMap((locale) =>
+    projectsData.map((project) => ({ locale, endpoint: project.endpoint })),
+  );
 }
 
 export default async function Project({
   params,
 }: {
-  params: { endpoint: string; locale: string };
+  params: Promise<{ endpoint: string; locale: string }>;
 }) {
-  unstable_setRequestLocale(params.locale);
-  const endpoint = params.endpoint;
+  const { endpoint, locale } = await params;
+  setRequestLocale(locale);
   const project = projectsData.filter(
     (project) => project.endpoint === endpoint
   )[0];
@@ -71,7 +75,7 @@ export default async function Project({
         contributors={t("contributors")}
         techStack={t("tech-stack")}
         status={t(`status.${project.status}`)}
-        locale={params.locale}
+        locale={locale}
       />
     </section>
   );

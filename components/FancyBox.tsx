@@ -2,13 +2,13 @@
 import React, { useEffect } from "react";
 
 import { Fancybox as NativeFancybox } from "@fancyapps/ui";
-import { ComponentOptionsType as FancyboxOptionsType } from "@fancyapps/ui/types/Fancybox/options";
+import type { FancyboxOptions } from "@fancyapps/ui/dist/fancybox/fancybox";
 import "@fancyapps/ui/dist/fancybox/fancybox.css";
 
 function Fancybox(props: {
   children?: React.ReactNode;
   delegate?: string;
-  options?: Partial<FancyboxOptionsType>;
+  options?: Partial<FancyboxOptions>;
   className?: string;
 }) {
   useEffect(() => {

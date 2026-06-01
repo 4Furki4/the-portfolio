@@ -9,17 +9,17 @@ import Script from "next/script";
 import Providers from "@/context/Providers";
 import { Metadata } from "next";
 import { notFound } from "next/navigation";
-import { getTranslations, unstable_setRequestLocale } from "next-intl/server";
+import { getTranslations, setRequestLocale } from "next-intl/server";
 import { GeistSans } from "geist/font/sans";
-import { useTranslations } from "next-intl";
 export async function generateMetadata({
-  params: { locale },
+  params,
 }: {
-  params: { locale: String };
+  params: Promise<{ locale: string }>;
 }): Promise<Metadata> {
+  const { locale } = await params;
   const t = await getTranslations({
     locale: locale,
-    namespace: ["metadata"],
+    namespace: "metadata",
   });
   return {
     title: {
@@ -80,18 +80,23 @@ export function generateStaticParams() {
   return locales.map((locale) => ({ locale }));
 }
 
-export default function RootLayout({
+export default async function RootLayout({
   children,
-  params: { locale },
+  params,
 }: {
   children: React.ReactNode;
-  params: { locale: string };
+  params: Promise<{ locale: string }>;
 }) {
+  const { locale } = await params;
   if (!locales.includes(locale as any)) notFound();
-  unstable_setRequestLocale(locale);
-  const t = useTranslations("Navbar");
+  setRequestLocale(locale);
+  const t = await getTranslations("Navbar");
   return (
-    <html lang={locale} className={`${GeistSans.className} dark`}>
+    <html
+      lang={locale}
+      className={`${GeistSans.className} dark`}
+      suppressHydrationWarning
+    >
       <body
         className={`w-full transition-colors duration-300 text-foreground bg-background relative min-h-dscreen flex flex-col`}
       >
@@ -99,6 +104,7 @@ export default function RootLayout({
           <Navbar
             about={t("about")}
             home={t("home")}
+            locale={locale}
             particlesEnabled={t("particles-enabled")}
             partcilesDisabled={t("particles-disabled")}
             projects={t("projects")}
@@ -116,7 +122,9 @@ export default function RootLayout({
           <Footer />
         </Providers>
       </body>
-      <Script id="microsoft-clarity">{msClarity}</Script>
+      {process.env.NODE_ENV === "production" ? (
+        <Script id="microsoft-clarity">{msClarity}</Script>
+      ) : null}
     </html>
   );
 }

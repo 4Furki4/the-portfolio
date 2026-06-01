@@ -1,15 +1,15 @@
 import React from "react";
-import Home from "@/Pages/Home/Home";
-import { useTranslations } from "next-intl";
-import { unstable_setRequestLocale } from "next-intl/server";
+import Home from "@/features/Home/Home";
+import { getTranslations, setRequestLocale } from "next-intl/server";
 
-export default function Page({
-  params: { locale },
+export default async function Page({
+  params,
 }: {
-  params: { locale: string };
+  params: Promise<{ locale: string }>;
 }) {
-  unstable_setRequestLocale(locale);
-  const t = useTranslations("Home");
+  const { locale } = await params;
+  setRequestLocale(locale);
+  const t = await getTranslations("Home");
   return (
     <Home
       title={t("title")}

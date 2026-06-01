@@ -1,12 +1,13 @@
-import About from "@/Pages/About/About";
-import { getTranslations, unstable_setRequestLocale } from "next-intl/server";
+import About from "@/features/About/About";
+import { getTranslations, setRequestLocale } from "next-intl/server";
 import React from "react";
 export async function generateMetadata({
-  params: { locale },
+  params,
 }: {
-  params: { locale: string };
+  params: Promise<{ locale: string }>;
 }) {
-  const t = await getTranslations({ locale, namespace: ["About.metadata"] });
+  const { locale } = await params;
+  const t = await getTranslations({ locale, namespace: "About.metadata" });
   return {
     title: t("title"),
     description: t("description"),
@@ -27,11 +28,12 @@ export async function generateMetadata({
   };
 }
 
-export default function page({
-  params: { locale },
+export default async function page({
+  params,
 }: {
-  params: { locale: string };
+  params: Promise<{ locale: string }>;
 }) {
-  unstable_setRequestLocale(locale);
+  const { locale } = await params;
+  setRequestLocale(locale);
   return <About locale={locale} />;
 }

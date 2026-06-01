@@ -1,16 +1,17 @@
 import React from "react";
 import projectsData from "@/db/static/projects";
-import ProjectCards from "@/Pages/Projects/Cards/ProjectsCard";
+import ProjectCards from "@/features/Projects/Cards/ProjectsCard";
 import { getBase64 } from "@/lib/getBase64ImageUrl";
-import { getTranslations, unstable_setRequestLocale } from "next-intl/server";
+import { getTranslations, setRequestLocale } from "next-intl/server";
 export async function generateMetadata({
-  params: { locale },
+  params,
 }: {
-  params: { locale: string };
+  params: Promise<{ locale: string }>;
 }) {
+  const { locale } = await params;
   const t = await getTranslations({
     locale: locale,
-    namespace: ["Projects.metadata"],
+    namespace: "Projects.metadata",
   });
   return {
     title: t("title"),
@@ -33,11 +34,12 @@ export async function generateMetadata({
 }
 const images = projectsData.map((project) => project.images[0].src);
 export default async function Projects({
-  params: { locale },
+  params,
 }: {
-  params: { locale: string };
+  params: Promise<{ locale: string }>;
 }) {
-  unstable_setRequestLocale(locale);
+  const { locale } = await params;
+  setRequestLocale(locale);
   const t = await getTranslations("Projects");
   const blurredImage = await Promise.all(
     images.map((image) => getBase64(image))

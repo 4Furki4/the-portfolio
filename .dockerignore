@@ -1,0 +1,12 @@
+.DS_Store
+.env*
+.git
+.next
+.vercel
+_pages
+bun.lockb
+node_modules
+npm-debug.log*
+Dockerfile
+docker-compose*.yml
+caddyfile
