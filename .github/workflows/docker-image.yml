@@ -1,0 +1,69 @@
+name: Build Docker image
+
+on:
+  push:
+    branches:
+      - main
+      - develop
+  workflow_dispatch:
+
+env:
+  IMAGE_NAME: furki4/the-portfolio
+
+jobs:
+  build:
+    name: Build and push ARM64 image
+    runs-on: ubuntu-24.04-arm
+    timeout-minutes: 60
+    permissions:
+      contents: read
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Set image tag
+        id: image
+        run: |
+          if [ "${GITHUB_REF_NAME}" = "main" ]; then
+            {
+              echo "tags<<EOF"
+              echo "${IMAGE_NAME}:latest"
+              echo "${IMAGE_NAME}:main-${GITHUB_SHA::7}"
+              echo "EOF"
+            } >> "$GITHUB_OUTPUT"
+            echo "push=true" >> "$GITHUB_OUTPUT"
+          elif [ "${GITHUB_REF_NAME}" = "develop" ]; then
+            {
+              echo "tags<<EOF"
+              echo "${IMAGE_NAME}:development"
+              echo "${IMAGE_NAME}:develop-${GITHUB_SHA::7}"
+              echo "EOF"
+            } >> "$GITHUB_OUTPUT"
+            echo "push=true" >> "$GITHUB_OUTPUT"
+          else
+            SAFE_BRANCH="$(echo "${GITHUB_REF_NAME}" | tr '[:upper:]' '[:lower:]' | sed -E 's/[^a-z0-9._-]+/-/g; s/^-+|-+$//g' | cut -c1-80)"
+            echo "tags=${IMAGE_NAME}:ci-${SAFE_BRANCH}-${GITHUB_SHA::7}" >> "$GITHUB_OUTPUT"
+            echo "push=false" >> "$GITHUB_OUTPUT"
+          fi
+
+      - name: Set up Docker Buildx
+        uses: docker/setup-buildx-action@v3
+
+      - name: Log in to Docker Hub
+        if: steps.image.outputs.push == 'true'
+        uses: docker/login-action@v3
+        with:
+          username: ${{ secrets.DOCKERHUB_USERNAME }}
+          password: ${{ secrets.DOCKERHUB_TOKEN }}
+
+      - name: Build and push
+        uses: docker/build-push-action@v6
+        with:
+          context: .
+          file: ./Dockerfile
+          platforms: linux/arm64
+          push: ${{ steps.image.outputs.push }}
+          tags: ${{ steps.image.outputs.tags }}
+          cache-from: type=gha
+          cache-to: type=gha,mode=max
