@@ -28,9 +28,26 @@
 The repository includes Docker deployment files for Raspberry Pi hosting:
 
 - `Dockerfile` builds the Next.js standalone server.
-- `docker-compose.app.yml` runs the app container.
-- Cloudflared should route the public hostname to `http://127.0.0.1:3004`.
-- `.env.pi.example` documents the Pi runtime environment.
+- `docker-compose.production.yml` runs the `main` branch image on `127.0.0.1:3004`.
+- `docker-compose.development.yml` runs the `develop` branch image on `127.0.0.1:3005`.
+- `docker-compose.app.yml` is a compatibility wrapper for production.
+- Cloudflared should route `furkan-cengiz.com` to `http://127.0.0.1:3004`.
+- Cloudflared should route `development.furkan-cengiz.com` to `http://127.0.0.1:3005`.
+- `.env.production.pi.example` and `.env.development.pi.example` document the Pi runtime image tags.
+
+Production:
+
+```bash
+docker compose --env-file .env.production.pi -f docker-compose.production.yml pull
+docker compose --env-file .env.production.pi -f docker-compose.production.yml up -d
+```
+
+Development:
+
+```bash
+docker compose --env-file .env.development.pi -f docker-compose.development.yml pull
+docker compose --env-file .env.development.pi -f docker-compose.development.yml up -d
+```
 
 -------------------------------------------
 This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
