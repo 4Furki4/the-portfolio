@@ -1,0 +1,26 @@
+services:
+  app-production:
+    image: ${APP_IMAGE:-furki4/the-portfolio:latest}
+    container_name: portfolio-app-production
+    restart: unless-stopped
+    init: true
+    security_opt:
+      - no-new-privileges:true
+    cap_drop:
+      - ALL
+    tmpfs:
+      - /tmp
+    logging:
+      driver: json-file
+      options:
+        max-size: "10m"
+        max-file: "3"
+    labels:
+      - com.centurylinklabs.watchtower.enable=true
+    env_file:
+      - path: .env.production.pi
+        required: false
+    environment:
+      - NODE_ENV=production
+    ports:
+      - "127.0.0.1:3004:3000"

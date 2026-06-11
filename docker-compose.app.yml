@@ -1,26 +1,5 @@
-services:
-  app:
-    image: ${APP_IMAGE:-furki4/the-portfolio:latest}
-    container_name: portfolio-app-production
-    init: true
-    security_opt:
-      - no-new-privileges:true
-    cap_drop:
-      - ALL
-    tmpfs:
-      - /tmp
-    logging:
-      driver: json-file
-      options:
-        max-size: "10m"
-        max-file: "3"
-    labels:
-      - com.centurylinklabs.watchtower.enable=true
-    env_file:
-      - path: .env.pi
-        required: false
-    environment:
-      - NODE_ENV=production
-    restart: unless-stopped
-    ports:
-      - "127.0.0.1:${HOST_PORT:-3004}:3000"
+# Compatibility compose file for the Raspberry Pi production deployment.
+# Prefer docker-compose.production.yml and docker-compose.development.yml for
+# running both branches side by side.
+include:
+  - docker-compose.production.yml
