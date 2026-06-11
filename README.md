@@ -6,12 +6,11 @@
 
 ## Tech and Libraries
 
-- Utilized Next.js v14 app router with React.js v18
+- Utilized the Next.js app router with React
 - Implemented [framer-motion](https://www.framer.com/motion/) library for the animations.
 - Used [Tailwind](https://tailwindcss.com/) for styling
 - Implemented [ts-particles](https://github.com/tsparticles/tsparticles) for generating amazing and interactional background
 - Used combition of [shadcn/ui](https://ui.shadcn.com/) and [NextUI](https://nextui.org/docs/components/navbar#controlled-menu).
-- Tried new Next.js and React features like useFormStatus and form actions.
 - Blurred Loading Image data URLs generated using [plaiceholder]([url](https://plaiceholder.co/))
 - Carousels built with [fancybox](https://fancyapps.com/)
 - Capturing user experience using [Clarity](https://clarity.microsoft.com/)
@@ -22,17 +21,16 @@
  ## Contribution
 
  - You can report problems you stumble upon by opening issues! 
- - If you want to run this project locally, there are a few env variables you need to include
-   - GOOGLE_CLIENT_SECRET
-   - GOOGLE_CLIENT_ID
-   - GITHUB_CLIENT_ID=
-   - GITHUB_CLIENT_SECRET=
-   - DATABASE_URL=
-   - NEXTAUTH_SECRET=
-   - NEXTAUTH_URL=http://localhost:3000
-   - NEXTAUTH_URL_INTERNAL=http://localhost:3000
- - Basically, follow the guides on Google and Github docs to create your own oAuth applications and paste your secrets and IDs.
- - You can create a MongoDB database using [MongoDB Atlas](https://www.mongodb.com/atlas) or local MongoDB and paste your database URL.
+ - This app uses static project/course data from the repository. It does not require a database for local development.
+
+## Raspberry Pi Deployment
+
+The repository includes Docker deployment files for Raspberry Pi hosting:
+
+- `Dockerfile` builds the Next.js standalone server.
+- `docker-compose.app.yml` runs the app container.
+- Cloudflared should route the public hostname to `http://127.0.0.1:3004`.
+- `.env.pi.example` documents the Pi runtime environment.
 
 -------------------------------------------
 This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
