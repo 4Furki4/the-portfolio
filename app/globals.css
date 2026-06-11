@@ -96,7 +96,7 @@ div[data-overlay-container="true"]{
     font-weight: 700;
     padding: 0.5rem 1rem;
     border: 0;
-    border-radius: .5rem;
+    border-radius: var(--radius);
     z-index: 1;
 }
 .button.dark{
