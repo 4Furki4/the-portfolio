@@ -1,5 +1,5 @@
 import { getTranslations } from "next-intl/server";
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import { Surface } from "@/components/portfolio/Primitives";
 
 export default async function GithubContributionTable() {
   const githubTableDataResponse = await fetch(
@@ -16,20 +16,36 @@ export default async function GithubContributionTable() {
     await githubTableDataResponse.json();
 
   return (
-    <Card className="block backdrop-blur-xs bg-opacity-60 dark:bg-opacity-60">
-      <CardHeader>
-        <CardTitle className="text-fs-600 font-bold text-center">
-          {t("title")}
-        </CardTitle>
-      </CardHeader>
-      <CardContent>
-        <ContributionSvg data={githubTableData} />
-      </CardContent>
-    </Card>
+    <Surface className="p-5 sm:p-6">
+      <div className="mb-5 flex flex-wrap items-end justify-between gap-3">
+        <div>
+          <p className="text-xs font-semibold uppercase tracking-[0.26em] text-cyan-300">
+            04 / GitHub
+          </p>
+          <h2 className="mt-3 text-3xl font-semibold text-foreground">
+            {t("title")}
+          </h2>
+        </div>
+      </div>
+      <ContributionSvg
+        data={githubTableData}
+        labels={{
+          contributions: t("contributions"),
+          less: t("less"),
+          more: t("more"),
+        }}
+      />
+    </Surface>
   );
 }
 
-function ContributionSvg({ data }: { data: GithubContributionResponse }) {
+function ContributionSvg({
+  data,
+  labels,
+}: {
+  data: GithubContributionResponse;
+  labels: { contributions: string; less: string; more: string };
+}) {
   const years = data.years ?? [];
   const contributions = new Map(
     (data.contributions ?? []).map((contribution) => [
@@ -47,7 +63,7 @@ function ContributionSvg({ data }: { data: GithubContributionResponse }) {
   return (
     <svg
       aria-label="Github Contribution Table"
-      className="h-auto w-full rounded-md shadow-md"
+      className="h-auto w-full rounded-lg border border-white/10 bg-slate-950/70"
       role="img"
       viewBox={`0 0 ${width} ${height}`}
     >
@@ -93,14 +109,14 @@ function ContributionSvg({ data }: { data: GithubContributionResponse }) {
               x={padding}
               y={top + 12}
             >
-              {year.year}: {year.total} contributions
+              {year.year}: {year.total} {labels.contributions}
             </text>
             {boxes}
           </g>
         );
       })}
       <text fill="#94a3b8" fontSize="12" x={width - 132} y={height - 16}>
-        Less
+        {labels.less}
       </text>
       {palette.map((color, index) => (
         <rect
@@ -114,7 +130,7 @@ function ContributionSvg({ data }: { data: GithubContributionResponse }) {
         />
       ))}
       <text fill="#94a3b8" fontSize="12" x={width - 48} y={height - 16}>
-        More
+        {labels.more}
       </text>
     </svg>
   );

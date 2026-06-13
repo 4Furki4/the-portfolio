@@ -1,33 +1,28 @@
 "use client";
 import React from "react";
 import Link from "next/link";
-import { GitPullRequest, Link2, Mail } from "lucide-react";
-import Image, { type StaticImageData } from "next/image";
-import tsIcon from "@/public/svgs/ts.svg";
-import reactIcon from "@/public/svgs/react.svg";
-import nextIcon from "@/public/svgs/next.svg";
-import tailwindIcon from "@/public/svgs/tailwind.svg";
-import mongodbIcon from "@/public/svgs/mongodb.svg";
-import gitIcon from "@/public/svgs/git.svg";
-import trpc from "@/public/svgs/trpc.svg";
-import drizzle from "@/public/svgs/drizzle-orm.png";
-import postgresIcon from "@/public/svgs/postgres.svg"
-interface Skill {
-  name: string;
-  icon: StaticImageData;
-}
+import { GitPullRequest, Link2, Mail, MoveRight } from "lucide-react";
+import Image from "next/image";
+import Reveal from "@/components/portfolio/Reveal";
+import {
+  ActionLink,
+  Eyebrow,
+  StatusBadge,
+  Surface,
+  TechPill,
+} from "@/components/portfolio/Primitives";
+import { getLocalizedHref, getProjectHref } from "@/lib/localizedPath";
 
-const skills: Skill[] = [
-  { name: "TypeScript", icon: tsIcon },
-  { name: "React", icon: reactIcon },
-  { name: "Next.js", icon: nextIcon },
-  { name: "tRPC", icon: trpc },
-  { name: "Tailwind CSS", icon: tailwindIcon },
-  { name: "Drizzle ORM", icon: drizzle },
-  { name: "PostgreSQL", icon: postgresIcon },
-  { name: "MongoDB", icon: mongodbIcon },
-  { name: "Git", icon: gitIcon },
-];
+export type HomeProject = {
+  title: string;
+  description: string;
+  endpoint: string;
+  src: string;
+  alt: string;
+  status: Project["status"];
+  statusText: string;
+  techStack: string[];
+};
 
 export default function Home({
   className,
@@ -35,108 +30,151 @@ export default function Home({
   subtitle,
   projectsLinkText,
   role,
+  locale,
+  featuredProjects,
 }: Record<"title" | "subtitle" | "projectsLinkText" | "role", string> & {
   className?: string;
+  locale: string;
+  featuredProjects: HomeProject[];
 }) {
   const socialLinks = [
-    { icon: <GitPullRequest className="w-6 h-6" />, href: "https://github.com/4Furki4" },
-    { icon: <Link2 className="w-6 h-6" />, href: "https://www.linkedin.com/in/4furkancengiz4/" },
-    { icon: <Mail className="w-6 h-6" />, href: "mailto:muhammedcengiz1@gmail.com" },
+    {
+      icon: <GitPullRequest aria-hidden size={18} />,
+      href: "https://github.com/4Furki4",
+      label: "GitHub",
+    },
+    {
+      icon: <Link2 aria-hidden size={18} />,
+      href: "https://www.linkedin.com/in/4furkancengiz4/",
+      label: "LinkedIn",
+    },
+    {
+      icon: <Mail aria-hidden size={18} />,
+      href: "mailto:muhammedcengiz1@gmail.com",
+      label: "Email",
+    },
   ];
+  const leadProject = featuredProjects[0];
 
   return (
     <main
-      className={`relative my-auto h-full w-full px-3 py-4 sm:px-10 sm:py-10 z-20 gap-6 items-center justify-center ${className ?? ""}`}
+      className={`relative z-20 flex w-full flex-1 overflow-hidden px-4 py-10 sm:px-6 lg:px-8 ${className ?? ""}`}
     >
-      {/* Hero Section */}
-      <div className="w-full max-w-7xl mx-auto grid lg:grid-cols-2 gap-8 lg:gap-12 items-start">
-        {/* Left Column - Main Content */}
-        <div className="space-y-6 lg:space-y-8 text-center lg:text-left">
-          <div className="space-y-4">
-            <div className="inline-block">
-              <span className="text-xs sm:text-sm font-medium px-3 sm:px-4 py-1.5 sm:py-2 rounded-full border border-primary/20 bg-primary/5">
-                {role}
-              </span>
-            </div>
-
-            <div className="overflow-hidden">
-              <div className="w-fit mx-auto lg:mx-0">
-                <h1 className="text-2xl xs:text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight">
-                  {title}
-                </h1>
-              </div>
-            </div>
-
-            <p className="text-sm sm:text-base md:text-lg text-muted-foreground max-w-lg mx-auto lg:mx-0">
+      <section className="mx-auto grid min-h-[calc(100svh-9rem)] w-full max-w-7xl gap-10 lg:grid-cols-[minmax(0,1fr)_minmax(360px,520px)] lg:items-center">
+        <Reveal className="max-w-4xl space-y-8">
+          <div className="space-y-5">
+            <Eyebrow>{role}</Eyebrow>
+            <h1 className="max-w-4xl text-6xl font-semibold leading-[0.86] tracking-normal text-foreground sm:text-7xl lg:text-8xl">
+              {title}
+            </h1>
+            <p className="max-w-2xl text-lg leading-8 text-muted-foreground sm:text-xl">
               {subtitle}
             </p>
           </div>
 
-          <div className="flex gap-3 sm:gap-4 pointer-events-auto justify-center lg:justify-start">
-            {socialLinks.map((link, index) => (
+          <div className="flex flex-wrap items-center gap-3">
+            <ActionLink href={getLocalizedHref("/projects", locale)}>
+              {projectsLinkText}
+            </ActionLink>
+            <ActionLink href="mailto:muhammedcengiz1@gmail.com" variant="secondary">
+              {locale === "tr" ? "İletişime geç" : "Get in touch"}
+            </ActionLink>
+          </div>
+
+          <div className="flex flex-wrap items-center gap-2">
+            {socialLinks.map((link) => (
               <Link
-                key={index}
+                aria-label={link.label}
+                className="grid size-11 place-items-center rounded-lg border border-white/10 bg-white/[0.045] text-muted-foreground transition-colors hover:border-cyan-300/50 hover:text-cyan-100"
                 href={link.href}
-                target="_blank"
+                key={link.href}
                 rel="noopener noreferrer"
-                className="p-2 sm:p-2.5 md:p-3 rounded-full border border-primary/20 bg-primary/5 hover:bg-primary/10 transition-colors"
+                target={link.href.startsWith("mailto:") ? undefined : "_blank"}
               >
                 {link.icon}
               </Link>
             ))}
           </div>
 
-          <div className="pointer-events-auto flex justify-center lg:justify-start">
-            <Link
-              href="/projects"
-              className="inline-flex items-center justify-center px-4 sm:px-5 md:px-6 py-2 sm:py-2.5 md:py-3 rounded-lg bg-gradient-to-r from-red-700 to-purple-900 text-white font-medium hover:opacity-90 transition-opacity text-xs sm:text-sm md:text-base"
-            >
-              {projectsLinkText}
-            </Link>
+          <div className="grid max-w-3xl gap-3 border-t border-white/10 pt-6 sm:grid-cols-3">
+            {["TypeScript", "Next.js", "PostgreSQL"].map((skill) => (
+              <div
+                className="rounded-lg border border-white/10 bg-white/[0.035] px-4 py-3 text-sm font-semibold text-foreground/90"
+                key={skill}
+              >
+                {skill}
+              </div>
+            ))}
           </div>
-        </div>
+        </Reveal>
 
-        {/* Right Column - Animated Code Block */}
-        <div className="relative mt-8 lg:mt-0">
-          <div className="absolute inset-0 bg-gradient-to-r from-red-700/20 to-purple-900/20 blur-3xl" />
-          <div>
-            <pre className="relative backdrop-blur-sm rounded-lg p-3 sm:p-4 md:p-6 border border-primary/20 bg-primary/5 overflow-x-auto text-[10px] xs:text-xs sm:text-sm">
-              <code className="font-mono whitespace-pre-wrap break-words">
-                <span className="text-blue-400">const</span>{" "}
-                <span className="text-yellow-400">developer</span> = {"{"}
-                <br />
-                {"  "}name: <span className="text-green-400">{"\"Furkan\""}</span>,
-                <br />
-                {"  "}role: <span className="text-green-400">{"\"Full Stack Developer\""}</span>,
-                <br />
-                {"  "}skills: {"["}
-                {skills.map((skill, index) => (
-                  <React.Fragment key={skill.name}>
-                    <br />
-                    {"    "}<span className="text-green-400">{`"${skill.name}"`}</span>
-                    {index !== skills.length - 1 && ","}
-                    {skill.icon && (
-                      <Image
-                        src={skill.icon}
-                        alt={`${skill.name} icon`}
-                        width={14}
-                        height={14}
-                        className="inline-block ml-2 -translate-y-0.5"
-                      />
-                    )}
-                  </React.Fragment>
-                ))}
-                <br />
-                {"]"},
-                <br />
-                {"  "}passion: <span className="text-green-400">{"\"Building amazing web experiences\""}</span>
-                <br />
-                {"}"};
-              </code>
-            </pre>
+        <Reveal className="space-y-4" delay={0.12}>
+          <Surface className="overflow-hidden">
+            <div className="flex items-center justify-between border-b border-white/10 px-4 py-3">
+              <span className="text-xs font-semibold uppercase tracking-[0.24em] text-muted-foreground">
+                {locale === "tr" ? "Seçili iş" : "Selected work"}
+              </span>
+              <StatusBadge status={leadProject.status}>
+                {leadProject.statusText}
+              </StatusBadge>
+            </div>
+            <Link
+              className="group block"
+              href={getProjectHref(locale, leadProject.endpoint)}
+            >
+              <div className="relative aspect-[16/10] overflow-hidden">
+                <Image
+                  alt={leadProject.alt}
+                  className="h-full w-full object-cover transition-transform duration-700 group-hover:scale-[1.035]"
+                  fill
+                  priority
+                  sizes="(min-width: 1024px) 520px, 100vw"
+                  src={leadProject.src}
+                />
+              </div>
+              <div className="space-y-4 p-5">
+                <div className="flex items-start justify-between gap-4">
+                  <div>
+                    <h2 className="text-2xl font-semibold leading-tight text-foreground">
+                      {leadProject.title}
+                    </h2>
+                    <p className="mt-2 line-clamp-3 text-sm leading-6 text-muted-foreground">
+                      {leadProject.description}
+                    </p>
+                  </div>
+                  <MoveRight
+                    aria-hidden
+                    className="mt-1 shrink-0 text-cyan-200 transition-transform group-hover:translate-x-1"
+                    size={22}
+                  />
+                </div>
+                <div className="flex flex-wrap gap-2">
+                  {leadProject.techStack.slice(0, 4).map((tech) => (
+                    <TechPill key={tech}>{tech}</TechPill>
+                  ))}
+                </div>
+              </div>
+            </Link>
+          </Surface>
+
+          <div className="grid gap-2">
+            {featuredProjects.slice(1, 3).map((project) => (
+              <Link
+                className="group flex items-center justify-between gap-4 rounded-lg border border-white/10 bg-white/[0.035] px-4 py-3 text-sm font-semibold text-muted-foreground transition-colors hover:border-rose-300/40 hover:text-foreground"
+                href={getProjectHref(locale, project.endpoint)}
+                key={project.endpoint}
+              >
+                {project.title}
+                <MoveRight
+                  aria-hidden
+                  className="text-rose-200 transition-transform group-hover:translate-x-1"
+                  size={18}
+                />
+              </Link>
+            ))}
           </div>
-        </div>
-      </div>
+        </Reveal>
+      </section>
     </main>
   );
 }

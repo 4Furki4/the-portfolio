@@ -1,11 +1,17 @@
 "use client";
 import React from "react";
-import GlowingButton from "./buttons/GlowingButton";
 import ThemeButton from "./buttons/ThemeButton";
 import { useParticleContext, useParticleContextHandler } from "@/context/ParticleContext";
-import { Menu, Settings, X } from "lucide-react";
+import { Languages, Menu, Settings, Sparkles, X } from "lucide-react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
+import {
+  getLocaleSwitchPath,
+  getLocalizedHref,
+  isActivePath,
+  type LocalizedRootHref,
+} from "@/lib/localizedPath";
+import { cn } from "@/lib/utils";
 
 export default function Navbar({
   about,
@@ -27,75 +33,82 @@ export default function Navbar({
   const particles = useParticleContext();
   const handleParticles = useParticleContextHandler();
   const [isSettingsOpen, setIsSettingsOpen] = React.useState(false);
+  React.useEffect(() => {
+    setIsMenuOpen(false);
+    setIsSettingsOpen(false);
+  }, [pathname]);
   const navItems = [
-    { href: "/projects" as const, label: projects },
-    { href: "/about" as const, label: about },
+    { href: "/projects" as LocalizedRootHref, label: projects },
+    { href: "/about" as LocalizedRootHref, label: about },
   ];
   return (
-    <header className="sticky top-0 z-50 w-full border-0 bg-background/70 backdrop-blur-md backdrop-saturate-150">
-      <div className="mx-auto grid h-16 w-full max-w-7xl grid-cols-[1fr_auto_1fr] items-center px-4">
+    <header className="sticky top-0 z-50 w-full border-b border-white/10 bg-background/72 backdrop-blur-xl backdrop-saturate-150">
+      <div className="mx-auto grid h-16 w-full max-w-7xl grid-cols-[auto_1fr_auto] items-center gap-3 px-4 sm:px-6 lg:px-8">
+        <Link
+          className="group inline-flex items-center gap-3 rounded-lg focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-cyan-300"
+          href={getLocalizedHref("/", locale)}
+        >
+          <span className="grid size-9 place-items-center rounded-lg border border-cyan-300/30 bg-cyan-300/10 text-sm font-bold text-cyan-100 transition-colors group-hover:border-cyan-300/70">
+            FC
+          </span>
+          <span className="hidden text-sm font-semibold text-foreground/92 sm:block">
+            Furkan Cengiz
+          </span>
+        </Link>
         <button
           aria-label={isMenuOpen ? "Close menu" : "Open menu"}
           aria-expanded={isMenuOpen}
-          className="justify-self-start rounded-md p-2 text-foreground md:hidden"
+          className="col-start-3 grid size-10 place-items-center justify-self-end rounded-lg border border-white/10 bg-white/[0.045] text-foreground md:hidden"
           onClick={() => setIsMenuOpen((open) => !open)}
           type="button"
         >
-          {isMenuOpen ? <X size={26} /> : <Menu size={26} />}
+          {isMenuOpen ? <X size={21} /> : <Menu size={21} />}
         </button>
-        <div className="hidden justify-self-start md:block">
-          <Link
-            tabIndex={-1}
-            className="block w-full"
-            href={getLocalizedHref("/", locale)}
-          >
-            <GlowingButton selectedPath={isActivePath(pathname, "/", locale)}>
-              {home}
-            </GlowingButton>
-          </Link>
-        </div>
-        <nav className="col-start-2 hidden items-center gap-4 md:flex">
-          {navItems.map((navItem) => (
-            <div key={navItem.href}>
-              <Link
-                tabIndex={-1}
-                className="block w-full"
-                href={getLocalizedHref(navItem.href, locale)}
-              >
-                <GlowingButton
-                  selectedPath={isActivePath(pathname, navItem.href, locale)}
+        <nav className="hidden justify-center md:flex">
+          <div className="inline-flex items-center rounded-lg border border-white/10 bg-white/[0.035] p-1">
+            {[{ href: "/" as LocalizedRootHref, label: home }, ...navItems].map(
+              (navItem) => (
+                <Link
+                  className={cn(
+                    "rounded-md px-4 py-2 text-sm font-semibold text-muted-foreground transition-colors hover:text-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-cyan-300",
+                    isActivePath(pathname, navItem.href, locale) &&
+                      "bg-white/10 text-foreground shadow-sm",
+                  )}
+                  href={getLocalizedHref(navItem.href, locale)}
+                  key={navItem.href}
                 >
                   {navItem.label}
-                </GlowingButton>
-              </Link>
-            </div>
-          ))}
+                </Link>
+              ),
+            )}
+          </div>
         </nav>
-        <div className="col-start-3 flex items-center justify-end gap-2">
+        <div className="hidden items-center justify-end gap-2 md:flex">
           <div className="relative">
             <button
               aria-expanded={isSettingsOpen}
               aria-label="Site settings"
-              className="grid size-11 place-items-center rounded-md text-foreground transition-colors hover:bg-foreground/10"
+              className="grid size-10 place-items-center rounded-lg border border-white/10 bg-white/[0.045] text-foreground transition-colors hover:border-cyan-300/50 hover:text-cyan-100 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-cyan-300"
               onClick={() => setIsSettingsOpen((open) => !open)}
               type="button"
             >
-              <Settings size={26} />
+              <Settings size={19} />
             </button>
             {isSettingsOpen ? (
-              <div className="absolute right-0 top-12 min-w-44 rounded-md border border-border bg-popover p-1 text-popover-foreground shadow-lg">
+              <div className="absolute right-0 top-12 grid min-w-56 gap-1 rounded-lg border border-white/10 bg-popover/95 p-1.5 text-popover-foreground shadow-2xl backdrop-blur-xl">
                 <button
-                  className="block w-full rounded px-3 py-2 text-left text-sm hover:bg-accent"
+                  className="flex w-full items-center gap-3 rounded-md px-3 py-2 text-left text-sm font-medium text-muted-foreground transition-colors hover:bg-white/8 hover:text-foreground"
                   onClick={() => {
                     handleParticles?.();
                     setIsSettingsOpen(false);
                   }}
                   type="button"
                 >
+                  <Sparkles aria-hidden size={16} />
                   {particles ? partcilesDisabled : particlesEnabled}
                 </button>
                 <button
-                  className="block w-full rounded px-3 py-2 text-left text-sm hover:bg-accent"
+                  className="flex w-full items-center gap-3 rounded-md px-3 py-2 text-left text-sm font-medium text-muted-foreground transition-colors hover:bg-white/8 hover:text-foreground"
                   onClick={() => {
                     setIsSettingsOpen(false);
                     const nextLocale = locale === "en" ? "tr" : "en";
@@ -106,64 +119,59 @@ export default function Navbar({
                   }}
                   type="button"
                 >
-                  {locale === "en" ? "Turkce" : "English"}
+                  <Languages aria-hidden size={16} />
+                  {locale === "en" ? "Türkçe" : "English"}
                 </button>
               </div>
             ) : null}
           </div>
-          <div>
-            <ThemeButton />
-          </div>
+          <ThemeButton />
         </div>
       </div>
       {isMenuOpen ? (
-        <nav className="border-t border-border bg-background/95 px-4 py-3 md:hidden">
-          {[{ href: "/" as const, label: home }, ...navItems].map((navItem) => (
+        <nav className="grid gap-2 border-t border-white/10 bg-background/95 px-4 py-4 shadow-2xl backdrop-blur-xl md:hidden">
+          {[{ href: "/" as LocalizedRootHref, label: home }, ...navItems].map((navItem) => (
             <Link
               key={navItem.href}
-              className="block rounded px-3 py-2 text-lg data-[active=true]:text-secondary"
-              data-active={isActivePath(pathname, navItem.href, locale)}
+              className={cn(
+                "rounded-lg border border-transparent px-3 py-2 text-base font-semibold text-muted-foreground",
+                isActivePath(pathname, navItem.href, locale) &&
+                  "border-white/10 bg-white/[0.045] text-foreground",
+              )}
               href={getLocalizedHref(navItem.href, locale)}
               onClick={() => setIsMenuOpen(false)}
             >
               {navItem.label}
             </Link>
           ))}
+          <div className="mt-2 grid grid-cols-[1fr_auto] gap-2 border-t border-white/10 pt-3">
+            <button
+              className="flex min-h-10 items-center justify-center gap-2 rounded-lg border border-white/10 bg-white/[0.045] px-3 text-sm font-semibold text-muted-foreground"
+              onClick={() => {
+                handleParticles?.();
+                setIsMenuOpen(false);
+              }}
+              type="button"
+            >
+              <Sparkles aria-hidden size={16} />
+              {particles ? partcilesDisabled : particlesEnabled}
+            </button>
+            <ThemeButton />
+            <button
+              className="col-span-2 flex min-h-10 items-center justify-center gap-2 rounded-lg border border-white/10 bg-white/[0.045] px-3 text-sm font-semibold text-muted-foreground"
+              onClick={() => {
+                const nextLocale = locale === "en" ? "tr" : "en";
+                document.cookie = `NEXT_LOCALE=${nextLocale}; path=/; samesite=lax`;
+                window.location.assign(getLocaleSwitchPath(window.location.pathname));
+              }}
+              type="button"
+            >
+              <Languages aria-hidden size={16} />
+              {locale === "en" ? "Türkçe" : "English"}
+            </button>
+          </div>
         </nav>
       ) : null}
     </header>
   );
-}
-
-function getLocalizedHref(href: "/" | "/projects" | "/about", locale: string) {
-  if (locale !== "tr") return href;
-  if (href === "/") return "/tr";
-  if (href === "/about") return "/tr/hakkimda";
-  return "/tr/projeler";
-}
-
-function getLocaleSwitchPath(pathname: string) {
-  if (pathname === "/tr") return "/";
-  if (pathname === "/tr/hakkimda") return "/about";
-  if (pathname === "/tr/projeler") return "/projects";
-  if (pathname.startsWith("/tr/projeler/")) {
-    return pathname.replace("/tr/projeler/", "/projects/");
-  }
-  if (pathname.startsWith("/tr/")) return pathname.replace(/^\/tr/, "") || "/";
-
-  if (pathname === "/") return "/tr";
-  if (pathname === "/about") return "/tr/hakkimda";
-  if (pathname === "/projects") return "/tr/projeler";
-  if (pathname.startsWith("/projects/")) {
-    return pathname.replace("/projects/", "/tr/projeler/");
-  }
-  return `/tr${pathname}`;
-}
-
-function isActivePath(
-  pathname: string,
-  href: "/" | "/projects" | "/about",
-  locale: string
-) {
-  return pathname === getLocalizedHref(href, locale);
 }

@@ -24,6 +24,14 @@ module.exports = {
       },
     },
     extend: {
+      fontFamily: {
+        sans: [
+          '"Space Grotesk Variable"',
+          "ui-sans-serif",
+          "system-ui",
+          "sans-serif",
+        ],
+      },
       minHeight: {
         dscreen: "100dvh",
       },
