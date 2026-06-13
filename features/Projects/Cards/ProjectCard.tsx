@@ -1,17 +1,23 @@
 "use client";
-import {
-  Card,
-  CardHeader,
-  CardContent,
-  CardFooter,
-  SeparatorRoot,
-} from "@heroui/react";
 import React from "react";
-import { CheckCircle, ExternalLink, HardHat } from "lucide-react";
+import {
+  ExternalLink,
+  GitPullRequest,
+  Images,
+  Layers,
+  MonitorUp,
+  Users,
+} from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
-import { notFound } from "next/navigation";
 import Fancybox from "@/components/FancyBox";
+import {
+  ActionLink,
+  SectionHeader,
+  StatusBadge,
+  Surface,
+  TechPill,
+} from "@/components/portfolio/Primitives";
 
 type IntlProps = Record<
   | "repoLinkText"
@@ -36,31 +42,36 @@ export default function ProjectCard({
   project: Project;
   blurredImage: string;
 } & IntlProps) {
-  if (!project) notFound();
   return (
-    <Card className="bg-background">
-      <CardHeader className="relative flex-col sm:flex-row items-start sm:items-center">
-        <h1 className="text-fs-500 font-bold">
-          {project.title[locale as "en" | "tr"]}
-        </h1>
-        <div className="sm:ml-auto sm:mr-4 pl-1 sm:pl-0">
-          {project.status === "completed" ? (
-            <p className="text-success flex gap-2">
-              <span>{status}</span>
-              <CheckCircle />
-            </p>
-          ) : project.status === "in-progress" ? (
-            <p className="text-warning flex gap-2">
-              <span>{status}</span>
-              <HardHat />
-            </p>
-          ) : project.status === "planned" ? (
-            <span className="text-danger">{status}</span>
-          ) : null}
+    <article className="space-y-8">
+      <header className="grid gap-6 border-b border-white/10 pb-8 lg:grid-cols-[1fr_auto] lg:items-end">
+        <SectionHeader
+          description={project.description[locale as "en" | "tr"]}
+          eyebrow={locale === "tr" ? "Proje detayi" : "Project detail"}
+          title={project.title[locale as "en" | "tr"]}
+        />
+        <div className="flex flex-col gap-3 lg:items-end">
+          <StatusBadge status={project.status}>{status}</StatusBadge>
+          <div className="flex flex-wrap gap-2 lg:justify-end">
+            {project.repoLink ? (
+              <ActionLink external href={project.repoLink} variant="secondary">
+                <GitPullRequest aria-hidden size={16} />
+                {repoLinkText}
+              </ActionLink>
+            ) : null}
+            {project.demoLink ? (
+              <ActionLink external href={project.demoLink}>
+                <MonitorUp aria-hidden size={16} />
+                {liveLinkText}
+              </ActionLink>
+            ) : null}
+          </div>
         </div>
-      </CardHeader>
-      <CardContent>
+      </header>
+
+      <Surface className="overflow-hidden">
         <Fancybox
+          className="space-y-4 p-3 sm:p-4"
           options={{
             Carousel: {
               infinite: true,
@@ -68,102 +79,95 @@ export default function ProjectCard({
           }}
         >
           <>
-            <Image
-              data-fancybox-trigger="gallery"
-              className="cursor-pointer mb-4"
-              src={project.images[0].src}
-              alt={project.images[0].alt}
-              width={1920}
-              height={1080}
-              placeholder="blur"
-              blurDataURL={blurredImage}
-            />
-            <div
-              style={{
-                display: project.images.length > 1 ? "flex" : "none",
-              }}
-              className="gap-4 items-center grid grid-cols-2 sm-flex sm:flex-nowrap"
+            <a
+              className="group relative block overflow-hidden rounded-lg"
+              data-fancybox="gallery"
+              href={project.images[0].src}
             >
-              {project.images.map((image, index) => (
-                <a key={index} data-fancybox="gallery" href={image.src}>
-                  <Image
-                    src={image.src}
-                    alt={image.alt}
-                    width={1920}
-                    height={1080}
-                  />
-                </a>
-              ))}
-            </div>
+              <Image
+                alt={project.images[0].alt}
+                blurDataURL={blurredImage}
+                className="h-auto w-full cursor-zoom-in object-cover transition-transform duration-700 group-hover:scale-[1.015]"
+                height={1080}
+                placeholder="blur"
+                priority
+                src={project.images[0].src}
+                width={1920}
+              />
+            </a>
+            {project.images.length > 1 ? (
+              <div className="grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
+                {project.images.slice(1).map((image, index) => (
+                  <a
+                    className="group relative block overflow-hidden rounded-lg border border-white/10"
+                    data-fancybox="gallery"
+                    href={image.src}
+                    key={index}
+                  >
+                    <Image
+                      alt={image.alt}
+                      className="aspect-video h-full w-full object-cover transition-transform duration-500 group-hover:scale-[1.04]"
+                      height={1080}
+                      src={image.src}
+                      width={1920}
+                    />
+                  </a>
+                ))}
+              </div>
+            ) : null}
           </>
         </Fancybox>
-        <p className="text-fs-300 my-4">
-          {project.description[locale as "en" | "tr"]}
-        </p>
-        <div className="space-y-2 rounded-md border border-border p-2">
-          <details open>
-            <summary className="cursor-pointer py-2 text-fs-300 font-semibold">
-              {techStack}
-            </summary>
-            <div className="w-full flex flex-wrap gap-4 items-center">
-              {project.techStack.map((tech, index) => (
+      </Surface>
+
+      <div className="grid gap-5 lg:grid-cols-[1.4fr_0.8fr]">
+        <Surface className="p-5 sm:p-6">
+          <div className="mb-5 flex items-center gap-3">
+            <Layers aria-hidden className="text-cyan-200" size={20} />
+            <h2 className="text-2xl font-semibold text-foreground">{techStack}</h2>
+          </div>
+          <div className="flex flex-wrap gap-2">
+            {project.techStack.map((tech) => (
+              <TechPill href={tech.url} key={tech.name}>
+                {tech.name}
+              </TechPill>
+            ))}
+          </div>
+        </Surface>
+        <Surface className="p-5 sm:p-6">
+          <div className="mb-5 flex items-center gap-3">
+            {project.contributors ? (
+              <Users aria-hidden className="text-rose-200" size={20} />
+            ) : (
+              <Images aria-hidden className="text-rose-200" size={20} />
+            )}
+            <h2 className="text-2xl font-semibold text-foreground">
+              {project.contributors ? contributors : locale === "tr" ? "Bağlantılar" : "Links"}
+            </h2>
+          </div>
+          {project.contributors ? (
+            <div className="grid gap-2">
+              {project.contributors.map((contributor) => (
                 <Link
+                  className="flex items-center justify-between rounded-lg border border-white/10 bg-white/[0.035] px-3 py-2 text-sm font-semibold text-muted-foreground transition-colors hover:border-cyan-300/40 hover:text-foreground"
+                  href={contributor.github}
+                  key={contributor.github}
+                  rel="noopener noreferrer"
                   target="_blank"
-                  href={tech.url ?? "#"}
-                  key={index}
-                  className="text-fs-300 bg-foreground-foreground rounded-full px-4 py-2"
                 >
-                  {tech.name}
+                  {contributor.name}
+                  <ExternalLink aria-hidden size={14} />
                 </Link>
               ))}
             </div>
-          </details>
-          {project.contributors ? (
-            <details>
-              <summary className="cursor-pointer py-2 text-fs-300 font-semibold">
-                {contributors}
-              </summary>
-              <div className="w-full flex flex-wrap gap-4 items-center">
-                {project.contributors?.map((contributor, index) => (
-                  <Link
-                    key={index}
-                    href={contributor.github}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="text-fs-300 bg-foreground-foreground rounded-full px-4 py-2"
-                  >
-                    {contributor.name}
-                  </Link>
-                ))}
-              </div>
-            </details>
-          ) : null}
-        </div>
-      </CardContent>
-      <SeparatorRoot />
-      <CardFooter className="flex-col">
-        {project.repoLink ? (
-          <Link
-            href={project.repoLink}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="text-fs-300 z-50 flex items-center gap-1"
-          >
-            {repoLinkText}
-            <ExternalLink size={16} />
-          </Link>
-        ) : null}
-        {project.demoLink ? (
-          <Link
-            href={project.demoLink}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="text-fs-300 z-50 flex items-center gap-1"
-          >
-            {liveLinkText} <ExternalLink size={16} />
-          </Link>
-        ) : null}
-      </CardFooter>
-    </Card>
+          ) : (
+            <p className="text-sm leading-6 text-muted-foreground">
+              {locale === "tr"
+                ? "Kaynak kodu ve canlı demo bağlantıları sayfanın üst kısmında."
+                : "Source and live demo links are available in the page header."}
+            </p>
+          )}
+        </Surface>
+      </div>
+    </article>
   );
 }

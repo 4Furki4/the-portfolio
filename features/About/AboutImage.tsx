@@ -4,13 +4,13 @@ import React from "react";
 
 export default function AboutImage() {
   return (
-    <figure>
+    <figure className="relative h-full min-h-[420px] overflow-hidden rounded-lg border border-white/10 bg-white/[0.035]">
       <Image
         src={furkanpicture}
         alt={"Furkan Cengiz"}
-        sizes="(min-width: 768px) 90vw, 75vw"
+        sizes="(min-width: 1024px) 420px, 100vw"
         quality={100}
-        className="rounded-lg"
+        className="h-full w-full object-cover"
         placeholder="blur"
       />
     </figure>

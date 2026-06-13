@@ -1,4 +1,5 @@
 import "../globals.css";
+import "@fontsource-variable/space-grotesk/index.css";
 import msClarity from "@/lib/mClarity";
 import BackgroundParticles from "@/components/particles/BackgroundParticles";
 import React from "react";
@@ -10,7 +11,6 @@ import Providers from "@/context/Providers";
 import { Metadata } from "next";
 import { notFound } from "next/navigation";
 import { getTranslations, setRequestLocale } from "next-intl/server";
-import { GeistSans } from "geist/font/sans";
 export async function generateMetadata({
   params,
 }: {
@@ -94,11 +94,11 @@ export default async function RootLayout({
   return (
     <html
       lang={locale}
-      className={`${GeistSans.className} dark`}
+      className="dark"
       suppressHydrationWarning
     >
       <body
-        className={`w-full transition-colors duration-300 text-foreground bg-background relative min-h-dscreen flex flex-col`}
+        className={`w-full transition-colors duration-300 text-foreground bg-background relative min-h-dscreen flex flex-col antialiased`}
       >
         <Providers>
           <Navbar
@@ -119,7 +119,7 @@ export default async function RootLayout({
               <BackgroundParticles />
             </div>
           }
-          <Footer />
+          <Footer locale={locale} />
         </Providers>
       </body>
       {process.env.NODE_ENV === "production" ? (

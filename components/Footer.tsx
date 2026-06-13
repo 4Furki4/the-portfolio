@@ -1,38 +1,65 @@
 import React from "react";
 import { Download, GitPullRequest, Link2, Mail } from "lucide-react";
 import Link from "next/link";
-export default function Footer() {
+import { getLocalizedHref } from "@/lib/localizedPath";
+
+export default function Footer({ locale }: { locale: string }) {
+  const links = [
+    { href: getLocalizedHref("/projects", locale), label: locale === "tr" ? "Projeler" : "Projects" },
+    { href: getLocalizedHref("/about", locale), label: locale === "tr" ? "Hakkımda" : "About" },
+    { href: "/CV.pdf", label: "CV", icon: <Download aria-hidden size={16} /> },
+  ];
+
   return (
-    <footer className="w-full h-20 p-2 z-10 flex gap-4 md:gap-8 justify-center items-center bg-background/60 backdrop-blur-xs shadow-foreground shadow-sm transition-shadow-bg duration-300">
-      <Link
-        target="_blank"
-        href={"https://www.linkedin.com/in/4furkancengiz4/"}
-        className="hover:bg-gray-100 dark:hover:bg-black rounded-full p-4"
-      >
-        <Link2 aria-label="LinkedIn Icon" />
-      </Link>
-      <Link
-        target="_blank"
-        href={"/CV.pdf"}
-        className="hover:bg-gray-100 dark:hover:bg-black rounded-full p-4"
-      >
-        <span className="text-fs-300 flex items-center gap-1">
-          CV <Download aria-label="Download CV Icon" size={18} />
-        </span>
-      </Link>
-      <Link
-        className="hover:bg-gray-100 dark:hover:bg-black rounded-full p-4"
-        target="_blank"
-        href={"https://github.com/4furki4"}
-      >
-        <GitPullRequest aria-label="GitHub Icon" />
-      </Link>
-      <Link
-        href="mailto:muhammedcengiz1@gmail.com"
-        className="hover:bg-gray-100 dark:hover:bg-black rounded-full p-4"
-      >
-        <Mail aria-label="Mail Icon" />
-      </Link>
+    <footer className="relative z-20 border-t border-white/10 bg-background/72 backdrop-blur-xl">
+      <div className="mx-auto grid w-full max-w-7xl gap-6 px-4 py-8 sm:px-6 md:grid-cols-[1fr_auto] md:items-center lg:px-8">
+        <div>
+          <p className="text-sm font-semibold text-foreground">Furkan Cengiz</p>
+          <p className="mt-1 max-w-md text-sm text-muted-foreground">
+            {locale === "tr"
+              ? "Modern web arayüzleri, üretim odaklı uygulamalar ve açık kaynak projeler."
+              : "Modern web interfaces, production-minded apps, and open-source projects."}
+          </p>
+        </div>
+        <div className="flex flex-wrap items-center gap-2">
+          {links.map((link) => (
+            <Link
+              className="inline-flex min-h-10 items-center gap-2 rounded-lg border border-white/10 bg-white/[0.035] px-3 text-sm font-semibold text-muted-foreground transition-colors hover:border-cyan-300/50 hover:text-cyan-100"
+              href={link.href}
+              key={link.href}
+              target={link.href === "/CV.pdf" ? "_blank" : undefined}
+            >
+              {link.label}
+              {link.icon}
+            </Link>
+          ))}
+          <Link
+            aria-label="LinkedIn"
+            className="grid size-10 place-items-center rounded-lg border border-white/10 bg-white/[0.035] text-muted-foreground transition-colors hover:border-cyan-300/50 hover:text-cyan-100"
+            href="https://www.linkedin.com/in/4furkancengiz4/"
+            rel="noopener noreferrer"
+            target="_blank"
+          >
+            <Link2 aria-hidden size={18} />
+          </Link>
+          <Link
+            aria-label="GitHub"
+            className="grid size-10 place-items-center rounded-lg border border-white/10 bg-white/[0.035] text-muted-foreground transition-colors hover:border-cyan-300/50 hover:text-cyan-100"
+            href="https://github.com/4furki4"
+            rel="noopener noreferrer"
+            target="_blank"
+          >
+            <GitPullRequest aria-hidden size={18} />
+          </Link>
+          <Link
+            aria-label="Email"
+            className="grid size-10 place-items-center rounded-lg border border-white/10 bg-white/[0.035] text-muted-foreground transition-colors hover:border-cyan-300/50 hover:text-cyan-100"
+            href="mailto:muhammedcengiz1@gmail.com"
+          >
+            <Mail aria-hidden size={18} />
+          </Link>
+        </div>
+      </div>
     </footer>
   );
 }

@@ -1,87 +1,68 @@
-import { Card, CardContent, CardFooter, CardHeader } from '@/components/ui/card'
-import React from 'react'
-import Image from 'next/image'
-import { Link } from "@heroui/react"
-import Tag from '@/components/Tag'
-import AnimatedCard from '@/components/AnimatedCard'
-const hidden = {
-    opacity: 0,
-    x: -10,
-    transition: {
-        type: "spring",
-        damping: 10,
-        stiffness: 100,
-    },
-} as const;
+import React from "react";
+import Image from "next/image";
+import Link from "next/link";
+import Tag from "@/components/Tag";
+import Reveal from "@/components/portfolio/Reveal";
+import { SectionHeader, Surface } from "@/components/portfolio/Primitives";
 
-const show = {
-    opacity: 1,
-    x: 0,
-    transition: {
-        delay: 0.25,
-        type: "spring",
-        damping: 10,
-        stiffness: 100,
-    },
-} as const;
 export default function TakenCourses({
-    takenCourses,
-    coursePage,
-    title
+  takenCourses,
+  coursePage,
+  description,
+  title,
 }: {
-    takenCourses: TakenCourses[],
-    coursePage: string
-    title: string
+  takenCourses: TakenCourses[];
+  coursePage: string;
+  description: string;
+  title: string;
 }) {
-    return (
-        <AnimatedCard
-            props={{
-                initial: hidden,
-                viewport: { once: true, amount: 0.05 },
-                whileInView: show
-            }}
-        >
-            <CardHeader>
-                <h1 className='text-center  text-fs-600 font-bold'>
-                    {title}
-                </h1>
-            </CardHeader>
-            <CardContent className='grid place-content-center md:grid-cols-2 xl:grid-cols-3 gap-4 p-2 pt-0 sm:p-6'>
-                {takenCourses.map((takenCourse) => (
-                    <Card key={takenCourse.courseTitle} className='flex flex-col'>
-                        <CardContent className='space-y-4 p-0'>
-                            <div className="relative h-48 w-full">
-                                <Image
-                                    fill
-                                    className="w-full h-full object-cover rounded-t-lg"
-                                    src={takenCourse.image}
-                                    alt={takenCourse.courseTitle}
-                                    sizes={
-                                        '(max-width: 450px) 100vw, 450px'
-                                    } />
-                            </div>
-                            <CardHeader className='text-fs-400 p-0 px-6'>
-                                {takenCourse.courseTitle}
-                            </CardHeader>
-                            <div className='px-6 pb-4'>
-                                <p>{takenCourse.summarize}</p>
-                                <Link target='_blank' href={takenCourse.courseLink}>
-                                    {coursePage}
-                                </Link>
-                            </div>
-                        </CardContent>
-
-                        <CardFooter className='flex flex-wrap gap-2 mt-auto px-6'>
-
-                            {
-                                takenCourse.tags.map((tag, index) => (
-                                    <Tag key={index} tag={tag} />
-                                ))
-                            }
-                        </CardFooter>
-                    </Card>
-                ))}
-            </CardContent>
-        </AnimatedCard>
-    )
+  return (
+    <section className="grid gap-6">
+      <SectionHeader
+        description={description}
+        eyebrow="03 / Stack"
+        title={title}
+      />
+      <div className="grid gap-4 md:grid-cols-2 xl:grid-cols-3">
+        {takenCourses.map((takenCourse, index) => (
+          <Reveal delay={Math.min(index * 0.04, 0.2)} key={takenCourse.courseTitle}>
+            <Surface className="flex h-full flex-col overflow-hidden transition-colors hover:border-cyan-300/40">
+              <div className="relative aspect-video w-full border-b border-white/10">
+                <Image
+                  alt={takenCourse.courseTitle}
+                  className="h-full w-full object-cover"
+                  fill
+                  sizes="(min-width: 1280px) 380px, (min-width: 768px) 50vw, 100vw"
+                  src={takenCourse.image}
+                />
+              </div>
+              <div className="flex flex-1 flex-col gap-4 p-5">
+                <div className="space-y-3">
+                  <h3 className="text-xl font-semibold leading-tight text-foreground">
+                    {takenCourse.courseTitle}
+                  </h3>
+                  <p className="text-sm leading-6 text-muted-foreground">
+                    {takenCourse.summarize}
+                  </p>
+                  <Link
+                    className="inline-flex text-sm font-semibold text-cyan-200 transition-colors hover:text-cyan-100"
+                    href={takenCourse.courseLink}
+                    rel="noopener noreferrer"
+                    target="_blank"
+                  >
+                    {coursePage}
+                  </Link>
+                </div>
+                <div className="mt-auto flex flex-wrap gap-2">
+                  {takenCourse.tags.map((tag) => (
+                    <Tag key={tag} tag={tag} />
+                  ))}
+                </div>
+              </div>
+            </Surface>
+          </Reveal>
+        ))}
+      </div>
+    </section>
+  );
 }
