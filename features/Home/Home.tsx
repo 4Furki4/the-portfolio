@@ -55,6 +55,10 @@ export default function Home({
     },
   ];
   const leadProject = featuredProjects[0];
+  const skillHighlights =
+    locale === "tr"
+      ? ["TypeScript", "PostgreSQL", "Kendi altyapım"]
+      : ["TypeScript", "PostgreSQL", "Self-hosted"];
 
   return (
     <main
@@ -97,7 +101,7 @@ export default function Home({
           </div>
 
           <div className="grid max-w-3xl gap-3 border-t border-white/10 pt-6 sm:grid-cols-3">
-            {["TypeScript", "Next.js", "PostgreSQL"].map((skill) => (
+            {skillHighlights.map((skill) => (
               <div
                 className="rounded-lg border border-white/10 bg-white/[0.035] px-4 py-3 text-sm font-semibold text-foreground/90"
                 key={skill}

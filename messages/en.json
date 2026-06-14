@@ -11,7 +11,7 @@
   },
   "Home": {
     "title": "Furkan Cengiz",
-    "subtitle": "I build sharp, production-ready web products with TypeScript, React, and systems thinking.",
+    "subtitle": "I build and operate production-ready web products with TypeScript, React, and server-side systems thinking.",
     "projects": "Explore projects",
     "role": "Full Stack Developer"
   },
@@ -50,12 +50,12 @@
   "About": {
     "metadata": {
       "title": "About",
-      "description": "About page containing contact information and a short bio."
+      "description": "About page covering Furkan Cengiz's product, frontend, and server-side infrastructure work."
     },
     "intro": {
       "eyebrow": "Profile",
-      "title": "I build web products where structure, speed, and interface detail meet.",
-      "subtitle": "My work sits between engineering discipline and product taste: clean systems, usable interfaces, and steady iteration."
+      "title": "I build web products across interface, backend, and infrastructure.",
+      "subtitle": "My work sits between product taste and operational discipline: usable interfaces, clean server-side flows, and systems I can keep running."
     },
     "adventure": {
       "title": "How I Got Here",
@@ -63,6 +63,27 @@
       "p2": "After gaining some experience with Unity to develop games, I decided to learn .NET. The reason I shifted to web development is to build an online modern Turkish dictionary from scratch. The official dictionary lacks many features and I'm a fan of Turkish words and their roots. Initially, I developed multi-page applications but found it unsatisfying. Then, I discovered .NET APIs and became enamored with the simplicity of sending required data and using them however we want. Later on, I delved into client-side learning and studied HTML, CSS, and JavaScript. Honestly, I struggled initially since I lacked proper resources. However, I was fortunate to be accepted into the Frontend Web Development BootCamp of Recoded.",
       "p3": "During the bootcamp, I not only improved my Frontend skills but also learned how to collaborate with teammates, provide feedback, manage time, and more. Furthermore, I honed my self-taught skills since our teachers encouraged us to self-teach.",
       "p4": "In this adventure, I made mistakes, and I will. I learned making mistakes is not what I should be afraid of. What I should be afraid of is being afraid of making mistakes which just means that I might not like what I do."
+    },
+    "server": {
+      "eyebrow": "02 / Server side",
+      "title": "I am learning the parts that keep products alive after deployment.",
+      "description": "I self-host the tools and apps I care about, then use that operational pressure to understand deployment, identity, backups, networking, and runtime behavior.",
+      "self-hosted": {
+        "label": "Self-hosted",
+        "title": "My own apps in production",
+        "description": "I run Vaultwarden, Turkish Dictionary, and this portfolio on infrastructure I maintain instead of treating deployment as somebody else's problem."
+      },
+      "organization": {
+        "label": "Genç Türkler",
+        "title": "Infrastructure branch learning",
+        "description": "In the Infra branch, I am learning around real organization systems: portal deployments, Caddy, Docker Compose, PostgreSQL, LLDAP, backups, and Cloudflare tunnels."
+      },
+      "direction": {
+        "label": "Next focus",
+        "title": "From feature work to operations",
+        "description": "I want to keep connecting product development with the server-side work behind it: safer releases, observability, access control, and reliable recovery paths."
+      },
+      "note": "The goal is not to become detached from product work. It is to understand the full path from interface decision to running service."
     },
     "education": {
       "title": "Learning Path"

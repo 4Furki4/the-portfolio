@@ -9,18 +9,20 @@ export default function TakenCourses({
   takenCourses,
   coursePage,
   description,
+  locale,
   title,
 }: {
   takenCourses: TakenCourses[];
   coursePage: string;
   description: string;
+  locale: string;
   title: string;
 }) {
   return (
     <section className="grid gap-6">
       <SectionHeader
         description={description}
-        eyebrow="03 / Stack"
+        eyebrow={locale === "tr" ? "04 / Teknoloji" : "04 / Stack"}
         title={title}
       />
       <div className="grid gap-4 md:grid-cols-2 xl:grid-cols-3">

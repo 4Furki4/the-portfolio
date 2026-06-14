@@ -52,7 +52,7 @@ export default function Education({
   return (
     <section className="grid gap-6">
       <SectionHeader
-        eyebrow={locale === "tr" ? "02 / Yol" : "02 / Path"}
+        eyebrow={locale === "tr" ? "03 / Yol" : "03 / Path"}
         title={title}
       />
       <div className="relative grid gap-4 pl-5 before:absolute before:left-0 before:top-0 before:h-full before:w-px before:bg-gradient-to-b before:from-teal-300 before:via-white/20 before:to-rose-300">
