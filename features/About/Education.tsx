@@ -55,17 +55,17 @@ export default function Education({
         eyebrow={locale === "tr" ? "02 / Yol" : "02 / Path"}
         title={title}
       />
-      <div className="relative grid gap-4 pl-5 before:absolute before:left-0 before:top-0 before:h-full before:w-px before:bg-gradient-to-b before:from-cyan-300 before:via-white/20 before:to-rose-300">
+      <div className="relative grid gap-4 pl-5 before:absolute before:left-0 before:top-0 before:h-full before:w-px before:bg-gradient-to-b before:from-teal-300 before:via-white/20 before:to-rose-300">
         {educations.map((education, i) => (
           <Reveal delay={i * 0.06} key={education.place}>
             <article className="relative">
-              <span className="absolute -left-[27px] top-5 grid size-4 place-items-center rounded-full border border-cyan-300/60 bg-background">
-                <span className="size-1.5 rounded-full bg-cyan-200" />
+              <span className="absolute -left-[27px] top-5 grid size-4 place-items-center rounded-full border border-teal-300/60 bg-background">
+                <span className="size-1.5 rounded-full bg-teal-200" />
               </span>
               <Surface className="grid gap-5 p-5 sm:grid-cols-[1fr_auto] sm:p-6">
                 <div>
                   <div className="mb-3 flex items-center gap-3">
-                    <SchoolIcon aria-hidden className="text-cyan-200" size={19} />
+                    <SchoolIcon aria-hidden className="text-teal-200" size={19} />
                     <h3 className="text-2xl font-semibold text-foreground">
                       {education.title[locale as "en" | "tr"]}
                     </h3>

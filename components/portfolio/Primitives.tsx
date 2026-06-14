@@ -50,7 +50,7 @@ export function SectionHeader({
 
 export function Eyebrow({ children }: { children: ReactNode }) {
   return (
-    <p className="text-xs font-semibold uppercase tracking-[0.26em] text-cyan-300">
+    <p className="text-xs font-semibold uppercase tracking-[0.26em] text-teal-300">
       {children}
     </p>
   );
@@ -108,7 +108,7 @@ export function TechPill({
   href?: string;
 }) {
   const className =
-    "inline-flex rounded-md border border-white/10 bg-white/[0.045] px-3 py-1.5 text-sm font-medium text-foreground/88 transition-colors hover:border-cyan-300/50 hover:text-cyan-100";
+    "inline-flex rounded-md border border-white/10 bg-white/[0.045] px-3 py-1.5 text-sm font-medium text-foreground/88 transition-colors hover:border-teal-300/50 hover:text-teal-100";
 
   if (!href) return <span className={className}>{children}</span>;
 
@@ -135,9 +135,9 @@ export function ActionLink({
   return (
     <Link
       className={cn(
-        "inline-flex min-h-11 items-center justify-center gap-2 rounded-lg px-4 text-sm font-semibold transition-all focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-cyan-300",
+        "inline-flex min-h-11 items-center justify-center gap-2 rounded-lg px-4 text-sm font-semibold transition-all focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-teal-300",
         variant === "primary"
-          ? "border border-cyan-300/50 bg-cyan-300 text-slate-950 hover:bg-cyan-200"
+          ? "border border-teal-300/50 bg-teal-300 text-slate-950 hover:bg-teal-200"
           : "border border-white/12 bg-white/[0.045] text-foreground hover:border-rose-300/50 hover:text-rose-100",
         className,
       )}

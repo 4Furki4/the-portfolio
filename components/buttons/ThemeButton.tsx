@@ -13,7 +13,7 @@ export default function ThemeButton({ className }: { className?: string }) {
       <button
         aria-label={theme === "dark" ? "Switch to light mode" : "Switch to dark mode"}
         className={cn(
-          "grid size-10 place-items-center rounded-lg border border-white/10 bg-white/[0.045] text-foreground transition-colors hover:border-cyan-300/50 hover:text-cyan-100 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-cyan-300",
+          "grid size-10 place-items-center rounded-lg border border-white/10 bg-white/[0.045] text-foreground transition-colors hover:border-teal-300/50 hover:text-teal-100 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-teal-300",
           className,
         )}
         onClick={() => setTheme(theme === "dark" ? "light" : "dark")}

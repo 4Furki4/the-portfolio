@@ -20,7 +20,7 @@ export default function About({ locale }: { locale: string }) {
         </Reveal>
         <Reveal delay={0.08}>
           <Surface className="flex h-full flex-col justify-end p-5 sm:p-8">
-            <p className="mb-4 text-xs font-semibold uppercase tracking-[0.26em] text-cyan-300">
+            <p className="mb-4 text-xs font-semibold uppercase tracking-[0.26em] text-teal-300">
               {t("intro.eyebrow")}
             </p>
             <h1 className="max-w-3xl text-4xl font-semibold leading-[0.95] tracking-normal text-foreground sm:text-5xl lg:text-6xl">

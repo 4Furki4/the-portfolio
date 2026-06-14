@@ -26,7 +26,7 @@ export default function TakenCourses({
       <div className="grid gap-4 md:grid-cols-2 xl:grid-cols-3">
         {takenCourses.map((takenCourse, index) => (
           <Reveal delay={Math.min(index * 0.04, 0.2)} key={takenCourse.courseTitle}>
-            <Surface className="flex h-full flex-col overflow-hidden transition-colors hover:border-cyan-300/40">
+            <Surface className="flex h-full flex-col overflow-hidden transition-colors hover:border-teal-300/40">
               <div className="relative aspect-video w-full border-b border-white/10">
                 <Image
                   alt={takenCourse.courseTitle}
@@ -45,7 +45,7 @@ export default function TakenCourses({
                     {takenCourse.summarize}
                   </p>
                   <Link
-                    className="inline-flex text-sm font-semibold text-cyan-200 transition-colors hover:text-cyan-100"
+                    className="inline-flex text-sm font-semibold text-teal-200 transition-colors hover:text-teal-100"
                     href={takenCourse.courseLink}
                     rel="noopener noreferrer"
                     target="_blank"

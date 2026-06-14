@@ -85,7 +85,7 @@ export default function Home({
             {socialLinks.map((link) => (
               <Link
                 aria-label={link.label}
-                className="grid size-11 place-items-center rounded-lg border border-white/10 bg-white/[0.045] text-muted-foreground transition-colors hover:border-cyan-300/50 hover:text-cyan-100"
+                className="grid size-11 place-items-center rounded-lg border border-white/10 bg-white/[0.045] text-muted-foreground transition-colors hover:border-teal-300/50 hover:text-teal-100"
                 href={link.href}
                 key={link.href}
                 rel="noopener noreferrer"
@@ -112,7 +112,7 @@ export default function Home({
           <Surface className="overflow-hidden">
             <div className="flex items-center justify-between border-b border-white/10 px-4 py-3">
               <span className="text-xs font-semibold uppercase tracking-[0.24em] text-muted-foreground">
-                {locale === "tr" ? "Seçili iş" : "Selected work"}
+                {locale === "tr" ? "Öne Çıkan Proje" : "Featured project"}
               </span>
               <StatusBadge status={leadProject.status}>
                 {leadProject.statusText}
@@ -144,7 +144,7 @@ export default function Home({
                   </div>
                   <MoveRight
                     aria-hidden
-                    className="mt-1 shrink-0 text-cyan-200 transition-transform group-hover:translate-x-1"
+                    className="mt-1 shrink-0 text-teal-200 transition-transform group-hover:translate-x-1"
                     size={22}
                   />
                 </div>
