@@ -11,17 +11,73 @@ const projects: Project[] = [
     },
     images: [
       {
-        alt: "Turkish Dictionary Home Page Preview",
-        src: "/pics/projects/turkish-dictionary/home-preview.png",
+        alt: "Turkish Dictionary home page",
+        src: "/pics/projects/turkish-dictionary/home-page.png",
       },
       {
-        alt: "Turkish Dictionary Word Searched Preview",
-        src: "/pics/projects/turkish-dictionary/word-searched-preview.png",
+        alt: "Turkish Dictionary word search page",
+        src: "/pics/projects/turkish-dictionary/word-search-page.png",
       },
       {
-        alt: "Turkish Dictionary Dashboard Add Word Page Preview",
-        src: "/pics/projects/turkish-dictionary/dashboard-word-create.png",
-      }
+        alt: "Turkish Dictionary compact word search page",
+        src: "/pics/projects/turkish-dictionary/word-search-compact-page.png",
+      },
+      {
+        alt: "Turkish Dictionary word list page",
+        src: "/pics/projects/turkish-dictionary/word-list-page.png",
+      },
+      {
+        alt: "Turkish Dictionary saved words page",
+        src: "/pics/projects/turkish-dictionary/saved-words-page.png",
+      },
+      {
+        alt: "Turkish Dictionary search history page",
+        src: "/pics/projects/turkish-dictionary/search-history.png",
+      },
+      {
+        alt: "Turkish Dictionary profile page",
+        src: "/pics/projects/turkish-dictionary/profile-page.png",
+      },
+      {
+        alt: "Turkish Dictionary offline dictionary page",
+        src: "/pics/projects/turkish-dictionary/offline-dictionary.png",
+      },
+      {
+        alt: "Turkish Dictionary basic new word contribution page",
+        src: "/pics/projects/turkish-dictionary/contribute-new-word-basic-page.png",
+      },
+      {
+        alt: "Turkish Dictionary detailed new word contribution page",
+        src: "/pics/projects/turkish-dictionary/contribute-new-word-detailed-page.png",
+      },
+      {
+        alt: "Turkish Dictionary request detail page",
+        src: "/pics/projects/turkish-dictionary/request-detail-page.png",
+      },
+      {
+        alt: "Turkish Dictionary feedback page",
+        src: "/pics/projects/turkish-dictionary/feedback-page.png",
+      },
+      {
+        alt: "Turkish Dictionary foreign term suggestions page",
+        src: "/pics/projects/turkish-dictionary/foreign-term-suggestions-page.png",
+      },
+      {
+        alt: "Turkish Dictionary pronunciation voting page",
+        src: "/pics/projects/turkish-dictionary/pronunciation-voting-page.png",
+      },
+      {
+        alt: "Turkish Dictionary word wizard page",
+        src: "/pics/projects/turkish-dictionary/word-wizard-page.png",
+      },
+      {
+        alt: "Turkish Dictionary flashcard game page",
+        src: "/pics/projects/turkish-dictionary/flashcard-game-page.png",
+      },
+      {
+        alt: "Turkish Dictionary word matching game page",
+        src: "/pics/projects/turkish-dictionary/word-matching-game-page.png",
+      },
     ],
     repoLink: "https://github.com/4Furki4/Turkish-Dictionary",
     demoLink: "https://turkce-sozluk.com",

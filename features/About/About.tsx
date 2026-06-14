@@ -8,6 +8,7 @@ import TakenCourses from "./TakenCourses";
 import { getTakenCourses } from "@/db/static/takenCourses";
 import { PageShell, Surface } from "@/components/portfolio/Primitives";
 import Reveal from "@/components/portfolio/Reveal";
+import ServerSideLearning from "./ServerSideLearning";
 
 export default function About({ locale }: { locale: string }) {
   const t = useTranslations("About");
@@ -19,7 +20,7 @@ export default function About({ locale }: { locale: string }) {
           <AboutImage />
         </Reveal>
         <Reveal delay={0.08}>
-          <Surface className="flex h-full flex-col justify-end p-5 sm:p-8">
+          <Surface className="flex h-full min-h-[420px] flex-col justify-center p-5 sm:p-8 lg:min-h-0 lg:p-10">
             <p className="mb-4 text-xs font-semibold uppercase tracking-[0.26em] text-teal-300">
               {t("intro.eyebrow")}
             </p>
@@ -42,10 +43,34 @@ export default function About({ locale }: { locale: string }) {
           fourthParagraph={t("adventure.p4")}
         />
       </Reveal>
+      <ServerSideLearning
+        cards={[
+          {
+            label: t("server.self-hosted.label"),
+            title: t("server.self-hosted.title"),
+            description: t("server.self-hosted.description"),
+          },
+          {
+            label: t("server.organization.label"),
+            title: t("server.organization.title"),
+            description: t("server.organization.description"),
+          },
+          {
+            label: t("server.direction.label"),
+            title: t("server.direction.title"),
+            description: t("server.direction.description"),
+          },
+        ]}
+        description={t("server.description")}
+        eyebrow={t("server.eyebrow")}
+        note={t("server.note")}
+        title={t("server.title")}
+      />
       <Education locale={locale} title={t("education.title")} />
       <TakenCourses
         coursePage={t("taken-courses.course-page")}
         description={t("taken-courses.description")}
+        locale={locale}
         takenCourses={takenCourses}
         title={t("taken-courses.title")}
       />
