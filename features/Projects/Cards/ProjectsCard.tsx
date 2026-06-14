@@ -29,7 +29,7 @@ export default function ProjectCards({
   return (
     <Reveal delay={Math.min(index * 0.06, 0.24)}>
       <Link href={getProjectHref(locale, project.endpoint)} className="group block">
-        <Surface className="grid overflow-hidden transition-colors hover:border-cyan-300/40 lg:grid-cols-[minmax(0,420px)_1fr]">
+        <Surface className="grid overflow-hidden transition-colors hover:border-teal-300/40 lg:grid-cols-[minmax(0,420px)_1fr]">
           <div className="relative min-h-64 overflow-hidden lg:min-h-80">
               <Image
                 fill={true}
@@ -63,7 +63,7 @@ export default function ProjectCards({
                 <TechPill key={tech.name}>{tech.name}</TechPill>
               ))}
             </div>
-            <span className="mt-auto inline-flex items-center gap-2 text-sm font-semibold text-cyan-200">
+            <span className="mt-auto inline-flex items-center gap-2 text-sm font-semibold text-teal-200">
               {locale === "tr" ? "Projeyi incele" : "View project"}
               <MoveRight
                 aria-hidden

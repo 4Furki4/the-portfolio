@@ -51,7 +51,7 @@ export default async function Projects({
       <div className="mx-auto w-full max-w-7xl px-4 py-10 sm:px-6 sm:py-14 lg:px-8">
         <header className="mb-10 grid gap-6 border-b border-white/10 pb-8 lg:grid-cols-[1fr_320px] lg:items-end">
           <div className="space-y-4">
-            <p className="text-xs font-semibold uppercase tracking-[0.26em] text-cyan-300">
+            <p className="text-xs font-semibold uppercase tracking-[0.26em] text-teal-300">
               {t("eyebrow")}
             </p>
             <h1 className="max-w-4xl text-5xl font-semibold leading-[0.95] tracking-normal text-foreground sm:text-6xl">

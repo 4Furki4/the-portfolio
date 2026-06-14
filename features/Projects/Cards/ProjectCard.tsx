@@ -122,7 +122,7 @@ export default function ProjectCard({
       <div className="grid gap-5 lg:grid-cols-[1.4fr_0.8fr]">
         <Surface className="p-5 sm:p-6">
           <div className="mb-5 flex items-center gap-3">
-            <Layers aria-hidden className="text-cyan-200" size={20} />
+            <Layers aria-hidden className="text-teal-200" size={20} />
             <h2 className="text-2xl font-semibold text-foreground">{techStack}</h2>
           </div>
           <div className="flex flex-wrap gap-2">
@@ -148,7 +148,7 @@ export default function ProjectCard({
             <div className="grid gap-2">
               {project.contributors.map((contributor) => (
                 <Link
-                  className="flex items-center justify-between rounded-lg border border-white/10 bg-white/[0.035] px-3 py-2 text-sm font-semibold text-muted-foreground transition-colors hover:border-cyan-300/40 hover:text-foreground"
+                  className="flex items-center justify-between rounded-lg border border-white/10 bg-white/[0.035] px-3 py-2 text-sm font-semibold text-muted-foreground transition-colors hover:border-teal-300/40 hover:text-foreground"
                   href={contributor.github}
                   key={contributor.github}
                   rel="noopener noreferrer"

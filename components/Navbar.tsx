@@ -45,10 +45,10 @@ export default function Navbar({
     <header className="sticky top-0 z-50 w-full border-b border-white/10 bg-background/72 backdrop-blur-xl backdrop-saturate-150">
       <div className="mx-auto grid h-16 w-full max-w-7xl grid-cols-[auto_1fr_auto] items-center gap-3 px-4 sm:px-6 lg:px-8">
         <Link
-          className="group inline-flex items-center gap-3 rounded-lg focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-cyan-300"
+          className="group inline-flex items-center gap-3 rounded-lg focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-teal-300"
           href={getLocalizedHref("/", locale)}
         >
-          <span className="grid size-9 place-items-center rounded-lg border border-cyan-300/30 bg-cyan-300/10 text-sm font-bold text-cyan-100 transition-colors group-hover:border-cyan-300/70">
+          <span className="grid size-9 place-items-center rounded-lg border border-teal-300/30 bg-teal-300/10 text-sm font-bold text-teal-100 transition-colors group-hover:border-teal-300/70">
             FC
           </span>
           <span className="hidden text-sm font-semibold text-foreground/92 sm:block">
@@ -70,7 +70,7 @@ export default function Navbar({
               (navItem) => (
                 <Link
                   className={cn(
-                    "rounded-md px-4 py-2 text-sm font-semibold text-muted-foreground transition-colors hover:text-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-cyan-300",
+                    "rounded-md px-4 py-2 text-sm font-semibold text-muted-foreground transition-colors hover:text-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-teal-300",
                     isActivePath(pathname, navItem.href, locale) &&
                       "bg-white/10 text-foreground shadow-sm",
                   )}
@@ -88,7 +88,7 @@ export default function Navbar({
             <button
               aria-expanded={isSettingsOpen}
               aria-label="Site settings"
-              className="grid size-10 place-items-center rounded-lg border border-white/10 bg-white/[0.045] text-foreground transition-colors hover:border-cyan-300/50 hover:text-cyan-100 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-cyan-300"
+              className="grid size-10 place-items-center rounded-lg border border-white/10 bg-white/[0.045] text-foreground transition-colors hover:border-teal-300/50 hover:text-teal-100 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-teal-300"
               onClick={() => setIsSettingsOpen((open) => !open)}
               type="button"
             >

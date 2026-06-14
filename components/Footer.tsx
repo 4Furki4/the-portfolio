@@ -24,7 +24,7 @@ export default function Footer({ locale }: { locale: string }) {
         <div className="flex flex-wrap items-center gap-2">
           {links.map((link) => (
             <Link
-              className="inline-flex min-h-10 items-center gap-2 rounded-lg border border-white/10 bg-white/[0.035] px-3 text-sm font-semibold text-muted-foreground transition-colors hover:border-cyan-300/50 hover:text-cyan-100"
+              className="inline-flex min-h-10 items-center gap-2 rounded-lg border border-white/10 bg-white/[0.035] px-3 text-sm font-semibold text-muted-foreground transition-colors hover:border-teal-300/50 hover:text-teal-100"
               href={link.href}
               key={link.href}
               target={link.href === "/CV.pdf" ? "_blank" : undefined}
@@ -35,7 +35,7 @@ export default function Footer({ locale }: { locale: string }) {
           ))}
           <Link
             aria-label="LinkedIn"
-            className="grid size-10 place-items-center rounded-lg border border-white/10 bg-white/[0.035] text-muted-foreground transition-colors hover:border-cyan-300/50 hover:text-cyan-100"
+            className="grid size-10 place-items-center rounded-lg border border-white/10 bg-white/[0.035] text-muted-foreground transition-colors hover:border-teal-300/50 hover:text-teal-100"
             href="https://www.linkedin.com/in/4furkancengiz4/"
             rel="noopener noreferrer"
             target="_blank"
@@ -44,7 +44,7 @@ export default function Footer({ locale }: { locale: string }) {
           </Link>
           <Link
             aria-label="GitHub"
-            className="grid size-10 place-items-center rounded-lg border border-white/10 bg-white/[0.035] text-muted-foreground transition-colors hover:border-cyan-300/50 hover:text-cyan-100"
+            className="grid size-10 place-items-center rounded-lg border border-white/10 bg-white/[0.035] text-muted-foreground transition-colors hover:border-teal-300/50 hover:text-teal-100"
             href="https://github.com/4furki4"
             rel="noopener noreferrer"
             target="_blank"
@@ -53,7 +53,7 @@ export default function Footer({ locale }: { locale: string }) {
           </Link>
           <Link
             aria-label="Email"
-            className="grid size-10 place-items-center rounded-lg border border-white/10 bg-white/[0.035] text-muted-foreground transition-colors hover:border-cyan-300/50 hover:text-cyan-100"
+            className="grid size-10 place-items-center rounded-lg border border-white/10 bg-white/[0.035] text-muted-foreground transition-colors hover:border-teal-300/50 hover:text-teal-100"
             href="mailto:muhammedcengiz1@gmail.com"
           >
             <Mail aria-hidden size={18} />

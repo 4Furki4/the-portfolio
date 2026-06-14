@@ -1,6 +1,8 @@
 import { getTranslations } from "next-intl/server";
 import { Surface } from "@/components/portfolio/Primitives";
 
+const contributionPalette = ["#161b22", "#003820", "#00602d", "#10983d", "#27d545"];
+
 export default async function GithubContributionTable() {
   const githubTableDataResponse = await fetch(
     "https://github-contributions.vercel.app/api/v1/4furki4",
@@ -19,7 +21,7 @@ export default async function GithubContributionTable() {
     <Surface className="p-5 sm:p-6">
       <div className="mb-5 flex flex-wrap items-end justify-between gap-3">
         <div>
-          <p className="text-xs font-semibold uppercase tracking-[0.26em] text-cyan-300">
+          <p className="text-xs font-semibold uppercase tracking-[0.26em] text-teal-300">
             04 / GitHub
           </p>
           <h2 className="mt-3 text-3xl font-semibold text-foreground">
@@ -31,10 +33,22 @@ export default async function GithubContributionTable() {
         data={githubTableData}
         labels={{
           contributions: t("contributions"),
-          less: t("less"),
-          more: t("more"),
         }}
       />
+      <div className="mt-4 flex flex-wrap items-center justify-end gap-x-3 gap-y-2 text-sm text-muted-foreground">
+        <span>{t("less")}</span>
+        <div className="flex shrink-0 items-center gap-1.5">
+          {contributionPalette.map((color) => (
+            <span
+              aria-hidden
+              className="size-3 rounded-[3px]"
+              key={color}
+              style={{ backgroundColor: color }}
+            />
+          ))}
+        </div>
+        <span>{t("more")}</span>
+      </div>
     </Surface>
   );
 }
@@ -44,7 +58,7 @@ function ContributionSvg({
   labels,
 }: {
   data: GithubContributionResponse;
-  labels: { contributions: string; less: string; more: string };
+  labels: { contributions: string };
 }) {
   const years = data.years ?? [];
   const contributions = new Map(
@@ -58,7 +72,6 @@ function ContributionSvg({
   const padding = 24;
   const headerHeight = 26;
   const height = Math.max(220, padding * 2 + years.length * rowHeight);
-  const palette = ["#161b22", "#003820", "#00602d", "#10983d", "#27d545"];
 
   return (
     <svg
@@ -86,7 +99,7 @@ function ContributionSvg({
             const intensity = contributions.get(date) ?? 0;
             boxes.push(
               <rect
-                fill={palette[Math.max(0, Math.min(4, intensity))]}
+                fill={contributionPalette[Math.max(0, Math.min(4, intensity))]}
                 height={box}
                 key={`${year.year}-${date}`}
                 rx="2"
@@ -115,23 +128,6 @@ function ContributionSvg({
           </g>
         );
       })}
-      <text fill="#94a3b8" fontSize="12" x={width - 132} y={height - 16}>
-        {labels.less}
-      </text>
-      {palette.map((color, index) => (
-        <rect
-          fill={color}
-          height="10"
-          key={color}
-          rx="2"
-          width="10"
-          x={width - 96 + index * 14}
-          y={height - 25}
-        />
-      ))}
-      <text fill="#94a3b8" fontSize="12" x={width - 48} y={height - 16}>
-        {labels.more}
-      </text>
     </svg>
   );
 }
