@@ -40,6 +40,7 @@ export default function ProjectCards({
                 quality={90}
                 sizes="(min-width: 1024px) 420px, 100vw"
                 src={project.images[0].src}
+                unoptimized
               />
             <div className="absolute inset-0 bg-gradient-to-t from-background/30 to-transparent" />
           </div>
