@@ -134,6 +134,7 @@ export default function Home({
                   priority
                   sizes="(min-width: 1024px) 520px, 100vw"
                   src={leadProject.src}
+                  unoptimized
                 />
               </div>
               <div className="space-y-4 p-5">

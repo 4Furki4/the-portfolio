@@ -92,6 +92,7 @@ export default function ProjectCard({
                 placeholder="blur"
                 priority
                 src={project.images[0].src}
+                unoptimized
                 width={1920}
               />
             </a>
@@ -109,6 +110,7 @@ export default function ProjectCard({
                       className="aspect-video h-full w-full object-cover transition-transform duration-500 group-hover:scale-[1.04]"
                       height={1080}
                       src={image.src}
+                      unoptimized
                       width={1920}
                     />
                   </a>
