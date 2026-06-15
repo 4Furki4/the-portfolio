@@ -1,7 +1,7 @@
 import React from "react";
 import projectsData from "@/db/static/projects";
+import { getProjectImageBlurData } from "@/db/static/projectImageBlurData";
 import ProjectCards from "@/features/Projects/Cards/ProjectsCard";
-import { getBase64 } from "@/lib/getBase64ImageUrl";
 import { getTranslations, setRequestLocale } from "next-intl/server";
 export async function generateMetadata({
   params,
@@ -32,7 +32,6 @@ export async function generateMetadata({
     },
   };
 }
-const images = projectsData.map((project) => project.images[0].src);
 export default async function Projects({
   params,
 }: {
@@ -42,9 +41,6 @@ export default async function Projects({
   setRequestLocale(locale);
   const t = await getTranslations("Projects");
   const statusT = await getTranslations("Project.status");
-  const blurredImage = await Promise.all(
-    images.map((image) => getBase64(image))
-  );
 
   return (
     <section className="relative z-20 mb-auto w-full">
@@ -67,15 +63,15 @@ export default async function Projects({
         </header>
         <div className="grid gap-5">
           {projectsData.map((project, index) => (
-          <ProjectCards
-            project={project}
-            blurredImage={blurredImage[index]}
-            key={index}
-            index={index}
-            locale={locale}
-            statusText={statusT(project.status)}
-          />
-        ))}
+            <ProjectCards
+              project={project}
+              blurredImage={getProjectImageBlurData(project.endpoint)}
+              key={index}
+              index={index}
+              locale={locale}
+              statusText={statusT(project.status)}
+            />
+          ))}
         </div>
       </div>
     </section>
