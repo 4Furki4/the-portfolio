@@ -4,6 +4,7 @@ import Link from "next/link";
 import Tag from "@/components/Tag";
 import Reveal from "@/components/portfolio/Reveal";
 import { SectionHeader, Surface } from "@/components/portfolio/Primitives";
+import type { CourseItem } from "@/lib/directus/types";
 
 export default function TakenCourses({
   takenCourses,
@@ -12,7 +13,7 @@ export default function TakenCourses({
   locale,
   title,
 }: {
-  takenCourses: TakenCourses[];
+  takenCourses: CourseItem[];
   coursePage: string;
   description: string;
   locale: string;
@@ -27,7 +28,7 @@ export default function TakenCourses({
       />
       <div className="grid gap-4 md:grid-cols-2 xl:grid-cols-3">
         {takenCourses.map((takenCourse, index) => (
-          <Reveal delay={Math.min(index * 0.04, 0.2)} key={takenCourse.courseTitle}>
+          <Reveal delay={Math.min(index * 0.04, 0.2)} key={takenCourse.id}>
             <Surface className="flex h-full flex-col overflow-hidden transition-colors hover:border-teal-300/40">
               <div className="relative aspect-video w-full border-b border-white/10">
                 <Image
@@ -36,6 +37,7 @@ export default function TakenCourses({
                   fill
                   sizes="(min-width: 1280px) 380px, (min-width: 768px) 50vw, 100vw"
                   src={takenCourse.image}
+                  unoptimized
                 />
               </div>
               <div className="flex flex-1 flex-col gap-4 p-5">
@@ -44,6 +46,9 @@ export default function TakenCourses({
                     {takenCourse.courseTitle}
                   </h3>
                   <p className="text-sm leading-6 text-muted-foreground">
+                    <span className="mb-1 block font-semibold text-foreground/80">
+                      {takenCourse.tutor}
+                    </span>
                     {takenCourse.summarize}
                   </p>
                   <Link

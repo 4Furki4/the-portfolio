@@ -5,19 +5,24 @@ import GithubContributionTable from "./GithubContributionTable";
 import AboutImage from "./AboutImage";
 import { useTranslations } from "next-intl";
 import TakenCourses from "./TakenCourses";
-import { getTakenCourses } from "@/db/static/takenCourses";
 import { PageShell, Surface } from "@/components/portfolio/Primitives";
 import Reveal from "@/components/portfolio/Reveal";
 import ServerSideLearning from "./ServerSideLearning";
+import type { AboutContent } from "@/lib/directus/types";
 
-export default function About({ locale }: { locale: string }) {
+export default function About({
+  content,
+  locale,
+}: {
+  content: AboutContent;
+  locale: string;
+}) {
   const t = useTranslations("About");
-  const takenCourses = getTakenCourses(locale);
   return (
     <PageShell className="grid gap-12 break-words hyphens-auto">
       <section className="grid gap-6 lg:grid-cols-[minmax(280px,420px)_1fr] lg:items-stretch">
         <Reveal>
-          <AboutImage />
+          <AboutImage alt={content.profileImageAlt} src={content.profileImage} />
         </Reveal>
         <Reveal delay={0.08}>
           <Surface className="flex h-full min-h-[420px] flex-col justify-center p-5 sm:p-8 lg:min-h-0 lg:p-10">
@@ -36,11 +41,8 @@ export default function About({ locale }: { locale: string }) {
 
       <Reveal>
         <AboutMeParagraph
-          title={t("adventure.title")}
-          firstParagraph={t("adventure.p1")}
-          secondParagraph={t("adventure.p2")}
-          thirdParagraph={t("adventure.p3")}
-          fourthParagraph={t("adventure.p4")}
+          body={content.adventureBody}
+          title={content.adventureTitle}
         />
       </Reveal>
       <ServerSideLearning
@@ -66,16 +68,20 @@ export default function About({ locale }: { locale: string }) {
         note={t("server.note")}
         title={t("server.title")}
       />
-      <Education locale={locale} title={t("education.title")} />
+      <Education
+        education={content.education}
+        locale={locale}
+        title={content.educationTitle}
+      />
       <TakenCourses
         coursePage={t("taken-courses.course-page")}
         description={t("taken-courses.description")}
         locale={locale}
-        takenCourses={takenCourses}
-        title={t("taken-courses.title")}
+        takenCourses={content.courses}
+        title={content.coursesTitle}
       />
       <Suspense>
-        <GithubContributionTable />
+        <GithubContributionTable title={content.githubTitle} />
       </Suspense>
     </PageShell>
   );

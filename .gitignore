@@ -26,6 +26,15 @@ yarn-error.log*
 
 # local env files
 .env*.local
+.env.directus.local
+.env.directus.production.pi
+.env.production.pi
+.env.development.pi
+
+# Directus runtime data is persisted by Docker volumes, never Git.
+/directus/uploads/
+/directus/database/
+/directus/backups/
 
 # vercel
 .vercel

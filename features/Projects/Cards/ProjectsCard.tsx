@@ -9,6 +9,7 @@ import {
 } from "@/components/portfolio/Primitives";
 import { getProjectHref } from "@/lib/localizedPath";
 import { MoveRight } from "lucide-react";
+import type { PortfolioProject } from "@/lib/directus/types";
 
 export default function ProjectCards({
   blurredImage,
@@ -17,18 +18,18 @@ export default function ProjectCards({
   project,
   statusText,
 }: {
-  project: Project;
+  project: PortfolioProject;
   blurredImage: string;
   index: number;
   locale: string;
   statusText: string;
 }) {
-  const title = project.title[locale as "en" | "tr"];
-  const description = project.description[locale as "en" | "tr"];
+  const title = project.title;
+  const description = project.description;
 
   return (
     <Reveal delay={Math.min(index * 0.06, 0.24)}>
-      <Link href={getProjectHref(locale, project.endpoint)} className="group block">
+      <Link href={getProjectHref(locale, project.slug)} className="group block">
         <Surface className="grid overflow-hidden transition-colors hover:border-teal-300/40 lg:grid-cols-[minmax(0,420px)_1fr]">
           <div className="relative min-h-64 overflow-hidden lg:min-h-80">
               <Image

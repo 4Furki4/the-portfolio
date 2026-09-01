@@ -18,6 +18,7 @@ import {
   Surface,
   TechPill,
 } from "@/components/portfolio/Primitives";
+import type { PortfolioProject } from "@/lib/directus/types";
 
 type IntlProps = Record<
   | "repoLinkText"
@@ -39,16 +40,16 @@ export default function ProjectCard({
   techStack,
   locale,
 }: {
-  project: Project;
+  project: PortfolioProject;
   blurredImage: string;
 } & IntlProps) {
   return (
     <article className="space-y-8">
       <header className="grid gap-6 border-b border-white/10 pb-8 lg:grid-cols-[1fr_auto] lg:items-end">
         <SectionHeader
-          description={project.description[locale as "en" | "tr"]}
+          description={project.description}
           eyebrow={locale === "tr" ? "Proje detayi" : "Project detail"}
-          title={project.title[locale as "en" | "tr"]}
+          title={project.title}
         />
         <div className="flex flex-col gap-3 lg:items-end">
           <StatusBadge status={project.status}>{status}</StatusBadge>

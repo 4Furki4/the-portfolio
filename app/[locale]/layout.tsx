@@ -11,22 +11,21 @@ import Providers from "@/context/Providers";
 import { Metadata } from "next";
 import { notFound } from "next/navigation";
 import { getTranslations, setRequestLocale } from "next-intl/server";
+import { getHomePage } from "@/lib/directus/data";
+import type { PortfolioLocale } from "@/lib/directus/types";
 export async function generateMetadata({
   params,
 }: {
   params: Promise<{ locale: string }>;
 }): Promise<Metadata> {
   const { locale } = await params;
-  const t = await getTranslations({
-    locale: locale,
-    namespace: "metadata",
-  });
+  const content = await getHomePage(locale as PortfolioLocale);
   return {
     title: {
       template: "%s | Furkan Cengiz",
-      default: "Furkan Cengiz",
+      default: content.seoTitle,
     },
-    description: t("description"),
+    description: content.seoDescription,
     robots: {
       index: true,
       follow: true,
@@ -69,8 +68,8 @@ export async function generateMetadata({
     openGraph: {
       type: "website",
       url: locale === "en" ? "/" : "/tr",
-      title: "Furkan Cengiz",
-      description: t("description"),
+      title: content.seoTitle,
+      description: content.seoDescription,
     },
   };
 }
@@ -119,7 +118,7 @@ export default async function RootLayout({
               <BackgroundParticles />
             </div>
           }
-          <Footer locale={locale} />
+          <Footer locale={locale as PortfolioLocale} />
         </Providers>
       </body>
       {process.env.NODE_ENV === "production" ? (

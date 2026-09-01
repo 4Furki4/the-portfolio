@@ -16,7 +16,24 @@ const nextConfig = {
         hostname: "skillicons.dev",
       },
       {
-        hostname: "static.frontendmasters.com"
+        hostname: "static.frontendmasters.com",
+      },
+      {
+        protocol: "http",
+        hostname: "127.0.0.1",
+        port: "8065",
+        pathname: "/assets/**",
+      },
+      {
+        protocol: "http",
+        hostname: "localhost",
+        port: "8065",
+        pathname: "/assets/**",
+      },
+      {
+        protocol: "https",
+        hostname: "cms.furkan-cengiz.com",
+        pathname: "/assets/**",
       }
     ],
   },

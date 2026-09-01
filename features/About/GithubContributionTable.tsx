@@ -3,7 +3,7 @@ import { Surface } from "@/components/portfolio/Primitives";
 
 const contributionPalette = ["#161b22", "#003820", "#00602d", "#10983d", "#27d545"];
 
-export default async function GithubContributionTable() {
+export default async function GithubContributionTable({ title }: { title: string }) {
   const githubTableDataResponse = await fetch(
     "https://github-contributions.vercel.app/api/v1/4furki4",
     {
@@ -25,7 +25,7 @@ export default async function GithubContributionTable() {
             04 / GitHub
           </p>
           <h2 className="mt-3 text-3xl font-semibold text-foreground">
-            {t("title")}
+            {title}
           </h2>
         </div>
       </div>

@@ -1,7 +1,8 @@
 import React from "react";
 import Home, { type HomeProject } from "@/features/Home/Home";
 import { getTranslations, setRequestLocale } from "next-intl/server";
-import projectsData from "@/db/static/projects";
+import { getHomePage, getProjects } from "@/lib/directus/data";
+import type { PortfolioLocale } from "@/lib/directus/types";
 
 export default async function Page({
   params,
@@ -10,12 +11,17 @@ export default async function Page({
 }) {
   const { locale } = await params;
   setRequestLocale(locale);
-  const t = await getTranslations("Home");
-  const statusT = await getTranslations("Project.status");
-  const featuredProjects: HomeProject[] = projectsData.slice(0, 3).map((project) => ({
-    title: project.title[locale as "en" | "tr"],
-    description: project.description[locale as "en" | "tr"],
-    endpoint: project.endpoint,
+  const portfolioLocale = locale as PortfolioLocale;
+  const [content, projects, t, statusT] = await Promise.all([
+    getHomePage(portfolioLocale),
+    getProjects(portfolioLocale),
+    getTranslations("Home"),
+    getTranslations("Project.status"),
+  ]);
+  const featuredProjects: HomeProject[] = projects.slice(0, 3).map((project) => ({
+    title: project.title,
+    description: project.description,
+    endpoint: project.slug,
     src: project.images[0].src,
     alt: project.images[0].alt,
     status: project.status,
@@ -24,10 +30,8 @@ export default async function Page({
   }));
   return (
     <Home
-      title={t("title")}
-      subtitle={t("subtitle")}
+      content={content}
       projectsLinkText={t("projects")}
-      role={t("role")}
       locale={locale}
       featuredProjects={featuredProjects}
     />

@@ -1,22 +1,24 @@
 import About from "@/features/About/About";
-import { getTranslations, setRequestLocale } from "next-intl/server";
+import { setRequestLocale } from "next-intl/server";
 import React from "react";
+import { getAboutPage } from "@/lib/directus/data";
+import type { PortfolioLocale } from "@/lib/directus/types";
 export async function generateMetadata({
   params,
 }: {
   params: Promise<{ locale: string }>;
 }) {
   const { locale } = await params;
-  const t = await getTranslations({ locale, namespace: "About.metadata" });
+  const content = await getAboutPage(locale as PortfolioLocale);
   return {
-    title: t("title"),
-    description: t("description"),
+    title: content.seoTitle,
+    description: content.seoDescription,
     openGraph: {
       type: "website",
       locale: locale,
       url: locale === "en" ? "/about" : "/tr/hakkimda",
-      title: `${t("title")} | Furkan Cengiz`,
-      description: t("description"),
+      title: `${content.seoTitle} | Furkan Cengiz`,
+      description: content.seoDescription,
     },
     alternates: {
       canonical: "/about",
@@ -35,5 +37,6 @@ export default async function page({
 }) {
   const { locale } = await params;
   setRequestLocale(locale);
-  return <About locale={locale} />;
+  const content = await getAboutPage(locale as PortfolioLocale);
+  return <About content={content} locale={locale} />;
 }

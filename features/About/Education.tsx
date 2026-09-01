@@ -3,52 +3,17 @@ import { format } from "date-fns";
 import { SchoolIcon } from "lucide-react";
 import { SectionHeader, Surface } from "@/components/portfolio/Primitives";
 import Reveal from "@/components/portfolio/Reveal";
+import type { EducationItem } from "@/lib/directus/types";
 
-type Education = {
-  title: {
-    en: string;
-    tr: string;
-  };
-  place: string;
-  description: {
-    en: string;
-    tr: string;
-  };
-  yearStart: Date;
-  yearEnd?: Date;
-};
 export default function Education({
+  education,
   title,
   locale,
-}: Record<"title" | "locale", string>) {
-  const educations: Education[] = [
-    {
-      title: {
-        en: "Frontend Web Development BootCamp",
-        tr: "Frontend Web Development BootCamp",
-      },
-      place: "Recoded",
-      description: {
-        en: "I learned how to collaborate with teammates, provide feedback, manage time, and more. Furthermore, I honed my self-taught skills since our teachers encouraged us to self-teach.",
-        tr: "Takım çalışmasını, geri bildirim sağlamayı, zaman yönetimini ve daha fazlasını öğrendim. Ayrıca, öğretmenlerimiz bizi kendi kendimize öğrenmeye teşvik ettikleri için kendi kendime öğrendiğim becerilerimi geliştirdim.",
-      },
-      yearStart: new Date(2023, 2, 5),
-      yearEnd: new Date(2023, 8, 5),
-    },
-    {
-      title: {
-        en: "Industrial Engineering",
-        tr: "Endüstri Mühendisliği",
-      },
-      place: "Abdullah Gul University",
-      description: {
-        en: "Completed the prep school and left the university at the end of the first year.",
-        tr: "Hazırlık okulunu tamamladım ve birinci sınıfın sonunda üniversiteden ayrıldım.",
-      },
-      yearStart: new Date(2021, 9, 5),
-      yearEnd: new Date(2022, 6, 15),
-    },
-  ];
+}: {
+  education: EducationItem[];
+  title: string;
+  locale: string;
+}) {
   return (
     <section className="grid gap-6">
       <SectionHeader
@@ -56,8 +21,8 @@ export default function Education({
         title={title}
       />
       <div className="relative grid gap-4 pl-5 before:absolute before:left-0 before:top-0 before:h-full before:w-px before:bg-gradient-to-b before:from-teal-300 before:via-white/20 before:to-rose-300">
-        {educations.map((education, i) => (
-          <Reveal delay={i * 0.06} key={education.place}>
+        {education.map((item, index) => (
+          <Reveal delay={index * 0.06} key={item.id}>
             <article className="relative">
               <span className="absolute -left-[27px] top-5 grid size-4 place-items-center rounded-full border border-teal-300/60 bg-background">
                 <span className="size-1.5 rounded-full bg-teal-200" />
@@ -67,19 +32,21 @@ export default function Education({
                   <div className="mb-3 flex items-center gap-3">
                     <SchoolIcon aria-hidden className="text-teal-200" size={19} />
                     <h3 className="text-2xl font-semibold text-foreground">
-                      {education.title[locale as "en" | "tr"]}
+                      {item.title}
                     </h3>
                   </div>
-                  <p className="font-semibold text-rose-100">{education.place}</p>
+                  <p className="font-semibold text-rose-100">{item.institution}</p>
                   <p className="mt-2 max-w-3xl text-sm leading-6 text-muted-foreground sm:text-base">
-                  {education.description[locale as "en" | "tr"]}
-                </p>
+                    {item.description}
+                  </p>
                 </div>
                 <time className="text-sm font-semibold uppercase tracking-[0.18em] text-muted-foreground sm:text-right">
-                  {format(education.yearStart, "dd.MM.yyyy")} -{" "}
-                  {education.yearEnd
-                    ? format(education?.yearEnd, "dd.MM.yyyy")
-                    : locale === "tr" ? "Bugün" : "Present"}
+                  {format(new Date(`${item.startDate}T00:00:00`), "dd.MM.yyyy")} -{" "}
+                  {item.endDate
+                    ? format(new Date(`${item.endDate}T00:00:00`), "dd.MM.yyyy")
+                    : locale === "tr"
+                      ? "Bugün"
+                      : "Present"}
                 </time>
               </Surface>
             </article>

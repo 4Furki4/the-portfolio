@@ -7,6 +7,8 @@ RUN npm ci --legacy-peer-deps
 
 FROM node:22-alpine AS builder
 WORKDIR /app
+ARG DIRECTUS_URL=https://cms.furkan-cengiz.com
+ENV DIRECTUS_URL=$DIRECTUS_URL
 ENV NEXT_TELEMETRY_DISABLED=1
 COPY --from=deps /app/node_modules ./node_modules
 COPY . .

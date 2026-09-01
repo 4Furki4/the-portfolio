@@ -1,9 +1,0 @@
-# *
-User-agent: *
-Allow: /
-
-# Host
-Host: https://furkan-cengiz.com
-
-# Sitemaps
-Sitemap: https://furkan-cengiz.com/sitemap.xml

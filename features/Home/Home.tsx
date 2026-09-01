@@ -12,6 +12,7 @@ import {
   TechPill,
 } from "@/components/portfolio/Primitives";
 import { getLocalizedHref, getProjectHref } from "@/lib/localizedPath";
+import type { HomeContent, PortfolioProject } from "@/lib/directus/types";
 
 export type HomeProject = {
   title: string;
@@ -19,60 +20,48 @@ export type HomeProject = {
   endpoint: string;
   src: string;
   alt: string;
-  status: Project["status"];
+  status: PortfolioProject["status"];
   statusText: string;
   techStack: string[];
 };
 
 export default function Home({
   className,
-  title,
-  subtitle,
+  content,
   projectsLinkText,
-  role,
   locale,
   featuredProjects,
-}: Record<"title" | "subtitle" | "projectsLinkText" | "role", string> & {
+}: {
   className?: string;
+  content: HomeContent;
+  projectsLinkText: string;
   locale: string;
   featuredProjects: HomeProject[];
 }) {
-  const socialLinks = [
-    {
-      icon: <GitPullRequest aria-hidden size={18} />,
-      href: "https://github.com/4Furki4",
-      label: "GitHub",
-    },
-    {
-      icon: <Link2 aria-hidden size={18} />,
-      href: "https://www.linkedin.com/in/4furkancengiz4/",
-      label: "LinkedIn",
-    },
-    {
-      icon: <Mail aria-hidden size={18} />,
-      href: "mailto:muhammedcengiz1@gmail.com",
-      label: "Email",
-    },
-  ];
+  const socialIcons = {
+    github: GitPullRequest,
+    linkedin: Link2,
+    email: Mail,
+  } as const;
   const leadProject = featuredProjects[0];
-  const skillHighlights =
-    locale === "tr"
-      ? ["TypeScript", "PostgreSQL", "Kendi altyapım"]
-      : ["TypeScript", "PostgreSQL", "Self-hosted"];
+  const skillHighlights = content.skills.slice(0, 3).map((skill) => skill.name);
+  const contactLink = content.socialLinks.find((link) => link.kind === "email");
 
   return (
     <main
       className={`relative z-20 flex w-full flex-1 overflow-hidden px-4 py-10 sm:px-6 lg:px-8 ${className ?? ""}`}
     >
-      <section className="mx-auto grid min-h-[calc(100svh-9rem)] w-full max-w-7xl gap-10 lg:grid-cols-[minmax(0,1fr)_minmax(360px,520px)] lg:items-center">
+      <section
+        className={`mx-auto grid min-h-[calc(100svh-9rem)] w-full max-w-7xl gap-10 lg:items-center ${leadProject ? "lg:grid-cols-[minmax(0,1fr)_minmax(360px,520px)]" : ""}`}
+      >
         <Reveal className="max-w-4xl space-y-8">
           <div className="space-y-5">
-            <Eyebrow>{role}</Eyebrow>
+            <Eyebrow>{content.role}</Eyebrow>
             <h1 className="max-w-4xl text-6xl font-semibold leading-[0.86] tracking-normal text-foreground sm:text-7xl lg:text-8xl">
-              {title}
+              {content.title}
             </h1>
             <p className="max-w-2xl text-lg leading-8 text-muted-foreground sm:text-xl">
-              {subtitle}
+              {content.subtitle}
             </p>
           </div>
 
@@ -80,24 +69,29 @@ export default function Home({
             <ActionLink href={getLocalizedHref("/projects", locale)}>
               {projectsLinkText}
             </ActionLink>
-            <ActionLink href="mailto:muhammedcengiz1@gmail.com" variant="secondary">
-              {locale === "tr" ? "İletişime geç" : "Get in touch"}
-            </ActionLink>
+            {contactLink ? (
+              <ActionLink href={contactLink.href} variant="secondary">
+                {locale === "tr" ? "İletişime geç" : "Get in touch"}
+              </ActionLink>
+            ) : null}
           </div>
 
           <div className="flex flex-wrap items-center gap-2">
-            {socialLinks.map((link) => (
-              <Link
-                aria-label={link.label}
-                className="grid size-11 place-items-center rounded-lg border border-white/10 bg-white/[0.045] text-muted-foreground transition-colors hover:border-teal-300/50 hover:text-teal-100"
-                href={link.href}
-                key={link.href}
-                rel="noopener noreferrer"
-                target={link.href.startsWith("mailto:") ? undefined : "_blank"}
-              >
-                {link.icon}
-              </Link>
-            ))}
+            {content.socialLinks.map((link) => {
+              const Icon = socialIcons[link.kind];
+              return (
+                <Link
+                  aria-label={link.label}
+                  className="grid size-11 place-items-center rounded-lg border border-white/10 bg-white/[0.045] text-muted-foreground transition-colors hover:border-teal-300/50 hover:text-teal-100"
+                  href={link.href}
+                  key={link.href}
+                  rel="noopener noreferrer"
+                  target={link.href.startsWith("mailto:") ? undefined : "_blank"}
+                >
+                  <Icon aria-hidden size={18} />
+                </Link>
+              );
+            })}
           </div>
 
           <div className="grid max-w-3xl gap-3 border-t border-white/10 pt-6 sm:grid-cols-3">
@@ -112,7 +106,8 @@ export default function Home({
           </div>
         </Reveal>
 
-        <Reveal className="space-y-4" delay={0.12}>
+        {leadProject ? (
+          <Reveal className="space-y-4" delay={0.12}>
           <Surface className="overflow-hidden">
             <div className="flex items-center justify-between border-b border-white/10 px-4 py-3">
               <span className="text-xs font-semibold uppercase tracking-[0.24em] text-muted-foreground">
@@ -178,7 +173,8 @@ export default function Home({
               </Link>
             ))}
           </div>
-        </Reveal>
+          </Reveal>
+        ) : null}
       </section>
     </main>
   );

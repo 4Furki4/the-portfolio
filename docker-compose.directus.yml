@@ -1,0 +1,54 @@
+services:
+  database:
+    image: postgres:17-alpine
+    container_name: portfolio-cms-database-local
+    restart: unless-stopped
+    env_file:
+      - path: .env.directus.local
+        required: true
+    environment:
+      POSTGRES_DB: directus
+      POSTGRES_USER: directus
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U directus -d directus"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+    volumes:
+      - directus_database:/var/lib/postgresql/data
+
+  directus:
+    image: directus/directus:12.3.0
+    container_name: portfolio-cms-local
+    restart: unless-stopped
+    depends_on:
+      database:
+        condition: service_healthy
+    env_file:
+      - path: .env.directus.local
+        required: true
+    environment:
+      DB_CLIENT: pg
+      DB_HOST: database
+      DB_PORT: 5432
+      DB_DATABASE: directus
+      DB_USER: directus
+      CACHE_ENABLED: "true"
+      CACHE_AUTO_PURGE: "true"
+      WEBSOCKETS_ENABLED: "false"
+      CORS_ENABLED: "false"
+      FLOWS_ENV_ALLOW_LIST: PORTFOLIO_REVALIDATE_URL,PORTFOLIO_REVALIDATE_SECRET
+    ports:
+      - "127.0.0.1:8065:8055"
+    healthcheck:
+      test: ["CMD", "wget", "--no-verbose", "--tries=1", "--spider", "http://127.0.0.1:8055/server/ping"]
+      interval: 10s
+      timeout: 5s
+      retries: 12
+      start_period: 30s
+    volumes:
+      - directus_uploads:/directus/uploads
+
+volumes:
+  directus_database:
+  directus_uploads:
