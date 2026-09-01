@@ -11,6 +11,7 @@
     "directus:schema": "tsx scripts/directus/schema.ts",
     "directus:seed": "tsx scripts/directus/seed.ts",
     "directus:configure": "tsx scripts/directus/configure.ts",
+    "directus:replace-turkish-dictionary-gallery": "tsx scripts/directus/replace-turkish-dictionary-gallery.ts",
     "directus:verify": "tsx scripts/directus/verify.ts"
   },
   "dependencies": {
