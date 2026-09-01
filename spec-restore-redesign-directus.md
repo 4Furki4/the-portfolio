@@ -63,10 +63,10 @@ context: []
 
 ## Post-review Production Cutover
 
-- Build and push the reviewed image while retaining the current image as rollback evidence.
-- Recreate only `app-production`; do not remove the development container or Directus services/volumes.
-- Restore Watchtower and verify it does not replace the reviewed image.
-- Fetch clean public English/Turkish home, projects, about, and CV routes and confirm the redesigned UI and current CMS content.
+- [x] Build and push the reviewed image while retaining the current image as rollback evidence.
+- [x] Recreate only `app-production`; do not remove the development container or Directus services/volumes.
+- [x] Restore Watchtower and verify it does not replace the reviewed image.
+- [x] Fetch clean public English/Turkish home, projects, about, and CV routes and confirm the redesigned UI and current CMS content.
 
 ## Design Notes
 
@@ -102,6 +102,16 @@ The redesigned `origin/main` presentation is authoritative. Port CMS values into
 - Added `directus_files` to the revalidation trigger collection set.
 - Re-ran lint, Next.js build, a clean Docker build, Docker Compose config validation, English/Turkish browser checks, current CV delivery, authorized revalidation, and a forced upstream asset failure returning `502`.
 - Broader pre-existing Directus management-script hardening is recorded in `deferred-work.md` and is not required for this production recovery.
+
+## Production Cutover Evidence
+
+- Built and smoke-tested native ARM64 image `sha256:9414741ab7193afa51c5d8020aa82d663d8197dec86c39390758687c5df51a2d` on the Pi against the existing Directus network.
+- Pushed immutable tag `furki4/the-portfolio:recovery-5ca4928` and promoted the same digest to `latest`.
+- Preserved the previous running image as `furki4/the-portfolio:rollback-pre-redesign-restore-20260901`.
+- Recreated only `portfolio-app-production`; `portfolio-app-development`, Directus, PostgreSQL, uploads, and database volumes remained running and untouched.
+- Public English/Turkish home, projects, About, and current CV routes returned `200`; browser inspection confirmed the redesigned UI and Directus content with no warnings.
+- Watchtower completed a registry scan with `Failed=0`, `Updated=0`; the production container kept the reviewed digest and original post-cutover start time.
+- The current CV returned `application/pdf`, 83,401 bytes, `private, no-store`, and Cloudflare `cf-cache-status: DYNAMIC`.
 
 ## Suggested Review Order
 
