@@ -100,6 +100,16 @@ Gallery order: home, full search, compact search, word list, basic contribution,
 - `git diff --check`: passed.
 - Independent review patches: exact byte replacement/hash verification, detached bilingual relation staging, rollback-file preflight, exact translation-set validation, bounded requests, pre-cleanup localized route checks, batch attach/delete, partial-state reporting, and exact remote-OID verification.
 
+## Production Evidence
+
+- Production apply returned `status: replaced` with 17 relations and snapshots:
+  - `/tmp/directus-gallery-before-2026-09-01T21-52-15-783Z.json`
+  - `/tmp/directus-gallery-staged-2026-09-01T21-52-52-877Z.json`
+  - `/tmp/directus-gallery-after-2026-09-01T21-52-54-918Z.json`
+- Idempotent post-cutover readback returned `status: already-complete`; every live proxied asset SHA-256 matched and all three old file IDs remained available.
+- Browser verification found 17 localized images on both Turkish and English project routes; all 17 Turkish images lazy-loaded at their source dimensions and the browser reported no warnings or errors.
+- The existing application image was not rebuilt or redeployed; this cutover changed Directus gallery content only.
+
 ## Suggested Review Order
 
 **Safe gallery cutover**
