@@ -1,0 +1,136 @@
+name: Branch previews
+
+on:
+  push:
+    branches-ignore: [main, develop]
+  delete:
+  workflow_dispatch:
+    inputs:
+      branch:
+        description: Feature branch to deploy, or absent branch to clean up
+        required: true
+        type: string
+      action:
+        description: Preview action
+        required: true
+        type: choice
+        options: [deploy, delete]
+        default: deploy
+
+permissions:
+  contents: read
+
+env:
+  PREVIEW_BRANCH: ${{ github.event_name == 'delete' && github.event.ref || inputs.branch || github.ref_name }}
+  PREVIEW_ACTION: ${{ github.event_name == 'delete' && 'delete' || inputs.action || 'deploy' }}
+
+jobs:
+  prepare:
+    if: ${{ github.event_name != 'delete' || github.event.ref_type == 'branch' }}
+    runs-on: ubuntu-24.04
+    timeout-minutes: 5
+    outputs:
+      sha: ${{ steps.identity.outputs.sha }}
+      identity: ${{ steps.identity.outputs.identity }}
+      url: ${{ steps.identity.outputs.url }}
+      app_image: ${{ steps.identity.outputs.app_image }}
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: ${{ (github.event_name == 'delete' || inputs.action == 'delete') && github.event.repository.default_branch || (github.event_name == 'push' && github.sha) || inputs.branch || github.ref_name }}
+          persist-credentials: false
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Validate branch and compute preview URL
+        id: identity
+        env:
+          PREVIEW_ACTION: identity
+        run: |
+          PREVIEW_SHA="$(git rev-parse HEAD)"
+          export PREVIEW_SHA
+          echo "sha=$PREVIEW_SHA" >> "$GITHUB_OUTPUT"
+          node scripts/preview/lifecycle.mjs
+      - run: node --test scripts/preview/*.test.mjs
+
+  deploy:
+    needs: prepare
+    if: ${{ github.event_name != 'delete' && inputs.action != 'delete' }}
+    runs-on: ubuntu-24.04-arm
+    timeout-minutes: 45
+    concurrency:
+      group: portfolio-preview-${{ needs.prepare.outputs.identity }}
+      cancel-in-progress: false
+      queue: max
+    env:
+      PREVIEW_SHA: ${{ needs.prepare.outputs.sha }}
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: ${{ needs.prepare.outputs.sha }}
+          persist-credentials: false
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Skip superseded branch heads before building
+        env:
+          GITHUB_TOKEN: ${{ github.token }}
+        run: |
+          node --input-type=module -e '
+            import { assertCurrent, previewIdentity } from "./scripts/preview/lifecycle.mjs";
+            import { jsonClient } from "./scripts/preview/client.mjs";
+            await assertCurrent({identity:previewIdentity(process.env.GITHUB_REPOSITORY,process.env.PREVIEW_BRANCH),sha:process.env.PREVIEW_SHA,github:jsonClient({baseUrl:"https://api.github.com",token:process.env.GITHUB_TOKEN,service:"GitHub"})});
+          '
+      - uses: docker/setup-buildx-action@v3
+      - uses: docker/login-action@v3
+        with:
+          username: ${{ secrets.DOCKERHUB_USERNAME }}
+          password: ${{ secrets.DOCKERHUB_TOKEN }}
+      - name: Build and publish ARM64 preview
+        id: image
+        uses: docker/build-push-action@v6
+        with:
+          context: .
+          file: ./Dockerfile
+          platforms: linux/arm64
+          push: true
+          tags: ${{ needs.prepare.outputs.app_image }}
+          cache-from: type=gha,scope=portfolio-previews
+          cache-to: type=gha,scope=portfolio-previews,mode=max
+      - name: Deploy and verify the published commit
+        env:
+          GITHUB_TOKEN: ${{ github.token }}
+          COOLIFY_URL: ${{ vars.COOLIFY_URL }}
+          COOLIFY_TOKEN: ${{ secrets.COOLIFY_TOKEN }}
+          COOLIFY_PROJECT_UUID: ${{ vars.COOLIFY_PROJECT_UUID }}
+          COOLIFY_PREVIEW_ENVIRONMENT_UUID: ${{ vars.COOLIFY_PREVIEW_ENVIRONMENT_UUID }}
+          COOLIFY_SERVER_UUID: ${{ vars.COOLIFY_SERVER_UUID }}
+          PREVIEW_IMAGE_DIGEST: ${{ steps.image.outputs.digest }}
+        run: node scripts/preview/lifecycle.mjs
+
+  cleanup:
+    needs: prepare
+    if: ${{ github.event_name == 'delete' || inputs.action == 'delete' }}
+    runs-on: ubuntu-24.04
+    timeout-minutes: 5
+    concurrency:
+      group: portfolio-preview-${{ needs.prepare.outputs.identity }}
+      cancel-in-progress: false
+      queue: max
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: ${{ github.event.repository.default_branch }}
+          persist-credentials: false
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Remove the deleted branch's owned preview
+        env:
+          GITHUB_TOKEN: ${{ github.token }}
+          COOLIFY_URL: ${{ vars.COOLIFY_URL }}
+          COOLIFY_TOKEN: ${{ secrets.COOLIFY_TOKEN }}
+          COOLIFY_PROJECT_UUID: ${{ vars.COOLIFY_PROJECT_UUID }}
+          COOLIFY_PREVIEW_ENVIRONMENT_UUID: ${{ vars.COOLIFY_PREVIEW_ENVIRONMENT_UUID }}
+          COOLIFY_SERVER_UUID: ${{ vars.COOLIFY_SERVER_UUID }}
+        run: node scripts/preview/lifecycle.mjs

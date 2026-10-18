@@ -1,5 +1,7 @@
 services:
   app-production:
+    # Coolify owns production. Enable this only for an explicit rollback.
+    profiles: [legacy-production]
     image: ${APP_IMAGE:-furki4/the-portfolio:latest}
     container_name: portfolio-app-production
     restart: unless-stopped
@@ -16,7 +18,7 @@ services:
         max-size: "10m"
         max-file: "3"
     labels:
-      - com.centurylinklabs.watchtower.enable=true
+      - com.centurylinklabs.watchtower.enable=false
     env_file:
       - path: .env.production.pi
         required: false
