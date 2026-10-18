@@ -1,0 +1,32 @@
+services:
+  cms-gateway:
+    image: haproxy:3.2-alpine
+    container_name: portfolio-preview-cms-gateway
+    restart: unless-stopped
+    user: "99:99"
+    read_only: true
+    security_opt: ["no-new-privileges:true"]
+    cap_drop: [ALL]
+    mem_limit: 64m
+    cpus: 0.25
+    volumes:
+      - ./cms-gateway.cfg:/usr/local/etc/haproxy/haproxy.cfg:ro
+    networks:
+      previews:
+        aliases: [portfolio-preview-cms-gateway]
+      published-cms: {}
+    logging:
+      driver: json-file
+      options:
+        max-size: "10m"
+        max-file: "3"
+    labels:
+      com.centurylinklabs.watchtower.enable: "false"
+
+networks:
+  previews:
+    external: true
+    name: portfolio-preview-cms
+  published-cms:
+    external: true
+    name: the-portfolio_default
